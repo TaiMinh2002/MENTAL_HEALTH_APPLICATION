@@ -30,6 +30,7 @@ class PageViewIntro extends StatelessWidget {
     ];
 
     return PageView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       controller: controller.pageController,
       itemCount: introItems.length,
       itemBuilder: (context, index) {
