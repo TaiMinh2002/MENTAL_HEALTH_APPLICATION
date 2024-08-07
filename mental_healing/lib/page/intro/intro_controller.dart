@@ -6,7 +6,7 @@ class IntroController extends GetxController {
 
   void handleNexPage() {
     if (pageController.page!.toInt() == 2) {
-      Get.offNamed(AppRouter.routerIntro);
+      Get.offNamed(AppRouter.routerSignIn);
     } else {
       pageController.nextPage(
           duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
