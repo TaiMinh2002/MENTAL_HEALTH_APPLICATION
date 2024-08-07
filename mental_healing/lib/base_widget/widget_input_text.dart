@@ -301,14 +301,16 @@ class _WidgetInputTextState extends State<WidgetInputText> {
             child: Row(
               children: [
                 SvgPicture.asset(AssetIcons.warning),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(
-                    errText!,
-                    style:
-                        const TextStyle(fontSize: 12, color: Color(0xff4F3422)),
-                    maxLines: 3,
-                    textAlign: TextAlign.start,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      errText!,
+                      style: const TextStyle(
+                          fontSize: 12, color: Color(0xff4F3422)),
+                      maxLines: 3,
+                      textAlign: TextAlign.start,
+                    ),
                   ),
                 ),
               ],
