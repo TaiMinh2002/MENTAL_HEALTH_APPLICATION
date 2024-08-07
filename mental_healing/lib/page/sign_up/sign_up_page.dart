@@ -2,11 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/import.dart';
-import 'package:mental_healing/page/sign_in/sign_in_controller.dart';
+import 'package:mental_healing/page/sign_up/sign_up_controller.dart';
 
-class SignInPage extends StatelessWidget {
-  final SignInController controller = Get.put(SignInController());
-  SignInPage({super.key});
+class SignUpPage extends StatelessWidget {
+  final SignUpController controller = Get.put(SignUpController());
+  SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,8 @@ class SignInPage extends StatelessWidget {
               Image.asset(AssetImages.signInImage),
               _headerWidget(),
               _formInput(),
-              _signInButton(),
-              _forgotPasswordWidget(),
-              _signUpWidget()
+              _signUpButton(),
+              _signInWidget()
             ],
           ),
         ),
@@ -33,7 +32,7 @@ class SignInPage extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.only(top: 30.0, bottom: 20),
       child: Text(
-        'Sign In \nCUHK AI Therapist',
+        'Sign Up For Free',
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 30,
@@ -56,6 +55,7 @@ class SignInPage extends StatelessWidget {
             child: Column(children: [
               _emailWidget(),
               _passwordWidget(),
+              _confirmPasswordWidget()
             ]),
           ),
         ));
@@ -86,13 +86,26 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Widget _signInButton() {
+  Widget _confirmPasswordWidget() {
+    return WidgetInputText(
+      hintText: 'Enter your confirm password...',
+      controller: controller.confirmPasswordController,
+      title: 'Confirm Password',
+      validator: controller.checkPasswordValidator,
+      textCapitalization: TextCapitalization.none,
+      iconLeading: AssetIcons.iconPassword,
+      obscureText: true,
+      borderRadius: 20,
+    );
+  }
+
+  Widget _signUpButton() {
     return Padding(
       padding: const EdgeInsets.only(top: 35, right: 16, left: 16, bottom: 20),
       child: ButtonWidget(
-        onClick: controller.handleSignIn,
+        onClick: controller.handleSignUp,
         textSize: 18,
-        title: 'Sign In',
+        title: 'Sign Up',
         suffixIcon: AssetIcons.next,
         height: 55,
         width: double.infinity,
@@ -100,39 +113,21 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Widget _forgotPasswordWidget() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            'Forgot Password?',
-            style: TextStyle(
-                fontSize: 14,
-                color: Color(0xffED7E1C),
-                fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _signUpWidget() {
+  Widget _signInWidget() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: RichText(
         text: TextSpan(
           children: <TextSpan>[
             const TextSpan(
-              text: 'Don’t have an account? ',
+              text: 'Already have an account? ',
               style: TextStyle(
                   fontSize: 16,
                   color: Color(0xff736B66),
                   fontWeight: FontWeight.bold),
             ),
             TextSpan(
-              text: 'Sign Up',
+              text: 'Sign In',
               style: const TextStyle(
                   fontSize: 16,
                   decoration: TextDecoration.underline,
@@ -140,7 +135,7 @@ class SignInPage extends StatelessWidget {
                   fontWeight: FontWeight.bold),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  controller.handleSignUp();
+                  controller.handleSignIn();
                 },
             ),
           ],
