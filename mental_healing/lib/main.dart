@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mental_healing/global/app_router.dart';
+import 'package:mental_healing/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       enableLog: true,
-      initialRoute: AppRouter.routerSignIn,
+      initialRoute: AppRouter.routerSplash,
       getPages: AppRouter.getPages,
       defaultTransition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 280),
