@@ -1,5 +1,10 @@
 class AssetImages {
+	static const String indicatorIntro1 = 'assets/images/indicator_intro1.png';
+	static const String indicatorIntro2 = 'assets/images/indicator_intro2.png';
+	static const String indicatorIntro3 = 'assets/images/indicator_intro3.png';
 	static const String intro1 = 'assets/images/intro1.png';
+	static const String intro2 = 'assets/images/intro2.png';
+	static const String intro3 = 'assets/images/intro3.png';
 	static const String signInImage = 'assets/images/sign_in_image.png';
 	static const String splashLogo = 'assets/images/splash_logo.png';
 }
