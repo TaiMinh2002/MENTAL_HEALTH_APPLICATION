@@ -88,7 +88,7 @@ class ButtonWidget extends StatelessWidget {
                   if (suffixIcon != null)
                     Padding(
                       padding: EdgeInsets.only(left: 6),
-                      child: SvgPicture.asset(suffixIcon!, width: 16),
+                      child: SvgPicture.asset(suffixIcon!, width: 24),
                     ),
                 ],
               ),
