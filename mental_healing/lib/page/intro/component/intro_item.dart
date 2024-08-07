@@ -1,21 +1,30 @@
-import 'package:flutter/material.dart';
+import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/intro/component/next_button.dart';
 import 'package:mental_healing/page/intro/component/step_item.dart';
-import 'package:mental_healing/r.dart';
 
 class IntroItem extends StatelessWidget {
-  const IntroItem({super.key});
+  const IntroItem(
+      {super.key,
+      required this.image,
+      required this.step,
+      required this.text,
+      required this.indicator});
+  final String image;
+  final String text;
+  final String step;
+  final String indicator;
 
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
-    final double imageHeight = screenHeight / 1.6;
+    final double imageHeight = screenHeight / 1.5;
     final double containerHeight = screenHeight - imageHeight + 75;
     return Scaffold(
       backgroundColor: const Color(0xffE5EAD7),
       body: Stack(
         children: [
           Image.asset(
-            AssetImages.intro1,
+            image,
             height: imageHeight,
             width: double.infinity,
             fit: BoxFit.cover,
@@ -24,10 +33,7 @@ class IntroItem extends StatelessWidget {
             padding: const EdgeInsets.only(top: 60.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const StepItem(title: 'Step 1'),
-                _bottomWidget(containerHeight)
-              ],
+              children: [StepItem(title: step), _bottomWidget(containerHeight)],
             ),
           )
         ],
@@ -42,16 +48,19 @@ class IntroItem extends StatelessWidget {
         color: Colors.white,
         height: height,
         width: double.infinity,
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 90.0, bottom: 30),
+              child: Image.asset(indicator),
+            ),
             Text(
-              'Personalize Your Mental Health State With AI',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              text,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
-            Icon(Icons.arrow_forward, size: 40, color: Colors.brown),
+            NextButton(),
           ],
         ),
       ),

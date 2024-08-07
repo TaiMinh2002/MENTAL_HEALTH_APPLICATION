@@ -9,7 +9,7 @@ class SplashController extends GetxController {
   }
 
   Future<void> _moveToBoardingPage() async {
-    await 2.5.seconds.delay();
+    await 3.seconds.delay();
     Get.offNamed(AppRouter.routerIntro);
   }
 }
