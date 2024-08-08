@@ -7,7 +7,7 @@ class SignUpController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  final signUpFormKey = GlobalKey<FormState>();
   RxBool firstValidation = false.obs;
 
   String? checkEmailValidator(String? value) {
@@ -53,8 +53,8 @@ class SignUpController extends GetxController {
   }
 
   bool validation() {
-    if (formKey.currentState?.validate() == true) {
-      formKey.currentState!.save();
+    if (signUpFormKey.currentState?.validate() == true) {
+      signUpFormKey.currentState!.save();
     }
     if (!firstValidation.value) {
       firstValidation.value = true;
@@ -64,6 +64,6 @@ class SignUpController extends GetxController {
         confirmPasswordController.text.trim().isEmpty) {
       return false;
     }
-    return formKey.currentState?.validate() ?? false;
+    return signUpFormKey.currentState?.validate() ?? false;
   }
 }

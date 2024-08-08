@@ -33,10 +33,10 @@ class SignInPage extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.only(top: 30.0, bottom: 20),
       child: Text(
-        'Sign In \nCUHK AI Therapist',
+        'Sign In \nYour Mental Health Companion',
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 25,
           fontWeight: FontWeight.w900,
           color: Color(0xff4F3422),
         ),
@@ -49,7 +49,7 @@ class SignInPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Obx(
           () => Form(
-            key: controller.formKey,
+            key: controller.signInFormKey,
             autovalidateMode: controller.firstValidation.value
                 ? AutovalidateMode.onUserInteraction
                 : AutovalidateMode.disabled,

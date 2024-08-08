@@ -10,7 +10,7 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF7F4F2),
+      backgroundColor: const Color(0xffF7F4F2),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 60),
@@ -19,7 +19,7 @@ class IntroPage extends StatelessWidget {
               SvgPicture.asset(AssetIcons.getStartHeader),
               _bodyWidget(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30.0),
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
                 child: SvgPicture.asset(AssetIcons.onboardingGetStart),
               ),
               _buttonWidget()
@@ -31,34 +31,19 @@ class IntroPage extends StatelessWidget {
   }
 
   Widget _textWidget(
-      {required String titleTop,
-      required String titleUnder,
+      {required String title,
       required double size,
       required FontWeight weight,
       required Color color}) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20),
-      child: RichText(
+      padding: const EdgeInsets.only(top: 10),
+      child: Text(
+        title,
         textAlign: TextAlign.center,
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: titleTop,
-              style: TextStyle(
-                fontSize: size,
-                color: color,
-                fontWeight: weight,
-              ),
-            ),
-            TextSpan(
-              text: titleUnder,
-              style: TextStyle(
-                fontSize: size,
-                fontWeight: weight,
-                color: color,
-              ),
-            ),
-          ],
+        style: TextStyle(
+          fontSize: size,
+          color: color,
+          fontWeight: weight,
         ),
       ),
     );
@@ -68,17 +53,16 @@ class IntroPage extends StatelessWidget {
     return Column(
       children: [
         _textWidget(
-            titleTop: 'Welcome to the CUHK',
-            titleUnder: 'AI Therapist ',
-            size: 30,
+            title: 'Welcome to\n Mental Health',
+            size: 20,
             weight: FontWeight.bold,
-            color: Color(0xff4F3422)),
+            color: const Color(0xff4F3422)),
         _textWidget(
-            titleTop: 'Your mindful mental health AI companion',
-            titleUnder: 'for everyone, anywhere 🍃',
+            title:
+                'Your trusted companion for mental well-being, anytime, anywhere 🍃',
             size: 18,
             weight: FontWeight.w400,
-            color: Color(0xff736B66)),
+            color: const Color(0xff736B66)),
       ],
     );
   }

@@ -5,7 +5,7 @@ import 'package:mental_healing/utils/function.dart';
 class SignInController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  final signInFormKey = GlobalKey<FormState>();
   RxBool firstValidation = false.obs;
 
   String? checkEmailValidator(String? value) {
@@ -29,8 +29,8 @@ class SignInController extends GetxController {
   }
 
   bool validation() {
-    if (formKey.currentState?.validate() == true) {
-      formKey.currentState!.save();
+    if (signInFormKey.currentState?.validate() == true) {
+      signInFormKey.currentState!.save();
     }
     if (!firstValidation.value) {
       firstValidation.value = true;
@@ -39,7 +39,7 @@ class SignInController extends GetxController {
         passwordController.text.trim().isEmpty) {
       return false;
     }
-    return formKey.currentState?.validate() ?? false;
+    return signInFormKey.currentState?.validate() ?? false;
   }
 
   Future<void> handleSignUp() async {

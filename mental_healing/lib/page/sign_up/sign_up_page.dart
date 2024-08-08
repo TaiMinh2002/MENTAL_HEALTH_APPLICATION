@@ -18,7 +18,7 @@ class SignUpPage extends StatelessWidget {
             children: [
               Image.asset(AssetImages.signInImage),
               _headerWidget(),
-              _formInput(),
+              _inputWidget(),
               _signUpButton(),
               _signInWidget()
             ],
@@ -35,7 +35,7 @@ class SignUpPage extends StatelessWidget {
         'Sign Up For Free',
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 25,
           fontWeight: FontWeight.w900,
           color: Color(0xff4F3422),
         ),
@@ -43,12 +43,12 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Widget _formInput() {
+  Widget _inputWidget() {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Obx(
           () => Form(
-            key: controller.formKey,
+            key: controller.signUpFormKey,
             autovalidateMode: controller.firstValidation.value
                 ? AutovalidateMode.onUserInteraction
                 : AutovalidateMode.disabled,
