@@ -46,19 +46,20 @@ class SignInPage extends StatelessWidget {
 
   Widget _formInput() {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Obx(
-          () => Form(
-            key: controller.signInFormKey,
-            autovalidateMode: controller.firstValidation.value
-                ? AutovalidateMode.onUserInteraction
-                : AutovalidateMode.disabled,
-            child: Column(children: [
-              _emailWidget(),
-              _passwordWidget(),
-            ]),
-          ),
-        ));
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Form(
+        key: controller.signInFormKey,
+        autovalidateMode: controller.firstValidation.value
+            ? AutovalidateMode.onUserInteraction
+            : AutovalidateMode.disabled,
+        child: Column(
+          children: [
+            _emailWidget(),
+            _passwordWidget(),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _emailWidget() {

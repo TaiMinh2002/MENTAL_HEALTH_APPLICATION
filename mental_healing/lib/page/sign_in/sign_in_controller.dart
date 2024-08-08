@@ -43,6 +43,6 @@ class SignInController extends GetxController {
   }
 
   Future<void> handleSignUp() async {
-    Get.toNamed(AppRouter.routerSignUp);
+    Get.offAllNamed(AppRouter.routerSignUp);
   }
 }
