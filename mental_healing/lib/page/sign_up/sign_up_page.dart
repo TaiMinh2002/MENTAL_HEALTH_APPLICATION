@@ -45,20 +45,34 @@ class SignUpPage extends StatelessWidget {
 
   Widget _inputWidget() {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Obx(
-          () => Form(
-            key: controller.signUpFormKey,
-            autovalidateMode: controller.firstValidation.value
-                ? AutovalidateMode.onUserInteraction
-                : AutovalidateMode.disabled,
-            child: Column(children: [
-              _emailWidget(),
-              _passwordWidget(),
-              _confirmPasswordWidget()
-            ]),
-          ),
-        ));
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Form(
+        key: controller.signUpFormKey,
+        autovalidateMode: controller.firstValidation.value
+            ? AutovalidateMode.onUserInteraction
+            : AutovalidateMode.disabled,
+        child: Column(
+          children: [
+            _userNameWidget(),
+            _emailWidget(),
+            _passwordWidget(),
+            _confirmPasswordWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _userNameWidget() {
+    return WidgetInputText(
+      hintText: 'Enter your username...',
+      controller: controller.usernameController,
+      validator: controller.checkUsernameValidator,
+      textCapitalization: TextCapitalization.none,
+      title: 'Username',
+      borderRadius: 20,
+      iconLeading: AssetIcons.person,
+    );
   }
 
   Widget _emailWidget() {
@@ -91,7 +105,7 @@ class SignUpPage extends StatelessWidget {
       hintText: 'Enter your confirm password...',
       controller: controller.confirmPasswordController,
       title: 'Confirm Password',
-      validator: controller.checkPasswordValidator,
+      validator: controller.checkConFirmPasswordValidator,
       textCapitalization: TextCapitalization.none,
       iconLeading: AssetIcons.iconPassword,
       obscureText: true,

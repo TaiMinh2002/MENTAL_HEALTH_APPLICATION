@@ -323,7 +323,11 @@ class _WidgetInputTextState extends State<WidgetInputText> {
     return widget.iconLeading != null
         ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: SvgPicture.asset(widget.iconLeading!, width: 24, height: 24),
+            child: SvgPicture.asset(
+              widget.iconLeading!,
+              width: 24,
+              height: 24,
+            ),
           )
         : null;
   }

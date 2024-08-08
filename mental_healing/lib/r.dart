@@ -20,10 +20,12 @@ class AssetIcons {
 	static const String logo = 'assets/icons/logo.svg';
 	static const String next = 'assets/icons/next.svg';
 	static const String onboardingGetStart = 'assets/icons/onboarding_get_start.svg';
+	static const String person = 'assets/icons/person.svg';
 	static const String warning = 'assets/icons/warning.svg';
 }
 
 class AssetLotties {
-	static const String loading = 'assets/lotties/loading.json';
+	static const String appLoading = 'assets/lotties/app_loading.json';
+	static const String splashLoading = 'assets/lotties/splash_loading.json';
 }
 

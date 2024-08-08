@@ -16,7 +16,7 @@ class SplashPage extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Image.asset(AssetImages.splashLogo),
-            Lottie.asset(AssetLotties.loading),
+            Lottie.asset(AssetLotties.splashLoading),
           ],
         ),
       ),
