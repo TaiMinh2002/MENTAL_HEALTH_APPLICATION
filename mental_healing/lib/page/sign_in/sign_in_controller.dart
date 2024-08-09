@@ -29,9 +29,6 @@ class SignInController extends GetxController {
     return null;
   }
 
-  Future<void> handleSignIn({String? email, String? password}) async {
-    if (validation() || (email != null && password != null)) {
-      Get.toNamed(AppRouter.routerIntro);
   Future<void> handleSignIn() async {
     if (!signInFormKey.currentState!.validate()) {
       return;
