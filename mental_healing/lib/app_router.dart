@@ -1,5 +1,6 @@
 import 'package:mental_healing/import.dart';
-import 'package:mental_healing/page/complete_account/component/%08choose_age.dart';
+import 'package:mental_healing/page/complete_account/component/choose_age.dart';
+// import 'package:mental_healing/page/complete_account/component/%08choose_age.dart';
 import 'package:mental_healing/page/complete_account/component/choose_gender.dart';
 import 'package:mental_healing/page/intro/component/page_view_intro.dart';
 import 'package:mental_healing/page/intro/intro_page.dart';
@@ -65,9 +66,9 @@ class AppRouter {
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,
     ),
-    GetPage<AgePickerApp>(
+    GetPage<ChooseAge>(
       name: routerChooseAge,
-      page: () => AgePickerApp(),
+      page: () => ChooseAge(),
       curve: curve,
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,
