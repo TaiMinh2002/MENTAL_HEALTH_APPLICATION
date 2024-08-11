@@ -9,7 +9,7 @@ class IntroController extends GetxController {
       Get.offNamed(AppRouter.routerSignIn);
     } else {
       pageController.nextPage(
-          duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
     }
   }
 

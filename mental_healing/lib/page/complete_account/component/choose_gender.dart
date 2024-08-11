@@ -65,9 +65,9 @@ class _ChooseGenderState extends State<ChooseGender> {
       onTap: () {
         setState(() {
           if (isSelect == value) {
-            isSelect = null; // Deselect if already selected
+            isSelect = null;
           } else {
-            isSelect = value; // Select the tapped widget
+            isSelect = value;
           }
         });
       },
