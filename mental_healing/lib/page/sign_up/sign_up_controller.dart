@@ -6,6 +6,7 @@ import 'package:mental_healing/utils/function.dart';
 import 'package:mental_healing/utils/string.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:mental_healing/utils/config.dart';
 
 class SignUpController extends GetxController {
   final usernameController = TextEditingController();
@@ -68,7 +69,7 @@ class SignUpController extends GetxController {
       'password': password,
     };
 
-    const String url = 'http://192.168.1.23:3000/api/signup';
+    const String url = '${Config.apiUrl}/signup';
 
     try {
       LoadingHelper.showLoading();
