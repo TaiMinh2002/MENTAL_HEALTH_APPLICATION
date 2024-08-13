@@ -41,7 +41,7 @@ class _ChooseGenderState extends State<ChooseGender> {
 
   Widget _bodyWidget() {
     return const Padding(
-      padding: EdgeInsets.only(top: 40.0),
+      padding: EdgeInsets.only(top: 40.0, left: 10, right: 10),
       child: Text(
         'What’s your official gender?',
         textAlign: TextAlign.center,
@@ -80,10 +80,10 @@ class _ChooseGenderState extends State<ChooseGender> {
             boxShadow: selected
                 ? [
                     BoxShadow(
-                      color: Color(0xff4F3422).withOpacity(0.5),
+                      color: const Color(0xff4F3422).withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     )
                   ]
                 : [],
@@ -122,15 +122,15 @@ class _ChooseGenderState extends State<ChooseGender> {
             title: 'Prefer to skip, thanks',
             suffixIcon: AssetIcons.cancel,
             height: 55,
-            bgColor: Color(0xffE5EAD7),
-            textColor: Color(0xff9BB168),
+            bgColor: const Color(0xffE5EAD7),
+            textColor: const Color(0xff9BB168),
             width: double.infinity,
           ),
           ButtonWidget(
             onClick: () {
               Get.toNamed(AppRouter.routerChooseAge);
             },
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             textSize: 18,
             title: 'Continue',
             suffixIcon: AssetIcons.next,

@@ -66,6 +66,7 @@ class SignInController extends GetxController {
       } else if (response.statusCode == 401) {
         SnackBarHelper.showError('Incorrect email or password');
       } else {
+        LoadingHelper.hideLoading();
         final errorResponse = jsonDecode(response.body);
         SnackBarHelper.showError(
             errorResponse['message'] ?? 'Failed to sign in');
