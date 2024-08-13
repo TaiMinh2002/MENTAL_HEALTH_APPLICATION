@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
@@ -21,7 +22,7 @@ class _ChooseAgeState extends State<ChooseAge> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const HeaderAppWidget(title: 'Assessment', text: '3 of 14'),
+            const HeaderAppWidget(title: 'Assessment', text: '2 of 5'),
             _bodyWidget(),
             Expanded(
               child: Center(
@@ -85,7 +86,7 @@ class _ChooseAgeState extends State<ChooseAge> {
 
   Widget _bodyWidget() {
     return const Padding(
-      padding: EdgeInsets.only(top: 40.0),
+      padding: EdgeInsets.only(top: 40.0, left: 10, right: 10),
       child: Text(
         'What’s your age?',
         textAlign: TextAlign.center,
@@ -103,7 +104,9 @@ class _ChooseAgeState extends State<ChooseAge> {
       child: Column(
         children: [
           ButtonWidget(
-            onClick: () {},
+            onClick: () {
+              Get.toNamed(AppRouter.routerChooseMood);
+            },
             margin: const EdgeInsets.only(top: 10),
             textSize: 18,
             title: 'Continue',
