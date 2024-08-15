@@ -9,4 +9,8 @@ class CompleteAccountController extends GetxController {
   void handleChooseAge() {
     Get.toNamed(AppRouter.routerChooseAge);
   }
+
+  void handleChooseSleep() {
+    Get.toNamed(AppRouter.routerChooseSleep);
+  }
 }
