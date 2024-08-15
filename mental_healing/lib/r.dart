@@ -20,6 +20,7 @@ class AssetIcons {
 	static const String back = 'assets/icons/back.svg';
 	static const String cancel = 'assets/icons/cancel.svg';
 	static const String centerPointerIcon = 'assets/icons/center_pointer_icon.svg';
+	static const String clock = 'assets/icons/clock.svg';
 	static const String dropdownIcon = 'assets/icons/dropdown_icon.svg';
 	static const String female = 'assets/icons/female.svg';
 	static const String getStartHeader = 'assets/icons/get_start_header.svg';

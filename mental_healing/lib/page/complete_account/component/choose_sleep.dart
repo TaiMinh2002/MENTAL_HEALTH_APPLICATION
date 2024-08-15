@@ -1,12 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:mental_healing/base_widget/header_app_widget.dart';
-import 'package:mental_healing/import.dart';
-import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
-import 'package:mental_healing/page/complete_account/component/select_mood.dart';
+import 'package:mental_healing/page/complete_account/component/select_sleep.dart';
 
-class ChooseMood extends StatelessWidget {
-  final CompleteAccountController controller =
-      Get.put(CompleteAccountController());
-  ChooseMood({super.key});
+class ChooseSleep extends StatelessWidget {
+  const ChooseSleep({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +13,12 @@ class ChooseMood extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              HeaderAppWidget(
+              const HeaderAppWidget(
                 title: 'Assessment',
-                text: '3 of 5',
-                onTap: controller.handleChooseSleep,
+                text: '4 of 5',
               ),
               _bodyWidget(),
-              SelectMood()
+              SelectSleep()
             ],
           ),
         ),
@@ -32,9 +28,9 @@ class ChooseMood extends StatelessWidget {
 
   Widget _bodyWidget() {
     return const Padding(
-      padding: EdgeInsets.only(top: 25.0, left: 10, right: 10),
+      padding: EdgeInsets.only(top: 30.0, left: 10, right: 10, bottom: 30),
       child: Text(
-        'How would you\n describe your mood?',
+        'How would you rate your sleep quality?',
         textAlign: TextAlign.center,
         style: TextStyle(
             fontSize: 28,
