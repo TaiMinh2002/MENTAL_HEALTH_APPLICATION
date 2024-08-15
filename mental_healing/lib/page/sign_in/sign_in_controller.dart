@@ -64,6 +64,7 @@ class SignInController extends GetxController {
         await refreshToken();
         return handleSignIn();
       } else if (response.statusCode == 401) {
+        LoadingHelper.hideLoading();
         SnackBarHelper.showError('Incorrect email or password');
       } else {
         LoadingHelper.hideLoading();

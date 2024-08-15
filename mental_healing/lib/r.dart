@@ -1,4 +1,6 @@
 class AssetImages {
+	static const String goodMood = 'assets/images/good_mood.png';
+	static const String greatMood = 'assets/images/great_mood.png';
 	static const String indicatorIntro1 = 'assets/images/indicator_intro1.png';
 	static const String indicatorIntro2 = 'assets/images/indicator_intro2.png';
 	static const String indicatorIntro3 = 'assets/images/indicator_intro3.png';
@@ -6,6 +8,8 @@ class AssetImages {
 	static const String intro2 = 'assets/images/intro2.png';
 	static const String intro3 = 'assets/images/intro3.png';
 	static const String man = 'assets/images/man.png';
+	static const String neutralMood = 'assets/images/neutral_mood.png';
+	static const String sadMood = 'assets/images/sad_mood.png';
 	static const String signInImage = 'assets/images/sign_in_image.png';
 	static const String splashLogo = 'assets/images/splash_logo.png';
 	static const String tiredMood = 'assets/images/tired_mood.png';

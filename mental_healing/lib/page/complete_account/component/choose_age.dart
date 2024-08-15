@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:mental_healing/app_router.dart';
-import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
 class ChooseAge extends StatefulWidget {
   const ChooseAge({super.key});
@@ -12,6 +11,8 @@ class ChooseAge extends StatefulWidget {
 }
 
 class _ChooseAgeState extends State<ChooseAge> {
+  final CompleteAccountController controller =
+      Get.put(CompleteAccountController());
   int selectedAge = 20;
 
   @override
@@ -22,7 +23,11 @@ class _ChooseAgeState extends State<ChooseAge> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const HeaderAppWidget(title: 'Assessment', text: '2 of 5'),
+            HeaderAppWidget(
+              title: 'Assessment',
+              text: '2 of 5',
+              onTap: controller.handleChooseMood,
+            ),
             _bodyWidget(),
             Expanded(
               child: Center(
@@ -77,7 +82,6 @@ class _ChooseAgeState extends State<ChooseAge> {
                 ),
               ),
             ),
-            _bottomWidget(),
           ],
         ),
       ),
@@ -94,27 +98,6 @@ class _ChooseAgeState extends State<ChooseAge> {
             fontSize: 28,
             fontWeight: FontWeight.w900,
             color: Color(0xff4F3422)),
-      ),
-    );
-  }
-
-  Widget _bottomWidget() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
-      child: Column(
-        children: [
-          ButtonWidget(
-            onClick: () {
-              Get.toNamed(AppRouter.routerChooseMood);
-            },
-            margin: const EdgeInsets.only(top: 10),
-            textSize: 18,
-            title: 'Continue',
-            suffixIcon: AssetIcons.next,
-            height: 55,
-            width: double.infinity,
-          ),
-        ],
       ),
     );
   }

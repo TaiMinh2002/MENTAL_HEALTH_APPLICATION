@@ -2,34 +2,61 @@ import 'package:flutter/material.dart';
 import 'package:mental_healing/base_widget/back_button.dart';
 
 class HeaderAppWidget extends StatelessWidget {
-  const HeaderAppWidget({super.key, this.text, this.title});
+  const HeaderAppWidget({super.key, this.text, this.title, this.onTap});
   final String? text;
   final String? title;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        BackButtonWidget(),
-        Text(
-          title ?? '',
+        const BackButtonWidget(),
+        _centerWidget(),
+        _continueWidget(onTap)
+      ],
+    );
+  }
+
+  Widget _centerWidget() {
+    return Expanded(
+      child: Row(
+        children: [
+          Text(
+            title ?? '',
+            style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w900,
+                color: Color(0xff4F3422)),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(vertical: 5.5, horizontal: 10),
+            decoration: const BoxDecoration(
+                color: Color(0xffE8DDD9),
+                borderRadius: BorderRadius.all(Radius.circular(32))),
+            child: Text(
+              text ?? '',
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _continueWidget(Function()? onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: const Padding(
+        padding: EdgeInsets.only(right: 10.0),
+        child: Text(
+          'Continue',
           style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w900,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
               color: Color(0xff4F3422)),
         ),
-        Expanded(child: SizedBox()),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 15),
-          padding: EdgeInsets.symmetric(vertical: 5.5, horizontal: 10),
-          decoration: BoxDecoration(
-              color: Color(0xffE8DDD9),
-              borderRadius: BorderRadius.all(Radius.circular(32))),
-          child: Text(
-            text ?? '',
-          ),
-        )
-      ],
+      ),
     );
   }
 }
