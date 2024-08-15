@@ -1,7 +1,7 @@
 import 'package:mental_healing/import.dart';
-import 'package:mental_healing/page/complete_account/component/chooseMood.dart';
 import 'package:mental_healing/page/complete_account/component/choose_age.dart';
 import 'package:mental_healing/page/complete_account/component/choose_gender.dart';
+import 'package:mental_healing/page/complete_account/component/choose_mood.dart';
 import 'package:mental_healing/page/intro/component/page_view_intro.dart';
 import 'package:mental_healing/page/intro/intro_page.dart';
 import 'package:mental_healing/page/sign_in/sign_in_page.dart';

@@ -1,16 +1,17 @@
-import 'package:mental_healing/app_router.dart';
-import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
 class ChooseGender extends StatefulWidget {
-  const ChooseGender({super.key});
+  ChooseGender({super.key});
 
   @override
   _ChooseGenderState createState() => _ChooseGenderState();
 }
 
 class _ChooseGenderState extends State<ChooseGender> {
+  final CompleteAccountController controller =
+      Get.put(CompleteAccountController());
   String? isSelect;
 
   @override
@@ -20,7 +21,11 @@ class _ChooseGenderState extends State<ChooseGender> {
         backgroundColor: const Color(0xffF7F4F2),
         body: Column(
           children: [
-            const HeaderAppWidget(title: 'Assessment', text: '1 of 5'),
+            HeaderAppWidget(
+              title: 'Assessment',
+              text: '1 of 5',
+              onTap: controller.handleChooseAge,
+            ),
             _bodyWidget(),
             _chooseWidget(
                 text: 'I am Male',
@@ -32,7 +37,6 @@ class _ChooseGenderState extends State<ChooseGender> {
                 icon: AssetIcons.female,
                 image: AssetImages.woman,
                 value: 'female'),
-            _bottomWidget()
           ],
         ),
       ),
@@ -107,37 +111,6 @@ class _ChooseGenderState extends State<ChooseGender> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _bottomWidget() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
-      child: Column(
-        children: [
-          ButtonWidget(
-            onClick: () {},
-            textSize: 18,
-            title: 'Prefer to skip, thanks',
-            suffixIcon: AssetIcons.cancel,
-            height: 55,
-            bgColor: const Color(0xffE5EAD7),
-            textColor: const Color(0xff9BB168),
-            width: double.infinity,
-          ),
-          ButtonWidget(
-            onClick: () {
-              Get.toNamed(AppRouter.routerChooseAge);
-            },
-            margin: const EdgeInsets.only(top: 10),
-            textSize: 18,
-            title: 'Continue',
-            suffixIcon: AssetIcons.next,
-            height: 55,
-            width: double.infinity,
-          ),
-        ],
       ),
     );
   }
