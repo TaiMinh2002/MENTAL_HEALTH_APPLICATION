@@ -1,17 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:mental_healing/base_widget/back_button.dart';
+import 'package:mental_healing/import.dart';
 
 class HeaderAppWidget extends StatelessWidget {
-  const HeaderAppWidget({super.key, this.text, this.title, this.onTap});
+  const HeaderAppWidget(
+      {super.key, this.text, this.title, this.onTap, this.onTapBack});
   final String? text;
   final String? title;
   final Function()? onTap;
+  final Function()? onTapBack;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const BackButtonWidget(),
+        BackButtonWidget(
+          onTap: onTapBack ?? Get.back,
+        ),
         _centerWidget(),
         _continueWidget(onTap)
       ],

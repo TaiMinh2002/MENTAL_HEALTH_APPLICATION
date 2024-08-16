@@ -1,4 +1,3 @@
-import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
@@ -21,11 +20,6 @@ class _ChooseGenderState extends State<ChooseGender> {
         backgroundColor: const Color(0xffF7F4F2),
         body: Column(
           children: [
-            HeaderAppWidget(
-              title: 'Assessment',
-              text: '1 of 5',
-              onTap: controller.handleChooseAge,
-            ),
             _bodyWidget(),
             _chooseWidget(
                 text: 'I am Male',

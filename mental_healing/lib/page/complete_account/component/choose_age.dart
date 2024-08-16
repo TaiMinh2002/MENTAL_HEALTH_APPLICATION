@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
@@ -23,11 +22,6 @@ class _ChooseAgeState extends State<ChooseAge> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            HeaderAppWidget(
-              title: 'Assessment',
-              text: '2 of 5',
-              onTap: controller.handleChooseMood,
-            ),
             _bodyWidget(),
             Expanded(
               child: Center(

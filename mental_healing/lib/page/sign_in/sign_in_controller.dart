@@ -7,7 +7,7 @@ import 'package:mental_healing/import.dart';
 import 'package:mental_healing/utils/function.dart';
 import 'package:mental_healing/utils/config.dart';
 import 'package:http/http.dart' as http;
-import 'package:mental_healing/utils/token_storage.dart';
+import 'package:mental_healing/utils/cache_manager.dart';
 
 class SignInController extends GetxController {
   final emailController = TextEditingController();
@@ -57,9 +57,9 @@ class SignInController extends GetxController {
         final token = responseData['token'];
         final refreshToken = responseData['refreshToken'];
 
-        await TokenStorage.storeToken(token, refreshToken);
+        await CacheManager.storeTokens(token, refreshToken);
 
-        Get.toNamed(AppRouter.routerChooseGender);
+        Get.toNamed(AppRouter.routerCompleteAccountPage);
       } else if (response.statusCode == 403 || response.statusCode == 498) {
         await refreshToken();
         return handleSignIn();
@@ -82,7 +82,7 @@ class SignInController extends GetxController {
     const String refreshTokenUrl = '${Config.apiUrl}/refresh-token';
 
     try {
-      final String? storedRefreshToken = TokenStorage.getStoredRefreshToken();
+      final String? storedRefreshToken = CacheManager.getRefreshToken();
 
       if (storedRefreshToken == null) {
         return handleSignOut();
@@ -103,7 +103,7 @@ class SignInController extends GetxController {
         final newToken = responseData['token'];
         final newRefreshToken = responseData['refreshToken'];
 
-        await TokenStorage.storeToken(newToken, newRefreshToken);
+        await CacheManager.storeTokens(newToken, newRefreshToken);
       } else {
         return handleSignOut();
       }
@@ -113,7 +113,7 @@ class SignInController extends GetxController {
   }
 
   Future<void> handleSignOut() async {
-    await TokenStorage.clearStoredToken();
+    await CacheManager.clearTokens();
     Get.offAllNamed(AppRouter.routerSignIn);
   }
 

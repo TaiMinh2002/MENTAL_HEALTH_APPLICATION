@@ -1,4 +1,3 @@
-import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 import 'package:mental_healing/page/complete_account/component/select_mood.dart';
@@ -15,15 +14,7 @@ class ChooseMood extends StatelessWidget {
         backgroundColor: const Color(0xffF7F4F2),
         body: SingleChildScrollView(
           child: Column(
-            children: [
-              HeaderAppWidget(
-                title: 'Assessment',
-                text: '3 of 5',
-                onTap: controller.handleChooseSleep,
-              ),
-              _bodyWidget(),
-              SelectMood()
-            ],
+            children: [_bodyWidget(), SelectMood()],
           ),
         ),
       ),
