@@ -102,12 +102,10 @@ class _SelectMoodState extends State<SelectMood> {
   void _onHorizontalDragUpdate(DragUpdateDetails details) {
     setState(() {
       rotationAngle += details.delta.dx * 0.01;
-      print(rotationAngle);
 
       final double segmentAngle = 2 * pi / segments;
       currentSegment =
           (((rotationAngle + segmentAngle) % (2 * pi)) / segmentAngle).floor();
-      print(currentSegment);
     });
   }
 
