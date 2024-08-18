@@ -3,40 +3,34 @@ import 'package:get_storage/get_storage.dart';
 class CacheManager {
   static final GetStorage _box = GetStorage();
 
-  // Lưu trữ token và refreshToken
-  static Future<void> storeTokens(String token, String refreshToken) async {
+  static const String _keyFirstRun = 'firstRun';
+
+  static Future<void> storeToken(String token, String refreshToken) async {
     await _box.write('token', token);
     await _box.write('refreshToken', refreshToken);
   }
 
-  // Lấy token đã lưu
-  static String? getToken() {
+  static String? getStoredToken() {
     return _box.read('token');
   }
 
-  // Lấy refreshToken đã lưu
-  static String? getRefreshToken() {
+  static String? getStoredRefreshToken() {
     return _box.read('refreshToken');
   }
 
-  // Xóa token và refreshToken đã lưu
-  static Future<void> clearTokens() async {
+  static Future<void> clearStoredToken() async {
     await _box.remove('token');
     await _box.remove('refreshToken');
   }
 
-  // Lưu trữ trạng thái lần đầu mở app
-  static Future<void> storeFirstLaunch() async {
-    await _box.write('is_first_launch', false);
+  // Kiểm tra xem có phải lần đầu mở ứng dụng hay không
+  static bool isFirstRun() {
+    return _box.read(_keyFirstRun) ??
+        true; // Mặc định là true nếu chưa được set
   }
 
-  // Kiểm tra lần đầu mở app
-  static bool isFirstLaunch() {
-    return _box.read('is_first_launch') ?? true;
-  }
-
-  // Kiểm tra người dùng đã đăng nhập hay chưa
-  static bool isLoggedIn() {
-    return getToken() != null;
+  // Đánh dấu ứng dụng đã mở lần đầu
+  static Future<void> markFirstRunComplete() async {
+    await _box.write(_keyFirstRun, false);
   }
 }
