@@ -11,9 +11,13 @@ class SplashController extends GetxController {
 
   Future<void> _moveToNextPage() async {
     await 3.seconds.delay();
-    if (CacheManager.isFirstLaunch()) {
+
+    bool isFirstRun = CacheManager.isFirstRun();
+    print('Is first run: $isFirstRun');
+
+    if (isFirstRun) {
+      CacheManager.markFirstRunComplete();
       Get.offNamed(AppRouter.routerIntro);
-      CacheManager.storeFirstLaunch();
     } else {
       Get.offNamed(AppRouter.routerSignIn);
     }

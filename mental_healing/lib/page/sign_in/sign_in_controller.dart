@@ -57,7 +57,7 @@ class SignInController extends GetxController {
         final token = responseData['token'];
         final refreshToken = responseData['refreshToken'];
 
-        await CacheManager.storeTokens(token, refreshToken);
+        await CacheManager.storeToken(token, refreshToken);
 
         Get.toNamed(AppRouter.routerCompleteAccountPage);
       } else if (response.statusCode == 403 || response.statusCode == 498) {
@@ -66,11 +66,13 @@ class SignInController extends GetxController {
       } else if (response.statusCode == 401) {
         LoadingHelper.hideLoading();
         SnackBarHelper.showError('Incorrect email or password');
+      } else if (response.statusCode == 404) {
+        LoadingHelper.hideLoading();
+        SnackBarHelper.showError('User not found');
       } else {
         LoadingHelper.hideLoading();
         final errorResponse = jsonDecode(response.body);
-        SnackBarHelper.showError(
-            errorResponse['message'] ?? 'Failed to sign in');
+        SnackBarHelper.showError(errorResponse['message']);
       }
     } catch (e) {
       LoadingHelper.hideLoading();
@@ -82,7 +84,7 @@ class SignInController extends GetxController {
     const String refreshTokenUrl = '${Config.apiUrl}/refresh-token';
 
     try {
-      final String? storedRefreshToken = CacheManager.getRefreshToken();
+      final String? storedRefreshToken = CacheManager.getStoredRefreshToken();
 
       if (storedRefreshToken == null) {
         return handleSignOut();
@@ -103,7 +105,7 @@ class SignInController extends GetxController {
         final newToken = responseData['token'];
         final newRefreshToken = responseData['refreshToken'];
 
-        await CacheManager.storeTokens(newToken, newRefreshToken);
+        await CacheManager.storeToken(newToken, newRefreshToken);
       } else {
         return handleSignOut();
       }
@@ -113,7 +115,7 @@ class SignInController extends GetxController {
   }
 
   Future<void> handleSignOut() async {
-    await CacheManager.clearTokens();
+    await CacheManager.clearStoredToken();
     Get.offAllNamed(AppRouter.routerSignIn);
   }
 
