@@ -18,8 +18,10 @@ class SplashController extends GetxController {
     if (isFirstRun) {
       CacheManager.markFirstRunComplete();
       Get.offNamed(AppRouter.routerIntro);
-    } else {
+    } else if (CacheManager.isFirstLogin()) {
       Get.offNamed(AppRouter.routerSignIn);
+    } else {
+      Get.offAllNamed(AppRouter.routerDashboard);
     }
   }
 }

@@ -15,12 +15,6 @@ class SignInController extends GetxController {
   final signInFormKey = GlobalKey<FormState>();
   RxBool firstValidation = false.obs;
 
-  @override
-  void onInit() {
-    handleSignIn();
-    super.onInit();
-  }
-
   String? checkEmailValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
       return 'Please enter your email address';
@@ -36,11 +30,6 @@ class SignInController extends GetxController {
   }
 
   Future<void> handleSignIn() async {
-    if (!CacheManager.isFirstLogin()) {
-      Get.offAllNamed(AppRouter.routerDashboard);
-      return;
-    }
-
     if (!signInFormKey.currentState!.validate()) {
       return;
     }
