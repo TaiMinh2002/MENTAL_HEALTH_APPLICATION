@@ -69,7 +69,7 @@ class SignUpController extends GetxController {
       'password': password,
     };
 
-    const String url = '${Config.apiUrl}/signup';
+    const String url = '${Config.apiUrl}/users/signup';
 
     try {
       LoadingHelper.showLoading();
@@ -82,7 +82,10 @@ class SignUpController extends GetxController {
       if (response.statusCode == 201) {
         SnackBarHelper.showMessage('Sign up success');
         Get.toNamed(AppRouter.routerSignIn);
+      } else if (response.statusCode == 400) {
+        SnackBarHelper.showError('Email already exists');
       } else {
+        LoadingHelper.hideLoading();
         final errorResponse = jsonDecode(response.body);
         SnackBarHelper.showError(
             errorResponse['message'] ?? 'Failed to sign up');

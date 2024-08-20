@@ -45,7 +45,7 @@ class SignInController extends GetxController {
       'password': password,
     };
 
-    const String signInUrl = '${Config.apiUrl}/login';
+    const String signInUrl = '${Config.apiUrl}/users/login';
 
     try {
       LoadingHelper.showLoading();
