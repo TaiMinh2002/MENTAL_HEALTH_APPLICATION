@@ -1,15 +1,25 @@
-import 'package:get/get.dart';
 import 'package:mental_healing/app_router.dart';
+import 'package:mental_healing/import.dart';
+import 'package:mental_healing/utils/cache_manager.dart';
 
 class SplashController extends GetxController {
   @override
   void onInit() {
-    _moveToBoardingPage();
+    _moveToNextPage();
     super.onInit();
   }
 
-  Future<void> _moveToBoardingPage() async {
+  Future<void> _moveToNextPage() async {
     await 3.seconds.delay();
-    Get.offNamed(AppRouter.routerIntro);
+
+    bool isFirstRun = CacheManager.isFirstRun();
+    print('Is first run: $isFirstRun');
+
+    if (isFirstRun) {
+      CacheManager.markFirstRunComplete();
+      Get.offNamed(AppRouter.routerIntro);
+    } else {
+      Get.offNamed(AppRouter.routerSignIn);
+    }
   }
 }
