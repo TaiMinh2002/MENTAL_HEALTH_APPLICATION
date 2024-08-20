@@ -22,6 +22,11 @@ class AssetIcons {
 	static const String cancel = 'assets/icons/cancel.svg';
 	static const String centerPointerIcon = 'assets/icons/center_pointer_icon.svg';
 	static const String clock = 'assets/icons/clock.svg';
+	static const String dashboard1 = 'assets/icons/dashboard1.svg';
+	static const String dashboard2 = 'assets/icons/dashboard2.svg';
+	static const String dashboard3 = 'assets/icons/dashboard3.svg';
+	static const String dashboard4 = 'assets/icons/dashboard4.svg';
+	static const String dashboard6 = 'assets/icons/dashboard6.svg';
 	static const String dropdownIcon = 'assets/icons/dropdown_icon.svg';
 	static const String female = 'assets/icons/female.svg';
 	static const String getStartHeader = 'assets/icons/get_start_header.svg';
@@ -37,9 +42,11 @@ class AssetIcons {
 	static const String male = 'assets/icons/male.svg';
 	static const String neutralIcon = 'assets/icons/neutral_icon.svg';
 	static const String next = 'assets/icons/next.svg';
+	static const String nextSetting = 'assets/icons/next_setting.svg';
 	static const String onboardingGetStart = 'assets/icons/onboarding_get_start.svg';
 	static const String person = 'assets/icons/person.svg';
 	static const String sadIcon = 'assets/icons/sad_icon.svg';
+	static const String signOut = 'assets/icons/sign_out.svg';
 	static const String tiredIcon = 'assets/icons/tired_icon.svg';
 	static const String warning = 'assets/icons/warning.svg';
 }
