@@ -1,3 +1,4 @@
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 
 class SnackBarHelper {
@@ -124,12 +125,12 @@ class SnackBarHelper {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Communication error',
+          Text(
+            LocaleKeys.communication_error.tr,
             style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
           ),
           Text(
-            message ?? 'Please check your internet connection.',
+            message ?? LocaleKeys.check_internet_connection.tr,
             style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
           ),
         ],

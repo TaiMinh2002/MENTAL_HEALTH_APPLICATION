@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
@@ -83,12 +84,12 @@ class _ChooseAgeState extends State<ChooseAge> {
   }
 
   Widget _bodyWidget() {
-    return const Padding(
-      padding: EdgeInsets.only(top: 40.0, left: 10, right: 10),
+    return Padding(
+      padding: const EdgeInsets.only(top: 40.0, left: 10, right: 10),
       child: Text(
-        'What’s your age?',
+        LocaleKeys.whats_your_age.tr,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w900,
             color: Color(0xff4F3422)),

@@ -1,6 +1,7 @@
 import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base_widget/loading_helper.dart';
 import 'package:mental_healing/base_widget/snack_bar_helper.dart';
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/utils/function.dart';
 import 'package:mental_healing/utils/string.dart';
@@ -18,38 +19,38 @@ class SignUpController extends GetxController {
 
   String? checkUsernameValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return 'Please enter your username address';
+      return LocaleKeys.enter_username.tr;
     }
     return null;
   }
 
   String? checkEmailValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return 'Please enter your email address';
+      return LocaleKeys.enter_email.tr;
     }
     return null;
   }
 
   String? checkPasswordValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return 'Please enter your password';
+      return LocaleKeys.enter_password.tr;
     }
     if (value!.trim().length < 8) {
-      return 'Password must be at least 8 characters long';
+      return LocaleKeys.password_requirements.tr;
     }
     if (!value.trim().validatePassword()) {
-      return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character';
+      return LocaleKeys.password_complexity.tr;
     }
     return null;
   }
 
   String? checkConFirmPasswordValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return 'Please confirm your password';
+      return LocaleKeys.please_enter_confirm_password.tr;
     }
     if (passwordController.text.trim() !=
         confirmPasswordController.text.trim()) {
-      return 'Passwords do not match';
+      return LocaleKeys.passwords_no_match.tr;
     }
     return null;
   }
@@ -80,15 +81,15 @@ class SignUpController extends GetxController {
       );
 
       if (response.statusCode == 201) {
-        SnackBarHelper.showMessage('Sign up success');
+        SnackBarHelper.showMessage(LocaleKeys.signup_success.tr);
         Get.toNamed(AppRouter.routerSignIn);
       } else if (response.statusCode == 400) {
-        SnackBarHelper.showError('Email already exists');
+        SnackBarHelper.showError(LocaleKeys.email_exists.tr);
       } else {
         LoadingHelper.hideLoading();
         final errorResponse = jsonDecode(response.body);
         SnackBarHelper.showError(
-            errorResponse['message'] ?? 'Failed to sign up');
+            errorResponse['message'] ?? LocaleKeys.signup_failed.tr);
       }
     } catch (e) {
       LoadingHelper.hideLoading();

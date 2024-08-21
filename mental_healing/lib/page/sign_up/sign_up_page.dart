@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/sign_up/sign_up_controller.dart';
 
@@ -65,7 +66,7 @@ class SignUpPage extends StatelessWidget {
 
   Widget _userNameWidget() {
     return WidgetInputText(
-      hintText: 'Enter your username...',
+      hintText: LocaleKeys.enter_username.tr,
       controller: controller.usernameController,
       validator: controller.checkUsernameValidator,
       textCapitalization: TextCapitalization.none,
@@ -77,7 +78,7 @@ class SignUpPage extends StatelessWidget {
 
   Widget _emailWidget() {
     return WidgetInputText(
-      hintText: 'Enter your email...',
+      hintText: LocaleKeys.email_placeholder.tr,
       controller: controller.emailController,
       validator: controller.checkEmailValidator,
       textCapitalization: TextCapitalization.none,
@@ -89,7 +90,7 @@ class SignUpPage extends StatelessWidget {
 
   Widget _passwordWidget() {
     return WidgetInputText(
-      hintText: 'Enter your password...',
+      hintText: LocaleKeys.password_placeholder.tr,
       controller: controller.passwordController,
       title: 'Password',
       validator: controller.checkPasswordValidator,
@@ -102,7 +103,7 @@ class SignUpPage extends StatelessWidget {
 
   Widget _confirmPasswordWidget() {
     return WidgetInputText(
-      hintText: 'Enter your confirm password...',
+      hintText: LocaleKeys.username_placeholder.tr,
       controller: controller.confirmPasswordController,
       title: 'Confirm Password',
       validator: controller.checkConFirmPasswordValidator,
@@ -119,7 +120,7 @@ class SignUpPage extends StatelessWidget {
       child: ButtonWidget(
         onClick: controller.handleSignUp,
         textSize: 18,
-        title: 'Sign Up',
+        title: LocaleKeys.sign_up.tr,
         suffixIcon: AssetIcons.next,
         height: 55,
         width: double.infinity,
@@ -133,15 +134,15 @@ class SignUpPage extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           children: <TextSpan>[
-            const TextSpan(
-              text: 'Already have an account? ',
-              style: TextStyle(
+            TextSpan(
+              text: LocaleKeys.already_have_account.tr,
+              style: const TextStyle(
                   fontSize: 16,
                   color: Color(0xff736B66),
                   fontWeight: FontWeight.bold),
             ),
             TextSpan(
-              text: 'Sign In',
+              text: LocaleKeys.sign_in.tr,
               style: const TextStyle(
                   fontSize: 16,
                   decoration: TextDecoration.underline,

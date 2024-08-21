@@ -71,6 +71,7 @@ dependencies:
   numberpicker: ^2.1.2
   flutter_material_pickers: ^3.7.0
   circle_list: ^1.0.5
+  flutter_localization: ^0.2.1
 
 dependency_overrides:
   flutter_test:
@@ -99,6 +100,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/lotties/
+    - assets/translations/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

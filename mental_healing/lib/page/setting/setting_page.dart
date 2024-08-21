@@ -1,4 +1,5 @@
 import 'package:mental_healing/base_widget/back_button.dart';
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 
 class SettingPage extends StatelessWidget {
@@ -22,17 +23,17 @@ class SettingPage extends StatelessWidget {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(45),
               bottomRight: Radius.circular(45))),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BackButtonWidget(
+          const BackButtonWidget(
             iconColor: Colors.white,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 40.0),
+            padding: const EdgeInsets.only(left: 40.0),
             child: Text(
-              'Account Settings',
-              style: TextStyle(
+              LocaleKeys.account_settings.tr,
+              style: const TextStyle(
                   fontSize: 18,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
@@ -58,14 +59,22 @@ class SettingPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _title('General Settings'),
-        _item(prefixIcon: AssetIcons.notification, title: 'Notification'),
-        _item(prefixIcon: AssetIcons.person, title: 'Personal Information'),
-        _item(prefixIcon: AssetIcons.emergency, title: 'Emergency Contact'),
-        _item(prefixIcon: AssetIcons.language, title: 'Language'),
-        _item(prefixIcon: AssetIcons.darkMode, title: 'Dark Mode'),
-        _item(prefixIcon: AssetIcons.share, title: 'Invite Friend'),
-        _item(prefixIcon: AssetIcons.feedback, title: 'Submit Feedback'),
+        _title(LocaleKeys.general_settings.tr),
+        _item(
+            prefixIcon: AssetIcons.notification,
+            title: LocaleKeys.notification.tr),
+        _item(
+            prefixIcon: AssetIcons.person,
+            title: LocaleKeys.personal_information.tr),
+        _item(
+            prefixIcon: AssetIcons.emergency,
+            title: LocaleKeys.emergency_contact.tr),
+        _item(prefixIcon: AssetIcons.language, title: LocaleKeys.language.tr),
+        _item(prefixIcon: AssetIcons.darkMode, title: LocaleKeys.dark_mode.tr),
+        _item(prefixIcon: AssetIcons.share, title: LocaleKeys.invite_friend.tr),
+        _item(
+            prefixIcon: AssetIcons.feedback,
+            title: LocaleKeys.submit_feedback.tr),
       ],
     );
   }
@@ -74,9 +83,10 @@ class SettingPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _title('Security & Privacy'),
-        _item(prefixIcon: AssetIcons.iconPassword, title: 'Security'),
-        _item(prefixIcon: AssetIcons.help, title: 'Help Center'),
+        _title(LocaleKeys.security_privacy.tr),
+        _item(
+            prefixIcon: AssetIcons.iconPassword, title: LocaleKeys.security.tr),
+        _item(prefixIcon: AssetIcons.help, title: LocaleKeys.help_center.tr),
       ],
     );
   }
@@ -85,8 +95,8 @@ class SettingPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _title('Danger Zone'),
-        _item(prefixIcon: AssetIcons.trash, title: 'Close Account'),
+        _title(LocaleKeys.danger_zone.tr),
+        _item(prefixIcon: AssetIcons.trash, title: LocaleKeys.close_account.tr),
       ],
     );
   }
@@ -95,8 +105,8 @@ class SettingPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _title('Logout'),
-        _item(prefixIcon: AssetIcons.signOut, title: 'Log Out'),
+        _title(LocaleKeys.logout.tr),
+        _item(prefixIcon: AssetIcons.signOut, title: LocaleKeys.logout.tr),
       ],
     );
   }
@@ -127,7 +137,7 @@ class SettingPage extends StatelessWidget {
               SvgPicture.asset(AssetIcons.nextSetting)
             ],
           ),
-          Divider()
+          const Divider()
         ],
       ),
     );

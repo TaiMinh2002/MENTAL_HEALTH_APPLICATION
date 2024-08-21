@@ -1,3 +1,4 @@
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 
 class SelectSleep extends StatefulWidget {
@@ -23,8 +24,8 @@ class _SelectSleepState extends State<SelectSleep> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _rowWidget(
-                  level: 'Excellent',
-                  hours: '7-9 hours',
+                  level: LocaleKeys.excellent.tr,
+                  hours: LocaleKeys.seven_nine_hours.tr,
                   moodIcons: AssetIcons.greatIcon,
                   iconsColor: _currentValue.toInt() == 4
                       ? const Color(0xff9BB168)
@@ -35,8 +36,8 @@ class _SelectSleepState extends State<SelectSleep> {
                       : const Color(0xffACA9A5),
                 ),
                 _rowWidget(
-                  level: 'Good',
-                  hours: '6-7 hours',
+                  level: LocaleKeys.good.tr,
+                  hours: LocaleKeys.six_seven_hours.tr,
                   iconsColor: _currentValue.toInt() == 3
                       ? const Color(0xffFFCE5C)
                       : const Color(0xffACA9A5),
@@ -47,8 +48,8 @@ class _SelectSleepState extends State<SelectSleep> {
                       : const Color(0xffACA9A5),
                 ),
                 _rowWidget(
-                    level: 'Fair',
-                    hours: '5 hours',
+                    level: LocaleKeys.fair.tr,
+                    hours: LocaleKeys.five_hours.tr,
                     iconsColor: _currentValue.toInt() == 2
                         ? const Color(0xffC0A091)
                         : const Color(0xffACA9A5),
@@ -58,8 +59,8 @@ class _SelectSleepState extends State<SelectSleep> {
                         ? const Color(0xffC0A091)
                         : const Color(0xffACA9A5)),
                 _rowWidget(
-                    level: 'Poor',
-                    hours: '3-4 hours',
+                    level: LocaleKeys.poor.tr,
+                    hours: LocaleKeys.three_four_hours.tr,
                     iconsColor: _currentValue.toInt() == 1
                         ? const Color(0xffED7E1C)
                         : const Color(0xffACA9A5),
@@ -69,8 +70,8 @@ class _SelectSleepState extends State<SelectSleep> {
                         ? const Color(0xffED7E1C)
                         : const Color(0xffACA9A5)),
                 _rowWidget(
-                    level: 'Worst',
-                    hours: '<3 hours',
+                    level: LocaleKeys.worst.tr,
+                    hours: LocaleKeys.less_than_three_hours.tr,
                     iconsColor: _currentValue.toInt() == 0
                         ? const Color(0xffA694F5)
                         : const Color(0xffACA9A5),

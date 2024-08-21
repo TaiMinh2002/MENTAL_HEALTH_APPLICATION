@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:ui' as ui;
 
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 
 class SelectMood extends StatefulWidget {
@@ -23,23 +24,23 @@ class _SelectMoodState extends State<SelectMood> {
   final List<Map<String, dynamic>> moodDescriptions = [
     {
       'icon': SvgPicture.asset(AssetIcons.greatIcon),
-      'text': 'I Feel Great',
+      'text': LocaleKeys.feel_great.tr,
     },
     {
       'icon': SvgPicture.asset(AssetIcons.goodIcon),
-      'text': 'I Feel Good',
+      'text': LocaleKeys.feel_good.tr,
     },
     {
       'icon': SvgPicture.asset(AssetIcons.neutralIcon),
-      'text': 'I Feel Neutral',
+      'text': LocaleKeys.feel_neutral.tr,
     },
     {
       'icon': SvgPicture.asset(AssetIcons.tiredIcon),
-      'text': 'I Feel Tired',
+      'text': LocaleKeys.feel_tired.tr,
     },
     {
       'icon': SvgPicture.asset(AssetIcons.sadIcon),
-      'text': 'I Feel Sad',
+      'text': LocaleKeys.feel_sad.tr,
     },
   ];
 

@@ -1,3 +1,4 @@
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 
 class ProfessionalHelpRequest extends StatefulWidget {
@@ -30,10 +31,10 @@ class _ProfessionalHelpRequestState extends State<ProfessionalHelpRequest> {
           const EdgeInsets.only(top: 30.0, left: 10, right: 10, bottom: 30),
       child: Column(
         children: [
-          const Text(
-            'Have you sought professional help before?',
+          Text(
+            LocaleKeys.sought_professional_help.tr,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w900,
                 color: Color(0xff4F3422)),
@@ -58,7 +59,7 @@ class _ProfessionalHelpRequestState extends State<ProfessionalHelpRequest> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _optionContainer(
-            text: 'Yes',
+            text: LocaleKeys.yes.tr,
             isSelected: isSelected,
             onTap: () {
               setState(() {
@@ -67,7 +68,7 @@ class _ProfessionalHelpRequestState extends State<ProfessionalHelpRequest> {
             },
           ),
           _optionContainer(
-            text: 'No',
+            text: LocaleKeys.no.tr,
             isSelected: !isSelected,
             onTap: () {
               setState(() {

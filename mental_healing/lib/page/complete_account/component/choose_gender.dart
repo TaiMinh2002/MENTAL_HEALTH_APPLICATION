@@ -1,3 +1,4 @@
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
@@ -22,12 +23,12 @@ class _ChooseGenderState extends State<ChooseGender> {
           children: [
             _bodyWidget(),
             _chooseWidget(
-                text: 'I am Male',
+                text: LocaleKeys.i_am_male.tr,
                 icon: AssetIcons.male,
                 image: AssetImages.man,
                 value: 'male'),
             _chooseWidget(
-                text: 'I am Female',
+                text: LocaleKeys.i_am_female.tr,
                 icon: AssetIcons.female,
                 image: AssetImages.woman,
                 value: 'female'),
@@ -38,12 +39,12 @@ class _ChooseGenderState extends State<ChooseGender> {
   }
 
   Widget _bodyWidget() {
-    return const Padding(
-      padding: EdgeInsets.only(top: 40.0, left: 10, right: 10),
+    return Padding(
+      padding: const EdgeInsets.only(top: 40.0, left: 10, right: 10),
       child: Text(
-        'What’s your official gender?',
+        LocaleKeys.official_gender.tr,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w900,
             color: Color(0xff4F3422)),

@@ -55,10 +55,14 @@ class IntroItem extends StatelessWidget {
               padding: const EdgeInsets.only(top: 90.0, bottom: 30),
               child: Image.asset(indicator),
             ),
-            Text(
-              text,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                text,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
             ),
             NextButton(),
           ],

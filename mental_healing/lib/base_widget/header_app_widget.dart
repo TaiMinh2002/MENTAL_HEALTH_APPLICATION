@@ -1,4 +1,5 @@
 import 'package:mental_healing/base_widget/back_button.dart';
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 
 class HeaderAppWidget extends StatelessWidget {
@@ -51,11 +52,11 @@ class HeaderAppWidget extends StatelessWidget {
   Widget _continueWidget(Function()? onTap) {
     return GestureDetector(
       onTap: onTap,
-      child: const Padding(
-        padding: EdgeInsets.only(right: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10.0),
         child: Text(
-          'Continue',
-          style: TextStyle(
+          LocaleKeys.btn_continue.tr,
+          style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
               color: Color(0xff4F3422)),

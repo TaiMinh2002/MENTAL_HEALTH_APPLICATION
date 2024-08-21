@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base_widget/loading_helper.dart';
 import 'package:mental_healing/base_widget/snack_bar_helper.dart';
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/utils/function.dart';
 import 'package:mental_healing/utils/config.dart';
@@ -17,14 +18,14 @@ class SignInController extends GetxController {
 
   String? checkEmailValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return 'Please enter your email address';
+      return LocaleKeys.enter_email.tr;
     }
     return null;
   }
 
   String? checkPasswordValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return 'Please enter your password';
+      return LocaleKeys.enter_password.tr;
     }
     return null;
   }
@@ -66,10 +67,10 @@ class SignInController extends GetxController {
         return handleSignIn();
       } else if (response.statusCode == 401) {
         LoadingHelper.hideLoading();
-        SnackBarHelper.showError('Incorrect email or password');
+        SnackBarHelper.showError(LocaleKeys.incorrect_email_password.tr);
       } else if (response.statusCode == 404) {
         LoadingHelper.hideLoading();
-        SnackBarHelper.showError('User not found');
+        SnackBarHelper.showError(LocaleKeys.user_not_found.tr);
       } else {
         LoadingHelper.hideLoading();
         final errorResponse = jsonDecode(response.body);
@@ -111,7 +112,8 @@ class SignInController extends GetxController {
         return handleSignOut();
       }
     } catch (e) {
-      SnackBarHelper.showError('Failed to refresh token: ${e.toString()}');
+      SnackBarHelper.showError(
+          '${LocaleKeys.failed_to_refresh_token.tr}: ${e.toString()}');
     }
   }
 

@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:mental_healing/generated/locales.g.dart';
+import 'package:mental_healing/import.dart';
 
 class SelectStress extends StatefulWidget {
   const SelectStress({super.key});
@@ -30,15 +31,15 @@ class _SelectStressState extends State<SelectStress> {
   String getTextForNumber(int number) {
     switch (number) {
       case 1:
-        return "You are feeling calm and completely stress-free";
+        return LocaleKeys.feeling_calm.tr;
       case 2:
-        return "You are a bit stressed, but it's nothing too serious";
+        return LocaleKeys.bit_stressed.tr;
       case 3:
-        return "You are experiencing a fair amount of stress, and it's starting to get to you";
+        return LocaleKeys.fair_amount_of_stress.tr;
       case 4:
-        return "You are feeling quite stressed, and it's affecting your mood and focus";
+        return LocaleKeys.quite_stressed.tr;
       case 5:
-        return "You are extremely stressed out, and it's overwhelming";
+        return LocaleKeys.extremely_stressed.tr;
       default:
         return "";
     }
