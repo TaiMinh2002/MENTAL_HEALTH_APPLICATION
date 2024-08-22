@@ -9,6 +9,7 @@ class AssetImages {
 	static const String intro3 = 'assets/images/intro3.png';
 	static const String man = 'assets/images/man.png';
 	static const String neutralMood = 'assets/images/neutral_mood.png';
+	static const String noPerson = 'assets/images/no_person.png';
 	static const String sadMood = 'assets/images/sad_mood.png';
 	static const String signInImage = 'assets/images/sign_in_image.png';
 	static const String splashLogo = 'assets/images/splash_logo.png';
@@ -29,6 +30,7 @@ class AssetIcons {
 	static const String dashboard4 = 'assets/icons/dashboard4.svg';
 	static const String dashboard6 = 'assets/icons/dashboard6.svg';
 	static const String dropdownIcon = 'assets/icons/dropdown_icon.svg';
+	static const String edit = 'assets/icons/edit.svg';
 	static const String emergency = 'assets/icons/emergency.svg';
 	static const String feedback = 'assets/icons/feedback.svg';
 	static const String female = 'assets/icons/female.svg';
@@ -51,6 +53,7 @@ class AssetIcons {
 	static const String notification = 'assets/icons/notification.svg';
 	static const String onboardingGetStart = 'assets/icons/onboarding_get_start.svg';
 	static const String person = 'assets/icons/person.svg';
+	static const String report = 'assets/icons/report.svg';
 	static const String sadIcon = 'assets/icons/sad_icon.svg';
 	static const String share = 'assets/icons/share.svg';
 	static const String signOut = 'assets/icons/sign_out.svg';

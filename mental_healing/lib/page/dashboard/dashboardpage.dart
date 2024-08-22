@@ -22,7 +22,7 @@ class DashboardPage extends StatelessWidget {
                     Container(),
                     Container(),
                     Container(),
-                    const SettingPage(),
+                    SettingPage(),
                   ],
                 ),
               ),

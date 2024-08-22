@@ -24,6 +24,6 @@ class LocalizationService extends Translations {
 
   static Locale _getLocaleFromLanguage() {
     // Mặc định trả về tiếng Việt
-    return const Locale('vi', 'VN');
+    return const Locale('en', 'US');
   }
 }

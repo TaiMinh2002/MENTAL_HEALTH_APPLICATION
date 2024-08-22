@@ -84,5 +84,10 @@
     "bit_stressed": "You are a bit stressed, but it's nothing too serious",
     "fair_amount_of_stress": "You are experiencing a fair amount of stress, and it's starting to get to you",
     "quite_stressed": "You are feeling quite stressed, and it's affecting your mood and focus",
-    "extremely_stressed": "You are extremely stressed out, and it's overwhelming"
+    "extremely_stressed": "You are extremely stressed out, and it's overwhelming",
+    "smart_watch": "Smart Watch",
+    "mini_ecg": "Mini ECG",
+    "smart_patch": "Smart Patch",
+    "bp_monitor": "BP monitor",
+    "save_setting": "Save Setting"
 }

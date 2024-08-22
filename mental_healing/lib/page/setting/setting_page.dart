@@ -1,9 +1,11 @@
 import 'package:mental_healing/base_widget/back_button.dart';
 import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/setting/setting_controller.dart';
 
 class SettingPage extends StatelessWidget {
-  const SettingPage({super.key});
+  final SettingController controller = Get.put(SettingController());
+  SettingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +67,8 @@ class SettingPage extends StatelessWidget {
             title: LocaleKeys.notification.tr),
         _item(
             prefixIcon: AssetIcons.person,
-            title: LocaleKeys.personal_information.tr),
+            title: LocaleKeys.personal_information.tr,
+            onTap: controller.handlePersonInfo),
         _item(
             prefixIcon: AssetIcons.emergency,
             title: LocaleKeys.emergency_contact.tr),
@@ -111,34 +114,38 @@ class SettingPage extends StatelessWidget {
     );
   }
 
-  Widget _item({required String prefixIcon, required String title}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  SvgPicture.asset(prefixIcon),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      title,
-                      style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400),
+  Widget _item(
+      {required String prefixIcon, required String title, Function()? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(prefixIcon),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              SvgPicture.asset(AssetIcons.nextSetting)
-            ],
-          ),
-          const Divider()
-        ],
+                  ],
+                ),
+                SvgPicture.asset(AssetIcons.nextSetting)
+              ],
+            ),
+            const Divider()
+          ],
+        ),
       ),
     );
   }

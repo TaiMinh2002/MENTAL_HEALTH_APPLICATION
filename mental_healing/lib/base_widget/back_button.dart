@@ -5,7 +5,7 @@ class BackButtonWidget extends StatelessWidget {
       {super.key, this.onTap, this.iconColor = const Color(0xff4F3422)});
 
   final Function()? onTap;
-  final Color iconColor;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,8 @@ class BackButtonWidget extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: SvgPicture.asset(
           AssetIcons.back,
-          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(
+              iconColor ?? const Color(0xff4F3422), BlendMode.srcIn),
         ),
       ),
     );

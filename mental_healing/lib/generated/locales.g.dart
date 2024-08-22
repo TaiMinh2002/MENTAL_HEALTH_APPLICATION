@@ -97,6 +97,11 @@ class LocaleKeys {
   static const fair_amount_of_stress = 'fair_amount_of_stress';
   static const quite_stressed = 'quite_stressed';
   static const extremely_stressed = 'extremely_stressed';
+  static const smart_watch = 'smart_watch';
+  static const mini_ecg = 'mini_ecg';
+  static const smart_patch = 'smart_patch';
+  static const bp_monitor = 'bp_monitor';
+  static const save_setting = 'save_setting';
 }
 
 class Locales {
@@ -192,6 +197,11 @@ class Locales {
         'You are feeling quite stressed, and it\'s affecting your mood and focus',
     'extremely_stressed':
         'You are extremely stressed out, and it\'s overwhelming',
+    'smart_watch': 'Smart Watch',
+    'mini_ecg': 'Mini ECG',
+    'smart_patch': 'Smart Patch',
+    'bp_monitor': 'BP monitor',
+    'save_setting': 'Save Setting',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -290,5 +300,10 @@ class Locales {
         'Bạn đang cảm thấy khá căng thẳng, và nó đang ảnh hưởng đến tâm trạng và sự tập trung của bạn',
     'extremely_stressed':
         'Bạn đang cực kỳ căng thẳng, và nó đang trở nên quá sức',
+    'smart_watch': 'Đồng Hồ Thông Minh',
+    'mini_ecg': 'ECG Mini',
+    'smart_patch': 'Miếng Dán Thông Minh',
+    'bp_monitor': 'Máy Đo Huyết Áp',
+    'save_setting': 'Lưu Cài Đặt',
   };
 }

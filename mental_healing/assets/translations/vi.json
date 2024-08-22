@@ -84,5 +84,10 @@
   "bit_stressed": "Bạn hơi căng thẳng, nhưng không có gì quá nghiêm trọng",
   "fair_amount_of_stress": "Bạn đang trải qua một lượng căng thẳng nhất định, và nó bắt đầu ảnh hưởng đến bạn",
   "quite_stressed": "Bạn đang cảm thấy khá căng thẳng, và nó đang ảnh hưởng đến tâm trạng và sự tập trung của bạn",
-  "extremely_stressed": "Bạn đang cực kỳ căng thẳng, và nó đang trở nên quá sức"
+  "extremely_stressed": "Bạn đang cực kỳ căng thẳng, và nó đang trở nên quá sức",
+  "smart_watch": "Đồng Hồ Thông Minh",
+  "mini_ecg": "ECG Mini",
+  "smart_patch": "Miếng Dán Thông Minh",
+  "bp_monitor": "Máy Đo Huyết Áp",
+  "save_setting": "Lưu Cài Đặt"
 }
