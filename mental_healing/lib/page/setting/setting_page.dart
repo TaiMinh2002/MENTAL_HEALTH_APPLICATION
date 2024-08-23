@@ -119,7 +119,7 @@ class SettingPage extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: Column(
           children: [
             Row(
