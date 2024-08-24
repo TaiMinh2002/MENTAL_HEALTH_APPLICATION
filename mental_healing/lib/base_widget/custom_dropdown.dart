@@ -1,30 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:mental_healing/import.dart';
 
-class CustomDropdown<T> extends StatefulWidget {
-  final List<T> items;
-  final String hintText;
-  final T? initialValue;
-  final Function(T?)? onChanged;
+class CustomDropdown extends StatefulWidget {
+  final List<String> items;
+  final String initialValue;
   final String title;
-  final double width;
 
   const CustomDropdown({
-    Key? key,
+    super.key,
     required this.items,
-    required this.hintText,
-    this.initialValue,
-    this.onChanged,
+    required this.initialValue,
     required this.title,
-    required this.width,
-  }) : super(key: key);
+  });
 
   @override
-  State<CustomDropdown<T>> createState() => _CustomDropdownState<T>();
+  _CustomDropdownState createState() => _CustomDropdownState();
 }
 
-class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
-  T? selectedValue;
+class _CustomDropdownState extends State<CustomDropdown> {
+  late String selectedValue;
 
   @override
   void initState() {
@@ -32,82 +25,99 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
     selectedValue = widget.initialValue;
   }
 
+  void _showCustomDropdown(BuildContext context) {
+    final RenderBox renderBox = context.findRenderObject() as RenderBox;
+    final Offset offset = renderBox.localToGlobal(Offset.zero);
+    final Size size = renderBox.size;
+
+    showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(
+        offset.dx,
+        offset.dy + size.height,
+        offset.dx + size.width,
+        offset.dy + size.height + 200,
+      ),
+      items: widget.items.map((String value) {
+        return PopupMenuItem<String>(
+          value: value,
+          child: Text(value,
+              style: const TextStyle(overflow: TextOverflow.ellipsis)),
+        );
+      }).toList(),
+    ).then((value) {
+      if (value != null) {
+        setState(() {
+          selectedValue = value;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          widget.title,
-          style: const TextStyle(
-              fontSize: 14,
-              color: Color(0xff4F3422),
-              fontWeight: FontWeight.w600),
-        ),
-        SizedBox(
-          width: widget.width,
-          child: DropdownButtonFormField2<T>(
-            isExpanded: true,
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(vertical: 16),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
+    double width = MediaQuery.of(context).size.width * 0.45;
+
+    return SizedBox(
+      width: width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 7.0),
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: widget.title,
+                    style: const TextStyle(
+                      color: Color(0xff4F3422),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            hint: Text(
-              widget.hintText,
-              style: const TextStyle(fontSize: 14),
-            ),
-            value: selectedValue,
-            items: widget.items
-                .map((item) => DropdownMenuItem<T>(
-                      value: item,
-                      child: Text(
-                        item.toString(),
-                        style: const TextStyle(
-                          fontSize: 14,
-                        ),
-                      ),
-                    ))
-                .toList(),
-            validator: (value) {
-              if (value == null) {
-                return 'Please select ${widget.hintText.toLowerCase()}.';
-              }
-              return null;
-            },
-            onChanged: (value) {
-              setState(() {
-                selectedValue = value;
-              });
-              if (widget.onChanged != null) {
-                widget.onChanged!(value);
-              }
-            },
-            onSaved: (value) {
-              selectedValue = value;
-            },
-            buttonStyleData: const ButtonStyleData(
-              padding: EdgeInsets.only(right: 8),
-            ),
-            iconStyleData: const IconStyleData(
-              icon: Icon(
-                Icons.arrow_drop_down,
-                color: Colors.black45,
-              ),
-              iconSize: 24,
-            ),
-            dropdownStyleData: DropdownStyleData(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-            menuItemStyleData: const MenuItemStyleData(
-              padding: EdgeInsets.symmetric(horizontal: 16),
             ),
           ),
-        ),
-      ],
+          GestureDetector(
+            onTap: () => _showCustomDropdown(context),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.0),
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1.0,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        selectedValue,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 8.0),
+                      child: Icon(Icons.arrow_drop_down, color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -89,5 +89,10 @@
   "mini_ecg": "ECG Mini",
   "smart_patch": "Miếng Dán Thông Minh",
   "bp_monitor": "Máy Đo Huyết Áp",
-  "save_setting": "Lưu Cài Đặt"
+  "save_setting": "Lưu Cài Đặt",
+  "not_stressed_label": "Không Căng Thẳng",
+  "slightly_stressed_label": "Hơi Căng Thẳng",
+  "moderately_stressed_label": "Căng Thẳng Vừa Phải",
+  "very_stressed_label": "Rất Căng Thẳng",
+  "extremely_stressed_label": "Cực Kỳ Căng Thẳng"
 }

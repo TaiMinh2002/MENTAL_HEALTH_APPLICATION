@@ -2,10 +2,11 @@ import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/custom_dropdown.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/generated/locales.g.dart';
+import 'package:mental_healing/global/app_enum_ex.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/personal_information/component/edit_age.dart';
 import 'package:mental_healing/page/personal_information/personal_information_controller.dart';
 import 'package:mental_healing/global/app_enum.dart';
-import 'package:mental_healing/global/app_enum_ex.dart';
 
 class EditInfo extends StatelessWidget {
   final PersonalInformationController controller =
@@ -13,48 +14,66 @@ class EditInfo extends StatelessWidget {
 
   EditInfo({super.key});
 
-  final List<int> ageItems = List<int>.generate(101, (index) => index);
-  final List<Mood> moodItems = Mood.values;
-  final List<Sleep> sleepItems = Sleep.values;
-  final List<Stress> stressItems = Stress.values;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: Column(
-        children: [
-          _userNameWidget(),
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _ageWidget(context),
-                _moodWidget(context),
-              ],
-            ),
-          ),
-          _passwordWidget(),
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Row(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _sleepWidget(context),
                 _stressWidget(context),
               ],
             ),
-          ),
-          _saveSettingButton()
-        ],
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  EditAge(),
+                  _moodWidget(context),
+                ],
+              ),
+            ),
+            _userNameWidget(),
+            _passwordWidget(),
+            _saveSettingButton(),
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _moodWidget(BuildContext context) {
+    return CustomDropdown(
+      title: 'Mood',
+      items: Mood.values.map((mood) => mood.title).toList(),
+      initialValue: Mood.values.first.title,
+    );
+  }
+
+  Widget _sleepWidget(BuildContext context) {
+    return CustomDropdown(
+      title: 'Sleep',
+      items: Sleep.values.map((sleep) => sleep.title).toList(),
+      initialValue: Sleep.values.first.title,
+    );
+  }
+
+  Widget _stressWidget(BuildContext context) {
+    return CustomDropdown(
+      title: 'Stress',
+      items: Stress.values.map((stress) => stress.title).toList(),
+      initialValue: Stress.values.first.title,
     );
   }
 
   Widget _userNameWidget() {
     return WidgetInputText(
-      hintText: 'LocaleKeys.enter_username.tr',
+      hintText: 'localeKeys.enter_username.tr',
       controller: controller.usernameController,
       validator: controller.checkUsernameValidator,
       textCapitalization: TextCapitalization.none,
@@ -65,65 +84,13 @@ class EditInfo extends StatelessWidget {
 
   Widget _passwordWidget() {
     return WidgetInputText(
-      hintText: 'LocaleKeys.password_placeholder.tr',
+      hintText: 'localeKeys.password_placeholder.tr',
       controller: controller.passwordController,
-      title: 'Password',
       validator: controller.checkPasswordValidator,
       textCapitalization: TextCapitalization.none,
+      title: 'Password',
       obscureText: true,
       borderRadius: 20,
-    );
-  }
-
-  Widget _ageWidget(BuildContext context) {
-    return CustomDropdown<int>(
-      items: ageItems,
-      hintText: 'Select Age',
-      initialValue: 20,
-      width: MediaQuery.of(context).size.width * 0.45,
-      title: 'Age',
-      onChanged: (value) {
-        print('Selected Age: $value');
-      },
-    );
-  }
-
-  Widget _moodWidget(BuildContext context) {
-    return CustomDropdown<Mood>(
-      items: moodItems,
-      hintText: 'Select Mood',
-      initialValue: Mood.tired,
-      width: MediaQuery.of(context).size.width * 0.45,
-      title: 'Mood',
-      onChanged: (value) {
-        print('Selected Mood: ${value?.title}');
-      },
-    );
-  }
-
-  Widget _sleepWidget(BuildContext context) {
-    return CustomDropdown<Sleep>(
-      items: sleepItems,
-      hintText: 'Select Sleep',
-      initialValue: Sleep.lessThan3Hours,
-      width: MediaQuery.of(context).size.width * 0.45,
-      title: 'Sleep',
-      onChanged: (value) {
-        print('Selected Sleep: ${value?.title}');
-      },
-    );
-  }
-
-  Widget _stressWidget(BuildContext context) {
-    return CustomDropdown<Stress>(
-      items: stressItems,
-      hintText: 'Select Stress',
-      initialValue: Stress.notStressed,
-      width: MediaQuery.of(context).size.width * 0.45,
-      title: 'Stress',
-      onChanged: (value) {
-        print('Selected Stress: ${value?.title}');
-      },
     );
   }
 

@@ -102,6 +102,11 @@ class LocaleKeys {
   static const smart_patch = 'smart_patch';
   static const bp_monitor = 'bp_monitor';
   static const save_setting = 'save_setting';
+  static const not_stressed_label = 'not_stressed_label';
+  static const slightly_stressed_label = 'slightly_stressed_label';
+  static const moderately_stressed_label = 'moderately_stressed_label';
+  static const very_stressed_label = 'very_stressed_label';
+  static const extremely_stressed_label = 'extremely_stressed_label';
 }
 
 class Locales {
@@ -202,6 +207,11 @@ class Locales {
     'smart_patch': 'Smart Patch',
     'bp_monitor': 'BP monitor',
     'save_setting': 'Save Setting',
+    'not_stressed_label': 'Not Stressed',
+    'slightly_stressed_label': 'Slightly Stressed',
+    'moderately_stressed_label': 'Moderately Stressed',
+    'very_stressed_label': 'Very Stressed',
+    'extremely_stressed_label': 'Extremely Stressed',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -305,5 +315,10 @@ class Locales {
     'smart_patch': 'Miếng Dán Thông Minh',
     'bp_monitor': 'Máy Đo Huyết Áp',
     'save_setting': 'Lưu Cài Đặt',
+    'not_stressed_label': 'Không Căng Thẳng',
+    'slightly_stressed_label': 'Hơi Căng Thẳng',
+    'moderately_stressed_label': 'Căng Thẳng Vừa Phải',
+    'very_stressed_label': 'Rất Căng Thẳng',
+    'extremely_stressed_label': 'Cực Kỳ Căng Thẳng',
   };
 }

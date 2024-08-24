@@ -89,5 +89,10 @@
     "mini_ecg": "Mini ECG",
     "smart_patch": "Smart Patch",
     "bp_monitor": "BP monitor",
-    "save_setting": "Save Setting"
+    "save_setting": "Save Setting",
+    "not_stressed_label": "Not Stressed",
+    "slightly_stressed_label": "Slightly Stressed",
+    "moderately_stressed_label": "Moderately Stressed",
+    "very_stressed_label": "Very Stressed",
+    "extremely_stressed_label": "Extremely Stressed"
 }
