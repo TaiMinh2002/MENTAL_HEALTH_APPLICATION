@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:mental_healing/import.dart';
+import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'package:mental_healing/page/personal_information/personal_information_controller.dart';
 
 class EditAge extends StatefulWidget {
   const EditAge({super.key});
@@ -9,7 +10,8 @@ class EditAge extends StatefulWidget {
 }
 
 class _EditAgeState extends State<EditAge> {
-  int _selectedAge = 20;
+  final PersonalInformationController controller =
+      Get.put(PersonalInformationController());
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class _EditAgeState extends State<EditAge> {
 
     return GestureDetector(
       onTap: () {
-        _showAgePicker(context);
+        controller.showAgePicker(context);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,14 +57,14 @@ class _EditAgeState extends State<EditAge> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    ' $_selectedAge',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
+                  Obx(() => Text(
+                        '${controller.selectedAge.value}',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )),
                   const Icon(Icons.arrow_drop_down, color: Colors.grey),
                 ],
               ),
@@ -70,30 +72,6 @@ class _EditAgeState extends State<EditAge> {
           ),
         ],
       ),
-    );
-  }
-
-  void _showAgePicker(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          height: 250,
-          child: CupertinoPicker(
-            itemExtent: 32.0,
-            scrollController:
-                FixedExtentScrollController(initialItem: _selectedAge),
-            onSelectedItemChanged: (int index) {
-              setState(() {
-                _selectedAge = index;
-              });
-            },
-            children: List<Widget>.generate(101, (int index) {
-              return Center(child: Text('$index'));
-            }),
-          ),
-        );
-      },
     );
   }
 }

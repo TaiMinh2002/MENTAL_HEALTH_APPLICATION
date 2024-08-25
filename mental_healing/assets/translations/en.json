@@ -94,5 +94,8 @@
     "slightly_stressed_label": "Slightly Stressed",
     "moderately_stressed_label": "Moderately Stressed",
     "very_stressed_label": "Very Stressed",
-    "extremely_stressed_label": "Extremely Stressed"
+    "extremely_stressed_label": "Extremely Stressed",
+    "take_photo": "Take Photo",
+    "choose_from_gallery": "Choose from Gallery",
+    "remove_avatar": "Remove Avatar"
 }

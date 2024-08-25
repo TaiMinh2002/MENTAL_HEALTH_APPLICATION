@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/personal_information/component/edit_info.dart';
+import 'package:mental_healing/page/personal_information/personal_information_controller.dart';
 
 class PersonalInformationPage extends StatelessWidget {
-  const PersonalInformationPage({super.key});
+  final PersonalInformationController controller =
+      Get.put(PersonalInformationController());
+  PersonalInformationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,20 +52,27 @@ class PersonalInformationPage extends StatelessWidget {
       ),
     );
   }
-}
 
-Widget _avatarWidget() {
-  return Stack(
-    alignment: Alignment.bottomRight,
-    children: [
-      CircleAvatar(
-        backgroundColor: Colors.grey.shade300,
-        radius: 60,
-        backgroundImage: AssetImage(AssetImages.noPerson),
-      ),
-      SvgPicture.asset(AssetIcons.edit)
-    ],
-  );
+  Widget _avatarWidget() {
+    return Stack(
+      alignment: Alignment.bottomRight,
+      children: [
+        Obx(() => CircleAvatar(
+              backgroundColor: Colors.grey.shade300,
+              radius: 60,
+              backgroundImage: controller.imageFile.value != null
+                  ? FileImage(File(controller.imageFile.value!.path))
+                  : const AssetImage(AssetImages.noPerson) as ImageProvider,
+            )),
+        GestureDetector(
+          onTap: () {
+            controller.showAvatarOptions(Get.context!);
+          },
+          child: SvgPicture.asset(AssetIcons.chooseAvatar),
+        ),
+      ],
+    );
+  }
 }
 
 class SubtleCurveClipper extends CustomClipper<Path> {

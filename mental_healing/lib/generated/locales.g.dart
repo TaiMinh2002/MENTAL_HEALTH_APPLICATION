@@ -107,6 +107,9 @@ class LocaleKeys {
   static const moderately_stressed_label = 'moderately_stressed_label';
   static const very_stressed_label = 'very_stressed_label';
   static const extremely_stressed_label = 'extremely_stressed_label';
+  static const take_photo = 'take_photo';
+  static const choose_from_gallery = 'choose_from_gallery';
+  static const remove_avatar = 'remove_avatar';
 }
 
 class Locales {
@@ -212,6 +215,9 @@ class Locales {
     'moderately_stressed_label': 'Moderately Stressed',
     'very_stressed_label': 'Very Stressed',
     'extremely_stressed_label': 'Extremely Stressed',
+    'take_photo': 'Take Photo',
+    'choose_from_gallery': 'Choose from Gallery',
+    'remove_avatar': 'Remove Avatar',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -320,5 +326,8 @@ class Locales {
     'moderately_stressed_label': 'Căng Thẳng Vừa Phải',
     'very_stressed_label': 'Rất Căng Thẳng',
     'extremely_stressed_label': 'Cực Kỳ Căng Thẳng',
+    'take_photo': 'Chụp Ảnh',
+    'choose_from_gallery': 'Chọn từ Thư viện',
+    'remove_avatar': 'Xóa Avatar',
   };
 }

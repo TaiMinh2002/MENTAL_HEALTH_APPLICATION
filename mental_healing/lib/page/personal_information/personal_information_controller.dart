@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/utils/function.dart';
 import 'package:mental_healing/utils/string.dart';
+import 'package:image_picker/image_picker.dart';
 
 class PersonalInformationController extends GetxController {
   final usernameController = TextEditingController();
@@ -10,6 +12,9 @@ class PersonalInformationController extends GetxController {
   final confirmPasswordController = TextEditingController();
   final editFormKey = GlobalKey<FormState>();
   RxBool firstValidation = false.obs;
+  RxInt selectedAge = 20.obs;
+  final ImagePicker _picker = ImagePicker();
+  Rx<XFile?> imageFile = Rx<XFile?>(null);
 
   String? checkUsernameValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
@@ -62,5 +67,77 @@ class PersonalInformationController extends GetxController {
       return false;
     }
     return editFormKey.currentState?.validate() ?? false;
+  }
+
+  void updateSelectedAge(int age) {
+    selectedAge.value = age;
+  }
+
+  void showAgePicker(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: 250,
+          child: CupertinoPicker(
+            scrollController:
+                FixedExtentScrollController(initialItem: selectedAge.value),
+            onSelectedItemChanged: (int index) {
+              updateSelectedAge(index);
+            },
+            itemExtent: 32.0,
+            children: List<Widget>.generate(101, (int index) {
+              return Center(child: Text('$index'));
+            }),
+          ),
+        );
+      },
+    );
+  }
+
+  void showAvatarOptions(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: Text(LocaleKeys.take_photo.tr),
+                onTap: () async {
+                  XFile? image =
+                      await _picker.pickImage(source: ImageSource.camera);
+                  if (image != null) {
+                    imageFile.value = image;
+                  }
+                  Get.back();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: Text(LocaleKeys.choose_from_gallery.tr),
+                onTap: () async {
+                  XFile? image =
+                      await _picker.pickImage(source: ImageSource.gallery);
+                  if (image != null) {
+                    imageFile.value = image;
+                  }
+                  Get.back();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.delete),
+                title: Text(LocaleKeys.remove_avatar.tr),
+                onTap: () {
+                  imageFile.value = null;
+                  Get.back();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

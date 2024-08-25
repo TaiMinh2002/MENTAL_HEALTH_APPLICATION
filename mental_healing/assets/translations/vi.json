@@ -94,5 +94,8 @@
   "slightly_stressed_label": "Hơi Căng Thẳng",
   "moderately_stressed_label": "Căng Thẳng Vừa Phải",
   "very_stressed_label": "Rất Căng Thẳng",
-  "extremely_stressed_label": "Cực Kỳ Căng Thẳng"
+  "extremely_stressed_label": "Cực Kỳ Căng Thẳng",
+  "take_photo": "Chụp Ảnh",
+  "choose_from_gallery": "Chọn từ Thư viện",
+  "remove_avatar": "Xóa Avatar"
 }

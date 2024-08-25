@@ -33,7 +33,7 @@ class EditInfo extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  EditAge(),
+                  const EditAge(),
                   _moodWidget(context),
                 ],
               ),
