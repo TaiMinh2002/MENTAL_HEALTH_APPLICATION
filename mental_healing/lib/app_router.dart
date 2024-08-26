@@ -7,6 +7,7 @@ import 'package:mental_healing/page/personal_information/personal_information_pa
 import 'package:mental_healing/page/sign_in/sign_in_page.dart';
 import 'package:mental_healing/page/sign_up/sign_up_page.dart';
 import 'package:mental_healing/page/splash/splash_page.dart';
+import 'package:mental_healing/page/webview/webview_page.dart';
 
 class AppRouter {
   static const String routerSplash = '/splash';
@@ -17,6 +18,7 @@ class AppRouter {
   static const String routerCompleteAccountPage = '/complete_account_page';
   static const String routerDashboard = '/dashboard';
   static const String routerPersonInfo = '/person_info';
+  static const String routerWebview = '/webview';
 
   static const curve = Curves.fastOutSlowIn;
   static const transition = Transition.rightToLeftWithFade;
@@ -77,6 +79,13 @@ class AppRouter {
     GetPage<PersonalInformationPage>(
       name: routerPersonInfo,
       page: () => PersonalInformationPage(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<WebviewPage>(
+      name: routerWebview,
+      page: () => WebviewPage(),
       curve: curve,
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,

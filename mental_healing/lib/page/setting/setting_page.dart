@@ -89,7 +89,10 @@ class SettingPage extends StatelessWidget {
         _title(LocaleKeys.security_privacy.tr),
         _item(
             prefixIcon: AssetIcons.iconPassword, title: LocaleKeys.security.tr),
-        _item(prefixIcon: AssetIcons.help, title: LocaleKeys.help_center.tr),
+        _item(
+            prefixIcon: AssetIcons.help,
+            title: LocaleKeys.help_center.tr,
+            onTap: controller.handleHelpCenter),
       ],
     );
   }
