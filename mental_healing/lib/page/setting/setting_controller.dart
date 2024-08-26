@@ -1,4 +1,5 @@
 import 'package:mental_healing/app_router.dart';
+import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/model/webview_param.dart';
 
@@ -11,7 +12,7 @@ class SettingController extends GetxController {
     Get.toNamed(
       AppRouter.routerWebview,
       arguments: WebViewParams(
-          title: 'LocaleKeys.contact.tr',
+          title: LocaleKeys.help_center.tr,
           url: 'http://192.168.1.47:3000/webview/help-center'),
     );
   }
