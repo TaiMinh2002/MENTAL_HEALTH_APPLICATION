@@ -110,6 +110,12 @@ class LocaleKeys {
   static const take_photo = 'take_photo';
   static const choose_from_gallery = 'choose_from_gallery';
   static const remove_avatar = 'remove_avatar';
+  static const calm_mind_course = 'calm_mind_course';
+  static const journey_to_mindfulness = 'journey_to_mindfulness';
+  static const sleep = 'sleep';
+  static const music = 'music';
+  static const expert = 'expert';
+  static const chatbot = 'chatbot';
 }
 
 class Locales {
@@ -218,6 +224,12 @@ class Locales {
     'take_photo': 'Take Photo',
     'choose_from_gallery': 'Choose from Gallery',
     'remove_avatar': 'Remove Avatar',
+    'calm_mind_course': 'Calm Mind Course',
+    'journey_to_mindfulness': 'Your journey to mindfulness',
+    'sleep': 'Sleep',
+    'music': 'Music',
+    'expert': 'Expert',
+    'chatbot': 'Chatbot',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -329,5 +341,11 @@ class Locales {
     'take_photo': 'Chụp Ảnh',
     'choose_from_gallery': 'Chọn từ Thư viện',
     'remove_avatar': 'Xóa Avatar',
+    'calm_mind_course': 'Khóa Học Tâm Trí Bình Tĩnh',
+    'journey_to_mindfulness': 'Hành trình đến sự tỉnh thức của bạn',
+    'sleep': 'Giấc Ngủ',
+    'music': 'Âm Nhạc',
+    'expert': 'Chuyên Gia',
+    'chatbot': 'Chatbot',
   };
 }

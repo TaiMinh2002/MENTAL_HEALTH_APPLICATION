@@ -1,6 +1,7 @@
 import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
+import 'package:mental_healing/page/home/home_page.dart';
 import 'package:mental_healing/page/setting/setting_page.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class DashboardPage extends StatelessWidget {
                 () => IndexedStack(
                   index: controller.currentTabIndex.value,
                   children: [
-                    Container(),
+                    HomePage(),
                     Container(),
                     Container(),
                     Container(),
