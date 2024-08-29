@@ -28,6 +28,7 @@ class AssetIcons {
 	static const String chatbot = 'assets/icons/chatbot.svg';
 	static const String chooseAvatar = 'assets/icons/choose_avatar.svg';
 	static const String clock = 'assets/icons/clock.svg';
+	static const String community = 'assets/icons/community.svg';
 	static const String darkMode = 'assets/icons/dark_mode.svg';
 	static const String dashboard1 = 'assets/icons/dashboard1.svg';
 	static const String dashboard2 = 'assets/icons/dashboard2.svg';

@@ -29,26 +29,29 @@ class HomePage extends StatelessWidget with BaseMixin {
                   children: [
                     Row(
                       children: [
-                        _buildGridItem(
-                            LocaleKeys.mood.tr, AssetIcons.mood, context),
-                        _buildGridItem(
-                            LocaleKeys.exercise.tr, AssetIcons.calm, context),
+                        _buildGridItem(LocaleKeys.mood.tr, AssetIcons.mood,
+                            context, () {}),
+                        _buildGridItem(LocaleKeys.exercise.tr, AssetIcons.calm,
+                            context, () {}),
                       ],
                     ),
                     Row(
                       children: [
+                        _buildGridItem(LocaleKeys.music.tr, AssetIcons.music,
+                            context, () {}),
                         _buildGridItem(
-                            LocaleKeys.music.tr, AssetIcons.music, context),
-                        _buildGridItem(
-                            LocaleKeys.sleep.tr, AssetIcons.sleep, context),
+                            LocaleKeys.community.tr,
+                            AssetIcons.community,
+                            context,
+                            controller.handleCommunity),
                       ],
                     ),
                     Row(
                       children: [
-                        _buildGridItem(
-                            LocaleKeys.expert.tr, AssetIcons.experts, context),
-                        _buildGridItem(
-                            LocaleKeys.chatbot.tr, AssetIcons.chatbot, context),
+                        _buildGridItem(LocaleKeys.expert.tr, AssetIcons.experts,
+                            context, () {}),
+                        _buildGridItem(LocaleKeys.chatbot.tr,
+                            AssetIcons.chatbot, context, () {}),
                       ],
                     ),
                     _image(),
@@ -63,31 +66,35 @@ class HomePage extends StatelessWidget with BaseMixin {
     );
   }
 
-  Widget _buildGridItem(String title, String icon, BuildContext context) {
+  Widget _buildGridItem(
+      String title, String icon, BuildContext context, Function()? onTap) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
-      margin: const EdgeInsets.all(5),
-      height: screenHeight / 7,
-      width: screenWidth / 2.23,
-      decoration: BoxDecoration(
-        color: color.colorEDEDED,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Center(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(icon, height: 25, width: 25),
-            Padding(
-              padding: const EdgeInsets.only(left: 5.0),
-              child: Text(
-                title,
-                style: textStyle.medium(color: color.color333333),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.all(5),
+        height: screenHeight / 7,
+        width: screenWidth / 2.23,
+        decoration: BoxDecoration(
+          color: color.colorEDEDED,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SvgPicture.asset(icon, height: 25, width: 25),
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  title,
+                  style: textStyle.medium(color: color.color333333),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -163,7 +170,7 @@ class HomePage extends StatelessWidget with BaseMixin {
       child: Column(
         children: [
           Text(
-            'A calm mind brings inner strength\n and self-confidence, so that\'s very important for good health.',
+            'A calm mind brings inner strength and self-confidence, so that\'s very important for good health.',
             textAlign: TextAlign.center,
             style: textStyle.semiBold(size: 16, color: color.color333333),
           ),
