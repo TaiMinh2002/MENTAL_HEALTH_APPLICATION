@@ -1,7 +1,7 @@
-import 'package:mental_healing/generated/locales.g.dart';
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 
-class SelectStress extends StatefulWidget {
+class SelectStress extends StatefulWidget with BaseMixin {
   const SelectStress({super.key});
 
   @override
@@ -14,17 +14,17 @@ class _SelectStressState extends State<SelectStress> {
   Color getColorForNumber(int number) {
     switch (number) {
       case 1:
-        return const Color(0xff9BB168);
+        return widget.color.color9BB168;
       case 2:
-        return const Color(0xffFFCE5C);
+        return widget.color.colorFFCE5C;
       case 3:
-        return const Color(0xffC0A091);
+        return widget.color.colorC0A091;
       case 4:
-        return const Color(0xffED7E1C);
+        return widget.color.colorED7E1C;
       case 5:
-        return const Color(0xffA694F5);
+        return widget.color.colorA694F5;
       default:
-        return const Color(0xffACA9A5);
+        return widget.color.colorACA9A5;
     }
   }
 
@@ -54,15 +54,14 @@ class _SelectStressState extends State<SelectStress> {
         children: [
           Text(
             '$selectedNumber',
-            style: TextStyle(
-              fontSize: 150,
-              fontWeight: FontWeight.bold,
+            style: widget.textStyle.bold(
+              size: 150,
               color: getColorForNumber(selectedNumber),
             ),
           ),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: widget.color.whiteColor,
               borderRadius: BorderRadius.circular(40.0),
               boxShadow: [
                 BoxShadow(
@@ -105,10 +104,11 @@ class _SelectStressState extends State<SelectStress> {
                         horizontal: 11.0, vertical: 10),
                     child: Text(
                       '$number',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: isSelected ? Colors.white : Colors.brown,
+                      style: widget.textStyle.bold(
+                        size: 22,
+                        color: isSelected
+                            ? widget.color.whiteColor
+                            : widget.color.color6F4E37,
                       ),
                     ),
                   ),
@@ -120,9 +120,8 @@ class _SelectStressState extends State<SelectStress> {
             padding: const EdgeInsets.only(top: 20.0),
             child: Text(
               getTextForNumber(selectedNumber),
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              style: widget.textStyle.bold(
+                size: 18,
                 color: getColorForNumber(selectedNumber),
               ),
               textAlign: TextAlign.center,

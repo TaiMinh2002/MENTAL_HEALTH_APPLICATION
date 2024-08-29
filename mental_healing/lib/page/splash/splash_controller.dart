@@ -11,6 +11,7 @@ class SplashController extends GetxController {
 
   Future<void> _moveToNextPage() async {
     await 3.seconds.delay();
+    Get.offNamed(AppRouter.routerIntro);
 
     bool isFirstRun = CacheManager.isFirstRun();
     print('Is first run: $isFirstRun');

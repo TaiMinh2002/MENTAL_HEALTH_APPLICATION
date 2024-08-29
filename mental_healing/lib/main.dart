@@ -1,16 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mental_healing/app_router.dart';
+import 'package:mental_healing/base/base_mixin.dart';
+import 'package:mental_healing/base/locator.dart';
+import 'package:mental_healing/import.dart';
 import 'package:mental_healing/service/localization/localization_service.dart';
 
 void main() async {
   await GetStorage.init();
-
+  await setupLocator();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget with BaseMixin {
   const MyApp({super.key});
 
   @override
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       translations: LocalizationService(),
       locale: LocalizationService.locale,
       fallbackLocale: LocalizationService.fallbackLocale,
+      theme: Get.find<AppThemeBase>().themeData,
     );
   }
 }

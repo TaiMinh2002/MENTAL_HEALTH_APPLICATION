@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
-import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/sign_in/sign_in_controller.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatelessWidget with BaseMixin {
   final SignInController controller = Get.put(SignInController());
   SignInPage({super.key});
 
@@ -13,7 +13,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xffF7F4F2),
+        backgroundColor: color.backgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -36,10 +36,9 @@ class SignInPage extends StatelessWidget {
       child: Text(
         LocaleKeys.sign_in_message.tr,
         textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.w900,
-          color: Color(0xff4F3422),
+        style: textStyle.extraBold(
+          size: 25,
+          color: color.mainColor,
         ),
       ),
     );
@@ -110,10 +109,7 @@ class SignInPage extends StatelessWidget {
         children: [
           Text(
             LocaleKeys.forgot_password.tr,
-            style: const TextStyle(
-                fontSize: 14,
-                color: Color(0xffED7E1C),
-                fontWeight: FontWeight.bold),
+            style: textStyle.bold(size: 14, color: color.colorED7E1C),
           ),
         ],
       ),
@@ -128,18 +124,12 @@ class SignInPage extends StatelessWidget {
           children: <TextSpan>[
             TextSpan(
               text: LocaleKeys.no_account.tr,
-              style: const TextStyle(
-                  fontSize: 16,
-                  color: Color(0xff736B66),
-                  fontWeight: FontWeight.bold),
+              style: textStyle.bold(size: 16, color: color.color736B66),
             ),
             TextSpan(
               text: LocaleKeys.sign_up.tr,
-              style: const TextStyle(
-                  fontSize: 16,
-                  decoration: TextDecoration.underline,
-                  color: Color(0xffED7E1C),
-                  fontWeight: FontWeight.bold),
+              style:
+                  textStyle.boldUnderline(size: 16, color: color.colorED7E1C),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   controller.handleSignUp();

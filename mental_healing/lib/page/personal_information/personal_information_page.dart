@@ -1,11 +1,12 @@
 import 'dart:io';
 
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/personal_information/component/edit_info.dart';
 import 'package:mental_healing/page/personal_information/personal_information_controller.dart';
 
-class PersonalInformationPage extends StatelessWidget {
+class PersonalInformationPage extends StatelessWidget with BaseMixin {
   final PersonalInformationController controller =
       Get.put(PersonalInformationController());
   PersonalInformationPage({super.key});
@@ -14,7 +15,7 @@ class PersonalInformationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xffF7F4F2),
+        backgroundColor: color.backgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -23,18 +24,18 @@ class PersonalInformationPage extends StatelessWidget {
                   ClipPath(
                     clipper: SubtleCurveClipper(),
                     child: Container(
-                      color: const Color(0xff9BB168),
+                      color: color.color9BB168,
                       height: MediaQuery.of(context).size.height / 3,
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     top: 10,
                     left: 0,
                     right: 0,
                     child: HeaderAppWidget(
                       title: 'Personal Information',
-                      titleColor: Colors.white,
-                      iconColor: Colors.white,
+                      titleColor: color.whiteColor,
+                      iconColor: color.whiteColor,
                       titleSize: 16,
                     ),
                   ),

@@ -1,4 +1,3 @@
-import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/intro/component/intro_item.dart';
 import 'package:mental_healing/page/intro/intro_controller.dart';

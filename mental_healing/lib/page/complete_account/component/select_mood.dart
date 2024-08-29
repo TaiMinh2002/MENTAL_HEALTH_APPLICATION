@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui' as ui;
-
-import 'package:mental_healing/generated/locales.g.dart';
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 
-class SelectMood extends StatefulWidget {
+class SelectMood extends StatefulWidget with BaseMixin {
   const SelectMood({super.key});
 
   @override
@@ -56,23 +55,23 @@ class _SelectMoodState extends State<SelectMood> {
     final List<Map<String, dynamic>> imageProvidersWithColors = [
       {
         'image': const AssetImage(AssetImages.sadMood),
-        'color': const Color(0xFFED7E1C),
+        'color': widget.color.colorED7E1C,
       },
       {
         'image': const AssetImage(AssetImages.tiredMood),
-        'color': const Color(0xFFA694F5),
+        'color': widget.color.colorA694F5,
       },
       {
         'image': const AssetImage(AssetImages.neutralMood),
-        'color': const Color(0xFFC0A091),
+        'color': widget.color.colorC0A091,
       },
       {
         'image': const AssetImage(AssetImages.goodMood),
-        'color': const Color(0xFFFFCE5C),
+        'color': widget.color.colorFFCE5C,
       },
       {
         'image': const AssetImage(AssetImages.greatMood),
-        'color': const Color(0xFF9BB168),
+        'color': widget.color.color9BB168,
       },
     ];
 
@@ -127,10 +126,8 @@ class _SelectMoodState extends State<SelectMood> {
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                 child: Text(
                   moodText,
-                  style: const TextStyle(
-                      fontSize: 20,
-                      color: Color(0xff736B66),
-                      fontWeight: FontWeight.bold),
+                  style: widget.textStyle
+                      .bold(size: 20, color: widget.color.color736B66),
                 ),
               ),
               moodIcon,

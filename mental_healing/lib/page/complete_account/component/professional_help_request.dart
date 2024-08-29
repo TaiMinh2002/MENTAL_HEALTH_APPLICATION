@@ -1,7 +1,7 @@
-import 'package:mental_healing/generated/locales.g.dart';
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 
-class ProfessionalHelpRequest extends StatefulWidget {
+class ProfessionalHelpRequest extends StatefulWidget with BaseMixin {
   const ProfessionalHelpRequest({super.key});
 
   @override
@@ -15,7 +15,7 @@ class _ProfessionalHelpRequestState extends State<ProfessionalHelpRequest> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xffF7F4F2),
+        backgroundColor: widget.color.backgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: [_bodyWidget(), _selectWidget()],
@@ -34,10 +34,8 @@ class _ProfessionalHelpRequestState extends State<ProfessionalHelpRequest> {
           Text(
             LocaleKeys.sought_professional_help.tr,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w900,
-                color: Color(0xff4F3422)),
+            style: widget.textStyle
+                .extraBold(size: 28, color: widget.color.mainColor),
           ),
           _imageWidget()
         ],
@@ -92,20 +90,21 @@ class _ProfessionalHelpRequestState extends State<ProfessionalHelpRequest> {
         width: 120,
         height: 50,
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xff9BB168) : Colors.white,
+          color:
+              isSelected ? widget.color.color9BB068 : widget.color.whiteColor,
           borderRadius: BorderRadius.circular(25),
           border: Border.all(
-            color: const Color(0xff9BB168),
+            color: widget.color.color9BB068,
             width: 2,
           ),
         ),
         alignment: Alignment.center,
         child: Text(
           text,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: isSelected ? Colors.white : const Color(0xff4F3422),
+          style: widget.textStyle.bold(
+            size: 18,
+            color:
+                isSelected ? widget.color.whiteColor : widget.color.mainColor,
           ),
         ),
       ),

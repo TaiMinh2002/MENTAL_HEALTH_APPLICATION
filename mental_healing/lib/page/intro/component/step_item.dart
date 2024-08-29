@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mental_healing/base/base_mixin.dart';
 
-class StepItem extends StatelessWidget {
+class StepItem extends StatelessWidget with BaseMixin {
   const StepItem({super.key, required this.title});
 
   final String title;
@@ -12,15 +13,14 @@ class StepItem extends StatelessWidget {
       width: 95,
       decoration: BoxDecoration(
           color: Colors.transparent,
-          border: Border.all(color: const Color(0xff4F3422)),
+          border: Border.all(color: color.mainColor),
           borderRadius: const BorderRadius.all(Radius.circular(32))),
       child: Center(
         child: Text(
           title,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff4F3422),
+          style: textStyle.bold(
+            size: 16,
+            color: color.mainColor,
           ),
         ),
       ),

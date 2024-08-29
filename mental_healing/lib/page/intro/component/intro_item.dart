@@ -1,8 +1,9 @@
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/intro/component/next_button.dart';
 import 'package:mental_healing/page/intro/component/step_item.dart';
 
-class IntroItem extends StatelessWidget {
+class IntroItem extends StatelessWidget with BaseMixin {
   const IntroItem(
       {super.key,
       required this.image,
@@ -20,7 +21,7 @@ class IntroItem extends StatelessWidget {
     final double imageHeight = screenHeight / 1.5;
     final double containerHeight = screenHeight - imageHeight + 75;
     return Scaffold(
-      backgroundColor: const Color(0xffE5EAD7),
+      backgroundColor: color.backgroundColor,
       body: Stack(
         children: [
           Image.asset(
@@ -59,8 +60,7 @@ class IntroItem extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
                 text,
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: textStyle.bold(size: 20),
                 textAlign: TextAlign.center,
               ),
             ),
