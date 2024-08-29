@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
-class ChooseAge extends StatefulWidget {
+class ChooseAge extends StatefulWidget with BaseMixin {
   const ChooseAge({super.key});
 
   @override
@@ -18,7 +19,7 @@ class _ChooseAgeState extends State<ChooseAge> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xffF7F4F2),
+        backgroundColor: widget.color.backgroundColor,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -45,11 +46,11 @@ class _ChooseAgeState extends State<ChooseAge> {
                         height: 70,
                         decoration: isSelected
                             ? BoxDecoration(
-                                color: const Color(0xffA8B95A),
+                                color: widget.color.colorA8B95A,
                                 borderRadius: BorderRadius.circular(35),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xff9BB068)
+                                    color: widget.color.color9BB068
                                         .withOpacity(0.25),
                                     spreadRadius: 2,
                                     blurRadius: 8,
@@ -58,18 +59,12 @@ class _ChooseAgeState extends State<ChooseAge> {
                                 ],
                               )
                             : null,
-                        child: Text(
-                          '$age',
-                          style: TextStyle(
-                            fontSize: isSelected ? 48 : 28,
-                            fontWeight: isSelected
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                            color: isSelected
-                                ? Colors.white
-                                : const Color(0xff4F3422),
-                          ),
-                        ),
+                        child: Text('$age',
+                            style: isSelected
+                                ? widget.textStyle.bold(
+                                    size: 48, color: widget.color.whiteColor)
+                                : widget.textStyle.medium(
+                                    size: 28, color: widget.color.mainColor)),
                       ),
                     );
                   }),
@@ -83,15 +78,13 @@ class _ChooseAgeState extends State<ChooseAge> {
   }
 
   Widget _bodyWidget() {
-    return const Padding(
-      padding: EdgeInsets.only(top: 40.0, left: 10, right: 10),
+    return Padding(
+      padding: const EdgeInsets.only(top: 40.0, left: 10, right: 10),
       child: Text(
-        'What’s your age?',
+        LocaleKeys.whats_your_age.tr,
         textAlign: TextAlign.center,
-        style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w900,
-            color: Color(0xff4F3422)),
+        style:
+            widget.textStyle.extraBold(size: 28, color: widget.color.mainColor),
       ),
     );
   }

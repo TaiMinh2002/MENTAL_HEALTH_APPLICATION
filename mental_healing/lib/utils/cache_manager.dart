@@ -4,6 +4,7 @@ class CacheManager {
   static final GetStorage _box = GetStorage();
 
   static const String _keyFirstRun = 'firstRun';
+  static const String _keyFirstLogin = 'firstLogin';
 
   static Future<void> storeToken(String token, String refreshToken) async {
     await _box.write('token', token);
@@ -32,5 +33,13 @@ class CacheManager {
   // Đánh dấu ứng dụng đã mở lần đầu
   static Future<void> markFirstRunComplete() async {
     await _box.write(_keyFirstRun, false);
+  }
+
+  static bool isFirstLogin() {
+    return _box.read(_keyFirstLogin) ?? true;
+  }
+
+  static Future<void> markFirstLoginComplete() async {
+    await _box.write(_keyFirstLogin, false);
   }
 }

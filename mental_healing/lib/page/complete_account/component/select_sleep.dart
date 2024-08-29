@@ -1,6 +1,7 @@
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 
-class SelectSleep extends StatefulWidget {
+class SelectSleep extends StatefulWidget with BaseMixin {
   const SelectSleep({super.key});
 
   @override
@@ -23,62 +24,62 @@ class _SelectSleepState extends State<SelectSleep> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _rowWidget(
-                  level: 'Excellent',
-                  hours: '7-9 hours',
+                  level: LocaleKeys.excellent.tr,
+                  hours: LocaleKeys.seven_nine_hours.tr,
                   moodIcons: AssetIcons.greatIcon,
                   iconsColor: _currentValue.toInt() == 4
-                      ? const Color(0xff9BB168)
-                      : const Color(0xffACA9A5),
+                      ? widget.color.color9BB168
+                      : widget.color.colorACA9A5,
                   icons: AssetIcons.clock,
                   textColors: _currentValue.toInt() == 4
-                      ? const Color(0xff9BB168)
-                      : const Color(0xffACA9A5),
+                      ? widget.color.color9BB168
+                      : widget.color.colorACA9A5,
                 ),
                 _rowWidget(
-                  level: 'Good',
-                  hours: '6-7 hours',
+                  level: LocaleKeys.good.tr,
+                  hours: LocaleKeys.six_seven_hours.tr,
                   iconsColor: _currentValue.toInt() == 3
-                      ? const Color(0xffFFCE5C)
-                      : const Color(0xffACA9A5),
+                      ? widget.color.colorFFCE5C
+                      : widget.color.colorACA9A5,
                   icons: AssetIcons.clock,
                   moodIcons: AssetIcons.goodIcon,
                   textColors: _currentValue.toInt() == 3
-                      ? const Color(0xffFFCE5C)
-                      : const Color(0xffACA9A5),
+                      ? widget.color.colorFFCE5C
+                      : widget.color.colorACA9A5,
                 ),
                 _rowWidget(
-                    level: 'Fair',
-                    hours: '5 hours',
+                    level: LocaleKeys.fair.tr,
+                    hours: LocaleKeys.five_hours.tr,
                     iconsColor: _currentValue.toInt() == 2
-                        ? const Color(0xffC0A091)
-                        : const Color(0xffACA9A5),
+                        ? widget.color.colorC0A091
+                        : widget.color.colorACA9A5,
                     icons: AssetIcons.clock,
                     moodIcons: AssetIcons.neutralIcon,
                     textColors: _currentValue.toInt() == 2
-                        ? const Color(0xffC0A091)
-                        : const Color(0xffACA9A5)),
+                        ? widget.color.colorC0A091
+                        : widget.color.colorACA9A5),
                 _rowWidget(
-                    level: 'Poor',
-                    hours: '3-4 hours',
+                    level: LocaleKeys.poor.tr,
+                    hours: LocaleKeys.three_four_hours.tr,
                     iconsColor: _currentValue.toInt() == 1
-                        ? const Color(0xffED7E1C)
-                        : const Color(0xffACA9A5),
+                        ? widget.color.colorED7E1C
+                        : widget.color.colorACA9A5,
                     icons: AssetIcons.clock,
                     moodIcons: AssetIcons.sadIcon,
                     textColors: _currentValue.toInt() == 1
-                        ? const Color(0xffED7E1C)
-                        : const Color(0xffACA9A5)),
+                        ? widget.color.colorED7E1C
+                        : widget.color.colorACA9A5),
                 _rowWidget(
-                    level: 'Worst',
-                    hours: '<3 hours',
+                    level: LocaleKeys.worst.tr,
+                    hours: LocaleKeys.less_than_three_hours.tr,
                     iconsColor: _currentValue.toInt() == 0
-                        ? const Color(0xffA694F5)
-                        : const Color(0xffACA9A5),
+                        ? widget.color.colorA694F5
+                        : widget.color.colorACA9A5,
                     icons: AssetIcons.clock,
                     moodIcons: AssetIcons.tiredIcon,
                     textColors: _currentValue.toInt() == 0
-                        ? const Color(0xffA694F5)
-                        : const Color(0xffACA9A5)),
+                        ? widget.color.colorA694F5
+                        : widget.color.colorACA9A5),
               ],
             ),
           ),
@@ -136,9 +137,8 @@ class _SelectSleepState extends State<SelectSleep> {
             children: [
               Text(
                 level,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w900,
+                style: widget.textStyle.extraBold(
+                  size: 18,
                   color: textColors,
                 ),
               ),
@@ -151,9 +151,8 @@ class _SelectSleepState extends State<SelectSleep> {
                   const SizedBox(width: 4),
                   Text(
                     hours,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w900,
+                    style: widget.textStyle.extraBold(
+                      size: 12,
                       color: textColors,
                     ),
                   ),
@@ -170,17 +169,17 @@ class _SelectSleepState extends State<SelectSleep> {
   Color _getActiveColor() {
     switch (_currentValue.toInt()) {
       case 4:
-        return const Color(0xff9BB168);
+        return widget.color.color9BB168;
       case 3:
-        return const Color(0xffFFCE5C);
+        return widget.color.colorFFCE5C;
       case 2:
-        return const Color(0xffC0A091);
+        return widget.color.colorC0A091;
       case 1:
-        return const Color(0xffED7E1C);
+        return widget.color.colorED7E1C;
       case 0:
-        return const Color(0xffA694F5);
+        return widget.color.colorA694F5;
       default:
-        return const Color(0xffACA9A5);
+        return widget.color.colorACA9A5;
     }
   }
 }

@@ -16,7 +16,7 @@ class CompleteAccountController extends GetxController {
         curve: Curves.easeInOut,
       );
     } else {
-      Get.offAllNamed(AppRouter.routerSignIn);
+      Get.offAllNamed(AppRouter.routerDashboard);
     }
   }
 

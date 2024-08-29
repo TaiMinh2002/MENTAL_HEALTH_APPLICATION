@@ -11,20 +11,20 @@ class PageViewIntro extends StatelessWidget {
     final List<Map<String, String>> introItems = [
       {
         'image': AssetImages.intro1,
-        'text': 'Personalize Your Mental Health Journey',
-        'step': 'Step 1',
+        'text': LocaleKeys.personalize_journey.tr,
+        'step': LocaleKeys.step_1.tr,
         'indicator': AssetImages.indicatorIntro1,
       },
       {
         'image': AssetImages.intro2,
-        'text': 'Smart Mood Tracking & Personalized Emotion Insights',
-        'step': 'Step 2',
+        'text': LocaleKeys.smart_tracking.tr,
+        'step': LocaleKeys.step_2.tr,
         'indicator': AssetImages.indicatorIntro2,
       },
       {
         'image': AssetImages.intro3,
-        'text': 'Mindful Resources That Makes You Happy',
-        'step': 'Step 3',
+        'text': LocaleKeys.mindful_resources.tr,
+        'step': LocaleKeys.step_3.tr,
         'indicator': AssetImages.indicatorIntro3,
       },
     ];
