@@ -28,7 +28,7 @@ class CommunityItem extends StatelessWidget with BaseMixin {
   }
 
   Widget _coverImageWidget() {
-    return Image.asset(AssetImages.goodMood, height: 50, width: 50);
+    return Image.asset(AssetImages.intro3, height: 50, width: 50);
   }
 
   Widget _infoWidget() {
