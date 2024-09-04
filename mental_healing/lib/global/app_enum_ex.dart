@@ -1,4 +1,3 @@
-import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/global/app_enum.dart';
 import 'package:mental_healing/import.dart';
 
@@ -17,6 +16,23 @@ extension MoodImpl on Mood {
         return LocaleKeys.feel_great.tr;
       default:
         return '';
+    }
+  }
+
+  int get id {
+    switch (this) {
+      case Mood.tired:
+        return 5;
+      case Mood.sad:
+        return 4;
+      case Mood.neutral:
+        return 3;
+      case Mood.good:
+        return 2;
+      case Mood.great:
+        return 1;
+      default:
+        return 0;
     }
   }
 }
@@ -38,6 +54,23 @@ extension SleepImpl on Sleep {
         return '';
     }
   }
+
+  int get id {
+    switch (this) {
+      case Sleep.lessThan3Hours:
+        return 5;
+      case Sleep.threeToFourHours:
+        return 4;
+      case Sleep.fiveHours:
+        return 3;
+      case Sleep.sixToSevenHours:
+        return 2;
+      case Sleep.sevenToNineHours:
+        return 1;
+      default:
+        return 0;
+    }
+  }
 }
 
 extension StressImpl on Stress {
@@ -55,6 +88,23 @@ extension StressImpl on Stress {
         return LocaleKeys.extremely_stressed_label.tr;
       default:
         return '';
+    }
+  }
+
+  int get id {
+    switch (this) {
+      case Stress.notStressed:
+        return 1;
+      case Stress.slightlyStressed:
+        return 2;
+      case Stress.moderatelyStressed:
+        return 3;
+      case Stress.veryStressed:
+        return 4;
+      case Stress.extremelyStressed:
+        return 5;
+      default:
+        return 0;
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
@@ -8,7 +9,7 @@ import 'package:mental_healing/page/complete_account/component/choose_sleep.dart
 import 'package:mental_healing/page/complete_account/component/choose_stress.dart';
 import 'package:mental_healing/page/complete_account/component/professional_help_request.dart';
 
-class CompleteAccountPage extends StatelessWidget {
+class CompleteAccountPage extends StatelessWidget with BaseMixin {
   final List<Widget> pages = [
     ChooseGender(),
     ChooseAge(),
@@ -26,7 +27,7 @@ class CompleteAccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xffF7F4F2),
+        backgroundColor: color.backgroundColor,
         body: Obx(() => SingleChildScrollView(
               child: Column(
                 children: [

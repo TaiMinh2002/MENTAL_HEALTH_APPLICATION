@@ -1,7 +1,6 @@
 import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base_widget/loading_helper.dart';
 import 'package:mental_healing/base_widget/snack_bar_helper.dart';
-import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/utils/function.dart';
 import 'package:mental_healing/utils/string.dart';

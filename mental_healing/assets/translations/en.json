@@ -103,5 +103,15 @@
     "sleep": "Sleep",
     "music": "Music",
     "expert": "Expert",
-    "chatbot": "Chatbot"
+    "chatbot": "Chatbot",
+    "community": "Community",
+    "member": "Member",
+    "post": "Post",
+    "join": "Join",
+    "all_community": "All Community",
+    "your_community": "Your Community",
+    "logout_success": "Logout Success",
+    "invalid_token": "Invalid Token",
+    "logout_failed": "Logout Failed",
+    "token_missing": "Token Missing"
 }

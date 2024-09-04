@@ -96,4 +96,13 @@ class AppThemeBright extends AppTheme {
 
   @override
   Color get color616161 => const Color(0xff616161);
+
+  @override
+  Color get colorEEEDEB => const Color(0xffEEEDEB);
+
+  @override
+  Color get colorEDE9E6 => const Color(0xffEDE9E6);
+
+  @override
+  Color get blackColor => Colors.black;
 }

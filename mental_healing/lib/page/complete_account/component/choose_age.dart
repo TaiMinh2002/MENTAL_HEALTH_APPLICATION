@@ -34,6 +34,7 @@ class _ChooseAgeState extends State<ChooseAge> {
                   onSelectedItemChanged: (int value) {
                     setState(() {
                       selectedAge = value + 10;
+                      controller.setAge(selectedAge);
                     });
                   },
                   children: List<Widget>.generate(61, (int index) {

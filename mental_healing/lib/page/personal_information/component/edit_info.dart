@@ -17,32 +17,30 @@ class EditInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _sleepWidget(context),
+              _stressWidget(context),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _sleepWidget(context),
-                _stressWidget(context),
+                const EditAge(),
+                _moodWidget(context),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const EditAge(),
-                  _moodWidget(context),
-                ],
-              ),
-            ),
-            _userNameWidget(),
-            _passwordWidget(),
-            _saveSettingButton(),
-          ],
-        ),
+          ),
+          _userNameWidget(),
+          _passwordWidget(),
+          _saveSettingButton(),
+        ],
       ),
     );
   }

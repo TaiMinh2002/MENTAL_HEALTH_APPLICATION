@@ -103,5 +103,15 @@
   "sleep": "Giấc Ngủ",
   "music": "Âm Nhạc",
   "expert": "Chuyên Gia",
-  "chatbot": "Chatbot"
+  "chatbot": "Chatbot",
+  "community": "Cộng Đồng",
+  "member": "Thành Viên",
+  "post": "Bài Viết",
+  "join": "Tham Gia",
+  "all_community": "Tất Cả Cộng Đồng",
+  "your_community": "Cộng Đồng Của Bạn",
+  "logout_success": "Đăng Xuất Thành Công",
+  "invalid_token": "Token Không Hợp Lệ",
+  "logout_failed": "Đăng Xuất Thất Bại",
+  "token_missing": "Thiếu Token"
 }

@@ -2,10 +2,14 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:ui' as ui;
 import 'package:mental_healing/base/base_mixin.dart';
+import 'package:mental_healing/global/app_enum.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
 class SelectMood extends StatefulWidget with BaseMixin {
-  const SelectMood({super.key});
+  final CompleteAccountController controller =
+      Get.put(CompleteAccountController());
+  SelectMood({super.key});
 
   @override
   State<SelectMood> createState() => _SelectMoodState();
@@ -24,22 +28,27 @@ class _SelectMoodState extends State<SelectMood> {
     {
       'icon': SvgPicture.asset(AssetIcons.greatIcon),
       'text': LocaleKeys.feel_great.tr,
+      'mood': Mood.great,
     },
     {
       'icon': SvgPicture.asset(AssetIcons.goodIcon),
       'text': LocaleKeys.feel_good.tr,
+      'mood': Mood.good,
     },
     {
       'icon': SvgPicture.asset(AssetIcons.neutralIcon),
       'text': LocaleKeys.feel_neutral.tr,
+      'mood': Mood.neutral,
     },
     {
       'icon': SvgPicture.asset(AssetIcons.tiredIcon),
       'text': LocaleKeys.feel_tired.tr,
+      'mood': Mood.tired,
     },
     {
       'icon': SvgPicture.asset(AssetIcons.sadIcon),
       'text': LocaleKeys.feel_sad.tr,
+      'mood': Mood.sad,
     },
   ];
 
@@ -106,6 +115,11 @@ class _SelectMoodState extends State<SelectMood> {
       final double segmentAngle = 2 * pi / segments;
       currentSegment =
           (((rotationAngle + segmentAngle) % (2 * pi)) / segmentAngle).floor();
+
+      final dynamic selectedMood = moodDescriptions[currentSegment]['mood'];
+      if (selectedMood is Mood) {
+        widget.controller.setMood(selectedMood);
+      }
     });
   }
 
