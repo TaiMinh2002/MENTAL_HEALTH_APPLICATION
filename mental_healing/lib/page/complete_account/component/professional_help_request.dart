@@ -1,8 +1,11 @@
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
 class ProfessionalHelpRequest extends StatefulWidget with BaseMixin {
-  const ProfessionalHelpRequest({super.key});
+  final CompleteAccountController controller =
+      Get.put(CompleteAccountController());
+  ProfessionalHelpRequest({super.key});
 
   @override
   State<ProfessionalHelpRequest> createState() =>
@@ -62,6 +65,7 @@ class _ProfessionalHelpRequestState extends State<ProfessionalHelpRequest> {
             onTap: () {
               setState(() {
                 isSelected = true;
+                widget.controller.setProfessionalRequest(1);
               });
             },
           ),
@@ -71,6 +75,7 @@ class _ProfessionalHelpRequestState extends State<ProfessionalHelpRequest> {
             onTap: () {
               setState(() {
                 isSelected = false;
+                widget.controller.setProfessionalRequest(2);
               });
             },
           ),

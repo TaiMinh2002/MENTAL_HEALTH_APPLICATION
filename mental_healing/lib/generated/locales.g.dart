@@ -116,6 +116,16 @@ class LocaleKeys {
   static const music = 'music';
   static const expert = 'expert';
   static const chatbot = 'chatbot';
+  static const community = 'community';
+  static const member = 'member';
+  static const post = 'post';
+  static const join = 'join';
+  static const all_community = 'all_community';
+  static const your_community = 'your_community';
+  static const logout_success = 'logout_success';
+  static const invalid_token = 'invalid_token';
+  static const logout_failed = 'logout_failed';
+  static const token_missing = 'token_missing';
 }
 
 class Locales {
@@ -230,6 +240,16 @@ class Locales {
     'music': 'Music',
     'expert': 'Expert',
     'chatbot': 'Chatbot',
+    'community': 'Community',
+    'member': 'Member',
+    'post': 'Post',
+    'join': 'Join',
+    'all_community': 'All Community',
+    'your_community': 'Your Community',
+    'logout_success': 'Logout Success',
+    'invalid_token': 'Invalid Token',
+    'logout_failed': 'Logout Failed',
+    'token_missing': 'Token Missing',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -347,5 +367,15 @@ class Locales {
     'music': 'Âm Nhạc',
     'expert': 'Chuyên Gia',
     'chatbot': 'Chatbot',
+    'community': 'Cộng Đồng',
+    'member': 'Thành Viên',
+    'post': 'Bài Viết',
+    'join': 'Tham Gia',
+    'all_community': 'Tất Cả Cộng Đồng',
+    'your_community': 'Cộng Đồng Của Bạn',
+    'logout_success': 'Đăng Xuất Thành Công',
+    'invalid_token': 'Token Không Hợp Lệ',
+    'logout_failed': 'Đăng Xuất Thất Bại',
+    'token_missing': 'Thiếu Token',
   };
 }

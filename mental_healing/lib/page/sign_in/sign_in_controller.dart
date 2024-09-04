@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base_widget/loading_helper.dart';
 import 'package:mental_healing/base_widget/snack_bar_helper.dart';
-import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/model/user_info.dart';
 import 'package:mental_healing/utils/function.dart';
 import 'package:mental_healing/utils/config.dart';
 import 'package:http/http.dart' as http;
@@ -55,13 +55,29 @@ class SignInController extends GetxController {
 
       if (response.statusCode == 200) {
         final responseData = jsonDecode(response.body);
-        final token = responseData['token'];
-        final refreshToken = responseData['refreshToken'];
+        final data = responseData['data']; // Truy cập đến 'data'
+        final token = data['token'];
+        final refreshToken = data['refreshToken'];
+        final user = UserInfo.fromJson(data['user']);
 
-        await CacheManager.storeToken(token, refreshToken);
-        CacheManager.markFirstLoginComplete();
+        // Kiểm tra null trước khi lưu token
+        if (token != null && refreshToken != null) {
+          await CacheManager.storeToken(token, refreshToken);
+          CacheManager.markFirstLoginComplete();
+          await CacheManager.storeUser(user);
+          CacheManager.markFirstLoginComplete();
 
-        Get.offNamed(AppRouter.routerCompleteAccountPage);
+          // Kiểm tra xem user đã hoàn tất thiết lập tài khoản chưa
+          // if (CacheManager.hasCompletedAccountSetup()) {
+          //   Get.offAllNamed(AppRouter
+          //       .routerDashboard); // Chuyển thẳng tới Dashboard nếu đã thiết lập xong
+          // } else {
+          Get.offNamed(AppRouter
+              .routerCompleteAccountPage); // Chuyển tới trang thiết lập tài khoản nếu chưa
+          // }
+        } else {
+          throw Exception('Token or refresh token is missing');
+        }
       } else if (response.statusCode == 403 || response.statusCode == 498) {
         await refreshToken();
         return handleSignIn();

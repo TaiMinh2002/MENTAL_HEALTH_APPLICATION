@@ -15,7 +15,7 @@ class ChooseStress extends StatelessWidget with BaseMixin {
         backgroundColor: color.backgroundColor,
         body: SingleChildScrollView(
           child: Column(
-            children: [_bodyWidget(), const SelectStress()],
+            children: [_bodyWidget(), SelectStress()],
           ),
         ),
       ),

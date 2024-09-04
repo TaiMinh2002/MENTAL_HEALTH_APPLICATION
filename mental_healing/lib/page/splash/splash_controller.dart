@@ -16,13 +16,18 @@ class SplashController extends GetxController {
     bool isFirstRun = CacheManager.isFirstRun();
     print('Is first run: $isFirstRun');
 
-    if (isFirstRun) {
+    if (CacheManager.isFirstRun()) {
       CacheManager.markFirstRunComplete();
       Get.offNamed(AppRouter.routerIntro);
     } else if (CacheManager.isFirstLogin()) {
       Get.offNamed(AppRouter.routerSignIn);
     } else {
-      Get.offAllNamed(AppRouter.routerDashboard);
+      final user = CacheManager.getStoredUser();
+      if (user != null && CacheManager.getStoredToken() != null) {
+        Get.offAllNamed(AppRouter.routerDashboard); // Nếu đã đăng nhập
+      } else {
+        Get.offNamed(AppRouter.routerSignIn); // Nếu không có user hoặc token
+      }
     }
   }
 }

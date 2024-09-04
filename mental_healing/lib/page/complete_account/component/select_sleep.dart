@@ -1,15 +1,19 @@
 import 'package:mental_healing/base/base_mixin.dart';
+import 'package:mental_healing/global/app_enum.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
 class SelectSleep extends StatefulWidget with BaseMixin {
-  const SelectSleep({super.key});
+  final CompleteAccountController controller =
+      Get.put(CompleteAccountController());
+  SelectSleep({super.key});
 
   @override
   _SelectSleepState createState() => _SelectSleepState();
 }
 
 class _SelectSleepState extends State<SelectSleep> {
-  double _currentValue = 0;
+  double _currentValue = 1; // Đặt giá trị mặc định là 1
 
   @override
   Widget build(BuildContext context) {
@@ -24,62 +28,62 @@ class _SelectSleepState extends State<SelectSleep> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _rowWidget(
-                  level: LocaleKeys.excellent.tr,
-                  hours: LocaleKeys.seven_nine_hours.tr,
-                  moodIcons: AssetIcons.greatIcon,
-                  iconsColor: _currentValue.toInt() == 4
-                      ? widget.color.color9BB168
-                      : widget.color.colorACA9A5,
-                  icons: AssetIcons.clock,
-                  textColors: _currentValue.toInt() == 4
-                      ? widget.color.color9BB168
-                      : widget.color.colorACA9A5,
-                ),
-                _rowWidget(
-                  level: LocaleKeys.good.tr,
-                  hours: LocaleKeys.six_seven_hours.tr,
-                  iconsColor: _currentValue.toInt() == 3
-                      ? widget.color.colorFFCE5C
-                      : widget.color.colorACA9A5,
-                  icons: AssetIcons.clock,
-                  moodIcons: AssetIcons.goodIcon,
-                  textColors: _currentValue.toInt() == 3
-                      ? widget.color.colorFFCE5C
-                      : widget.color.colorACA9A5,
-                ),
-                _rowWidget(
-                    level: LocaleKeys.fair.tr,
-                    hours: LocaleKeys.five_hours.tr,
-                    iconsColor: _currentValue.toInt() == 2
-                        ? widget.color.colorC0A091
-                        : widget.color.colorACA9A5,
-                    icons: AssetIcons.clock,
-                    moodIcons: AssetIcons.neutralIcon,
-                    textColors: _currentValue.toInt() == 2
-                        ? widget.color.colorC0A091
-                        : widget.color.colorACA9A5),
-                _rowWidget(
-                    level: LocaleKeys.poor.tr,
-                    hours: LocaleKeys.three_four_hours.tr,
-                    iconsColor: _currentValue.toInt() == 1
-                        ? widget.color.colorED7E1C
-                        : widget.color.colorACA9A5,
-                    icons: AssetIcons.clock,
-                    moodIcons: AssetIcons.sadIcon,
-                    textColors: _currentValue.toInt() == 1
-                        ? widget.color.colorED7E1C
-                        : widget.color.colorACA9A5),
-                _rowWidget(
                     level: LocaleKeys.worst.tr,
                     hours: LocaleKeys.less_than_three_hours.tr,
-                    iconsColor: _currentValue.toInt() == 0
+                    iconsColor: _currentValue.toInt() == 5
                         ? widget.color.colorA694F5
                         : widget.color.colorACA9A5,
                     icons: AssetIcons.clock,
                     moodIcons: AssetIcons.tiredIcon,
-                    textColors: _currentValue.toInt() == 0
+                    textColors: _currentValue.toInt() == 5
                         ? widget.color.colorA694F5
                         : widget.color.colorACA9A5),
+                _rowWidget(
+                    level: LocaleKeys.poor.tr,
+                    hours: LocaleKeys.three_four_hours.tr,
+                    iconsColor: _currentValue.toInt() == 4
+                        ? widget.color.colorED7E1C
+                        : widget.color.colorACA9A5,
+                    icons: AssetIcons.clock,
+                    moodIcons: AssetIcons.sadIcon,
+                    textColors: _currentValue.toInt() == 4
+                        ? widget.color.colorED7E1C
+                        : widget.color.colorACA9A5),
+                _rowWidget(
+                    level: LocaleKeys.fair.tr,
+                    hours: LocaleKeys.five_hours.tr,
+                    iconsColor: _currentValue.toInt() == 3
+                        ? widget.color.colorC0A091
+                        : widget.color.colorACA9A5,
+                    icons: AssetIcons.clock,
+                    moodIcons: AssetIcons.neutralIcon,
+                    textColors: _currentValue.toInt() == 3
+                        ? widget.color.colorC0A091
+                        : widget.color.colorACA9A5),
+                _rowWidget(
+                  level: LocaleKeys.good.tr,
+                  hours: LocaleKeys.six_seven_hours.tr,
+                  iconsColor: _currentValue.toInt() == 2
+                      ? widget.color.colorFFCE5C
+                      : widget.color.colorACA9A5,
+                  icons: AssetIcons.clock,
+                  moodIcons: AssetIcons.goodIcon,
+                  textColors: _currentValue.toInt() == 2
+                      ? widget.color.colorFFCE5C
+                      : widget.color.colorACA9A5,
+                ),
+                _rowWidget(
+                  level: LocaleKeys.excellent.tr,
+                  hours: LocaleKeys.seven_nine_hours.tr,
+                  moodIcons: AssetIcons.greatIcon,
+                  iconsColor: _currentValue.toInt() == 1
+                      ? widget.color.color9BB168
+                      : widget.color.colorACA9A5,
+                  icons: AssetIcons.clock,
+                  textColors: _currentValue.toInt() == 1
+                      ? widget.color.color9BB168
+                      : widget.color.colorACA9A5,
+                ),
               ],
             ),
           ),
@@ -99,14 +103,15 @@ class _SelectSleepState extends State<SelectSleep> {
                   ),
                   child: Slider(
                     value: _currentValue,
-                    min: 0,
-                    max: 4,
+                    min: 1,
+                    max: 5,
                     divisions: 4,
                     activeColor: _getActiveColor(),
-                    inactiveColor: const Color(0xffEDE9E6),
+                    inactiveColor: widget.color.colorEDE9E6,
                     onChanged: (double value) {
                       setState(() {
                         _currentValue = value;
+                        _setSleepValue(_currentValue.toInt());
                       });
                     },
                   ),
@@ -117,6 +122,29 @@ class _SelectSleepState extends State<SelectSleep> {
         ],
       ),
     );
+  }
+
+  void _setSleepValue(int value) {
+    // Cập nhật giá trị sleep theo đúng yêu cầu
+    switch (value) {
+      case 1:
+        widget.controller.setSleep(Sleep.sevenToNineHours);
+        break;
+      case 2:
+        widget.controller.setSleep(Sleep.sixToSevenHours);
+        break;
+      case 3:
+        widget.controller.setSleep(Sleep.fiveHours);
+        break;
+      case 4:
+        widget.controller.setSleep(Sleep.threeToFourHours);
+        break;
+      case 5:
+        widget.controller.setSleep(Sleep.lessThan3Hours);
+        break;
+      default:
+        widget.controller.setSleep(Sleep.sevenToNineHours);
+    }
   }
 
   Widget _rowWidget({
@@ -167,16 +195,17 @@ class _SelectSleepState extends State<SelectSleep> {
   }
 
   Color _getActiveColor() {
+    // Đổi lại ánh xạ màu theo giá trị của _currentValue
     switch (_currentValue.toInt()) {
-      case 4:
-        return widget.color.color9BB168;
-      case 3:
-        return widget.color.colorFFCE5C;
-      case 2:
-        return widget.color.colorC0A091;
       case 1:
+        return widget.color.color9BB168;
+      case 2:
+        return widget.color.colorFFCE5C;
+      case 3:
+        return widget.color.colorC0A091;
+      case 4:
         return widget.color.colorED7E1C;
-      case 0:
+      case 5:
         return widget.color.colorA694F5;
       default:
         return widget.color.colorACA9A5;

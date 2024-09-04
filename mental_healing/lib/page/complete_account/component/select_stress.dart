@@ -1,8 +1,11 @@
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/complete_account/complete_account_controller.dart';
 
 class SelectStress extends StatefulWidget with BaseMixin {
-  const SelectStress({super.key});
+  final CompleteAccountController controller =
+      Get.put(CompleteAccountController());
+  SelectStress({super.key});
 
   @override
   State<SelectStress> createState() => _SelectStressState();
@@ -78,6 +81,7 @@ class _SelectStressState extends State<SelectStress> {
               children: List.generate(5, (index) {
                 int number = index + 1;
                 bool isSelected = number == selectedNumber;
+                widget.controller.setStress(selectedNumber);
                 return GestureDetector(
                   onTap: () {
                     setState(() {

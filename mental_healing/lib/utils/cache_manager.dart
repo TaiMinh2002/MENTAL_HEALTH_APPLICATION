@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:get_storage/get_storage.dart';
+import 'package:mental_healing/model/user_info.dart';
 
-class CacheManager {
+mixin CacheManager {
   static final GetStorage _box = GetStorage();
-
+  static const String _keyUser = 'loggedInUser';
+  static const String _keyAccountSetupComplete = 'accountSetupComplete';
   static const String _keyFirstRun = 'firstRun';
   static const String _keyFirstLogin = 'firstLogin';
 
@@ -17,6 +21,14 @@ class CacheManager {
 
   static String? getStoredRefreshToken() {
     return _box.read('refreshToken');
+  }
+
+  static Future<void> markAccountSetupComplete() async {
+    await _box.write(_keyAccountSetupComplete, true);
+  }
+
+  static bool hasCompletedAccountSetup() {
+    return _box.read(_keyAccountSetupComplete) ?? false;
   }
 
   static Future<void> clearStoredToken() async {
@@ -41,5 +53,26 @@ class CacheManager {
 
   static Future<void> markFirstLoginComplete() async {
     await _box.write(_keyFirstLogin, false);
+  }
+
+  // Lưu thông tin UserInfo dưới dạng JSON
+  static Future<void> storeUser(UserInfo user) async {
+    await _box.write(_keyUser, jsonEncode(user.toJson()));
+  }
+
+  // Truy xuất thông tin UserInfo
+  static UserInfo? getStoredUser() {
+    final String? userData = _box.read(_keyUser);
+    if (userData != null) {
+      final Map<String, dynamic> json = jsonDecode(userData);
+      return UserInfo.fromJson(json); // Chuyển từ JSON sang đối tượng UserInfo
+    }
+    return null;
+  }
+
+  // Xóa thông tin user
+  static Future<void> clearUser() async {
+    await _box.remove(_keyUser);
+    await _box.remove(_keyAccountSetupComplete);
   }
 }

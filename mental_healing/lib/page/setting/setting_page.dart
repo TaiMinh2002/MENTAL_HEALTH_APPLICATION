@@ -112,7 +112,10 @@ class SettingPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _title(LocaleKeys.logout.tr),
-        _item(prefixIcon: AssetIcons.signOut, title: LocaleKeys.logout.tr),
+        _item(
+            prefixIcon: AssetIcons.signOut,
+            title: LocaleKeys.logout.tr,
+            onTap: controller.handleSignOut),
       ],
     );
   }

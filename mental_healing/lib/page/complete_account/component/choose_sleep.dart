@@ -15,7 +15,7 @@ class ChooseSleep extends StatelessWidget with BaseMixin {
         backgroundColor: color.backgroundColor,
         body: SingleChildScrollView(
           child: Column(
-            children: [_bodyWidget(), const SelectSleep()],
+            children: [_bodyWidget(), SelectSleep()],
           ),
         ),
       ),
