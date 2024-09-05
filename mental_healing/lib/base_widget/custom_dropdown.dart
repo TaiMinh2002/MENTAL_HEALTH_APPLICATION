@@ -1,15 +1,18 @@
-import 'package:mental_healing/import.dart';
+import 'package:flutter/material.dart';
+import 'package:mental_healing/base/base_mixin.dart';
 
-class CustomDropdown extends StatefulWidget {
+class CustomDropdown extends StatefulWidget with BaseMixin {
   final List<String> items;
   final String initialValue;
   final String title;
+  final Function(String) onChanged;
 
   const CustomDropdown({
     super.key,
     required this.items,
     required this.initialValue,
     required this.title,
+    required this.onChanged,
   });
 
   @override
@@ -49,6 +52,8 @@ class _CustomDropdownState extends State<CustomDropdown> {
       if (value != null) {
         setState(() {
           selectedValue = value;
+          widget.onChanged(
+              selectedValue); // Gọi hàm onChanged khi chọn giá trị mới
         });
       }
     });
@@ -70,8 +75,8 @@ class _CustomDropdownState extends State<CustomDropdown> {
                 children: [
                   TextSpan(
                     text: widget.title,
-                    style: const TextStyle(
-                      color: Color(0xff4F3422),
+                    style: TextStyle(
+                      color: widget.color.mainColor,
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),
@@ -84,10 +89,10 @@ class _CustomDropdownState extends State<CustomDropdown> {
             onTap: () => _showCustomDropdown(context),
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: widget.color.whiteColor,
                 borderRadius: BorderRadius.circular(8.0),
                 border: Border.all(
-                  color: Colors.grey,
+                  color: widget.color.color616161,
                   width: 1.0,
                 ),
               ),
@@ -100,17 +105,14 @@ class _CustomDropdownState extends State<CustomDropdown> {
                     Expanded(
                       child: Text(
                         selectedValue,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                        style: TextStyle(
+                            color: widget.color.blackColor,
+                            fontSize: 16,
+                            overflow: TextOverflow.ellipsis),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: Icon(Icons.arrow_drop_down, color: Colors.grey),
-                    ),
+                    Icon(Icons.arrow_drop_down,
+                        color: widget.color.color616161),
                   ],
                 ),
               ),

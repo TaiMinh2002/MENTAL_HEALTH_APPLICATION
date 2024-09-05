@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/page/personal_information/personal_information_controller.dart';
 
-class EditAge extends StatefulWidget {
+class EditAge extends StatefulWidget with BaseMixin {
   const EditAge({super.key});
 
   @override
@@ -26,12 +27,12 @@ class _EditAgeState extends State<EditAge> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RichText(
-            text: const TextSpan(
+            text: TextSpan(
               children: [
                 TextSpan(
                   text: 'Age',
                   style: TextStyle(
-                    color: Color(0xff4F3422),
+                    color: widget.color.mainColor,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
                   ),
@@ -44,10 +45,10 @@ class _EditAgeState extends State<EditAge> {
             width: width,
             height: height,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: widget.color.whiteColor,
               borderRadius: BorderRadius.circular(8.0),
               border: Border.all(
-                color: Colors.grey,
+                color: widget.color.color616161,
                 width: 1.0,
               ),
             ),
@@ -59,13 +60,13 @@ class _EditAgeState extends State<EditAge> {
                 children: [
                   Obx(() => Text(
                         '${controller.selectedAge.value}',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
+                        style: TextStyle(
+                          color: widget.color.blackColor,
+                          fontSize: 16,
                           overflow: TextOverflow.ellipsis,
                         ),
                       )),
-                  const Icon(Icons.arrow_drop_down, color: Colors.grey),
+                  Icon(Icons.arrow_drop_down, color: widget.color.color616161),
                 ],
               ),
             ),

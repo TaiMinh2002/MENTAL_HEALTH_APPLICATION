@@ -67,14 +67,11 @@ class SignInController extends GetxController {
           await CacheManager.storeUser(user);
           CacheManager.markFirstLoginComplete();
 
-          // Kiểm tra xem user đã hoàn tất thiết lập tài khoản chưa
-          // if (CacheManager.hasCompletedAccountSetup()) {
-          //   Get.offAllNamed(AppRouter
-          //       .routerDashboard); // Chuyển thẳng tới Dashboard nếu đã thiết lập xong
-          // } else {
-          Get.offNamed(AppRouter
-              .routerCompleteAccountPage); // Chuyển tới trang thiết lập tài khoản nếu chưa
-          // }
+          if (CacheManager.hasCompletedAccountSetup()) {
+            Get.offAllNamed(AppRouter.routerDashboard);
+          } else {
+            Get.offNamed(AppRouter.routerCompleteAccountPage);
+          }
         } else {
           throw Exception('Token or refresh token is missing');
         }

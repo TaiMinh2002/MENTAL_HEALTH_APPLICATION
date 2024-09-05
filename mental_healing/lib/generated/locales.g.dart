@@ -126,6 +126,7 @@ class LocaleKeys {
   static const invalid_token = 'invalid_token';
   static const logout_failed = 'logout_failed';
   static const token_missing = 'token_missing';
+  static const enter_new_password = 'enter_new_password';
 }
 
 class Locales {
@@ -250,6 +251,7 @@ class Locales {
     'invalid_token': 'Invalid Token',
     'logout_failed': 'Logout Failed',
     'token_missing': 'Token Missing',
+    'enter_new_password': 'Enter New Password',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -377,5 +379,6 @@ class Locales {
     'invalid_token': 'Token Không Hợp Lệ',
     'logout_failed': 'Đăng Xuất Thất Bại',
     'token_missing': 'Thiếu Token',
+    'enter_new_password': 'Nhập Mật Khẩu Mới',
   };
 }

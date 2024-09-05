@@ -113,5 +113,6 @@
     "logout_success": "Logout Success",
     "invalid_token": "Invalid Token",
     "logout_failed": "Logout Failed",
-    "token_missing": "Token Missing"
+    "token_missing": "Token Missing",
+    "enter_new_password": "Enter New Password"
 }

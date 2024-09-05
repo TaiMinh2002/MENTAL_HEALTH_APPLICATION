@@ -9,6 +9,8 @@ class UserInfo {
   final int? gender;
   final int? sleep;
   final int? stress;
+  final int? mood;
+  final String? password;
 
   UserInfo({
     this.id,
@@ -21,6 +23,8 @@ class UserInfo {
     this.gender,
     this.sleep,
     this.stress,
+    this.mood,
+    this.password,
   });
 
   // Tạo phương thức để chuyển từ JSON sang đối tượng UserInfo
@@ -36,6 +40,8 @@ class UserInfo {
       gender: json['gender'],
       sleep: json['sleep'],
       stress: json['stress'],
+      mood: json['mood'],
+      password: json['password'],
     );
   }
 
@@ -52,6 +58,8 @@ class UserInfo {
       'gender': gender,
       'sleep': sleep,
       'stress': stress,
+      'mood': mood,
+      'password': password,
     };
   }
 }
