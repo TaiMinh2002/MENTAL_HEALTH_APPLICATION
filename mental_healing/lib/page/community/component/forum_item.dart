@@ -2,19 +2,17 @@ import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/import.dart';
 
-class CommunityItem extends StatelessWidget with BaseMixin {
-  const CommunityItem({super.key});
+class ForumItem extends StatelessWidget with BaseMixin {
+  const ForumItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _coverImageWidget(),
                 Expanded(child: _infoWidget()),
@@ -60,7 +58,8 @@ class CommunityItem extends StatelessWidget with BaseMixin {
         title: LocaleKeys.join.tr,
         onClick: () {},
         width: 100,
-        borderRadius: 30,
+        height: 50,
+        borderRadius: 8,
       ),
     );
   }

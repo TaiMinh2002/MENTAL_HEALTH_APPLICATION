@@ -116,12 +116,12 @@ class LocaleKeys {
   static const music = 'music';
   static const expert = 'expert';
   static const chatbot = 'chatbot';
-  static const community = 'community';
+  static const forum = 'forum';
   static const member = 'member';
   static const post = 'post';
   static const join = 'join';
-  static const all_community = 'all_community';
-  static const your_community = 'your_community';
+  static const all_forum = 'all_forum';
+  static const your_forum = 'your_forum';
   static const logout_success = 'logout_success';
   static const invalid_token = 'invalid_token';
   static const logout_failed = 'logout_failed';
@@ -241,12 +241,12 @@ class Locales {
     'music': 'Music',
     'expert': 'Expert',
     'chatbot': 'Chatbot',
-    'community': 'Community',
+    'forum': 'Forum',
     'member': 'Member',
     'post': 'Post',
     'join': 'Join',
-    'all_community': 'All Community',
-    'your_community': 'Your Community',
+    'all_forum': 'All Forum',
+    'your_forum': 'Your Forum',
     'logout_success': 'Logout Success',
     'invalid_token': 'Invalid Token',
     'logout_failed': 'Logout Failed',
@@ -369,12 +369,12 @@ class Locales {
     'music': 'Âm Nhạc',
     'expert': 'Chuyên Gia',
     'chatbot': 'Chatbot',
-    'community': 'Cộng Đồng',
+    'forum': 'Diễn đàn',
     'member': 'Thành Viên',
     'post': 'Bài Viết',
     'join': 'Tham Gia',
-    'all_community': 'Tất Cả Cộng Đồng',
-    'your_community': 'Cộng Đồng Của Bạn',
+    'all_forum': 'Tất Cả Diễn đàn',
+    'your_forum': 'Diễn đàn Của Bạn',
     'logout_success': 'Đăng Xuất Thành Công',
     'invalid_token': 'Token Không Hợp Lệ',
     'logout_failed': 'Đăng Xuất Thất Bại',

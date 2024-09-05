@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget with BaseMixin {
                         _buildGridItem(LocaleKeys.music.tr, AssetIcons.music,
                             context, () {}),
                         _buildGridItem(
-                            LocaleKeys.community.tr,
+                            LocaleKeys.forum.tr,
                             AssetIcons.community,
                             context,
                             controller.handleCommunity),

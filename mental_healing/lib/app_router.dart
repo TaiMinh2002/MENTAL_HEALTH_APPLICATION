@@ -1,5 +1,5 @@
 import 'package:mental_healing/import.dart';
-import 'package:mental_healing/page/community/community_page.dart';
+import 'package:mental_healing/page/community/forum_page.dart';
 import 'package:mental_healing/page/complete_account/complete_account_page.dart';
 import 'package:mental_healing/page/dashboard/dashboardpage.dart';
 import 'package:mental_healing/page/intro/component/page_view_intro.dart';
@@ -20,7 +20,7 @@ class AppRouter {
   static const String routerDashboard = '/dashboard';
   static const String routerPersonInfo = '/person_info';
   static const String routerWebview = '/webview';
-  static const String routerCommunity = '/community';
+  static const String routerForum = '/forum';
 
   static const curve = Curves.fastOutSlowIn;
   static const transition = Transition.rightToLeftWithFade;
@@ -92,9 +92,9 @@ class AppRouter {
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,
     ),
-    GetPage<CommunityPage>(
-      name: routerCommunity,
-      page: () => CommunityPage(),
+    GetPage<ForumPage>(
+      name: routerForum,
+      page: () => ForumPage(),
       curve: curve,
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,
