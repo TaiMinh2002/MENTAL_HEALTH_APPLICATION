@@ -2,7 +2,7 @@ import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/import.dart';
 
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
-  AppBarCustom({
+  const AppBarCustom({
     Key? key,
     this.titleAppBar = '',
     this.widgetTitle,
@@ -22,6 +22,10 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     this.backIconColor,
     this.actionButtonWidth,
     this.marginRight = 14,
+    this.suffixIcon1,
+    this.suffixIcon2,
+    this.suffixPressed1,
+    this.suffixPressed2,
   }) : super(key: key);
 
   final String titleAppBar;
@@ -42,34 +46,20 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   final double? actionButtonWidth;
   final Color? backIconColor;
   final double? marginRight;
+  final String? suffixIcon1;
+  final String? suffixIcon2;
+  final VoidCallback? suffixPressed1;
+  final VoidCallback? suffixPressed2;
+
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-      preferredSize: Size.fromHeight(kToolbarHeight.h),
+      preferredSize: Size.fromHeight(kToolbarHeight),
       child: AppBar(
         scrolledUnderElevation: 0,
         bottom: bottom,
         automaticallyImplyLeading: false,
-        actions: actionTitleButton != null
-            ? <Widget>[
-                Center(
-                  child: ButtonWidget(
-                    title: actionTitleButton!,
-                    onClick: actionPress!,
-                    textColor: Colors.white,
-                    borderColor: Colors.white,
-                    height: 30.h,
-                    width: actionButtonWidth,
-                    borderRadius: actionButtonRadius,
-                    padding: actionButtonPadding,
-                    margin: EdgeInsets.only(right: 14.r),
-                  ),
-                ),
-              ]
-            : <Widget>[
-                ...actions ?? <Widget>[],
-                SizedBox(width: marginRight),
-              ],
+        actions: _buildActions(),
         backgroundColor: backgroundColor ?? Colors.white,
         centerTitle: centerTitle,
         leading: hideLeading ? const SizedBox() : _buildLeading(),
@@ -88,6 +78,51 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
+  List<Widget> _buildActions() {
+    List<Widget> actionWidgets = actions ?? <Widget>[];
+
+    if (suffixIcon1 != null) {
+      actionWidgets.add(
+        GestureDetector(
+            onTap: suffixPressed1,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: SvgPicture.asset(suffixIcon1!, width: 35),
+            )),
+      );
+    }
+
+    if (suffixIcon2 != null) {
+      actionWidgets.add(
+        GestureDetector(
+            onTap: suffixPressed2,
+            child: SvgPicture.asset(suffixIcon2!, width: 35)),
+      );
+    }
+
+    if (actionTitleButton != null) {
+      actionWidgets.add(
+        Center(
+          child: ButtonWidget(
+            title: actionTitleButton!,
+            onClick: actionPress!,
+            textColor: Colors.white,
+            borderColor: Colors.white,
+            height: 30,
+            width: actionButtonWidth,
+            borderRadius: actionButtonRadius,
+            padding: actionButtonPadding,
+            margin: EdgeInsets.only(right: marginRight ?? 14),
+          ),
+        ),
+      );
+    } else {
+      actionWidgets.add(SizedBox(width: marginRight));
+    }
+
+    return actionWidgets;
+  }
+
   Widget? _buildLeading() {
     if (!automaticallyImplyLeading) {
       return null;
@@ -102,12 +137,12 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
         }
       },
       child: Padding(
-        padding: EdgeInsets.only(left: 16.r),
-        child: SvgPicture.asset(AssetIcons.iconBack, width: 45.w),
+        padding: EdgeInsets.only(left: 16),
+        child: SvgPicture.asset(leadingIcon ?? AssetIcons.iconBack, width: 45),
       ),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(50.r);
+  Size get preferredSize => Size.fromHeight(60);
 }

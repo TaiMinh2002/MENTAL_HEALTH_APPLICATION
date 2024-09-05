@@ -28,6 +28,8 @@ class AssetIcons {
 	static const String chatbot = 'assets/icons/chatbot.svg';
 	static const String chooseAvatar = 'assets/icons/choose_avatar.svg';
 	static const String clock = 'assets/icons/clock.svg';
+	static const String community = 'assets/icons/community.svg';
+	static const String createCommunity = 'assets/icons/create_community.svg';
 	static const String darkMode = 'assets/icons/dark_mode.svg';
 	static const String dashboard1 = 'assets/icons/dashboard1.svg';
 	static const String dashboard2 = 'assets/icons/dashboard2.svg';
@@ -62,6 +64,7 @@ class AssetIcons {
 	static const String person = 'assets/icons/person.svg';
 	static const String report = 'assets/icons/report.svg';
 	static const String sadIcon = 'assets/icons/sad_icon.svg';
+	static const String searchIcon = 'assets/icons/search-icon.svg';
 	static const String share = 'assets/icons/share.svg';
 	static const String signOut = 'assets/icons/sign_out.svg';
 	static const String sleep = 'assets/icons/sleep.svg';
