@@ -1,12 +1,12 @@
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/custom_dropdown.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
-import 'package:mental_healing/generated/locales.g.dart';
 import 'package:mental_healing/global/app_enum_ex.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/personal_information/component/edit_age.dart';
 import 'package:mental_healing/page/personal_information/personal_information_controller.dart';
 import 'package:mental_healing/global/app_enum.dart';
+import 'package:mental_healing/utils/cache_manager.dart';
 
 class EditInfo extends StatelessWidget {
   final PersonalInformationController controller =
@@ -16,6 +16,10 @@ class EditInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (controller.user != null) {
+      controller.initializeUserInfoFromDb(controller.user?.mood ?? 0,
+          controller.user?.sleep ?? 0, controller.user?.stress ?? 0);
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
       child: Column(
@@ -46,32 +50,46 @@ class EditInfo extends StatelessWidget {
   }
 
   Widget _moodWidget(BuildContext context) {
-    return CustomDropdown(
-      title: 'Mood',
-      items: Mood.values.map((mood) => mood.title).toList(),
-      initialValue: Mood.values.first.title,
-    );
+    return Obx(() => CustomDropdown(
+          title: 'Mood',
+          items: Mood.values.map((mood) => mood.title).toList(),
+          initialValue: controller.selectedMood.value.title,
+          onChanged: (String title) {
+            final mood = Mood.values.firstWhere((mood) => mood.title == title);
+            controller.updateMood(mood);
+          },
+        ));
   }
 
   Widget _sleepWidget(BuildContext context) {
-    return CustomDropdown(
-      title: 'Sleep',
-      items: Sleep.values.map((sleep) => sleep.title).toList(),
-      initialValue: Sleep.values.first.title,
-    );
+    return Obx(() => CustomDropdown(
+          title: 'Sleep',
+          items: Sleep.values.map((sleep) => sleep.title).toList(),
+          initialValue: controller.selectedSleep.value.title,
+          onChanged: (String title) {
+            final sleep =
+                Sleep.values.firstWhere((sleep) => sleep.title == title);
+            controller.updateSleep(sleep);
+          },
+        ));
   }
 
   Widget _stressWidget(BuildContext context) {
-    return CustomDropdown(
-      title: 'Stress',
-      items: Stress.values.map((stress) => stress.title).toList(),
-      initialValue: Stress.values.first.title,
-    );
+    return Obx(() => CustomDropdown(
+          title: 'Stress',
+          items: Stress.values.map((stress) => stress.title).toList(),
+          initialValue: controller.selectedStress.value.title,
+          onChanged: (String title) {
+            final stress =
+                Stress.values.firstWhere((stress) => stress.title == title);
+            controller.updateStress(stress);
+          },
+        ));
   }
 
   Widget _userNameWidget() {
     return WidgetInputText(
-      hintText: 'localeKeys.enter_username.tr',
+      hintText: CacheManager.getStoredUser()?.username ?? '',
       controller: controller.usernameController,
       validator: controller.checkUsernameValidator,
       textCapitalization: TextCapitalization.none,
@@ -82,7 +100,7 @@ class EditInfo extends StatelessWidget {
 
   Widget _passwordWidget() {
     return WidgetInputText(
-      hintText: 'localeKeys.password_placeholder.tr',
+      hintText: LocaleKeys.enter_new_password.tr,
       controller: controller.passwordController,
       validator: controller.checkPasswordValidator,
       textCapitalization: TextCapitalization.none,
@@ -96,7 +114,7 @@ class EditInfo extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 35, right: 16, left: 16, bottom: 20),
       child: ButtonWidget(
-        onClick: () {},
+        onClick: controller.handleSaveSetting,
         textSize: 18,
         title: LocaleKeys.save_setting.tr,
         suffixIcon: AssetIcons.next,

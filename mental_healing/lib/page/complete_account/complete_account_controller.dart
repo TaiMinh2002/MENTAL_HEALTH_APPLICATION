@@ -6,6 +6,7 @@ import 'package:mental_healing/base_widget/snack_bar_helper.dart';
 import 'package:mental_healing/global/app_enum.dart';
 import 'package:mental_healing/global/app_enum_ex.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/model/user_info.dart';
 import 'package:mental_healing/utils/cache_manager.dart';
 import 'package:mental_healing/utils/config.dart';
 import 'package:http/http.dart' as http;
@@ -103,8 +104,10 @@ class CompleteAccountController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        jsonDecode(response.body);
-        LoadingHelper.hideLoading();
+        final responseData = jsonDecode(response.body);
+        final data = responseData['data'];
+        final user = UserInfo.fromJson(data['user']);
+        await CacheManager.storeUser(user);
         Get.offAllNamed(AppRouter.routerDashboard);
       } else {
         LoadingHelper.hideLoading();

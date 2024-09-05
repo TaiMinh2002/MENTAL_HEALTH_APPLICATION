@@ -63,7 +63,10 @@ class PersonalInformationPage extends StatelessWidget with BaseMixin {
               radius: 60,
               backgroundImage: controller.imageFile.value != null
                   ? FileImage(File(controller.imageFile.value!.path))
-                  : const AssetImage(AssetImages.noPerson) as ImageProvider,
+                  : (controller.user?.avatar != null
+                          ? NetworkImage(controller.user!.avatar!)
+                          : const AssetImage(AssetImages.noPerson))
+                      as ImageProvider,
             )),
         GestureDetector(
           onTap: () {

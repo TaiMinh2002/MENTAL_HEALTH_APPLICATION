@@ -113,5 +113,6 @@
   "logout_success": "Đăng Xuất Thành Công",
   "invalid_token": "Token Không Hợp Lệ",
   "logout_failed": "Đăng Xuất Thất Bại",
-  "token_missing": "Thiếu Token"
+  "token_missing": "Thiếu Token",
+  "enter_new_password": "Nhập Mật Khẩu Mới"
 }
