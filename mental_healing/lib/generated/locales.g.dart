@@ -127,6 +127,9 @@ class LocaleKeys {
   static const logout_failed = 'logout_failed';
   static const token_missing = 'token_missing';
   static const enter_new_password = 'enter_new_password';
+  static const token_is_missing = 'token_is_missing';
+  static const joined = 'joined';
+  static const only_images_allowed = 'only_images_allowed';
 }
 
 class Locales {
@@ -252,6 +255,9 @@ class Locales {
     'logout_failed': 'Logout Failed',
     'token_missing': 'Token Missing',
     'enter_new_password': 'Enter New Password',
+    'token_is_missing': 'Token is missing',
+    'joined': 'Joined',
+    'only_images_allowed': 'Only images are allowed',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -380,5 +386,8 @@ class Locales {
     'logout_failed': 'Đăng Xuất Thất Bại',
     'token_missing': 'Thiếu Token',
     'enter_new_password': 'Nhập Mật Khẩu Mới',
+    'token_is_missing': 'Thiếu token',
+    'joined': 'Đã tham gia',
+    'only_images_allowed': 'Chỉ cho phép hình ảnh',
   };
 }

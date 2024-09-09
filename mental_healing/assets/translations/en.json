@@ -114,5 +114,8 @@
     "invalid_token": "Invalid Token",
     "logout_failed": "Logout Failed",
     "token_missing": "Token Missing",
-    "enter_new_password": "Enter New Password"
+    "enter_new_password": "Enter New Password",
+    "token_is_missing": "Token is missing",
+    "joined": "Joined",
+    "only_images_allowed": "Only images are allowed"
 }

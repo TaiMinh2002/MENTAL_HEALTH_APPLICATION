@@ -69,7 +69,7 @@ class SignUpController extends GetxController {
       'password': password,
     };
 
-    const String url = '${Config.apiUrl}/users/signup';
+    const String url = '${Config.apiUrl}/signup';
 
     try {
       LoadingHelper.showLoading();

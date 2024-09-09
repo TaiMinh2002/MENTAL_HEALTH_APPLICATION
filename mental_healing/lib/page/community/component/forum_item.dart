@@ -1,9 +1,14 @@
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/model/forum_model.dart';
 
 class ForumItem extends StatelessWidget with BaseMixin {
-  const ForumItem({super.key});
+  final ForumModel forum;
+  final Function()? onJoin;
+  final Function()? onLeave;
+
+  const ForumItem({required this.forum, super.key, this.onJoin, this.onLeave});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,9 @@ class ForumItem extends StatelessWidget with BaseMixin {
   }
 
   Widget _coverImageWidget() {
-    return Image.asset(AssetImages.intro3, height: 50, width: 50);
+    return forum.coverImage != null
+        ? Image.network(forum.coverImage!, height: 50, width: 50)
+        : Image.asset(AssetImages.forumCoverImage, height: 50, width: 50);
   }
 
   Widget _infoWidget() {
@@ -36,13 +43,13 @@ class ForumItem extends StatelessWidget with BaseMixin {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Nameddddddhgfkegfjkrehrjksahfjklewhfkljhklhilh',
+            forum.title ?? '',
             style: textStyle.bold(size: 18, color: color.blackColor),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
           Text(
-            '... ${LocaleKeys.member.tr} • ... ${LocaleKeys.post.tr}feihjtklewjtldjsgiofejrwtiodjsghjtfgldshjfgnioew4hjiohjiohoihn',
+            '${forum.memberCount} ${LocaleKeys.member.tr} • ${forum.postCount} ${LocaleKeys.post.tr}',
             overflow: TextOverflow.ellipsis,
             style: textStyle.regular(size: 12, color: color.blackColor),
           ),
@@ -56,7 +63,20 @@ class ForumItem extends StatelessWidget with BaseMixin {
       padding: const EdgeInsets.only(left: 30.0),
       child: ButtonWidget(
         title: LocaleKeys.join.tr,
-        onClick: () {},
+        onClick: onJoin ?? () {},
+        width: 100,
+        height: 50,
+        borderRadius: 8,
+      ),
+    );
+  }
+
+  Widget _outButton() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30.0),
+      child: ButtonWidget(
+        title: LocaleKeys.joined.tr,
+        onClick: onLeave ?? () {},
         width: 100,
         height: 50,
         borderRadius: 8,

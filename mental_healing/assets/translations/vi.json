@@ -114,5 +114,8 @@
   "invalid_token": "Token Không Hợp Lệ",
   "logout_failed": "Đăng Xuất Thất Bại",
   "token_missing": "Thiếu Token",
-  "enter_new_password": "Nhập Mật Khẩu Mới"
+  "enter_new_password": "Nhập Mật Khẩu Mới",
+  "token_is_missing": "Thiếu token",
+  "joined": "Đã tham gia",
+  "only_images_allowed": "Chỉ cho phép hình ảnh"
 }

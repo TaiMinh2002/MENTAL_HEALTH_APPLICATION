@@ -1,4 +1,5 @@
 class AssetImages {
+	static const String forumCoverImage = 'assets/images/forum_cover_image.png';
 	static const String goodMood = 'assets/images/good_mood.png';
 	static const String greatMood = 'assets/images/great_mood.png';
 	static const String indicatorIntro1 = 'assets/images/indicator_intro1.png';
@@ -75,6 +76,7 @@ class AssetIcons {
 
 class AssetLotties {
 	static const String appLoading = 'assets/lotties/app_loading.json';
+	static const String loadMore = 'assets/lotties/load_more.json';
 	static const String splashLoading = 'assets/lotties/splash_loading.json';
 }
 
