@@ -117,5 +117,11 @@
   "enter_new_password": "Nhập Mật Khẩu Mới",
   "token_is_missing": "Thiếu token",
   "joined": "Đã tham gia",
-  "only_images_allowed": "Chỉ cho phép hình ảnh"
+  "only_images_allowed": "Chỉ cho phép hình ảnh",
+  "create_forum": "Tạo diễn đàn",
+  "enter_your_title": "Nhập tiêu đề của bạn...",
+  "enter_your_description": "Nhập mô tả của bạn...",
+  "enter_forum_title": "Vui lòng nhập tiêu đề diễn đàn của bạn",
+  "enter_forum_description": "Vui lòng nhập mô tả diễn đàn của bạn",
+  "welcome_forum_message": "Chào mừng bạn đến với diễn đàn sức khỏe tâm lý này,\n được tạo ra bởi những người dùng như bạn\n để chia sẻ câu chuyện, hỗ trợ\n và giúp đỡ nhau vượt qua những thăng trầm của cuộc sống.\n\n Đây là nơi mà tiếng nói của mỗi người đều quan trọng,\n và bằng cách chia sẻ trải nghiệm của mình,\n bạn đóng góp vào một cộng đồng\n đầy sự quan tâm và thấu hiểu"
 }

@@ -130,6 +130,12 @@ class LocaleKeys {
   static const token_is_missing = 'token_is_missing';
   static const joined = 'joined';
   static const only_images_allowed = 'only_images_allowed';
+  static const create_forum = 'create_forum';
+  static const enter_your_title = 'enter_your_title';
+  static const enter_your_description = 'enter_your_description';
+  static const enter_forum_title = 'enter_forum_title';
+  static const enter_forum_description = 'enter_forum_description';
+  static const welcome_forum_message = 'welcome_forum_message';
 }
 
 class Locales {
@@ -258,6 +264,13 @@ class Locales {
     'token_is_missing': 'Token is missing',
     'joined': 'Joined',
     'only_images_allowed': 'Only images are allowed',
+    'create_forum': 'Create Forum',
+    'enter_your_title': 'Enter your title...',
+    'enter_your_description': 'Enter your description...',
+    'enter_forum_title': 'Please enter your forum\'s title',
+    'enter_forum_description': 'Please enter your forum\'s description',
+    'welcome_forum_message':
+        'Welcome to this mental health forum,\n created by users like you to share stories,\n offer support, and help each other\n through the ups and downs of life.\n\n This is a place where everyone’s voice matters,\n and by sharing your experiences,\n you contribute to a community\n of care and understanding',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -389,5 +402,12 @@ class Locales {
     'token_is_missing': 'Thiếu token',
     'joined': 'Đã tham gia',
     'only_images_allowed': 'Chỉ cho phép hình ảnh',
+    'create_forum': 'Tạo diễn đàn',
+    'enter_your_title': 'Nhập tiêu đề của bạn...',
+    'enter_your_description': 'Nhập mô tả của bạn...',
+    'enter_forum_title': 'Vui lòng nhập tiêu đề diễn đàn của bạn',
+    'enter_forum_description': 'Vui lòng nhập mô tả diễn đàn của bạn',
+    'welcome_forum_message':
+        'Chào mừng bạn đến với diễn đàn sức khỏe tâm lý này,\n được tạo ra bởi những người dùng như bạn\n để chia sẻ câu chuyện, hỗ trợ\n và giúp đỡ nhau vượt qua những thăng trầm của cuộc sống.\n\n Đây là nơi mà tiếng nói của mỗi người đều quan trọng,\n và bằng cách chia sẻ trải nghiệm của mình,\n bạn đóng góp vào một cộng đồng\n đầy sự quan tâm và thấu hiểu',
   };
 }

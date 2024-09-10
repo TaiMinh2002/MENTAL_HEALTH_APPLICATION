@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/snack_bar_helper.dart';
 import 'package:mental_healing/import.dart';
@@ -8,6 +9,7 @@ import 'dart:convert';
 import 'package:mental_healing/model/forum_model.dart';
 import 'package:mental_healing/utils/cache_manager.dart';
 import 'package:mental_healing/utils/config.dart';
+import 'package:mental_healing/utils/function.dart';
 
 class ForumController extends GetxController with BaseMixin {
   // Khai báo các biến bằng Rx
@@ -15,11 +17,29 @@ class ForumController extends GetxController with BaseMixin {
   RxBool isLoading = false.obs;
   RxInt currentPage = 1.obs;
   RxBool hasMore = true.obs;
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final createForumFormKey = GlobalKey<FormState>();
+  RxBool firstValidation = false.obs;
 
   @override
   void onInit() {
     super.onInit();
     getAllForums();
+  }
+
+  String? checkTitleValidator(String? value) {
+    if (isNullOrEmpty(value?.trim())) {
+      return LocaleKeys.enter_username.tr;
+    }
+    return null;
+  }
+
+  String? checkDescriptionValidator(String? value) {
+    if (isNullOrEmpty(value?.trim())) {
+      return LocaleKeys.enter_email.tr;
+    }
+    return null;
   }
 
   Future<void> getAllForums({bool isLoadMore = false}) async {
@@ -149,5 +169,23 @@ class ForumController extends GetxController with BaseMixin {
     } catch (e) {
       SnackBarHelper.showError(e.toString());
     }
+  }
+
+  Future<void> handleIntroForum() async {
+    Get.toNamed(AppRouter.routerIntroForum);
+  }
+
+  bool validation() {
+    if (createForumFormKey.currentState?.validate() == true) {
+      createForumFormKey.currentState!.save();
+    }
+    if (!firstValidation.value) {
+      firstValidation.value = true;
+    }
+    if (titleController.text.trim().isEmpty ||
+        descriptionController.text.trim().isEmpty) {
+      return false;
+    }
+    return createForumFormKey.currentState?.validate() ?? false;
   }
 }

@@ -117,5 +117,11 @@
     "enter_new_password": "Enter New Password",
     "token_is_missing": "Token is missing",
     "joined": "Joined",
-    "only_images_allowed": "Only images are allowed"
+    "only_images_allowed": "Only images are allowed",
+    "create_forum": "Create Forum",
+    "enter_your_title": "Enter your title...",
+    "enter_your_description": "Enter your description...",
+    "enter_forum_title": "Please enter your forum's title",
+    "enter_forum_description": "Please enter your forum's description",
+    "welcome_forum_message": "Welcome to this mental health forum,\n created by users like you to share stories,\n offer support, and help each other\n through the ups and downs of life.\n\n This is a place where everyone’s voice matters,\n and by sharing your experiences,\n you contribute to a community\n of care and understanding"
 }

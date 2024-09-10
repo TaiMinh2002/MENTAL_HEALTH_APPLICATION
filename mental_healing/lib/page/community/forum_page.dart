@@ -27,6 +27,7 @@ class ForumPage extends StatelessWidget with BaseMixin {
           titleAppBar: LocaleKeys.forum.tr,
           suffixIcon1: AssetIcons.createCommunity,
           suffixIcon2: AssetIcons.searchIcon,
+          suffixPressed1: controller.handleIntroForum,
           centerTitle: false,
         ),
         body: Obx(() {
@@ -62,4 +63,3 @@ class ForumPage extends StatelessWidget with BaseMixin {
     );
   }
 }
-

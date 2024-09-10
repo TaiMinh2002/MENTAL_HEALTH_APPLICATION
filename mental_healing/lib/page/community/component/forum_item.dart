@@ -15,9 +15,11 @@ class ForumItem extends StatelessWidget with BaseMixin {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _coverImageWidget(),
                 Expanded(child: _infoWidget()),
@@ -65,7 +67,7 @@ class ForumItem extends StatelessWidget with BaseMixin {
         title: LocaleKeys.join.tr,
         onClick: onJoin ?? () {},
         width: 100,
-        height: 50,
+        height: 30,
         borderRadius: 8,
       ),
     );

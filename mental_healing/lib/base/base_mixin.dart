@@ -1,4 +1,3 @@
-import 'package:mental_healing/global/app_text_style.dart';
 import 'package:mental_healing/import.dart';
 
 mixin BaseMixin {

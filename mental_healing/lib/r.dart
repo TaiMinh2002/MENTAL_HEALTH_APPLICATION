@@ -2,12 +2,15 @@ class AssetImages {
 	static const String forumCoverImage = 'assets/images/forum_cover_image.png';
 	static const String goodMood = 'assets/images/good_mood.png';
 	static const String greatMood = 'assets/images/great_mood.png';
+	static const String iconEyeActive = 'assets/images/icon_eye_active.png';
+	static const String iconEyeInActive = 'assets/images/icon_eye_in_active.png';
 	static const String indicatorIntro1 = 'assets/images/indicator_intro1.png';
 	static const String indicatorIntro2 = 'assets/images/indicator_intro2.png';
 	static const String indicatorIntro3 = 'assets/images/indicator_intro3.png';
 	static const String intro1 = 'assets/images/intro1.png';
 	static const String intro2 = 'assets/images/intro2.png';
 	static const String intro3 = 'assets/images/intro3.png';
+	static const String introForum = 'assets/images/intro_forum.png';
 	static const String man = 'assets/images/man.png';
 	static const String mindfullness = 'assets/images/mindfullness.png';
 	static const String neutralMood = 'assets/images/neutral_mood.png';
@@ -49,8 +52,6 @@ class AssetIcons {
 	static const String iconBack = 'assets/icons/icon_back.svg';
 	static const String iconCheck = 'assets/icons/icon_check.svg';
 	static const String iconEmail = 'assets/icons/icon_email.svg';
-	static const String iconEyeActive = 'assets/icons/icon_eye_active.png';
-	static const String iconEyeInActive = 'assets/icons/icon_eye_in_active.png';
 	static const String iconPassword = 'assets/icons/icon_password.svg';
 	static const String language = 'assets/icons/language.svg';
 	static const String logo = 'assets/icons/logo.svg';
