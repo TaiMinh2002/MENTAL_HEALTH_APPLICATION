@@ -1,5 +1,6 @@
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/community/component/create_forum.dart';
+import 'package:mental_healing/page/community/component/forum_detail.dart';
 import 'package:mental_healing/page/community/component/intro_forum.dart';
 import 'package:mental_healing/page/community/forum_page.dart';
 import 'package:mental_healing/page/complete_account/complete_account_page.dart';
@@ -25,6 +26,7 @@ class AppRouter {
   static const String routerForum = '/forum';
   static const String routerCreateForum = '/create_forum';
   static const String routerIntroForum = '/intro_forum';
+  static const String routerForumDetail = '/forum_detail';
 
   static const curve = Curves.fastOutSlowIn;
   static const transition = Transition.rightToLeftWithFade;
@@ -113,6 +115,13 @@ class AppRouter {
     GetPage<IntroForum>(
       name: routerIntroForum,
       page: () => IntroForum(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<ForumDetail>(
+      name: routerForumDetail,
+      page: () => ForumDetail(),
       curve: curve,
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,

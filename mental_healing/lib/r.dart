@@ -1,4 +1,5 @@
 class AssetImages {
+	static const String constCoverImage = 'assets/images/const_cover_image.png';
 	static const String forumCoverImage = 'assets/images/forum_cover_image.png';
 	static const String goodMood = 'assets/images/good_mood.png';
 	static const String greatMood = 'assets/images/great_mood.png';
@@ -41,6 +42,7 @@ class AssetIcons {
 	static const String dashboard4 = 'assets/icons/dashboard4.svg';
 	static const String dashboard6 = 'assets/icons/dashboard6.svg';
 	static const String dropdownIcon = 'assets/icons/dropdown_icon.svg';
+	static const String edit = 'assets/icons/edit.svg';
 	static const String emergency = 'assets/icons/emergency.svg';
 	static const String experts = 'assets/icons/experts.svg';
 	static const String feedback = 'assets/icons/feedback.svg';

@@ -12,7 +12,7 @@ class AppTextStyle {
       custom(
         size: size,
         color: color,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w900,
         backgroundColor: backgroundColor,
         height: height,
       );

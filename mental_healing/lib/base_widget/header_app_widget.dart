@@ -1,5 +1,4 @@
-import 'package:mental_healing/base_widget/back_button.dart';
-import 'package:mental_healing/generated/locales.g.dart';
+import 'package:mental_healing/base_widget/back_button_widget.dart';
 import 'package:mental_healing/import.dart';
 
 class HeaderAppWidget extends StatelessWidget {

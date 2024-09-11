@@ -67,7 +67,11 @@ class SignInController extends GetxController {
           await CacheManager.storeUser(user);
           CacheManager.markFirstLoginComplete();
 
-          if (CacheManager.hasCompletedAccountSetup()) {
+          if (CacheManager.hasCompletedAccountSetup() ||
+              CacheManager.getStoredUser()?.age != null ||
+              CacheManager.getStoredUser()?.gender != null ||
+              CacheManager.getStoredUser()?.mood != null ||
+              CacheManager.getStoredUser()?.sleep != null) {
             Get.offAllNamed(AppRouter.routerDashboard);
           } else {
             Get.offNamed(AppRouter.routerCompleteAccountPage);

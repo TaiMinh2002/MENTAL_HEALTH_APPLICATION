@@ -136,6 +136,10 @@ class LocaleKeys {
   static const enter_forum_title = 'enter_forum_title';
   static const enter_forum_description = 'enter_forum_description';
   static const welcome_forum_message = 'welcome_forum_message';
+  static const add_cover_photo = 'add_cover_photo';
+  static const add_intro_image = 'add_intro_image';
+  static const edit = 'edit';
+  static const describe_your_forum = 'describe_your_forum';
 }
 
 class Locales {
@@ -271,6 +275,12 @@ class Locales {
     'enter_forum_description': 'Please enter your forum\'s description',
     'welcome_forum_message':
         'Welcome to this mental health forum,\n created by users like you to share stories,\n offer support, and help each other\n through the ups and downs of life.\n\n This is a place where everyone’s voice matters,\n and by sharing your experiences,\n you contribute to a community\n of care and understanding',
+    'add_cover_photo': 'Add cover photo',
+    'add_intro_image':
+        'Add an introductory image about your group to attract attention',
+    'edit': 'Edit',
+    'describe_your_forum':
+        '※ Describe your forum so people know what the group is about',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -409,5 +419,11 @@ class Locales {
     'enter_forum_description': 'Vui lòng nhập mô tả diễn đàn của bạn',
     'welcome_forum_message':
         'Chào mừng bạn đến với diễn đàn sức khỏe tâm lý này,\n được tạo ra bởi những người dùng như bạn\n để chia sẻ câu chuyện, hỗ trợ\n và giúp đỡ nhau vượt qua những thăng trầm của cuộc sống.\n\n Đây là nơi mà tiếng nói của mỗi người đều quan trọng,\n và bằng cách chia sẻ trải nghiệm của mình,\n bạn đóng góp vào một cộng đồng\n đầy sự quan tâm và thấu hiểu',
+    'add_cover_photo': 'Thêm ảnh bìa',
+    'add_intro_image':
+        'Thêm hình ảnh giới thiệu về nhóm của bạn để thu hút sự chú ý',
+    'edit': 'Chỉnh sửa',
+    'describe_your_forum':
+        '※ Hãy mô tả diễn đàn của bạn để mọi người biết nhóm xoay quanh chủ đề gì',
   };
 }

@@ -188,4 +188,8 @@ class ForumController extends GetxController with BaseMixin {
     }
     return createForumFormKey.currentState?.validate() ?? false;
   }
+
+  Future<void> handleToDetail() async {
+    Get.toNamed(AppRouter.routerForumDetail);
+  }
 }

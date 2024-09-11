@@ -123,5 +123,9 @@
     "enter_your_description": "Enter your description...",
     "enter_forum_title": "Please enter your forum's title",
     "enter_forum_description": "Please enter your forum's description",
-    "welcome_forum_message": "Welcome to this mental health forum,\n created by users like you to share stories,\n offer support, and help each other\n through the ups and downs of life.\n\n This is a place where everyone’s voice matters,\n and by sharing your experiences,\n you contribute to a community\n of care and understanding"
+    "welcome_forum_message": "Welcome to this mental health forum,\n created by users like you to share stories,\n offer support, and help each other\n through the ups and downs of life.\n\n This is a place where everyone’s voice matters,\n and by sharing your experiences,\n you contribute to a community\n of care and understanding",
+    "add_cover_photo": "Add cover photo",
+    "add_intro_image": "Add an introductory image about your group to attract attention",
+    "edit": "Edit",
+    "describe_your_forum": "※ Describe your forum so people know what the group is about"
 }
