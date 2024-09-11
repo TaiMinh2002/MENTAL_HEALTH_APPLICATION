@@ -140,6 +140,7 @@ class LocaleKeys {
   static const add_intro_image = 'add_intro_image';
   static const edit = 'edit';
   static const describe_your_forum = 'describe_your_forum';
+  static const want_to_share_story = 'want_to_share_story';
 }
 
 class Locales {
@@ -281,6 +282,7 @@ class Locales {
     'edit': 'Edit',
     'describe_your_forum':
         '※ Describe your forum so people know what the group is about',
+    'want_to_share_story': 'Do you want to share your story?',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -425,5 +427,6 @@ class Locales {
     'edit': 'Chỉnh sửa',
     'describe_your_forum':
         '※ Hãy mô tả diễn đàn của bạn để mọi người biết nhóm xoay quanh chủ đề gì',
+    'want_to_share_story': 'Bạn muốn chia sẻ câu chuyện của mình?',
   };
 }

@@ -66,6 +66,7 @@ class AssetIcons {
 	static const String notification = 'assets/icons/notification.svg';
 	static const String onboardingGetStart = 'assets/icons/onboarding_get_start.svg';
 	static const String person = 'assets/icons/person.svg';
+	static const String picture = 'assets/icons/picture.svg';
 	static const String report = 'assets/icons/report.svg';
 	static const String sadIcon = 'assets/icons/sad_icon.svg';
 	static const String searchIcon = 'assets/icons/search-icon.svg';
