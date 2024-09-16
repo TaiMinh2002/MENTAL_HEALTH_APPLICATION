@@ -141,6 +141,11 @@ class LocaleKeys {
   static const edit = 'edit';
   static const describe_your_forum = 'describe_your_forum';
   static const want_to_share_story = 'want_to_share_story';
+  static const all_posts = 'all_posts';
+  static const favorite = 'favorite';
+  static const commentUpperCase = 'commentUpperCase';
+  static const commentLowerCase = 'commentLowerCase';
+  static const share = 'share';
 }
 
 class Locales {
@@ -256,8 +261,8 @@ class Locales {
     'expert': 'Expert',
     'chatbot': 'Chatbot',
     'forum': 'Forum',
-    'member': 'Member',
-    'post': 'Post',
+    'member': 'member',
+    'post': 'post',
     'join': 'Join',
     'all_forum': 'All Forum',
     'your_forum': 'Your Forum',
@@ -283,6 +288,11 @@ class Locales {
     'describe_your_forum':
         '※ Describe your forum so people know what the group is about',
     'want_to_share_story': 'Do you want to share your story?',
+    'all_posts': 'All Posts',
+    'favorite': 'Favorite',
+    'commentUpperCase': 'Comment',
+    'commentLowerCase': 'comment',
+    'share': 'Share',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -401,8 +411,8 @@ class Locales {
     'expert': 'Chuyên Gia',
     'chatbot': 'Chatbot',
     'forum': 'Diễn đàn',
-    'member': 'Thành Viên',
-    'post': 'Bài Viết',
+    'member': 'thành viên',
+    'post': 'bài viết',
     'join': 'Tham Gia',
     'all_forum': 'Tất Cả Diễn đàn',
     'your_forum': 'Diễn đàn Của Bạn',
@@ -428,5 +438,10 @@ class Locales {
     'describe_your_forum':
         '※ Hãy mô tả diễn đàn của bạn để mọi người biết nhóm xoay quanh chủ đề gì',
     'want_to_share_story': 'Bạn muốn chia sẻ câu chuyện của mình?',
+    'all_posts': 'Tất cả bài viết',
+    'favorite': 'Yêu Thích',
+    'commentUpperCase': 'Bình luận',
+    'commentLowerCase': 'bình luận',
+    'share': 'Chia sẻ',
   };
 }

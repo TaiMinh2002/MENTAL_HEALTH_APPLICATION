@@ -1,10 +1,13 @@
 class AssetImages {
 	static const String constCoverImage = 'assets/images/const_cover_image.png';
+	static const String contentImage = 'assets/images/content_image.png';
+	static const String favoriteImage = 'assets/images/favorite_image.png';
 	static const String forumCoverImage = 'assets/images/forum_cover_image.png';
 	static const String goodMood = 'assets/images/good_mood.png';
 	static const String greatMood = 'assets/images/great_mood.png';
 	static const String iconEyeActive = 'assets/images/icon_eye_active.png';
 	static const String iconEyeInActive = 'assets/images/icon_eye_in_active.png';
+	static const String imagePost = 'assets/images/image_post.png';
 	static const String indicatorIntro1 = 'assets/images/indicator_intro1.png';
 	static const String indicatorIntro2 = 'assets/images/indicator_intro2.png';
 	static const String indicatorIntro3 = 'assets/images/indicator_intro3.png';
@@ -33,6 +36,7 @@ class AssetIcons {
 	static const String chatbot = 'assets/icons/chatbot.svg';
 	static const String chooseAvatar = 'assets/icons/choose_avatar.svg';
 	static const String clock = 'assets/icons/clock.svg';
+	static const String comment = 'assets/icons/comment.svg';
 	static const String community = 'assets/icons/community.svg';
 	static const String createCommunity = 'assets/icons/create_community.svg';
 	static const String darkMode = 'assets/icons/dark_mode.svg';
@@ -41,13 +45,16 @@ class AssetIcons {
 	static const String dashboard3 = 'assets/icons/dashboard3.svg';
 	static const String dashboard4 = 'assets/icons/dashboard4.svg';
 	static const String dashboard6 = 'assets/icons/dashboard6.svg';
+	static const String dot = 'assets/icons/dot.svg';
 	static const String dropdownIcon = 'assets/icons/dropdown_icon.svg';
 	static const String edit = 'assets/icons/edit.svg';
 	static const String emergency = 'assets/icons/emergency.svg';
 	static const String experts = 'assets/icons/experts.svg';
+	static const String favorite = 'assets/icons/favorite.svg';
 	static const String feedback = 'assets/icons/feedback.svg';
 	static const String female = 'assets/icons/female.svg';
 	static const String getStartHeader = 'assets/icons/get_start_header.svg';
+	static const String global = 'assets/icons/global.svg';
 	static const String goodIcon = 'assets/icons/good_icon.svg';
 	static const String greatIcon = 'assets/icons/great_icon.svg';
 	static const String help = 'assets/icons/help.svg';
@@ -71,10 +78,13 @@ class AssetIcons {
 	static const String sadIcon = 'assets/icons/sad_icon.svg';
 	static const String searchIcon = 'assets/icons/search-icon.svg';
 	static const String share = 'assets/icons/share.svg';
+	static const String sharePost = 'assets/icons/share_post.svg';
 	static const String signOut = 'assets/icons/sign_out.svg';
 	static const String sleep = 'assets/icons/sleep.svg';
+	static const String threeDot = 'assets/icons/three_dot.svg';
 	static const String tiredIcon = 'assets/icons/tired_icon.svg';
 	static const String trash = 'assets/icons/trash.svg';
+	static const String unFavorite = 'assets/icons/un_favorite.svg';
 	static const String warning = 'assets/icons/warning.svg';
 }
 

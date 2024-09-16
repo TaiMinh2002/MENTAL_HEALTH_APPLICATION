@@ -105,8 +105,8 @@
     "expert": "Expert",
     "chatbot": "Chatbot",
     "forum": "Forum",
-    "member": "Member",
-    "post": "Post",
+    "member": "member",
+    "post": "post",
     "join": "Join",
     "all_forum": "All Forum",
     "your_forum": "Your Forum",
@@ -128,5 +128,10 @@
     "add_intro_image": "Add an introductory image about your group to attract attention",
     "edit": "Edit",
     "describe_your_forum": "※ Describe your forum so people know what the group is about",
-    "want_to_share_story": "Do you want to share your story?"
+    "want_to_share_story": "Do you want to share your story?",
+    "all_posts": "All Posts",
+    "favorite": "Favorite",
+    "commentUpperCase": "Comment",
+    "commentLowerCase": "comment",
+    "share": "Share"
 }

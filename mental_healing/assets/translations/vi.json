@@ -105,8 +105,8 @@
   "expert": "Chuyên Gia",
   "chatbot": "Chatbot",
   "forum": "Diễn đàn",
-  "member": "Thành Viên",
-  "post": "Bài Viết",
+  "member": "thành viên",
+  "post": "bài viết",
   "join": "Tham Gia",
   "all_forum": "Tất Cả Diễn đàn",
   "your_forum": "Diễn đàn Của Bạn",
@@ -128,5 +128,10 @@
   "add_intro_image": "Thêm hình ảnh giới thiệu về nhóm của bạn để thu hút sự chú ý",
   "edit": "Chỉnh sửa",
   "describe_your_forum": "※ Hãy mô tả diễn đàn của bạn để mọi người biết nhóm xoay quanh chủ đề gì",
-  "want_to_share_story": "Bạn muốn chia sẻ câu chuyện của mình?"
+  "want_to_share_story": "Bạn muốn chia sẻ câu chuyện của mình?",
+  "all_posts": "Tất cả bài viết",
+  "favorite": "Yêu Thích",
+  "commentUpperCase": "Bình luận",
+  "commentLowerCase": "bình luận",
+  "share": "Chia sẻ"
 }
