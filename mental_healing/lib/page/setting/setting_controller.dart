@@ -23,7 +23,7 @@ class SettingController extends GetxController {
   }
 
   Future<void> handleSignOut() async {
-    const String url = '${Config.apiUrl}/users/logout';
+    const String url = '${Config.apiUrl}/logout';
     final String? refreshToken = CacheManager.getStoredRefreshToken();
 
     if (refreshToken == null || refreshToken.isEmpty) {

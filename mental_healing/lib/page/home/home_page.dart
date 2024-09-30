@@ -1,5 +1,6 @@
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
 import 'package:mental_healing/page/home/home_controller.dart';
 
 class HomePage extends StatelessWidget with BaseMixin {
@@ -29,29 +30,47 @@ class HomePage extends StatelessWidget with BaseMixin {
                   children: [
                     Row(
                       children: [
-                        _buildGridItem(LocaleKeys.mood.tr, AssetIcons.mood,
-                            context, () {}),
-                        _buildGridItem(LocaleKeys.exercise.tr, AssetIcons.calm,
-                            context, () {}),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        _buildGridItem(LocaleKeys.music.tr, AssetIcons.music,
-                            context, () {}),
                         _buildGridItem(
-                            LocaleKeys.community.tr,
-                            AssetIcons.community,
-                            context,
-                            controller.handleCommunity),
+                            title: LocaleKeys.mood.tr,
+                            icon: AssetIcons.mood,
+                            context: context,
+                            onTap: () {
+                              Get.find<DashboardController>()
+                                  .changePageIndex(index: 1);
+                            }),
+                        _buildGridItem(
+                            title: LocaleKeys.exercise.tr,
+                            icon: AssetIcons.calm,
+                            context: context,
+                            onTap: () {}),
                       ],
                     ),
                     Row(
                       children: [
-                        _buildGridItem(LocaleKeys.expert.tr, AssetIcons.experts,
-                            context, () {}),
-                        _buildGridItem(LocaleKeys.chatbot.tr,
-                            AssetIcons.chatbot, context, () {}),
+                        _buildGridItem(
+                            title: LocaleKeys.music.tr,
+                            icon: AssetIcons.music,
+                            context: context,
+                            onTap: () {}),
+                        _buildGridItem(
+                            title: LocaleKeys.forum.tr,
+                            icon: AssetIcons.community,
+                            context: context,
+                            onTap: controller.handleCommunity),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        _buildGridItem(
+                            title: LocaleKeys.expert.tr,
+                            icon: AssetIcons.experts,
+                            context: context,
+                            onTap: () {}),
+                        _buildGridItem(
+                            title: LocaleKeys.chatbot.tr,
+                            icon: AssetIcons.chatbot,
+                            context: context,
+                            onTap: () {}),
                       ],
                     ),
                     _image(),
@@ -67,7 +86,10 @@ class HomePage extends StatelessWidget with BaseMixin {
   }
 
   Widget _buildGridItem(
-      String title, String icon, BuildContext context, Function()? onTap) {
+      {required String title,
+      required String icon,
+      required BuildContext context,
+      Function()? onTap}) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
@@ -129,7 +151,7 @@ class HomePage extends StatelessWidget with BaseMixin {
                       ])),
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 49, vertical: 5),
                 child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,

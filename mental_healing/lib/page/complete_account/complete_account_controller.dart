@@ -90,7 +90,7 @@ class CompleteAccountController extends GetxController {
       return;
     }
 
-    String updateUrl = '${Config.apiUrl}/users/users/$userId/update';
+    String updateUrl = '${Config.apiUrl}/users/$userId/update';
 
     try {
       LoadingHelper.showLoading();

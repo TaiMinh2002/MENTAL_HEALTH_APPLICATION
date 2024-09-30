@@ -12,7 +12,7 @@ class AppTextStyle {
       custom(
         size: size,
         color: color,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w900,
         backgroundColor: backgroundColor,
         height: height,
       );
@@ -154,7 +154,7 @@ class AppTextStyle {
     TextDecoration? decoration,
     double? height,
   }) {
-    return GoogleFonts.inter(
+    return GoogleFonts.lato(
       fontWeight: fontWeight,
       fontStyle: fontStyle,
       fontSize: (size ?? 14),

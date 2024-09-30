@@ -116,17 +116,36 @@ class LocaleKeys {
   static const music = 'music';
   static const expert = 'expert';
   static const chatbot = 'chatbot';
-  static const community = 'community';
+  static const forum = 'forum';
   static const member = 'member';
   static const post = 'post';
   static const join = 'join';
-  static const all_community = 'all_community';
-  static const your_community = 'your_community';
+  static const all_forum = 'all_forum';
+  static const your_forum = 'your_forum';
   static const logout_success = 'logout_success';
   static const invalid_token = 'invalid_token';
   static const logout_failed = 'logout_failed';
   static const token_missing = 'token_missing';
   static const enter_new_password = 'enter_new_password';
+  static const token_is_missing = 'token_is_missing';
+  static const joined = 'joined';
+  static const only_images_allowed = 'only_images_allowed';
+  static const create_forum = 'create_forum';
+  static const enter_your_title = 'enter_your_title';
+  static const enter_your_description = 'enter_your_description';
+  static const enter_forum_title = 'enter_forum_title';
+  static const enter_forum_description = 'enter_forum_description';
+  static const welcome_forum_message = 'welcome_forum_message';
+  static const add_cover_photo = 'add_cover_photo';
+  static const add_intro_image = 'add_intro_image';
+  static const edit = 'edit';
+  static const describe_your_forum = 'describe_your_forum';
+  static const want_to_share_story = 'want_to_share_story';
+  static const all_posts = 'all_posts';
+  static const favorite = 'favorite';
+  static const commentUpperCase = 'commentUpperCase';
+  static const commentLowerCase = 'commentLowerCase';
+  static const share = 'share';
 }
 
 class Locales {
@@ -241,17 +260,39 @@ class Locales {
     'music': 'Music',
     'expert': 'Expert',
     'chatbot': 'Chatbot',
-    'community': 'Community',
-    'member': 'Member',
-    'post': 'Post',
+    'forum': 'Forum',
+    'member': 'member',
+    'post': 'post',
     'join': 'Join',
-    'all_community': 'All Community',
-    'your_community': 'Your Community',
+    'all_forum': 'All Forum',
+    'your_forum': 'Your Forum',
     'logout_success': 'Logout Success',
     'invalid_token': 'Invalid Token',
     'logout_failed': 'Logout Failed',
     'token_missing': 'Token Missing',
     'enter_new_password': 'Enter New Password',
+    'token_is_missing': 'Token is missing',
+    'joined': 'Joined',
+    'only_images_allowed': 'Only images are allowed',
+    'create_forum': 'Create Forum',
+    'enter_your_title': 'Enter your title...',
+    'enter_your_description': 'Enter your description...',
+    'enter_forum_title': 'Please enter your forum\'s title',
+    'enter_forum_description': 'Please enter your forum\'s description',
+    'welcome_forum_message':
+        'Welcome to this mental health forum,\n created by users like you to share stories,\n offer support, and help each other\n through the ups and downs of life.\n\n This is a place where everyone’s voice matters,\n and by sharing your experiences,\n you contribute to a community\n of care and understanding',
+    'add_cover_photo': 'Add cover photo',
+    'add_intro_image':
+        'Add an introductory image about your group to attract attention',
+    'edit': 'Edit',
+    'describe_your_forum':
+        '※ Describe your forum so people know what the group is about',
+    'want_to_share_story': 'Do you want to share your story?',
+    'all_posts': 'All Posts',
+    'favorite': 'Favorite',
+    'commentUpperCase': 'Comment',
+    'commentLowerCase': 'comment',
+    'share': 'Share',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -369,16 +410,38 @@ class Locales {
     'music': 'Âm Nhạc',
     'expert': 'Chuyên Gia',
     'chatbot': 'Chatbot',
-    'community': 'Cộng Đồng',
-    'member': 'Thành Viên',
-    'post': 'Bài Viết',
+    'forum': 'Diễn đàn',
+    'member': 'thành viên',
+    'post': 'bài viết',
     'join': 'Tham Gia',
-    'all_community': 'Tất Cả Cộng Đồng',
-    'your_community': 'Cộng Đồng Của Bạn',
+    'all_forum': 'Tất Cả Diễn đàn',
+    'your_forum': 'Diễn đàn Của Bạn',
     'logout_success': 'Đăng Xuất Thành Công',
     'invalid_token': 'Token Không Hợp Lệ',
     'logout_failed': 'Đăng Xuất Thất Bại',
     'token_missing': 'Thiếu Token',
     'enter_new_password': 'Nhập Mật Khẩu Mới',
+    'token_is_missing': 'Thiếu token',
+    'joined': 'Đã tham gia',
+    'only_images_allowed': 'Chỉ cho phép hình ảnh',
+    'create_forum': 'Tạo diễn đàn',
+    'enter_your_title': 'Nhập tiêu đề của bạn...',
+    'enter_your_description': 'Nhập mô tả của bạn...',
+    'enter_forum_title': 'Vui lòng nhập tiêu đề diễn đàn của bạn',
+    'enter_forum_description': 'Vui lòng nhập mô tả diễn đàn của bạn',
+    'welcome_forum_message':
+        'Chào mừng bạn đến với diễn đàn sức khỏe tâm lý này,\n được tạo ra bởi những người dùng như bạn\n để chia sẻ câu chuyện, hỗ trợ\n và giúp đỡ nhau vượt qua những thăng trầm của cuộc sống.\n\n Đây là nơi mà tiếng nói của mỗi người đều quan trọng,\n và bằng cách chia sẻ trải nghiệm của mình,\n bạn đóng góp vào một cộng đồng\n đầy sự quan tâm và thấu hiểu',
+    'add_cover_photo': 'Thêm ảnh bìa',
+    'add_intro_image':
+        'Thêm hình ảnh giới thiệu về nhóm của bạn để thu hút sự chú ý',
+    'edit': 'Chỉnh sửa',
+    'describe_your_forum':
+        '※ Hãy mô tả diễn đàn của bạn để mọi người biết nhóm xoay quanh chủ đề gì',
+    'want_to_share_story': 'Bạn muốn chia sẻ câu chuyện của mình?',
+    'all_posts': 'Tất cả bài viết',
+    'favorite': 'Yêu Thích',
+    'commentUpperCase': 'Bình luận',
+    'commentLowerCase': 'bình luận',
+    'share': 'Chia sẻ',
   };
 }

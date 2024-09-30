@@ -43,7 +43,7 @@ class SignInController extends GetxController {
       'password': password,
     };
 
-    const String signInUrl = '${Config.apiUrl}/users/login';
+    const String signInUrl = '${Config.apiUrl}/login';
 
     try {
       LoadingHelper.showLoading();
@@ -67,7 +67,11 @@ class SignInController extends GetxController {
           await CacheManager.storeUser(user);
           CacheManager.markFirstLoginComplete();
 
-          if (CacheManager.hasCompletedAccountSetup()) {
+          if (CacheManager.hasCompletedAccountSetup() ||
+              CacheManager.getStoredUser()?.age != null ||
+              CacheManager.getStoredUser()?.gender != null ||
+              CacheManager.getStoredUser()?.mood != null ||
+              CacheManager.getStoredUser()?.sleep != null) {
             Get.offAllNamed(AppRouter.routerDashboard);
           } else {
             Get.offNamed(AppRouter.routerCompleteAccountPage);
