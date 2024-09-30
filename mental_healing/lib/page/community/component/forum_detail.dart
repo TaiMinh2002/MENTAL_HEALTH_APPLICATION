@@ -94,9 +94,16 @@ class ForumDetail extends StatelessWidget with BaseMixin {
   }
 
   Widget _member(BuildContext context) {
-    return CircleAvatar(
-      backgroundImage: NetworkImage(CacheManager.getStoredUser()?.avatar ?? ''),
-    );
+    return CacheManager.getStoredUser()?.avatar != null
+        ? CircleAvatar(
+            backgroundColor: color.colorCCCCCC,
+            backgroundImage:
+                NetworkImage(CacheManager.getStoredUser()?.avatar ?? ''),
+          )
+        : CircleAvatar(
+            backgroundImage: const AssetImage(AssetImages.noPerson),
+            backgroundColor: color.colorCCCCCC,
+          );
   }
 
   Widget _createPost() {
@@ -108,10 +115,16 @@ class ForumDetail extends StatelessWidget with BaseMixin {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          CircleAvatar(
-            backgroundImage:
-                NetworkImage(CacheManager.getStoredUser()?.avatar ?? ''),
-          ),
+          CacheManager.getStoredUser()?.avatar != null
+              ? CircleAvatar(
+                  backgroundColor: color.colorCCCCCC,
+                  backgroundImage:
+                      NetworkImage(CacheManager.getStoredUser()?.avatar ?? ''),
+                )
+              : CircleAvatar(
+                  backgroundImage: const AssetImage(AssetImages.noPerson),
+                  backgroundColor: color.colorCCCCCC,
+                ),
           Text(
             LocaleKeys.want_to_share_story.tr,
             style: textStyle.bold(size: 14, color: color.color3C3D37),
@@ -148,10 +161,16 @@ class ForumDetail extends StatelessWidget with BaseMixin {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                backgroundImage:
-                    NetworkImage(CacheManager.getStoredUser()?.avatar ?? ''),
-              ),
+              CacheManager.getStoredUser()?.avatar != null
+                  ? CircleAvatar(
+                      backgroundColor: color.colorCCCCCC,
+                      backgroundImage: NetworkImage(
+                          CacheManager.getStoredUser()?.avatar ?? ''),
+                    )
+                  : CircleAvatar(
+                      backgroundImage: const AssetImage(AssetImages.noPerson),
+                      backgroundColor: color.colorCCCCCC,
+                    ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0),
