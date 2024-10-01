@@ -146,6 +146,20 @@ class LocaleKeys {
   static const commentUpperCase = 'commentUpperCase';
   static const commentLowerCase = 'commentLowerCase';
   static const share = 'share';
+  static const your_mood_is = 'your_mood_is';
+  static const great = 'great';
+  static const neutral = 'neutral';
+  static const sad = 'sad';
+  static const happy = 'happy';
+  static const tired = 'tired';
+  static const how_feeling_today = 'how_feeling_today';
+  static const feeling_sad = 'feeling_sad';
+  static const feeling_neutral = 'feeling_neutral';
+  static const feeling_happy = 'feeling_happy';
+  static const feeling_depressed = 'feeling_depressed';
+  static const feeling_overjoyed = 'feeling_overjoyed';
+  static const set_mood = 'set_mood';
+  static const mood_statistics = 'mood_statistics';
 }
 
 class Locales {
@@ -293,6 +307,20 @@ class Locales {
     'commentUpperCase': 'Comment',
     'commentLowerCase': 'comment',
     'share': 'Share',
+    'your_mood_is': 'Your mood is',
+    'great': 'Great',
+    'neutral': 'Neutral',
+    'sad': 'Sad',
+    'happy': 'Happy',
+    'tired': 'Tired',
+    'how_feeling_today': 'How are you feeling this day?',
+    'feeling_sad': 'I’m Feeling Sad',
+    'feeling_neutral': 'I’m Feeling Neutral',
+    'feeling_happy': 'I’m Feeling Happy',
+    'feeling_depressed': 'I’m Feeling Depressed',
+    'feeling_overjoyed': 'I’m Feeling Overjoyed',
+    'set_mood': 'Set Mood',
+    'mood_statistics': 'Mood Statistics',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -443,5 +471,19 @@ class Locales {
     'commentUpperCase': 'Bình luận',
     'commentLowerCase': 'bình luận',
     'share': 'Chia sẻ',
+    'your_mood_is': 'Tâm trạng của bạn là',
+    'great': 'Tuyệt vời',
+    'neutral': 'Bình thường',
+    'sad': 'Buồn',
+    'happy': 'Vui',
+    'tired': 'Mệt mỏi',
+    'how_feeling_today': 'Hôm nay bạn cảm thấy thế nào?',
+    'feeling_sad': 'Tôi cảm thấy buồn',
+    'feeling_neutral': 'Tôi cảm thấy bình thường',
+    'feeling_happy': 'Tôi cảm thấy vui',
+    'feeling_depressed': 'Tôi cảm thấy chán nản',
+    'feeling_overjoyed': 'Tôi cảm thấy hân hoan',
+    'set_mood': 'Đặt Tâm Trạng',
+    'mood_statistics': 'Thống Kê Tâm Trạng',
   };
 }

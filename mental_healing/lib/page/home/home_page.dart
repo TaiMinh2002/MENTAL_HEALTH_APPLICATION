@@ -42,7 +42,10 @@ class HomePage extends StatelessWidget with BaseMixin {
                             title: LocaleKeys.exercise.tr,
                             icon: AssetIcons.calm,
                             context: context,
-                            onTap: () {}),
+                            onTap: () {
+                              Get.find<DashboardController>()
+                                  .changePageIndex(index: 2);
+                            }),
                       ],
                     ),
                     Row(

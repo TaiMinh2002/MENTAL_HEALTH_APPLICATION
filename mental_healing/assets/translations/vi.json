@@ -133,5 +133,19 @@
   "favorite": "Yêu Thích",
   "commentUpperCase": "Bình luận",
   "commentLowerCase": "bình luận",
-  "share": "Chia sẻ"
+  "share": "Chia sẻ",
+  "your_mood_is": "Tâm trạng của bạn là",
+  "great": "Tuyệt vời",
+  "neutral": "Bình thường",
+  "sad": "Buồn",
+  "happy": "Vui",
+  "tired": "Mệt mỏi",
+  "how_feeling_today": "Hôm nay bạn cảm thấy thế nào?",
+  "feeling_sad": "Tôi cảm thấy buồn",
+  "feeling_neutral": "Tôi cảm thấy bình thường",
+  "feeling_happy": "Tôi cảm thấy vui",
+  "feeling_depressed": "Tôi cảm thấy chán nản",
+  "feeling_overjoyed": "Tôi cảm thấy hân hoan",
+  "set_mood": "Đặt Tâm Trạng",
+  "mood_statistics": "Thống Kê Tâm Trạng"
 }

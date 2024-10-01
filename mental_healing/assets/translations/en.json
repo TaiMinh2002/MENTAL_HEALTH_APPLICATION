@@ -133,5 +133,19 @@
     "favorite": "Favorite",
     "commentUpperCase": "Comment",
     "commentLowerCase": "comment",
-    "share": "Share"
+    "share": "Share",
+    "your_mood_is": "Your mood is",
+    "great": "Great",
+    "neutral": "Neutral",
+    "sad": "Sad",
+    "happy": "Happy",
+    "tired": "Tired",
+    "how_feeling_today": "How are you feeling this day?",
+    "feeling_sad": "I’m Feeling Sad",
+    "feeling_neutral": "I’m Feeling Neutral",
+    "feeling_happy": "I’m Feeling Happy",
+    "feeling_depressed": "I’m Feeling Depressed",
+    "feeling_overjoyed": "I’m Feeling Overjoyed",
+    "set_mood": "Set Mood",
+    "mood_statistics": "Mood Statistics"
 }
