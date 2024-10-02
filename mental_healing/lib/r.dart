@@ -56,7 +56,9 @@ class AssetIcons {
 	static const String getStartHeader = 'assets/icons/get_start_header.svg';
 	static const String global = 'assets/icons/global.svg';
 	static const String goodIcon = 'assets/icons/good_icon.svg';
+	static const String greatEmotion = 'assets/icons/great_emotion.svg';
 	static const String greatIcon = 'assets/icons/great_icon.svg';
+	static const String happyEmotion = 'assets/icons/happy_emotion.svg';
 	static const String help = 'assets/icons/help.svg';
 	static const String iconBack = 'assets/icons/icon_back.svg';
 	static const String iconCheck = 'assets/icons/icon_check.svg';
@@ -67,6 +69,7 @@ class AssetIcons {
 	static const String male = 'assets/icons/male.svg';
 	static const String mood = 'assets/icons/mood.svg';
 	static const String music = 'assets/icons/music.svg';
+	static const String neutralEmotion = 'assets/icons/neutral_emotion.svg';
 	static const String neutralIcon = 'assets/icons/neutral_icon.svg';
 	static const String next = 'assets/icons/next.svg';
 	static const String nextSetting = 'assets/icons/next_setting.svg';
@@ -75,13 +78,17 @@ class AssetIcons {
 	static const String person = 'assets/icons/person.svg';
 	static const String picture = 'assets/icons/picture.svg';
 	static const String report = 'assets/icons/report.svg';
+	static const String sadEmotion = 'assets/icons/sad_emotion.svg';
 	static const String sadIcon = 'assets/icons/sad_icon.svg';
 	static const String searchIcon = 'assets/icons/search-icon.svg';
+	static const String setMoodIcon = 'assets/icons/set_mood_icon.svg';
 	static const String share = 'assets/icons/share.svg';
 	static const String sharePost = 'assets/icons/share_post.svg';
 	static const String signOut = 'assets/icons/sign_out.svg';
 	static const String sleep = 'assets/icons/sleep.svg';
 	static const String threeDot = 'assets/icons/three_dot.svg';
+	static const String tick = 'assets/icons/tick.svg';
+	static const String tiredEmotion = 'assets/icons/tired_emotion.svg';
 	static const String tiredIcon = 'assets/icons/tired_icon.svg';
 	static const String trash = 'assets/icons/trash.svg';
 	static const String unFavorite = 'assets/icons/un_favorite.svg';
