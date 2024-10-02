@@ -12,25 +12,25 @@ class SetMoodItem extends StatefulWidget with BaseMixin {
 class _SetMoodItemState extends State<SetMoodItem> {
   int selectedMoodIndex = 0;
   final List<String> moodDescriptions = [
-    LocaleKeys.feeling_depressed.tr,
-    LocaleKeys.feeling_sad.tr,
-    LocaleKeys.feeling_neutral.tr,
-    LocaleKeys.feeling_happy.tr,
     LocaleKeys.feeling_overjoyed.tr,
+    LocaleKeys.feeling_happy.tr,
+    LocaleKeys.feeling_neutral.tr,
+    LocaleKeys.feeling_sad.tr,
+    LocaleKeys.feeling_depressed.tr,
   ];
   final List<String> moodIcons = [
-    AssetIcons.tiredEmotion,
-    AssetIcons.sadEmotion,
-    AssetIcons.neutralEmotion,
-    AssetIcons.happyEmotion,
     AssetIcons.greatEmotion,
+    AssetIcons.happyEmotion,
+    AssetIcons.neutralEmotion,
+    AssetIcons.sadEmotion,
+    AssetIcons.tiredEmotion,
   ];
   final List<Color> backgroundColors = [
-    const Color(0xffA18FFF),
-    const Color(0xffFE814B),
-    const Color(0xff926247),
-    const Color(0xffFFCE5C),
     const Color(0xff9BB068),
+    const Color(0xffFFCE5C),
+    const Color(0xff926247),
+    const Color(0xffFE814B),
+    const Color(0xffA18FFF),
   ];
   @override
   Widget build(BuildContext context) {
