@@ -1,3 +1,4 @@
+import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
@@ -73,7 +74,9 @@ class HomePage extends StatelessWidget with BaseMixin {
                             title: LocaleKeys.chatbot.tr,
                             icon: AssetIcons.chatbot,
                             context: context,
-                            onTap: () {}),
+                            onTap: () {
+                              Get.toNamed(AppRouter.routerChatbotIntro);
+                            }),
                       ],
                     ),
                     _image(),

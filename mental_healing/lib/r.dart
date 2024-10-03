@@ -1,4 +1,5 @@
 class AssetImages {
+	static const String chatbotIntro = 'assets/images/chatbot_intro.png';
 	static const String constCoverImage = 'assets/images/const_cover_image.png';
 	static const String contentImage = 'assets/images/content_image.png';
 	static const String favoriteImage = 'assets/images/favorite_image.png';
@@ -64,6 +65,7 @@ class AssetIcons {
 	static const String iconCheck = 'assets/icons/icon_check.svg';
 	static const String iconEmail = 'assets/icons/icon_email.svg';
 	static const String iconPassword = 'assets/icons/icon_password.svg';
+	static const String insertEmotion = 'assets/icons/insert_emotion.svg';
 	static const String language = 'assets/icons/language.svg';
 	static const String logo = 'assets/icons/logo.svg';
 	static const String male = 'assets/icons/male.svg';
@@ -77,10 +79,12 @@ class AssetIcons {
 	static const String onboardingGetStart = 'assets/icons/onboarding_get_start.svg';
 	static const String person = 'assets/icons/person.svg';
 	static const String picture = 'assets/icons/picture.svg';
+	static const String plus = 'assets/icons/plus.svg';
 	static const String report = 'assets/icons/report.svg';
 	static const String sadEmotion = 'assets/icons/sad_emotion.svg';
 	static const String sadIcon = 'assets/icons/sad_icon.svg';
 	static const String searchIcon = 'assets/icons/search-icon.svg';
+	static const String sendMessage = 'assets/icons/send_message.svg';
 	static const String setMoodIcon = 'assets/icons/set_mood_icon.svg';
 	static const String share = 'assets/icons/share.svg';
 	static const String sharePost = 'assets/icons/share_post.svg';

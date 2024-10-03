@@ -147,5 +147,11 @@
   "feeling_depressed": "Tôi cảm thấy chán nản",
   "feeling_overjoyed": "Tôi cảm thấy hân hoan",
   "set_mood": "Đặt Tâm Trạng",
-  "mood_statistics": "Thống Kê Tâm Trạng"
+  "mood_statistics": "Thống Kê Tâm Trạng",
+  "talk_to_doctor_ai": "Nói chuyện với Bác Sĩ AI",
+  "no_ai_conversations": "Bạn chưa có cuộc trò chuyện AI nào. \nHãy bắt đầu cuộc trò chuyện mới để cải thiện sức khỏe tâm trí của bạn.",
+  "ai_chatbot": "Chatbot AI",
+  "doctor_ai": "Bác Sĩ AI",
+  "type_to_chat": "Nhập để bắt đầu trò chuyện...",
+  "start_talking": "Bắt Đầu Nói Chuyện"
 }

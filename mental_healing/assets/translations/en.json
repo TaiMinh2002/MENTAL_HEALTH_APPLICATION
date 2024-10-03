@@ -147,5 +147,11 @@
     "feeling_depressed": "I’m Feeling Depressed",
     "feeling_overjoyed": "I’m Feeling Overjoyed",
     "set_mood": "Set Mood",
-    "mood_statistics": "Mood Statistics"
+    "mood_statistics": "Mood Statistics",
+    "talk_to_doctor_ai": "Talk to Doctor AI",
+    "no_ai_conversations": "You have no AI conversations. \nGet your mind healthy by starting a new one.",
+    "ai_chatbot": "AI Chatbot",
+    "doctor_ai": "Doctor AI",
+    "type_to_chat": "Type to start chatting...",
+    "start_talking": "Start Talking"
 }

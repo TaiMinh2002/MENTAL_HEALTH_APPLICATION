@@ -1,4 +1,6 @@
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/chatbot/chatbot_page.dart';
+import 'package:mental_healing/page/chatbot/component/chatbot_intro.dart';
 import 'package:mental_healing/page/community/component/create_forum.dart';
 import 'package:mental_healing/page/community/component/forum_detail.dart';
 import 'package:mental_healing/page/community/component/intro_forum.dart';
@@ -29,6 +31,8 @@ class AppRouter {
   static const String routerIntroForum = '/intro_forum';
   static const String routerForumDetail = '/forum_detail';
   static const String routerSetMoodItem = '/set_mood_item';
+  static const String routerChatbotIntro = '/chatbot_intro';
+  static const String routerChatbotPage = '/chatbot_page';
 
   static const curve = Curves.fastOutSlowIn;
   static const transition = Transition.rightToLeftWithFade;
@@ -131,6 +135,20 @@ class AppRouter {
     GetPage<SetMoodItem>(
       name: routerSetMoodItem,
       page: () => SetMoodItem(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<ChatbotIntro>(
+      name: routerChatbotIntro,
+      page: () => ChatbotIntro(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<ChatbotPage>(
+      name: routerChatbotPage,
+      page: () => ChatbotPage(),
       curve: curve,
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,
