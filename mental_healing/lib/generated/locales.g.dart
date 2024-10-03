@@ -160,6 +160,12 @@ class LocaleKeys {
   static const feeling_overjoyed = 'feeling_overjoyed';
   static const set_mood = 'set_mood';
   static const mood_statistics = 'mood_statistics';
+  static const talk_to_doctor_ai = 'talk_to_doctor_ai';
+  static const no_ai_conversations = 'no_ai_conversations';
+  static const ai_chatbot = 'ai_chatbot';
+  static const doctor_ai = 'doctor_ai';
+  static const type_to_chat = 'type_to_chat';
+  static const start_talking = 'start_talking';
 }
 
 class Locales {
@@ -321,6 +327,13 @@ class Locales {
     'feeling_overjoyed': 'I’m Feeling Overjoyed',
     'set_mood': 'Set Mood',
     'mood_statistics': 'Mood Statistics',
+    'talk_to_doctor_ai': 'Talk to Doctor AI',
+    'no_ai_conversations':
+        'You have no AI conversations. \nGet your mind healthy by starting a new one.',
+    'ai_chatbot': 'AI Chatbot',
+    'doctor_ai': 'Doctor AI',
+    'type_to_chat': 'Type to start chatting...',
+    'start_talking': 'Start Talking',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -485,5 +498,12 @@ class Locales {
     'feeling_overjoyed': 'Tôi cảm thấy hân hoan',
     'set_mood': 'Đặt Tâm Trạng',
     'mood_statistics': 'Thống Kê Tâm Trạng',
+    'talk_to_doctor_ai': 'Nói chuyện với Bác Sĩ AI',
+    'no_ai_conversations':
+        'Bạn chưa có cuộc trò chuyện AI nào. \nHãy bắt đầu cuộc trò chuyện mới để cải thiện sức khỏe tâm trí của bạn.',
+    'ai_chatbot': 'Chatbot AI',
+    'doctor_ai': 'Bác Sĩ AI',
+    'type_to_chat': 'Nhập để bắt đầu trò chuyện...',
+    'start_talking': 'Bắt Đầu Nói Chuyện',
   };
 }
