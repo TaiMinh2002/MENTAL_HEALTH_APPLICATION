@@ -69,7 +69,9 @@ class HomePage extends StatelessWidget with BaseMixin {
                             title: LocaleKeys.expert.tr,
                             icon: AssetIcons.experts,
                             context: context,
-                            onTap: () {}),
+                            onTap: () {
+                              Get.toNamed(AppRouter.routerExpertPage);
+                            }),
                         _buildGridItem(
                             title: LocaleKeys.chatbot.tr,
                             icon: AssetIcons.chatbot,
