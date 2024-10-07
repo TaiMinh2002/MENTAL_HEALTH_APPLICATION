@@ -170,6 +170,7 @@ class LocaleKeys {
   static const step_5 = 'step_5';
   static const personal_mental_journaling = 'personal_mental_journaling';
   static const caring_supportive_community = 'caring_supportive_community';
+  static const sign_up_for_free = 'sign_up_for_free';
 }
 
 class Locales {
@@ -196,7 +197,7 @@ class Locales {
     'password_complexity':
         'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character',
     'please_enter_confirm_password': 'Please enter your confirm password',
-    'enter_confirm_password': 'Enter your confirm password',
+    'enter_confirm_password': 'Enter your confirm password...',
     'passwords_no_match': 'Passwords do not match',
     'signup_success': 'Sign up success',
     'email_exists': 'Email already exists',
@@ -343,6 +344,7 @@ class Locales {
     'personal_mental_journaling':
         'Personal Mental Journaling & Therapy Chatbot',
     'caring_supportive_community': 'Caring & Supportive Community',
+    'sign_up_for_free': 'Sign Up For Free',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -367,7 +369,8 @@ class Locales {
     'password_requirements': 'Mật khẩu phải có ít nhất 8 ký tự',
     'password_complexity':
         'Mật khẩu phải chứa ít nhất một chữ cái viết hoa, một chữ cái viết thường, một số, và một ký tự đặc biệt',
-    'please_enter_confirm_password': 'Vui lòng nhập mật khẩu xác nhận của bạn',
+    'please_enter_confirm_password':
+        'Vui lòng nhập mật khẩu xác nhận của bạn...',
     'enter_confirm_password': 'Nhập mật khẩu xác nhận của bạn',
     'passwords_no_match': 'Mật khẩu không khớp',
     'signup_success': 'Đăng ký thành công',
@@ -518,5 +521,6 @@ class Locales {
     'step_5': 'Bước 5',
     'personal_mental_journaling': 'Nhật Ký Tâm Lý Cá Nhân & Chatbot Trị Liệu',
     'caring_supportive_community': 'Cộng Đồng Quan Tâm & Hỗ Trợ',
+    'sign_up_for_free': 'Đăng Ký Miễn Phí',
   };
 }

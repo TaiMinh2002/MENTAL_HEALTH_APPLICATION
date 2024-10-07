@@ -19,7 +19,7 @@
     "password_requirements": "Password must be at least 8 characters long",
     "password_complexity": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
     "please_enter_confirm_password": "Please enter your confirm password",
-    "enter_confirm_password": "Enter your confirm password",
+    "enter_confirm_password": "Enter your confirm password...",
     "passwords_no_match": "Passwords do not match",
     "signup_success": "Sign up success",
     "email_exists": "Email already exists",
@@ -157,5 +157,6 @@
     "step_4": "Step 4",
     "step_5": "Step 5",
     "personal_mental_journaling": "Personal Mental Journaling & Therapy Chatbot",
-    "caring_supportive_community": "Caring & Supportive Community"
+    "caring_supportive_community": "Caring & Supportive Community",
+    "sign_up_for_free": "Sign Up For Free"
 }

@@ -20,7 +20,6 @@ class AssetImages {
 	static const String neutralMood = 'assets/images/neutral_mood.png';
 	static const String noPerson = 'assets/images/no_person.png';
 	static const String sadMood = 'assets/images/sad_mood.png';
-	static const String signInImage = 'assets/images/sign_in_image.png';
 	static const String splashLogo = 'assets/images/splash_logo.png';
 	static const String thinkingStress = 'assets/images/thinking_stress.png';
 	static const String tiredMood = 'assets/images/tired_mood.png';
@@ -64,6 +63,7 @@ class AssetIcons {
 	static const String iconCheck = 'assets/icons/icon_check.svg';
 	static const String iconEmail = 'assets/icons/icon_email.svg';
 	static const String iconPassword = 'assets/icons/icon_password.svg';
+	static const String inUpLogo = 'assets/icons/in_up_logo.svg';
 	static const String insertEmotion = 'assets/icons/insert_emotion.svg';
 	static const String language = 'assets/icons/language.svg';
 	static const String logo = 'assets/icons/logo.svg';

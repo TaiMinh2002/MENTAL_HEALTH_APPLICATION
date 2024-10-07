@@ -18,7 +18,7 @@
   "enter_username": "Vui lòng nhập tên người dùng của bạn",
   "password_requirements": "Mật khẩu phải có ít nhất 8 ký tự",
   "password_complexity": "Mật khẩu phải chứa ít nhất một chữ cái viết hoa, một chữ cái viết thường, một số, và một ký tự đặc biệt",
-  "please_enter_confirm_password": "Vui lòng nhập mật khẩu xác nhận của bạn",
+  "please_enter_confirm_password": "Vui lòng nhập mật khẩu xác nhận của bạn...",
   "enter_confirm_password": "Nhập mật khẩu xác nhận của bạn",
   "passwords_no_match": "Mật khẩu không khớp",
   "signup_success": "Đăng ký thành công",
@@ -157,5 +157,6 @@
   "step_4": "Bước 4",
   "step_5": "Bước 5",
   "personal_mental_journaling": "Nhật Ký Tâm Lý Cá Nhân & Chatbot Trị Liệu",
-  "caring_supportive_community": "Cộng Đồng Quan Tâm & Hỗ Trợ"
+  "caring_supportive_community": "Cộng Đồng Quan Tâm & Hỗ Trợ",
+  "sign_up_for_free": "Đăng Ký Miễn Phí"
 }
