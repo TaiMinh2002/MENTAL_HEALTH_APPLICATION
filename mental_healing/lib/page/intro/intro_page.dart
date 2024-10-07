@@ -11,20 +11,19 @@ class IntroPage extends StatelessWidget with BaseMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: color.backgroundColor,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 60),
-          child: Column(
-            children: [
-              SvgPicture.asset(AssetIcons.getStartHeader),
-              _bodyWidget(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: SvgPicture.asset(AssetIcons.onboardingGetStart),
-              ),
-              _buttonWidget()
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 60),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(AssetIcons.getStartHeader),
+            _bodyWidget(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: SvgPicture.asset(AssetIcons.onboardingGetStart),
+            ),
+            _buttonWidget()
+          ],
         ),
       ),
     );
