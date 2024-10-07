@@ -9,11 +9,13 @@ class IntroItem extends StatelessWidget with BaseMixin {
       required this.image,
       required this.step,
       required this.text,
-      required this.indicator});
+      required this.indicator,
+      required this.imageBackgroundColor});
+  final Color imageBackgroundColor;
   final String image;
   final String text;
   final String step;
-  final String indicator;
+  final Widget indicator;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class IntroItem extends StatelessWidget with BaseMixin {
     final double imageHeight = screenHeight / 1.5;
     final double containerHeight = screenHeight - imageHeight + 75;
     return Scaffold(
-      backgroundColor: color.backgroundColor,
+      backgroundColor: imageBackgroundColor,
       body: Stack(
         children: [
           Image.asset(
@@ -46,7 +48,7 @@ class IntroItem extends StatelessWidget with BaseMixin {
     return ClipPath(
       clipper: CustomClipPath(),
       child: Container(
-        color: Colors.white,
+        color: color.whiteColor,
         height: height,
         width: double.infinity,
         child: Column(
@@ -54,7 +56,7 @@ class IntroItem extends StatelessWidget with BaseMixin {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 90.0, bottom: 30),
-              child: Image.asset(indicator),
+              child: indicator,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),

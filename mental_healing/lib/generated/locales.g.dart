@@ -166,6 +166,10 @@ class LocaleKeys {
   static const doctor_ai = 'doctor_ai';
   static const type_to_chat = 'type_to_chat';
   static const start_talking = 'start_talking';
+  static const step_4 = 'step_4';
+  static const step_5 = 'step_5';
+  static const personal_mental_journaling = 'personal_mental_journaling';
+  static const caring_supportive_community = 'caring_supportive_community';
 }
 
 class Locales {
@@ -334,6 +338,11 @@ class Locales {
     'doctor_ai': 'Doctor AI',
     'type_to_chat': 'Type to start chatting...',
     'start_talking': 'Start Talking',
+    'step_4': 'Step 4',
+    'step_5': 'Step 5',
+    'personal_mental_journaling':
+        'Personal Mental Journaling & Therapy Chatbot',
+    'caring_supportive_community': 'Caring & Supportive Community',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -505,5 +514,9 @@ class Locales {
     'doctor_ai': 'Bác Sĩ AI',
     'type_to_chat': 'Nhập để bắt đầu trò chuyện...',
     'start_talking': 'Bắt Đầu Nói Chuyện',
+    'step_4': 'Bước 4',
+    'step_5': 'Bước 5',
+    'personal_mental_journaling': 'Nhật Ký Tâm Lý Cá Nhân & Chatbot Trị Liệu',
+    'caring_supportive_community': 'Cộng Đồng Quan Tâm & Hỗ Trợ',
   };
 }

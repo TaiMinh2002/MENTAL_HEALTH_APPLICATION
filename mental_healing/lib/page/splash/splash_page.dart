@@ -1,8 +1,9 @@
+import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mental_healing/page/splash/splash_controller.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatelessWidget with BaseMixin {
   final SplashController controller = Get.put(SplashController());
 
   SplashPage({super.key});
@@ -10,15 +11,13 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF0F0F0),
-      body: Center(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Image.asset(AssetImages.splashLogo),
-            Lottie.asset(AssetLotties.splashLoading),
-          ],
-        ),
+      backgroundColor: color.backgroundColor,
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset(AssetImages.splashLogo),
+          Center(child: Lottie.asset(AssetLotties.splashLoading)),
+        ],
       ),
     );
   }
