@@ -20,7 +20,6 @@ class AssetImages {
 	static const String neutralMood = 'assets/images/neutral_mood.png';
 	static const String noPerson = 'assets/images/no_person.png';
 	static const String sadMood = 'assets/images/sad_mood.png';
-	static const String signInImage = 'assets/images/sign_in_image.png';
 	static const String splashLogo = 'assets/images/splash_logo.png';
 	static const String thinkingStress = 'assets/images/thinking_stress.png';
 	static const String tiredMood = 'assets/images/tired_mood.png';
