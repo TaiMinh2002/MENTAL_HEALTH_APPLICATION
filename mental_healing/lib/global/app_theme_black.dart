@@ -144,4 +144,10 @@ class AppThemeBlack extends AppTheme {
 
   @override
   Color get colorDDD1FF => const Color(0xffDDD1FF);
+
+  @override
+  Color get color81C784 => const Color(0xff81C784);
+
+  @override
+  Color get colorC8E6C9 => const Color(0xffC8E6C9);
 }

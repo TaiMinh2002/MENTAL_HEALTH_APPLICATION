@@ -171,6 +171,7 @@ class LocaleKeys {
   static const personal_mental_journaling = 'personal_mental_journaling';
   static const caring_supportive_community = 'caring_supportive_community';
   static const sign_up_for_free = 'sign_up_for_free';
+  static const find_expert = 'find_expert';
 }
 
 class Locales {
@@ -345,6 +346,7 @@ class Locales {
         'Personal Mental Journaling & Therapy Chatbot',
     'caring_supportive_community': 'Caring & Supportive Community',
     'sign_up_for_free': 'Sign Up For Free',
+    'find_expert': 'Find Expert',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -522,5 +524,6 @@ class Locales {
     'personal_mental_journaling': 'Nhật Ký Tâm Lý Cá Nhân & Chatbot Trị Liệu',
     'caring_supportive_community': 'Cộng Đồng Quan Tâm & Hỗ Trợ',
     'sign_up_for_free': 'Đăng Ký Miễn Phí',
+    'find_expert': 'Tìm Chuyên Gia',
   };
 }
