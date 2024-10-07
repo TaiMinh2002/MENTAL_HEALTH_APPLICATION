@@ -1,4 +1,7 @@
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
@@ -17,12 +20,12 @@ class SignInPage extends StatelessWidget with BaseMixin {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset(AssetImages.signInImage),
               _headerWidget(),
+              _title(),
               _formInput(),
               _signInButton(),
               _forgotPasswordWidget(),
-              _signUpWidget()
+              _signUpWidget(),
             ],
           ),
         ),
@@ -31,8 +34,29 @@ class SignInPage extends StatelessWidget with BaseMixin {
   }
 
   Widget _headerWidget() {
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: GreenHeaderClipper(),
+          child: Container(
+            color: color.color9BB168,
+            height: 200,
+            width: double.infinity,
+          ),
+        ),
+        Positioned(
+          left: 0,
+          right: 0,
+          top: 60,
+          child: SvgPicture.asset(AssetIcons.inUpLogo),
+        ),
+      ],
+    );
+  }
+
+  Widget _title() {
     return Padding(
-      padding: const EdgeInsets.only(top: 30.0, bottom: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Text(
         LocaleKeys.sign_in_message.tr,
         textAlign: TextAlign.center,
@@ -123,7 +147,7 @@ class SignInPage extends StatelessWidget with BaseMixin {
         text: TextSpan(
           children: <TextSpan>[
             TextSpan(
-              text: LocaleKeys.no_account.tr,
+              text: '${LocaleKeys.no_account.tr}   ',
               style: textStyle.bold(size: 16, color: color.color736B66),
             ),
             TextSpan(
@@ -139,5 +163,27 @@ class SignInPage extends StatelessWidget with BaseMixin {
         ),
       ),
     );
+  }
+}
+
+class GreenHeaderClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 60);
+    path.quadraticBezierTo(
+      size.width / 2,
+      size.height + 20,
+      size.width,
+      size.height - 60,
+    );
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }

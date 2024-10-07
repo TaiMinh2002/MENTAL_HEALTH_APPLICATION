@@ -64,6 +64,7 @@ class AssetIcons {
 	static const String iconCheck = 'assets/icons/icon_check.svg';
 	static const String iconEmail = 'assets/icons/icon_email.svg';
 	static const String iconPassword = 'assets/icons/icon_password.svg';
+	static const String inUpLogo = 'assets/icons/in_up_logo.svg';
 	static const String insertEmotion = 'assets/icons/insert_emotion.svg';
 	static const String language = 'assets/icons/language.svg';
 	static const String logo = 'assets/icons/logo.svg';
