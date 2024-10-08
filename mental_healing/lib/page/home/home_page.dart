@@ -146,39 +146,39 @@ class HomePage extends StatelessWidget with BaseMixin {
           Positioned(
             bottom: 0,
             child: Container(
+              padding: EdgeInsets.only(right: 200, left: 20, bottom: 10),
               decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12)),
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        color.colorFFFFFF.withOpacity(0),
-                        color.colorFFFFFF
-                      ])),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 49, vertical: 5),
-                child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        LocaleKeys.calm_mind_course.tr,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style:
-                            textStyle.bold(size: 20, color: color.color444444),
-                      ),
-                      Text(
-                        LocaleKeys.journey_to_mindfulness.tr,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: textStyle.regular(
-                            size: 18, color: color.color444444),
-                      ),
-                    ]),
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    color.color1AFFFFFF,
+                    color.colorFFFFFF,
+                  ],
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    LocaleKeys.calm_mind_course.tr,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: textStyle.bold(size: 20, color: color.color444444),
+                  ),
+                  Text(
+                    LocaleKeys.journey_to_mindfulness.tr,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style:
+                        textStyle.regular(size: 18, color: color.color444444),
+                  ),
+                ],
               ),
             ),
           ),

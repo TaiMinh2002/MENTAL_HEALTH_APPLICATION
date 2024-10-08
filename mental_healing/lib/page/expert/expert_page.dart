@@ -1,6 +1,8 @@
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/back_button_widget.dart';
+import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/expert/component/category_item.dart';
 
 class ExpertPage extends StatelessWidget with BaseMixin {
   final TextEditingController searchController = TextEditingController();
@@ -11,13 +13,15 @@ class ExpertPage extends StatelessWidget with BaseMixin {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
-        body: Column(
+        body: Stack(
+          clipBehavior: Clip.none,
           children: [
-            Stack(
-              children: [
-                _headerWidget(),
-                Positioned(bottom: -10, child: _search())
-              ],
+            _headerWidget(),
+            Positioned(
+              bottom: -28,
+              left: 20,
+              right: 20,
+              child: _searchWidget(),
             )
           ],
         ),
@@ -28,7 +32,7 @@ class ExpertPage extends StatelessWidget with BaseMixin {
   Widget _headerWidget() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      height: 250,
+      height: 200,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
@@ -82,51 +86,14 @@ class ExpertPage extends StatelessWidget with BaseMixin {
     );
   }
 
-  Widget _search() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      decoration: BoxDecoration(
-        color: Colors.white, // Background color
-        borderRadius: BorderRadius.circular(20), // Rounded corners
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1), // Shadow effect
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Icon(
-            Icons.search,
-            color: Colors.grey, // Search icon color
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: TextField(
-              controller: searchController,
-              decoration: InputDecoration(
-                hintText: "Search.....",
-                border: InputBorder.none, // Removes the default border
-              ),
-              onChanged: (value) {
-                // Add logic to handle the search input
-              },
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              searchController.clear(); // Clear the search input
-            },
-            child: Icon(
-              Icons.close,
-              color: Colors.grey, // Clear icon color
-            ),
-          ),
-        ],
-      ),
+  Widget _searchWidget() {
+    return WidgetInputText(
+      hintText: 'Search......',
+      controller: searchController,
+      textCapitalization: TextCapitalization.none,
+      borderRadius: 20,
+      iconLeading: AssetIcons.search,
+      height: 50,
     );
   }
 }
