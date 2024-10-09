@@ -83,6 +83,7 @@ class AssetIcons {
 	static const String sadEmotion = 'assets/icons/sad_emotion.svg';
 	static const String sadIcon = 'assets/icons/sad_icon.svg';
 	static const String searchIcon = 'assets/icons/search-icon.svg';
+	static const String search = 'assets/icons/search.svg';
 	static const String sendMessage = 'assets/icons/send_message.svg';
 	static const String setMoodIcon = 'assets/icons/set_mood_icon.svg';
 	static const String share = 'assets/icons/share.svg';

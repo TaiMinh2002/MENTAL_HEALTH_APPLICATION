@@ -15,7 +15,12 @@ class SplashPage extends StatelessWidget with BaseMixin {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          Image.asset(AssetImages.splashLogo),
+          Image.asset(
+            AssetImages.splashLogo,
+            height: double.infinity,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
           Center(child: Lottie.asset(AssetLotties.splashLoading)),
         ],
       ),
