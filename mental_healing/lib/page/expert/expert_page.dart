@@ -2,6 +2,7 @@ import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/back_button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/expert/component/body_item.dart';
 import 'package:mental_healing/page/expert/component/category_item.dart';
 
 class ExpertPage extends StatelessWidget with BaseMixin {
@@ -51,15 +52,40 @@ class ExpertPage extends StatelessWidget with BaseMixin {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
-        body: Stack(
-          clipBehavior: Clip.none,
+        body: Column(
           children: [
-            _headerWidget(),
-            Positioned(
-              bottom: -28,
-              left: 20,
-              right: 20,
-              child: _searchWidget(),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                _headerWidget(),
+                Positioned(
+                  bottom: -28,
+                  left: 20,
+                  right: 20,
+                  child: _searchWidget(),
+                )
+              ],
+            ),
+            BodyItem(
+              title: LocaleKeys.categories.tr,
+              widget: SizedBox(
+                height: 220,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin:
+                          const EdgeInsets.only(left: 16, right: 16, top: 25),
+                      child: CategoryItem(
+                        category: categories[index]['category'],
+                        categoryColor: categories[index]['color'],
+                        icon: categories[index]['icon'],
+                      ),
+                    );
+                  },
+                ),
+              ),
             )
           ],
         ),
@@ -96,28 +122,6 @@ class ExpertPage extends StatelessWidget with BaseMixin {
             children: [_welcomeWidget(), _avatarWidget()],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _categoryListView() {
-    return Container(
-      height: 300,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          final category = categories[index];
-          return Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: CategoryItem(
-              category: category['category'],
-              categoryColor: category['color'],
-              icon: category['icon'],
-            ),
-          );
-        },
       ),
     );
   }

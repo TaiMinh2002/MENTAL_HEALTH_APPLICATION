@@ -179,6 +179,7 @@ class LocaleKeys {
   static const family_marriage_therapy = 'family_marriage_therapy';
   static const art_music_therapy = 'art_music_therapy';
   static const therapy_for_elderly = 'therapy_for_elderly';
+  static const categories = 'categories';
 }
 
 class Locales {
@@ -358,9 +359,10 @@ class Locales {
     'psychiatry': 'Psychiatry',
     'counseling': 'Counseling',
     'behavioral_therapy': 'Behavioral \nTherapy',
-    'family_marriage_therapy': 'Family \nand \nMarriage Therapy',
-    'art_music_therapy': 'Art \nand \nMusic Therapy',
-    'therapy_for_elderly': 'Therapy \nfor the Elderly',
+    'family_marriage_therapy': 'Family \n& Marriage',
+    'art_music_therapy': 'Art \n& Musicy',
+    'therapy_for_elderly': 'Elderly',
+    'categories': 'Categories',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -546,5 +548,6 @@ class Locales {
     'family_marriage_therapy': 'Trị Liệu Gia Đình và Hôn Nhân',
     'art_music_therapy': 'Trị Liệu Nghệ Thuật và Âm Nhạc',
     'therapy_for_elderly': 'Trị Liệu Cho Người Cao Tuổi',
+    'categories': 'Danh Mục',
   };
 }

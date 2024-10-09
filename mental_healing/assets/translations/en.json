@@ -164,7 +164,8 @@
     "psychiatry": "Psychiatry",
     "counseling": "Counseling",
     "behavioral_therapy": "Behavioral \nTherapy",
-    "family_marriage_therapy": "Family \nand \nMarriage Therapy",
-    "art_music_therapy": "Art \nand \nMusic Therapy",
-    "therapy_for_elderly": "Therapy \nfor the Elderly"
+    "family_marriage_therapy": "Family \n& Marriage",
+    "art_music_therapy": "Art \n& Musicy",
+    "therapy_for_elderly": "Elderly",
+    "categories": "Categories"
 }
