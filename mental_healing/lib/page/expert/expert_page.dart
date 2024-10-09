@@ -8,6 +8,44 @@ class ExpertPage extends StatelessWidget with BaseMixin {
   final TextEditingController searchController = TextEditingController();
   ExpertPage({super.key});
 
+  final List<Map<String, dynamic>> categories = [
+    {
+      'category': LocaleKeys.clinical_psychology.tr,
+      'color': const Color(0xffADD8E6),
+      'icon': '🧠'
+    },
+    {
+      'category': LocaleKeys.psychiatry.tr,
+      'color': const Color(0xFF90EE90),
+      'icon': '💊'
+    },
+    {
+      'category': LocaleKeys.counseling.tr,
+      'color': const Color(0xFFFFFACD),
+      'icon': '🗣️'
+    },
+    {
+      'category': LocaleKeys.behavioral_therapy.tr,
+      'color': const Color(0xFFFFDAB9),
+      'icon': '🔄'
+    },
+    {
+      'category': LocaleKeys.family_marriage_therapy.tr,
+      'color': const Color(0xffFFB6C1),
+      'icon': '👪'
+    },
+    {
+      'category': LocaleKeys.art_music_therapy.tr,
+      'color': const Color(0xFFD8BFD8),
+      'icon': '🎨'
+    },
+    {
+      'category': LocaleKeys.therapy_for_elderly.tr,
+      'color': const Color(0xffD3D3D3),
+      'icon': '👴👵'
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,6 +96,28 @@ class ExpertPage extends StatelessWidget with BaseMixin {
             children: [_welcomeWidget(), _avatarWidget()],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _categoryListView() {
+    return Container(
+      height: 300,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          final category = categories[index];
+          return Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: CategoryItem(
+              category: category['category'],
+              categoryColor: category['color'],
+              icon: category['icon'],
+            ),
+          );
+        },
       ),
     );
   }

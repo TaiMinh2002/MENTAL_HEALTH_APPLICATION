@@ -172,6 +172,13 @@ class LocaleKeys {
   static const caring_supportive_community = 'caring_supportive_community';
   static const sign_up_for_free = 'sign_up_for_free';
   static const find_expert = 'find_expert';
+  static const clinical_psychology = 'clinical_psychology';
+  static const psychiatry = 'psychiatry';
+  static const counseling = 'counseling';
+  static const behavioral_therapy = 'behavioral_therapy';
+  static const family_marriage_therapy = 'family_marriage_therapy';
+  static const art_music_therapy = 'art_music_therapy';
+  static const therapy_for_elderly = 'therapy_for_elderly';
 }
 
 class Locales {
@@ -347,6 +354,13 @@ class Locales {
     'caring_supportive_community': 'Caring & Supportive Community',
     'sign_up_for_free': 'Sign Up For Free',
     'find_expert': 'Find Expert',
+    'clinical_psychology': 'Clinical \nPsychology',
+    'psychiatry': 'Psychiatry',
+    'counseling': 'Counseling',
+    'behavioral_therapy': 'Behavioral \nTherapy',
+    'family_marriage_therapy': 'Family \nand \nMarriage Therapy',
+    'art_music_therapy': 'Art \nand \nMusic Therapy',
+    'therapy_for_elderly': 'Therapy \nfor the Elderly',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -525,5 +539,12 @@ class Locales {
     'caring_supportive_community': 'Cộng Đồng Quan Tâm & Hỗ Trợ',
     'sign_up_for_free': 'Đăng Ký Miễn Phí',
     'find_expert': 'Tìm Chuyên Gia',
+    'clinical_psychology': 'Tâm Lý Lâm Sàng',
+    'psychiatry': 'Tâm Thần Học',
+    'counseling': 'Tư Vấn',
+    'behavioral_therapy': 'Trị Liệu Hành Vi',
+    'family_marriage_therapy': 'Trị Liệu Gia Đình và Hôn Nhân',
+    'art_music_therapy': 'Trị Liệu Nghệ Thuật và Âm Nhạc',
+    'therapy_for_elderly': 'Trị Liệu Cho Người Cao Tuổi',
   };
 }
