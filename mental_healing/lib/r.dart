@@ -2,6 +2,7 @@ class AssetImages {
 	static const String chatbotIntro = 'assets/images/chatbot_intro.png';
 	static const String constCoverImage = 'assets/images/const_cover_image.png';
 	static const String contentImage = 'assets/images/content_image.png';
+	static const String doctor = 'assets/images/doctor.png';
 	static const String favoriteImage = 'assets/images/favorite_image.png';
 	static const String forumCoverImage = 'assets/images/forum_cover_image.png';
 	static const String goodMood = 'assets/images/good_mood.png';
@@ -90,6 +91,7 @@ class AssetIcons {
 	static const String sharePost = 'assets/icons/share_post.svg';
 	static const String signOut = 'assets/icons/sign_out.svg';
 	static const String sleep = 'assets/icons/sleep.svg';
+	static const String star = 'assets/icons/star.svg';
 	static const String threeDot = 'assets/icons/three_dot.svg';
 	static const String tick = 'assets/icons/tick.svg';
 	static const String tiredEmotion = 'assets/icons/tired_emotion.svg';

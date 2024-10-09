@@ -2,26 +2,90 @@ import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/back_button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/expert/component/body_item.dart';
 import 'package:mental_healing/page/expert/component/category_item.dart';
 
 class ExpertPage extends StatelessWidget with BaseMixin {
   final TextEditingController searchController = TextEditingController();
   ExpertPage({super.key});
 
+  final List<Map<String, dynamic>> categories = [
+    {
+      'category': LocaleKeys.clinical_psychology.tr,
+      'color': const Color(0xffADD8E6),
+      'icon': '🧠'
+    },
+    {
+      'category': LocaleKeys.psychiatry.tr,
+      'color': const Color(0xFF90EE90),
+      'icon': '💊'
+    },
+    {
+      'category': LocaleKeys.counseling.tr,
+      'color': const Color(0xFFFFFACD),
+      'icon': '🗣️'
+    },
+    {
+      'category': LocaleKeys.behavioral_therapy.tr,
+      'color': const Color(0xFFFFDAB9),
+      'icon': '🔄'
+    },
+    {
+      'category': LocaleKeys.family_marriage_therapy.tr,
+      'color': const Color(0xffFFB6C1),
+      'icon': '👪'
+    },
+    {
+      'category': LocaleKeys.art_music_therapy.tr,
+      'color': const Color(0xFFD8BFD8),
+      'icon': '🎨'
+    },
+    {
+      'category': LocaleKeys.therapy_for_elderly.tr,
+      'color': const Color(0xffD3D3D3),
+      'icon': '👴👵'
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
-        body: Stack(
-          clipBehavior: Clip.none,
+        body: Column(
           children: [
-            _headerWidget(),
-            Positioned(
-              bottom: -28,
-              left: 20,
-              right: 20,
-              child: _searchWidget(),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                _headerWidget(),
+                Positioned(
+                  bottom: -28,
+                  left: 20,
+                  right: 20,
+                  child: _searchWidget(),
+                )
+              ],
+            ),
+            BodyItem(
+              title: LocaleKeys.categories.tr,
+              widget: SizedBox(
+                height: 220,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin:
+                          const EdgeInsets.only(left: 16, right: 16, top: 25),
+                      child: CategoryItem(
+                        category: categories[index]['category'],
+                        categoryColor: categories[index]['color'],
+                        icon: categories[index]['icon'],
+                      ),
+                    );
+                  },
+                ),
+              ),
             )
           ],
         ),

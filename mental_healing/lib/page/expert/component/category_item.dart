@@ -14,9 +14,9 @@ class CategoryItem extends StatelessWidget with BaseMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Stack(
+    return Column(
+      children: [
+        Stack(
           clipBehavior: Clip.none,
           children: [
             Container(
@@ -32,8 +32,8 @@ class CategoryItem extends StatelessWidget with BaseMixin {
                     ),
                   ],
                   borderRadius: const BorderRadius.all(Radius.circular(15))),
-              height: 150,
-              width: 140,
+              height: 160,
+              width: 150,
               child: Column(
                 children: [
                   const Expanded(
@@ -65,7 +65,7 @@ class CategoryItem extends StatelessWidget with BaseMixin {
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }
