@@ -180,6 +180,7 @@ class LocaleKeys {
   static const art_music_therapy = 'art_music_therapy';
   static const therapy_for_elderly = 'therapy_for_elderly';
   static const categories = 'categories';
+  static const top_expert = 'top_expert';
 }
 
 class Locales {
@@ -363,6 +364,7 @@ class Locales {
     'art_music_therapy': 'Art \n& Musicy',
     'therapy_for_elderly': 'Elderly',
     'categories': 'Categories',
+    'top_expert': 'Top Expert',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -549,5 +551,6 @@ class Locales {
     'art_music_therapy': 'Trị Liệu Nghệ Thuật và Âm Nhạc',
     'therapy_for_elderly': 'Trị Liệu Cho Người Cao Tuổi',
     'categories': 'Danh Mục',
+    'top_expert': 'Chuyên Gia Hàng Đầu',
   };
 }

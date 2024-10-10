@@ -4,6 +4,7 @@ import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/expert/component/body_item.dart';
 import 'package:mental_healing/page/expert/component/category_item.dart';
+import 'package:mental_healing/page/expert/component/expert_item.dart';
 
 class ExpertPage extends StatelessWidget with BaseMixin {
   final TextEditingController searchController = TextEditingController();
@@ -47,47 +48,75 @@ class ExpertPage extends StatelessWidget with BaseMixin {
     }
   ];
 
+  final List<Color> backgroundColors = [
+    const Color(0xFFE0F7FA),
+    const Color(0xFFE0E0E0),
+    const Color(0xFFFCE4EC),
+  ];
+
+  final List<Color> textColors = [
+    const Color(0xFF37474F),
+    const Color(0xFF212121),
+    const Color(0xFF424242),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
-        body: Column(
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                _headerWidget(),
-                Positioned(
-                  bottom: -28,
-                  left: 20,
-                  right: 20,
-                  child: _searchWidget(),
-                )
-              ],
-            ),
-            BodyItem(
-              title: LocaleKeys.categories.tr,
-              widget: SizedBox(
-                height: 220,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin:
-                          const EdgeInsets.only(left: 16, right: 16, top: 25),
-                      child: CategoryItem(
-                        category: categories[index]['category'],
-                        categoryColor: categories[index]['color'],
-                        icon: categories[index]['icon'],
-                      ),
-                    );
-                  },
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  _headerWidget(),
+                  Positioned(
+                    bottom: -28,
+                    left: 20,
+                    right: 20,
+                    child: _searchWidget(),
+                  )
+                ],
+              ),
+              BodyItem(
+                title: LocaleKeys.categories.tr,
+                widget: SizedBox(
+                  height: 220,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin:
+                            const EdgeInsets.only(left: 16, right: 16, top: 25),
+                        child: CategoryItem(
+                          category: categories[index]['category'],
+                          categoryColor: categories[index]['color'],
+                          icon: categories[index]['icon'],
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
-            )
-          ],
+              BodyItem(
+                  title: LocaleKeys.top_expert.tr,
+                  widget: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      int colorIndex = index % 3;
+                      return ExpertItem(
+                        backgroundColor: backgroundColors[colorIndex],
+                        textColor: textColors[colorIndex],
+                      );
+                    },
+                  ))
+            ],
+          ),
         ),
       ),
     );
