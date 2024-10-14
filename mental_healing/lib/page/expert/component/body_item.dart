@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:mental_healing/base/base_mixin.dart';
+import 'package:mental_healing/import.dart';
 
 class BodyItem extends StatelessWidget with BaseMixin {
   const BodyItem({super.key, required this.title, required this.widget});
@@ -10,7 +10,8 @@ class BodyItem extends StatelessWidget with BaseMixin {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 50, bottom: 10),
+      padding: EdgeInsets.only(
+          left: 16, right: 16, top: title == LocaleKeys.categories.tr ? 50 : 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
