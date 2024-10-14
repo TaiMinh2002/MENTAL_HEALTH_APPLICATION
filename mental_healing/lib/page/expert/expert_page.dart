@@ -104,9 +104,9 @@ class ExpertPage extends StatelessWidget with BaseMixin {
               BodyItem(
                   title: LocaleKeys.top_expert.tr,
                   widget: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: 10,
+                    itemCount: 5,
                     itemBuilder: (context, index) {
                       int colorIndex = index % 3;
                       return ExpertItem(
