@@ -181,6 +181,9 @@ class LocaleKeys {
   static const therapy_for_elderly = 'therapy_for_elderly';
   static const categories = 'categories';
   static const top_expert = 'top_expert';
+  static const skip = 'skip';
+  static const forum_created_successfully = 'forum_created_successfully';
+  static const forum_updated_successfully = 'forum_updated_successfully';
 }
 
 class Locales {
@@ -365,6 +368,9 @@ class Locales {
     'therapy_for_elderly': 'Elderly',
     'categories': 'Categories',
     'top_expert': 'Top Expert',
+    'skip': 'Skip',
+    'forum_created_successfully': 'Forum created successfully',
+    'forum_updated_successfully': 'Forum updated successfully',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -552,5 +558,8 @@ class Locales {
     'therapy_for_elderly': 'Trị Liệu Cho Người Cao Tuổi',
     'categories': 'Danh Mục',
     'top_expert': 'Chuyên Gia Hàng Đầu',
+    'skip': 'Bỏ qua',
+    'forum_created_successfully': 'Tạo diễn đàn thành công',
+    'forum_updated_successfully': 'Cập nhật diễn đàn thành công',
   };
 }

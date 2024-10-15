@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/app_bar_custom.dart';
@@ -54,7 +56,9 @@ class CreateForum extends StatelessWidget with BaseMixin {
           children: [
             ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Image.asset(AssetImages.constCoverImage)),
+                child: controller.coverImageFile.value != null
+                    ? Image.file(File(controller.coverImageFile.value!.path))
+                    : Image.asset(AssetImages.constCoverImage)),
             Positioned(
                 bottom: 10,
                 right: 10,
@@ -65,21 +69,26 @@ class CreateForum extends StatelessWidget with BaseMixin {
                       color: color.whiteColor,
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10))),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 5.0),
-                        child: SvgPicture.asset(
-                          AssetIcons.edit,
-                          height: 15,
-                          width: 15,
+                  child: GestureDetector(
+                    onTap: () {
+                      controller.showCoverImageOptions(Get.context!);
+                    },
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 5.0),
+                          child: SvgPicture.asset(
+                            AssetIcons.edit,
+                            height: 15,
+                            width: 15,
+                          ),
                         ),
-                      ),
-                      Text(
-                        LocaleKeys.edit.tr,
-                        style: textStyle.extraBold(size: 16),
-                      )
-                    ],
+                        Text(
+                          LocaleKeys.edit.tr,
+                          style: textStyle.extraBold(size: 16),
+                        )
+                      ],
+                    ),
                   ),
                 ))
           ],
@@ -143,7 +152,7 @@ class CreateForum extends StatelessWidget with BaseMixin {
     return Padding(
       padding: const EdgeInsets.only(top: 35, right: 16, left: 16, bottom: 20),
       child: ButtonWidget(
-        onClick: controller.handleToDetail,
+        onClick: controller.handleCreateForum,
         textSize: 18,
         title: LocaleKeys.create_forum.tr,
         suffixIcon: AssetIcons.next,

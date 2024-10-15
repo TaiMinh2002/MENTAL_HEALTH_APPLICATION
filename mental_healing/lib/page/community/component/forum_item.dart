@@ -35,7 +35,7 @@ class ForumItem extends StatelessWidget with BaseMixin {
   Widget _coverImageWidget() {
     return forum.coverImage != null
         ? Image.network(forum.coverImage!, height: 50, width: 50)
-        : Image.asset(AssetImages.forumCoverImage, height: 50, width: 50);
+        : Image.asset(AssetImages.constCoverImage, height: 50, width: 50);
   }
 
   Widget _infoWidget() {

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:mental_healing/base_widget/loading_helper.dart';
+import 'package:mental_healing/base_widget/snack_bar_helper.dart';
 import 'package:mental_healing/global/app_enum.dart';
 import 'package:mental_healing/global/app_enum_ex.dart';
 import 'package:mental_healing/import.dart';
@@ -188,7 +189,7 @@ class PersonalInformationController extends GetxController {
 
     final String? token = CacheManager.getStoredToken();
     if (token == null) {
-      Get.snackbar('Error', 'Token is missing');
+      SnackBarHelper.showError(LocaleKeys.token_is_missing.tr);
       return;
     }
 
@@ -198,36 +199,28 @@ class PersonalInformationController extends GetxController {
     try {
       LoadingHelper.showLoading();
 
-      // Tạo request multipart/form-data
       var request = http.MultipartRequest('POST', Uri.parse(updateUrl))
         ..headers['Authorization'] = 'Bearer $token';
 
-      // Thêm các field dữ liệu
       updateData.forEach((key, value) {
         request.fields[key] = value;
       });
 
-      // Kiểm tra nếu người dùng đã chọn ảnh từ camera hoặc gallery
       if (imageFile.value != null) {
-        // Lấy đường dẫn của ảnh và xác định loại MIME
-        var mimeType =
-            lookupMimeType(imageFile.value!.path); // Đảm bảo lấy đúng loại MIME
+        var mimeType = lookupMimeType(imageFile.value!.path);
 
-        // Đảm bảo chỉ gửi đi tệp ảnh
         if (mimeType != null && mimeType.startsWith('image/')) {
           var image = await http.MultipartFile.fromPath(
             'avatar',
             imageFile.value!.path,
-            contentType:
-                MediaType.parse(mimeType), // Thêm Content-Type chính xác
+            contentType: MediaType.parse(mimeType),
           );
           request.files.add(image);
         } else {
-          Get.snackbar('Error', 'Only images are allowed');
+          SnackBarHelper.showError(LocaleKeys.only_images_allowed.tr);
           return;
         }
       } else {
-        // Gửi 'null' cho avatar nếu người dùng đã xóa ảnh
         request.fields['avatar'] = 'null';
       }
 
@@ -245,11 +238,11 @@ class PersonalInformationController extends GetxController {
       } else {
         LoadingHelper.hideLoading();
         var errorResponse = await http.Response.fromStream(response);
-        Get.snackbar('Error', jsonDecode(errorResponse.body)['message']);
+        SnackBarHelper.showError(jsonDecode(errorResponse.body)['message']);
       }
     } catch (e) {
       LoadingHelper.hideLoading();
-      Get.snackbar('Error', e.toString());
+      SnackBarHelper.showError(e.toString());
     }
   }
 }
