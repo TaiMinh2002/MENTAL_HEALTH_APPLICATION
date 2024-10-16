@@ -54,11 +54,14 @@ class CreateForum extends StatelessWidget with BaseMixin {
         ),
         Stack(
           children: [
-            ClipRRect(
+            Obx(() {
+              return ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: controller.coverImageFile.value != null
                     ? Image.file(File(controller.coverImageFile.value!.path))
-                    : Image.asset(AssetImages.constCoverImage)),
+                    : Image.asset(AssetImages.constCoverImage),
+              );
+            }),
             Positioned(
                 bottom: 10,
                 right: 10,
