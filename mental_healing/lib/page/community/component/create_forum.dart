@@ -19,6 +19,7 @@ class CreateForum extends StatelessWidget with BaseMixin {
         appBar: AppBarCustom(
           leadingIcon: AssetIcons.back,
           titleAppBar: LocaleKeys.create_forum.tr,
+          centerTitle: false,
         ),
         body: SingleChildScrollView(
           child: Padding(

@@ -12,6 +12,7 @@ class ChatbotPage extends StatelessWidget with BaseMixin {
         backgroundColor: color.backgroundColor,
         appBar: AppBarCustom(
           titleAppBar: LocaleKeys.doctor_ai.tr,
+          centerTitle: false,
         ),
         body: Column(
           children: [

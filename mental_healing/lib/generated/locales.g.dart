@@ -184,6 +184,10 @@ class LocaleKeys {
   static const skip = 'skip';
   static const forum_created_successfully = 'forum_created_successfully';
   static const forum_updated_successfully = 'forum_updated_successfully';
+  static const meditation = 'meditation';
+  static const breathe_deeply = 'breathe_deeply';
+  static const yoga = 'yoga';
+  static const mental_health_admin = 'mental_health_admin';
 }
 
 class Locales {
@@ -371,6 +375,10 @@ class Locales {
     'skip': 'Skip',
     'forum_created_successfully': 'Forum created successfully',
     'forum_updated_successfully': 'Forum updated successfully',
+    'meditation': 'Meditation',
+    'breathe_deeply': 'Breathe deeply',
+    'yoga': 'Yoga',
+    'mental_health_admin': 'Mental Health\'s Admin',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -561,5 +569,9 @@ class Locales {
     'skip': 'Bỏ qua',
     'forum_created_successfully': 'Tạo diễn đàn thành công',
     'forum_updated_successfully': 'Cập nhật diễn đàn thành công',
+    'meditation': 'Thiền',
+    'breathe_deeply': 'Hít thở sâu',
+    'yoga': 'Yoga',
+    'mental_health_admin': 'Quản Trị Viên Sức Khỏe Tâm Lý',
   };
 }

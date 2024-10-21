@@ -1,6 +1,7 @@
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
+import 'package:mental_healing/page/excercise/exercise_page.dart';
 import 'package:mental_healing/page/home/home_page.dart';
 import 'package:mental_healing/page/mood/mood_page.dart';
 import 'package:mental_healing/page/setting/setting_page.dart';
@@ -22,7 +23,7 @@ class DashboardPage extends StatelessWidget with BaseMixin {
                   children: [
                     HomePage(),
                     MoodPage(),
-                    Container(),
+                    ExercisePage(),
                     Container(),
                     SettingPage(),
                   ],

@@ -13,6 +13,7 @@ class ChatbotIntro extends StatelessWidget with BaseMixin {
       child: Scaffold(
         appBar: AppBarCustom(
           titleAppBar: LocaleKeys.ai_chatbot.tr,
+          centerTitle: false,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
