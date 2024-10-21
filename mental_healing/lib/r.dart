@@ -23,6 +23,7 @@ class AssetImages {
 	static const String sadMood = 'assets/images/sad_mood.png';
 	static const String splashLogo = 'assets/images/splash_logo.png';
 	static const String thinkingStress = 'assets/images/thinking_stress.png';
+	static const String thumbnailImage = 'assets/images/thumbnail_image.png';
 	static const String tiredMood = 'assets/images/tired_mood.png';
 	static const String waveHand = 'assets/images/wave_hand.png';
 	static const String woman = 'assets/images/woman.png';
