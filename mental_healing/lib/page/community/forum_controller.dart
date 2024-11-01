@@ -48,7 +48,7 @@ class ForumController extends GetxController
 
   String? checkDescriptionValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return LocaleKeys.enter_email.tr;
+      return LocaleKeys.enter_email_or_phone_number.tr;
     }
     return null;
   }

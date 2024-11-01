@@ -78,7 +78,7 @@ class SignUpPage extends StatelessWidget with BaseMixin {
         child: Column(
           children: [
             _userNameWidget(),
-            _emailWidget(),
+            _identifierWidget(),
             _passwordWidget(),
             _confirmPasswordWidget(),
           ],
@@ -99,10 +99,10 @@ class SignUpPage extends StatelessWidget with BaseMixin {
     );
   }
 
-  Widget _emailWidget() {
+  Widget _identifierWidget() {
     return WidgetInputText(
-      hintText: LocaleKeys.email_placeholder.tr,
-      controller: controller.emailController,
+      hintText: LocaleKeys.email_or_phone_number.tr,
+      controller: controller.identifierController,
       validator: controller.checkEmailValidator,
       textCapitalization: TextCapitalization.none,
       title: 'Email',

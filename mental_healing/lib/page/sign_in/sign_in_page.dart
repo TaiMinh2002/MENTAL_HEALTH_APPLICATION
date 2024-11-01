@@ -1,7 +1,4 @@
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
@@ -78,7 +75,7 @@ class SignInPage extends StatelessWidget with BaseMixin {
             : AutovalidateMode.disabled,
         child: Column(
           children: [
-            _emailWidget(),
+            _identifierWidget(),
             _passwordWidget(),
           ],
         ),
@@ -86,13 +83,13 @@ class SignInPage extends StatelessWidget with BaseMixin {
     );
   }
 
-  Widget _emailWidget() {
+  Widget _identifierWidget() {
     return WidgetInputText(
-      hintText: LocaleKeys.email_placeholder.tr,
-      controller: controller.emailController,
+      hintText: LocaleKeys.email_or_phone_number.tr,
+      controller: controller.identifierController,
       validator: controller.checkEmailValidator,
       textCapitalization: TextCapitalization.none,
-      title: 'Email',
+      title: 'Email or Phone number',
       borderRadius: 20,
       iconLeading: AssetIcons.iconEmail,
     );

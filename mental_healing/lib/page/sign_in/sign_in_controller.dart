@@ -11,14 +11,14 @@ import 'package:http/http.dart' as http;
 import 'package:mental_healing/utils/cache_manager.dart';
 
 class SignInController extends GetxController {
-  final emailController = TextEditingController();
+  final identifierController = TextEditingController();
   final passwordController = TextEditingController();
   final signInFormKey = GlobalKey<FormState>();
   RxBool firstValidation = false.obs;
 
   String? checkEmailValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return LocaleKeys.enter_email.tr;
+      return LocaleKeys.enter_email_or_phone_number.tr;
     }
     return null;
   }
@@ -35,11 +35,11 @@ class SignInController extends GetxController {
       return;
     }
 
-    final String email = emailController.text.trim();
+    final String identifier = identifierController.text.trim();
     final String password = passwordController.text.trim();
 
     final Map<String, dynamic> credentials = {
-      'email': email,
+      'identifier': identifier,
       'password': password,
     };
 
@@ -66,15 +66,18 @@ class SignInController extends GetxController {
           CacheManager.markFirstLoginComplete();
           await CacheManager.storeUser(user);
           CacheManager.markFirstLoginComplete();
-
-          if (CacheManager.hasCompletedAccountSetup() ||
-              CacheManager.getStoredUser()?.age != null ||
-              CacheManager.getStoredUser()?.gender != null ||
-              CacheManager.getStoredUser()?.mood != null ||
-              CacheManager.getStoredUser()?.sleep != null) {
-            Get.offAllNamed(AppRouter.routerDashboard);
+          if (CacheManager.getStoredUser()?.role == 3) {
+            Get.offAllNamed(AppRouter.routerDashboardExpertPage);
           } else {
-            Get.offNamed(AppRouter.routerCompleteAccountPage);
+            if (CacheManager.hasCompletedAccountSetup() ||
+                CacheManager.getStoredUser()?.age != null ||
+                CacheManager.getStoredUser()?.gender != null ||
+                CacheManager.getStoredUser()?.mood != null ||
+                CacheManager.getStoredUser()?.sleep != null) {
+              Get.offAllNamed(AppRouter.routerDashboard);
+            } else {
+              Get.offNamed(AppRouter.routerCompleteAccountPage);
+            }
           }
         } else {
           throw Exception('Token or refresh token is missing');
@@ -146,7 +149,7 @@ class SignInController extends GetxController {
     if (!firstValidation.value) {
       firstValidation.value = true;
     }
-    if (emailController.text.trim().isEmpty ||
+    if (identifierController.text.trim().isEmpty ||
         passwordController.text.trim().isEmpty) {
       return false;
     }

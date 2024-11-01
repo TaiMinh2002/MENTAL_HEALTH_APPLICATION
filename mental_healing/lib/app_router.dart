@@ -7,6 +7,7 @@ import 'package:mental_healing/page/community/component/intro_forum.dart';
 import 'package:mental_healing/page/community/forum_page.dart';
 import 'package:mental_healing/page/complete_account/complete_account_page.dart';
 import 'package:mental_healing/page/dashboard/dashboard_page.dart';
+import 'package:mental_healing/page/dashboard_expert/dashboard_expert_page.dart';
 import 'package:mental_healing/page/expert/expert_page.dart';
 import 'package:mental_healing/page/intro/component/page_view_intro.dart';
 import 'package:mental_healing/page/intro/intro_page.dart';
@@ -34,6 +35,7 @@ class AppRouter {
   static const String routerChatbotIntro = '/chatbot_intro';
   static const String routerChatbotPage = '/chatbot_page';
   static const String routerExpertPage = '/expert_page';
+  static const String routerDashboardExpertPage = '/dashboard_expert_page';
 
   static const curve = Curves.fastOutSlowIn;
   static const transition = Transition.rightToLeftWithFade;
@@ -150,6 +152,13 @@ class AppRouter {
     GetPage<ExpertPage>(
       name: routerExpertPage,
       page: () => ExpertPage(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<DashboardExpertPage>(
+      name: routerDashboardExpertPage,
+      page: () => DashboardExpertPage(),
       curve: curve,
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,

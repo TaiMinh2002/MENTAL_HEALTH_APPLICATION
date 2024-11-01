@@ -10,7 +10,7 @@ import 'package:mental_healing/utils/config.dart';
 
 class SignUpController extends GetxController {
   final usernameController = TextEditingController();
-  final emailController = TextEditingController();
+  final identifierController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final signUpFormKey = GlobalKey<FormState>();
@@ -25,7 +25,7 @@ class SignUpController extends GetxController {
 
   String? checkEmailValidator(String? value) {
     if (isNullOrEmpty(value?.trim())) {
-      return LocaleKeys.enter_email.tr;
+      return LocaleKeys.enter_email_or_phone_number.tr;
     }
     return null;
   }
@@ -60,12 +60,12 @@ class SignUpController extends GetxController {
     }
 
     final String username = usernameController.text.trim();
-    final String email = emailController.text.trim();
+    final String identifier = identifierController.text.trim();
     final String password = passwordController.text.trim();
 
     final Map<String, dynamic> userData = {
       'username': username,
-      'email': email,
+      'identifier': identifier,
       'password': password,
     };
 
@@ -83,12 +83,12 @@ class SignUpController extends GetxController {
         SnackBarHelper.showMessage(LocaleKeys.signup_success.tr);
         Get.toNamed(AppRouter.routerSignIn);
       } else if (response.statusCode == 400) {
-        SnackBarHelper.showError(LocaleKeys.email_exists.tr);
+        SnackBarHelper.showError(LocaleKeys.enter_email_or_phone_number.tr);
       } else {
         LoadingHelper.hideLoading();
         final errorResponse = jsonDecode(response.body);
         SnackBarHelper.showError(
-            errorResponse['message'] ?? LocaleKeys.signup_failed.tr);
+            errorResponse['error'] ?? LocaleKeys.signup_failed.tr);
       }
     } catch (e) {
       LoadingHelper.hideLoading();
@@ -107,7 +107,7 @@ class SignUpController extends GetxController {
     if (!firstValidation.value) {
       firstValidation.value = true;
     }
-    if (emailController.text.trim().isEmpty ||
+    if (identifierController.text.trim().isEmpty ||
         passwordController.text.trim().isEmpty ||
         confirmPasswordController.text.trim().isEmpty) {
       return false;

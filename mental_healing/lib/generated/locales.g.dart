@@ -22,9 +22,9 @@ class LocaleKeys {
   static const mindful_resources = 'mindful_resources';
   static const sign_in_message = 'sign_in_message';
   static const sign_in = 'sign_in';
-  static const enter_email = 'enter_email';
+  static const enter_email_or_phone_number = 'enter_email_or_phone_number';
   static const enter_password = 'enter_password';
-  static const email_placeholder = 'email_placeholder';
+  static const email_or_phone_number = 'email_or_phone_number';
   static const password_placeholder = 'password_placeholder';
   static const username_placeholder = 'username_placeholder';
   static const enter_username = 'enter_username';
@@ -204,9 +204,9 @@ class Locales {
     'mindful_resources': 'Mindful Resources That Makes You Happy',
     'sign_in_message': 'Sign In \nYour Mental Health Companion',
     'sign_in': 'Sign In',
-    'enter_email': 'Please enter your email address',
+    'enter_email_or_phone_number': 'Please enter your email or phone number',
     'enter_password': 'Please enter your password',
-    'email_placeholder': 'Enter your email...',
+    'email_or_phone_number': 'Email or phone number...',
     'password_placeholder': 'Enter your password...',
     'username_placeholder': 'Enter your username...',
     'enter_username': 'Please enter your username',
@@ -394,9 +394,10 @@ class Locales {
     'mindful_resources': 'Tài Nguyên Tinh Thần Giúp Bạn Hạnh Phúc',
     'sign_in_message': 'Đăng Nhập\nNgười Bạn Đồng Hành Sức Khỏe Tâm Lý của Bạn',
     'sign_in': 'Đăng Nhập',
-    'enter_email': 'Vui lòng nhập địa chỉ email của bạn',
+    'enter_email_or_phone_number':
+        'Vui lòng nhập địa chỉ email hoặc số điện thoại của bạn',
     'enter_password': 'Vui lòng nhập mật khẩu của bạn',
-    'email_placeholder': 'Nhập email của bạn...',
+    'email_or_phone_number': 'Email hoặc số điện thoại...',
     'password_placeholder': 'Nhập mật khẩu của bạn...',
     'username_placeholder': 'Nhập tên đăng nhập của bạn...',
     'enter_username': 'Vui lòng nhập tên người dùng của bạn',
