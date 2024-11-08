@@ -1,5 +1,6 @@
 import 'package:mental_healing/base_widget/back_button_widget.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
 import 'package:mental_healing/page/setting/setting_controller.dart';
 
 class SettingPage extends StatelessWidget {
@@ -27,7 +28,10 @@ class SettingPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const BackButtonWidget(
+          BackButtonWidget(
+            onTap: () {
+              Get.find<DashboardController>().changePageIndex(index: 0);
+            },
             iconColor: Colors.white,
           ),
           Padding(
