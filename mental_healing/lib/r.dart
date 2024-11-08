@@ -70,6 +70,7 @@ class AssetIcons {
 	static const String language = 'assets/icons/language.svg';
 	static const String logo = 'assets/icons/logo.svg';
 	static const String male = 'assets/icons/male.svg';
+	static const String messageSearch = 'assets/icons/message_search.svg';
 	static const String mood = 'assets/icons/mood.svg';
 	static const String music = 'assets/icons/music.svg';
 	static const String neutralEmotion = 'assets/icons/neutral_emotion.svg';
@@ -77,6 +78,7 @@ class AssetIcons {
 	static const String next = 'assets/icons/next.svg';
 	static const String nextSetting = 'assets/icons/next_setting.svg';
 	static const String notification = 'assets/icons/notification.svg';
+	static const String notificationMessage = 'assets/icons/notification_message.svg';
 	static const String onboardingGetStart = 'assets/icons/onboarding_get_start.svg';
 	static const String person = 'assets/icons/person.svg';
 	static const String picture = 'assets/icons/picture.svg';

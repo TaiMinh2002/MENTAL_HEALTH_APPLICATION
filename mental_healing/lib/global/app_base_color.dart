@@ -52,4 +52,5 @@ abstract class BaseColor {
   Color get color1E201E;
   Color get color030303;
   Color get color606060;
+  Color get color727272;
 }
