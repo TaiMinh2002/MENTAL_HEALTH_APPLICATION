@@ -188,6 +188,8 @@ class LocaleKeys {
   static const breathe_deeply = 'breathe_deeply';
   static const yoga = 'yoga';
   static const mental_health_admin = 'mental_health_admin';
+  static const search = 'search';
+  static const messages = 'messages';
 }
 
 class Locales {
@@ -379,6 +381,8 @@ class Locales {
     'breathe_deeply': 'Breathe deeply',
     'yoga': 'Yoga',
     'mental_health_admin': 'Mental Health\'s Admin',
+    'search': 'Search',
+    'messages': 'Messages',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -574,5 +578,7 @@ class Locales {
     'breathe_deeply': 'Hít thở sâu',
     'yoga': 'Yoga',
     'mental_health_admin': 'Quản Trị Viên Sức Khỏe Tâm Lý',
+    'search': 'Tìm Kiếm',
+    'messages': 'Tin Nhắn',
   };
 }
