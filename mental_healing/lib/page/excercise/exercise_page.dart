@@ -1,6 +1,7 @@
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/app_bar_custom.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
 
 class ExercisePage extends StatefulWidget with BaseMixin {
   const ExercisePage({super.key});
@@ -16,6 +17,9 @@ class _ExercisePageState extends State<ExercisePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarCustom(
+        leadingPressed: () {
+          Get.find<DashboardController>().changePageIndex(index: 0);
+        },
         titleAppBar: LocaleKeys.exercise.tr,
         centerTitle: false,
       ),

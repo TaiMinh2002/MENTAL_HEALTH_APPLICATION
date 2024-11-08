@@ -2,6 +2,7 @@ import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/header_app_widget.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
 import 'package:mental_healing/page/mood/component/mood_chart.dart';
 
 class MoodPage extends StatelessWidget with BaseMixin {
@@ -26,6 +27,10 @@ class MoodPage extends StatelessWidget with BaseMixin {
                     child: Column(
                       children: [
                         HeaderAppWidget(
+                          onTapBack: () {
+                            Get.find<DashboardController>()
+                                .changePageIndex(index: 0);
+                          },
                           title: LocaleKeys.mood.tr,
                           titleSize: 20,
                         ),
