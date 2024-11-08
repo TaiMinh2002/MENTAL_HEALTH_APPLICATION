@@ -9,6 +9,7 @@ mixin CacheManager {
   static const String _keyAccountSetupComplete = 'accountSetupComplete';
   static const String _keyFirstRun = 'firstRun';
   static const String _keyFirstLogin = 'firstLogin';
+  static const String _keyFirstChatbotVisit = 'firstChatbotVisit';
 
   static Future<void> storeToken(String token, String refreshToken) async {
     await _box.write('token', token);
@@ -53,6 +54,16 @@ mixin CacheManager {
 
   static Future<void> markFirstLoginComplete() async {
     await _box.write(_keyFirstLogin, false);
+  }
+
+  // Kiểm tra lần đầu vào chatbot
+  static bool isFirstChatbotVisit() {
+    return _box.read(_keyFirstChatbotVisit) ?? true;
+  }
+
+  // Đánh dấu chatbot đã được truy cập lần đầu
+  static Future<void> markFirstChatbotVisitComplete() async {
+    await _box.write(_keyFirstChatbotVisit, false);
   }
 
   // Lưu thông tin UserInfo dưới dạng JSON

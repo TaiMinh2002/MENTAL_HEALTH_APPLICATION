@@ -76,9 +76,7 @@ class HomePage extends StatelessWidget with BaseMixin {
                             title: LocaleKeys.chatbot.tr,
                             icon: AssetIcons.chatbot,
                             context: context,
-                            onTap: () {
-                              Get.toNamed(AppRouter.routerChatbotIntro);
-                            }),
+                            onTap: controller.handleChatbot),
                       ],
                     ),
                     _image(),
