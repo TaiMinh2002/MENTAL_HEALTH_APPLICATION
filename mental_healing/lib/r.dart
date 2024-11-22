@@ -3,6 +3,7 @@ class AssetImages {
 	static const String constCoverImage = 'assets/images/const_cover_image.png';
 	static const String contentImage = 'assets/images/content_image.png';
 	static const String doctor = 'assets/images/doctor.png';
+	static const String expert = 'assets/images/expert.png';
 	static const String favoriteImage = 'assets/images/favorite_image.png';
 	static const String forumCoverImage = 'assets/images/forum_cover_image.png';
 	static const String goodMood = 'assets/images/good_mood.png';
@@ -50,6 +51,9 @@ class AssetIcons {
 	static const String dropdownIcon = 'assets/icons/dropdown_icon.svg';
 	static const String edit = 'assets/icons/edit.svg';
 	static const String emergency = 'assets/icons/emergency.svg';
+	static const String expertCall = 'assets/icons/expert_call.svg';
+	static const String expertChat = 'assets/icons/expert_chat.svg';
+	static const String expertReview = 'assets/icons/expert_review.svg';
 	static const String experts = 'assets/icons/experts.svg';
 	static const String favorite = 'assets/icons/favorite.svg';
 	static const String feedback = 'assets/icons/feedback.svg';

@@ -177,5 +177,16 @@
     "yoga": "Yoga",
     "mental_health_admin": "Mental Health's Admin",
     "search": "Search",
-    "messages": "Messages"
+    "messages": "Messages",
+    "expert_detail": "Expert Detail",
+    "rating": "Rating",
+    "video_call": "Video Call",
+    "chat": "Chat",
+    "chat_with_expert": "Chat with Expert",
+    "video_call_with_expert": "Video Call with Expert",
+    "get_appointment": "Get Appointment",
+    "about_expert": "About Expert",
+    "error_loading_data": "Error Loading Data",
+    "phone_number": "Phone Number",
+    "contact_info": "Contact Info"
 }

@@ -190,6 +190,17 @@ class LocaleKeys {
   static const mental_health_admin = 'mental_health_admin';
   static const search = 'search';
   static const messages = 'messages';
+  static const expert_detail = 'expert_detail';
+  static const rating = 'rating';
+  static const video_call = 'video_call';
+  static const chat = 'chat';
+  static const chat_with_expert = 'chat_with_expert';
+  static const video_call_with_expert = 'video_call_with_expert';
+  static const get_appointment = 'get_appointment';
+  static const about_expert = 'about_expert';
+  static const error_loading_data = 'error_loading_data';
+  static const phone_number = 'phone_number';
+  static const contact_info = 'contact_info';
 }
 
 class Locales {
@@ -383,6 +394,17 @@ class Locales {
     'mental_health_admin': 'Mental Health\'s Admin',
     'search': 'Search',
     'messages': 'Messages',
+    'expert_detail': 'Expert Detail',
+    'rating': 'Rating',
+    'video_call': 'Video Call',
+    'chat': 'Chat',
+    'chat_with_expert': 'Chat with Expert',
+    'video_call_with_expert': 'Video Call with Expert',
+    'get_appointment': 'Get Appointment',
+    'about_expert': 'About Expert',
+    'error_loading_data': 'Error Loading Data',
+    'phone_number': 'Phone Number',
+    'contact_info': 'Contact Info',
   };
   static const vi = {
     'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
@@ -580,5 +602,16 @@ class Locales {
     'mental_health_admin': 'Quản Trị Viên Sức Khỏe Tâm Lý',
     'search': 'Tìm Kiếm',
     'messages': 'Tin Nhắn',
+    'expert_detail': 'Chi Tiết Chuyên Gia',
+    'rating': 'Đánh Giá',
+    'video_call': 'Gọi Video',
+    'chat': 'Trò Chuyện',
+    'chat_with_expert': 'Nhắn tin với chuyên gia',
+    'video_call_with_expert': 'Gọi video với chuyên gia',
+    'get_appointment': 'Đặt Lịch Hẹn',
+    'about_expert': 'Về Chuyên Gia',
+    'error_loading_data': 'Lỗi Tải Dữ Liệu',
+    'phone_number': 'Số Điện Thoại',
+    'contact_info': 'Thông Tin Liên Hệ',
   };
 }

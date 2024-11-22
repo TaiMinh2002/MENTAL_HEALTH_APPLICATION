@@ -1,4 +1,5 @@
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/chat_expert/chat_expert_page.dart';
 import 'package:mental_healing/page/chatbot/chatbot_page.dart';
 import 'package:mental_healing/page/chatbot/component/chatbot_intro.dart';
 import 'package:mental_healing/page/community/component/create_forum.dart';
@@ -9,6 +10,8 @@ import 'package:mental_healing/page/complete_account/complete_account_page.dart'
 import 'package:mental_healing/page/dashboard/dashboard_page.dart';
 import 'package:mental_healing/page/dashboard_expert/dashboard_expert_page.dart';
 import 'package:mental_healing/page/expert/expert_page.dart';
+import 'package:mental_healing/page/expert_detail/expert_detail_page.dart';
+import 'package:mental_healing/page/expert_list/expert_list_page.dart';
 import 'package:mental_healing/page/intro/component/page_view_intro.dart';
 import 'package:mental_healing/page/intro/intro_page.dart';
 import 'package:mental_healing/page/mood/component/set_mood_item.dart';
@@ -36,6 +39,9 @@ class AppRouter {
   static const String routerChatbotPage = '/chatbot_page';
   static const String routerExpertPage = '/expert_page';
   static const String routerDashboardExpertPage = '/dashboard_expert_page';
+  static const String routerExpertListPage = '/expert_list_page';
+  static const String routerExpertDetail = '/expert_detail';
+  static const String routerChatExpert = '/chat_expert';
 
   static const curve = Curves.fastOutSlowIn;
   static const transition = Transition.rightToLeftWithFade;
@@ -159,6 +165,27 @@ class AppRouter {
     GetPage<DashboardExpertPage>(
       name: routerDashboardExpertPage,
       page: () => DashboardExpertPage(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<ExpertListPage>(
+      name: routerExpertListPage,
+      page: () => ExpertListPage(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<ExpertDetailPage>(
+      name: routerExpertDetail,
+      page: () => ExpertDetailPage(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<ChatExpertPage>(
+      name: routerChatExpert,
+      page: () => ChatExpertPage(),
       curve: curve,
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,

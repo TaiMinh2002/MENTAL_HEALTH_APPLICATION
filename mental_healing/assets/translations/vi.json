@@ -177,5 +177,16 @@
   "yoga": "Yoga",
   "mental_health_admin": "Quản Trị Viên Sức Khỏe Tâm Lý",
   "search": "Tìm Kiếm",
-  "messages": "Tin Nhắn"
+  "messages": "Tin Nhắn",
+  "expert_detail": "Chi Tiết Chuyên Gia",
+  "rating": "Đánh Giá",
+  "video_call": "Gọi Video",
+  "chat": "Trò Chuyện",
+  "chat_with_expert": "Nhắn tin với chuyên gia",
+  "video_call_with_expert": "Gọi video với chuyên gia",
+  "get_appointment": "Đặt Lịch Hẹn",
+  "about_expert": "Về Chuyên Gia",
+  "error_loading_data": "Lỗi Tải Dữ Liệu",
+  "phone_number": "Số Điện Thoại",
+  "contact_info": "Thông Tin Liên Hệ"
 }
