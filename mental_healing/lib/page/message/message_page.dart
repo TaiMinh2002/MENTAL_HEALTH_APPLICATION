@@ -1,25 +1,25 @@
-import 'package:mental_healing/base/base_mixin.dart';
-import 'package:mental_healing/base_widget/widget_input_text.dart';
+import 'package:mental_healing/controller/global_data_manager.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/message/component/message_list_item.dart';
 import 'package:mental_healing/page/message/message_controller.dart';
 
-class MessagePage extends StatelessWidget with BaseMixin {
-  final MessageController controller = Get.put(MessageController());
+class MessagePage extends BaseScreen<MessageController> with BaseMixin {
   MessagePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SafeArea(
-        child: Scaffold(
-      backgroundColor: color.backgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [_headerWidget(), _searchWidget(), _messageWidget()],
-        ),
-      ),
-    ));
+      child: Scaffold(
+          backgroundColor: color.backgroundColor,
+          body: Obx(
+            () => SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [_headerWidget(), _messageWidget()],
+              ),
+            ),
+          )),
+    );
   }
 
   Widget _headerWidget() {
@@ -30,15 +30,17 @@ class MessagePage extends StatelessWidget with BaseMixin {
         children: [
           CircleAvatar(
             backgroundColor: color.whiteColor,
-            backgroundImage: const AssetImage(AssetImages.noPerson),
+            backgroundImage: GlobalDataManager().userInfo.value.avatar != null
+                ? NetworkImage(GlobalDataManager().userInfo.value.avatar ?? '')
+                : const AssetImage(AssetImages.noPerson) as ImageProvider,
             radius: 30,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 15),
-            child: Text(
-              'Name',
-              style: textStyle.bold(size: 20, color: color.blackColor),
-            ),
+            child: Obx(() => Text(
+                  GlobalDataManager().userInfo.value.username ?? '',
+                  style: textStyle.bold(size: 20, color: color.blackColor),
+                )),
           ),
           const Expanded(child: SizedBox()),
           SvgPicture.asset(
@@ -47,21 +49,6 @@ class MessagePage extends StatelessWidget with BaseMixin {
             width: 30,
           )
         ],
-      ),
-    );
-  }
-
-  Widget _searchWidget() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: WidgetInputText(
-        hintText: LocaleKeys.search.tr,
-        hintFontSize: 15,
-        controller: controller.searchController,
-        textCapitalization: TextCapitalization.none,
-        title: 'Search',
-        borderRadius: 20,
-        suffixIcon: SvgPicture.asset(AssetIcons.messageSearch),
       ),
     );
   }
@@ -79,16 +66,27 @@ class MessagePage extends StatelessWidget with BaseMixin {
               style: textStyle.bold(size: 30),
             ),
           ),
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return MessageListItem();
-            },
-          )
+          Obx(() => ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: controller.listChats.length,
+                itemBuilder: (context, index) {
+                  final chat = controller.listChats[index];
+                  return MessageListItem(
+                    name: chat.expert_name ?? '',
+                    avatar: chat.expert_avatar ?? '',
+                    latestMessage: chat.latest_message ?? '',
+                    onTap: () {
+                      controller.moveToChat(chat);
+                    },
+                  );
+                },
+              )),
         ],
       ),
     );
   }
+
+  @override
+  MessageController? putController() => MessageController();
 }

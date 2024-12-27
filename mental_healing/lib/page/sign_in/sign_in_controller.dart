@@ -1,150 +1,79 @@
-import 'dart:convert';
-
-import 'package:mental_healing/app_router.dart';
-import 'package:mental_healing/base_widget/loading_helper.dart';
-import 'package:mental_healing/base_widget/snack_bar_helper.dart';
+import 'package:mental_healing/common/helpers/snack_bar_helper.dart';
+import 'package:mental_healing/controller/global_data_manager.dart';
+import 'package:mental_healing/data/model/sign_in_params.dart';
+import 'package:mental_healing/data/model/sign_in_result.dart';
+import 'package:mental_healing/data/use_case/auth_use_case.dart';
+import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
-import 'package:mental_healing/model/user_info.dart';
-import 'package:mental_healing/utils/function.dart';
-import 'package:mental_healing/utils/config.dart';
-import 'package:http/http.dart' as http;
-import 'package:mental_healing/utils/cache_manager.dart';
 
-class SignInController extends GetxController {
+class SignInController extends BaseController {
+  final formKey = GlobalKey<FormState>();
+  SignInParams _params = const SignInParams(role: 2);
+  RxBool firstValidation = false.obs;
+  RxBool autoLogin = false.obs;
   final identifierController = TextEditingController();
   final passwordController = TextEditingController();
-  final signInFormKey = GlobalKey<FormState>();
-  RxBool firstValidation = false.obs;
-
-  String? checkEmailValidator(String? value) {
-    if (isNullOrEmpty(value?.trim())) {
-      return LocaleKeys.enter_email_or_phone_number.tr;
-    }
-    return null;
+  final AuthUseCase _authUseCase = AuthUseCase();
+  late bool navigatedWithOffAll;
+  final GlobalKey<PopupMenuButtonState<int>> glKey = GlobalKey();
+  @override
+  void onInit() {
+    navigatedWithOffAll = Get.arguments ?? true;
+    super.onInit();
   }
 
-  String? checkPasswordValidator(String? value) {
-    if (isNullOrEmpty(value?.trim())) {
-      return LocaleKeys.enter_password.tr;
-    }
-    return null;
+  // void moveToForgotPassword() {
+  //   Get.toNamed(AppRouter.routerForgotPassword);
+  // }
+
+  void handleSignUp() {
+    Get.offNamed(AppRouter.routerSignUp);
   }
 
-  Future<void> handleSignIn() async {
-    if (!signInFormKey.currentState!.validate()) {
-      return;
-    }
+  void handleChangeCheckBox(bool value) {
+    autoLogin.value = value;
+  }
 
-    final String identifier = identifierController.text.trim();
-    final String password = passwordController.text.trim();
-
-    final Map<String, dynamic> credentials = {
-      'identifier': identifier,
-      'password': password,
-    };
-
-    const String signInUrl = '${Config.apiUrl}/login';
-
-    try {
-      LoadingHelper.showLoading();
-      final http.Response response = await http.post(
-        Uri.parse(signInUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(credentials),
+  void handleSignIn() {
+    if (validation()) {
+      _params = _params.copyWith(
+        identifier: identifierController.text.trim(),
+        password: passwordController.text.trim(),
       );
-
-      if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.body);
-        final data = responseData['data']; // Truy cập đến 'data'
-        final token = data['token'];
-        final refreshToken = data['refreshToken'];
-        final user = UserInfo.fromJson(data['user']);
-
-        // Kiểm tra null trước khi lưu token
-        if (token != null && refreshToken != null) {
-          await CacheManager.storeToken(token, refreshToken);
-          CacheManager.markFirstLoginComplete();
-          await CacheManager.storeUser(user);
-          CacheManager.markFirstLoginComplete();
-          if (CacheManager.getStoredUser()?.role == 3) {
-            Get.offAllNamed(AppRouter.routerDashboardExpertPage);
-          } else {
-            if (CacheManager.hasCompletedAccountSetup() ||
-                CacheManager.getStoredUser()?.age != null ||
-                CacheManager.getStoredUser()?.gender != null ||
-                CacheManager.getStoredUser()?.mood != null ||
-                CacheManager.getStoredUser()?.sleep != null) {
-              Get.offAllNamed(AppRouter.routerDashboard);
-            } else {
-              Get.offNamed(AppRouter.routerCompleteAccountPage);
-            }
-          }
-        } else {
-          throw Exception('Token or refresh token is missing');
-        }
-      } else if (response.statusCode == 403 || response.statusCode == 498) {
-        await refreshToken();
-        return handleSignIn();
-      } else if (response.statusCode == 401) {
-        LoadingHelper.hideLoading();
-        SnackBarHelper.showError(LocaleKeys.incorrect_email_password.tr);
-      } else if (response.statusCode == 404) {
-        LoadingHelper.hideLoading();
-        SnackBarHelper.showError(LocaleKeys.user_not_found.tr);
-      } else {
-        LoadingHelper.hideLoading();
-        final errorResponse = jsonDecode(response.body);
-        SnackBarHelper.showError(errorResponse['message']);
-      }
-    } catch (e) {
-      LoadingHelper.hideLoading();
-      SnackBarHelper.showError(e.toString());
+      showLoading();
+      _authUseCase
+          .signIn(
+            params: _params,
+            onSuccess: (SignInResult data) async {
+              saveToken(data.token);
+              if (data.userInfo != null) {
+                await saveUserInfo(data.userInfo!);
+                await GlobalDataManager().getNewUserInfo();
+              }
+              if (GlobalDataManager().userInfo.value.role == 2) {
+                if (GlobalDataManager().userInfo.value.age != null ||
+                    GlobalDataManager().userInfo.value.gender != null ||
+                    GlobalDataManager().userInfo.value.mood != null ||
+                    GlobalDataManager().userInfo.value.sleep != null) {
+                  Get.offAllNamed(AppRouter.routerDashboard);
+                } else {
+                  Get.offNamed(AppRouter.routerAssessment);
+                }
+              } else {
+                // Get.offAllNamed(AppRouter.routerDashboard);
+              }
+            },
+            onFailure: (err) {
+              SnackBarHelper.showError(err.message);
+            },
+          )
+          .whenComplete(() => hideLoading());
     }
-  }
-
-  Future<void> refreshToken() async {
-    const String refreshTokenUrl = '${Config.apiUrl}/refresh-token';
-
-    try {
-      final String? storedRefreshToken = CacheManager.getStoredRefreshToken();
-
-      if (storedRefreshToken == null) {
-        return handleSignOut();
-      }
-
-      final Map<String, dynamic> body = {
-        'refreshToken': storedRefreshToken,
-      };
-
-      final http.Response response = await http.post(
-        Uri.parse(refreshTokenUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(body),
-      );
-
-      if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.body);
-        final newToken = responseData['token'];
-        final newRefreshToken = responseData['refreshToken'];
-
-        await CacheManager.storeToken(newToken, newRefreshToken);
-      } else {
-        return handleSignOut();
-      }
-    } catch (e) {
-      SnackBarHelper.showError(
-          '${LocaleKeys.failed_to_refresh_token.tr}: ${e.toString()}');
-    }
-  }
-
-  Future<void> handleSignOut() async {
-    await CacheManager.clearStoredToken();
-    Get.offAllNamed(AppRouter.routerSignIn);
   }
 
   bool validation() {
-    if (signInFormKey.currentState?.validate() == true) {
-      signInFormKey.currentState!.save();
+    if (formKey.currentState?.validate() == true) {
+      formKey.currentState!.save();
     }
     if (!firstValidation.value) {
       firstValidation.value = true;
@@ -153,10 +82,20 @@ class SignInController extends GetxController {
         passwordController.text.trim().isEmpty) {
       return false;
     }
-    return signInFormKey.currentState?.validate() ?? false;
+    return formKey.currentState?.validate() ?? false;
   }
 
-  Future<void> handleSignUp() async {
-    Get.offAllNamed(AppRouter.routerSignUp);
+  String? checkEmailValidator(String? value) {
+    if (isNullOrEmpty(value?.trim())) {
+      return LocaleKeys.requiredEmail.tr;
+    }
+    return null;
+  }
+
+  String? checkPasswordValidator(String? value) {
+    if (isNullOrEmpty(value?.trim())) {
+      return LocaleKeys.requiredPassword.tr;
+    }
+    return null;
   }
 }

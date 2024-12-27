@@ -1,106 +1,140 @@
-// import 'dart:convert';
-// import 'package:http/http.dart' as http;
-// import 'package:mental_healing/base_widget/snack_bar_helper.dart';
-// import 'package:mental_healing/import.dart';
-// import 'package:mental_healing/model/expert_model.dart';
-// import 'package:mental_healing/model/message_model.dart';
-// import 'package:mental_healing/utils/cache_manager.dart';
-// import 'package:mental_healing/utils/config.dart';
-// import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:mental_healing/api_manager/api_error.dart';
+import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
+import 'package:mental_healing/controller/global_data_manager.dart';
+import 'package:mental_healing/data/model/chat_expert_info.dart';
+import 'package:mental_healing/data/model/send_message_expert_params.dart';
+import 'package:mental_healing/data/use_case/chat_expert_use_case.dart';
+import 'package:mental_healing/import.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
-// class ChatExpertController extends GetxController {
-//   final Rx<ExpertModel?> expert = Rx<ExpertModel?>(null);
-//   final RxInt conversationId = 0.obs;
-//   final RxList<MessageModel> messages = <MessageModel>[].obs;
-//   final TextEditingController messageController = TextEditingController();
-//   late IO.Socket socket;
-//   final isLoading = true.obs;
+class ChatExpertController extends BaseController
+    with SmartLoadListController<Widget> {
+  final TextEditingController messageController = TextEditingController();
+  final ChatExpertUseCase _useCase = ChatExpertUseCase();
+  late int chatId;
+  late int expertId;
+  late int userId;
+  IO.Socket? socket;
 
-//   @override
-//   void onInit() {
-//     super.onInit();
-//     handleCreateChat();
-//   }
+  RxList<ChatExpertInfo> listConversions = <ChatExpertInfo>[].obs;
 
-//   Future<void> handleCreateChat() async {
-//     final String? token = CacheManager.getStoredToken();
+  @override
+  void onInit() {
+    super.onInit();
+    final arguments = Get.arguments as Map<String, dynamic>;
+    chatId = arguments['chatId'];
+    expertId = arguments['expertId'];
+    userId = arguments['userId'];
 
-//     if (token == null || token.isEmpty) {
-//       SnackBarHelper.showError(LocaleKeys.token_missing.tr);
-//       return;
-//     }
+    _initSocket();
+    _initData();
+  }
 
-//     final int expertId =
-//         expert.value?.id ?? 0; // Thay bằng ID thực tế của chuyên gia
-//     const String url = '${Config.apiUrl}/users/conversations/create';
+  void _initSocket() {
+    // Kết nối tới server Socket.IO
+    socket = IO.io(
+      'http://192.168.0.102:3000', // Thay URL thành địa chỉ server của bạn
+      IO.OptionBuilder()
+          .setTransports(['websocket'])
+          .disableAutoConnect()
+          .build(),
+    );
 
-//     try {
-//       final response = await http.post(
-//         Uri.parse(url),
-//         headers: {
-//           'Content-Type': 'application/json',
-//           'Authorization': 'Bearer $token',
-//         },
-//         body: jsonEncode({"user2_id": expertId}),
-//       );
+    socket?.connect();
 
-//       if (response.statusCode == 200) {
-//         final data = jsonDecode(response.body);
-//         conversationId.value = data['conversationId'];
-//         connectSocket();
-//       } else {
-//         final errorResponse = jsonDecode(response.body);
-//         SnackBarHelper.showError(errorResponse['error']);
-//       }
-//     } catch (e) {
-//       SnackBarHelper.showError(e.toString());
-//     } finally {
-//       isLoading.value = false;
-//     }
-//   }
+    // Khi socket kết nối thành công
+    socket?.onConnect((_) {
+      print('Connected to socket server');
+      socket?.emit('joinConversation', {'chatId': chatId});
+    });
 
-//   void connectSocket() {
-//     socket = IO.io(Config.socketUrl, <String, dynamic>{
-//       'transports': ['websocket'],
-//       'autoConnect': false,
-//     });
+    // Khi nhận tin nhắn mới từ server
+    socket?.on('newMessage', (data) {
+      final newMessage = ChatExpertInfo.fromJson(data);
+      listConversions.add(newMessage);
+    });
 
-//     socket.connect();
+    // Khi socket ngắt kết nối
+    socket?.onDisconnect((_) {
+      print('Disconnected from socket server');
+    });
+  }
 
-//     socket.on('connect', (_) {
-//       print('Connected to socket');
-//       socket.emit('joinConversation', conversationId.value);
-//     });
+  Future<void> _initData() async {
+    isLoadingPage.value = true;
+    _getListMessage();
+  }
 
-//     socket.on('newMessage', (data) {
-//       messages.add(MessageModel.fromJson(data));
-//     });
+  Future<void> _getListMessage() async {
+    try {
+      await _useCase.getListMessage(
+        chatId: chatId,
+        onSuccess: (data) {
+          listConversions.value = data;
+        },
+        onFailure: (err) {
+          print("Error fetching messages: ${err.message}");
+          listConversions.clear();
+        },
+      );
+    } catch (e) {
+      print("Unexpected error: $e");
+      listConversions.clear();
+    }
+  }
 
-//     socket.on('disconnect', (_) => print('Disconnected from socket'));
-//   }
+  Future<void> sendMessage(String userMessage) async {
+    if (userMessage.isEmpty) return;
 
-//   void sendMessage(String text) {
-//     if (text.isEmpty) return;
+    // Xóa nội dung của TextField ngay lập tức
+    messageController.clear();
 
-//     final message = {
-//       "conversation_id": conversationId.value,
-//       "sender_id": CacheManager.getUserId(), // Giả sử có hàm lấy userId
-//       "message": text,
-//     };
+    final params = SendMessageExpertParams(
+      chatId: chatId,
+      message: userMessage,
+      receiverId:
+          GlobalDataManager().userInfo.value.role == 2 ? expertId : userId,
+    );
 
-//     socket.emit('sendMessage', message);
-//     messages.add(MessageModel(
-//       senderId: CacheManager.getUserId(),
-//       message: text,
-//       isMine: true,
-//     ));
-//     messageController.clear();
-//   }
+    final socketMessage = {
+      'chat_id': chatId,
+      'receiver_id': params.receiverId,
+      'message': userMessage,
+    };
 
-//   @override
-//   void onClose() {
-//     socket.disconnect();
-//     messageController.dispose();
-//     super.onClose();
-//   }
-// }
+    socket?.emit('sendMessage', socketMessage);
+
+    // Gửi tin nhắn qua API
+    await _useCase.sendMessage(
+      params: params,
+      onSuccess: (data) {
+        print("Message saved to DB: ${data.message}");
+        _getListMessage();
+        listConversions.add(data);
+      },
+      onFailure: (err) {
+        if (err is ApiError) {
+          print("Failed to save message to DB: ${err.message}");
+        } else {
+          print("Unexpected error: $err");
+        }
+      },
+    );
+  }
+
+  @override
+  void onLoadMore() {}
+
+  @override
+  Future<void> onRefresh() async {
+    _getListMessage();
+    refreshController.refreshCompleted();
+  }
+
+  @override
+  void onClose() {
+    socket?.dispose();
+    messageController.dispose();
+    super.onClose();
+  }
+}

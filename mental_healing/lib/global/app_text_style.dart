@@ -154,7 +154,7 @@ class AppTextStyle {
     TextDecoration? decoration,
     double? height,
   }) {
-    return GoogleFonts.lato(
+    return GoogleFonts.openSans(
       fontWeight: fontWeight,
       fontStyle: fontStyle,
       fontSize: (size ?? 14),

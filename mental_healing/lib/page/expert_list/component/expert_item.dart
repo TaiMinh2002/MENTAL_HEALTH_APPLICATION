@@ -1,26 +1,25 @@
-import 'package:mental_healing/base/base_mixin.dart';
+import 'package:mental_healing/data/model/expert_info.dart';
 import 'package:mental_healing/import.dart';
-import 'package:mental_healing/model/expert_model.dart';
-import 'package:mental_healing/page/expert_list/expert_list_controller.dart';
 
-class ExpertItem extends StatelessWidget with BaseMixin {
+class ExpertItem extends BaseWidget with BaseMixin {
   final Color backgroundColor;
   final Color textColor;
-  final ExpertModel expert;
-  final ExpertListController controller = Get.put(ExpertListController());
+  final ExpertInfo expert;
+  final Function(int id) handleDetail;
 
   ExpertItem({
     super.key,
     required this.backgroundColor,
     required this.textColor,
     required this.expert,
+    required this.handleDetail,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return GestureDetector(
       onTap: () {
-        controller.moveToExpertDetail(expert.id);
+        handleDetail(expert.id ?? 0);
       },
       child: Container(
         padding: const EdgeInsets.all(15),
@@ -45,7 +44,7 @@ class ExpertItem extends StatelessWidget with BaseMixin {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: Image.network(
-        expert.avatar,
+        expert.avatar ?? '',
         width: 100,
         height: 100,
         fit: BoxFit.cover,
@@ -63,13 +62,13 @@ class ExpertItem extends StatelessWidget with BaseMixin {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            expert.name,
+            expert.name ?? '',
             style: textStyle.extraBold(size: 16, color: textColor),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 5.0),
             child: Text(
-              expert.specializationString,
+              expert.specialization_string ?? '',
               style: textStyle.medium(size: 16, color: textColor),
             ),
           ),

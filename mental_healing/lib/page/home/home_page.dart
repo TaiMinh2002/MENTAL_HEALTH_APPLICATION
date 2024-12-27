@@ -1,15 +1,13 @@
-import 'package:mental_healing/app_router.dart';
-import 'package:mental_healing/base/base_mixin.dart';
+import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
 import 'package:mental_healing/page/home/home_controller.dart';
 
-class HomePage extends StatelessWidget with BaseMixin {
-  final HomeController controller = Get.put(HomeController());
+class HomePage extends BaseScreen<HomeController> with BaseMixin {
   HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
@@ -57,26 +55,31 @@ class HomePage extends StatelessWidget with BaseMixin {
                             context: context,
                             onTap: () {}),
                         _buildGridItem(
-                            title: LocaleKeys.forum.tr,
-                            icon: AssetIcons.community,
-                            context: context,
-                            onTap: controller.handleCommunity),
+                          title: LocaleKeys.forum.tr,
+                          icon: AssetIcons.community,
+                          context: context,
+                          onTap: () {
+                            Get.toNamed(AppRouter.routerForumListPage);
+                          },
+                        ),
                       ],
                     ),
                     Row(
                       children: [
                         _buildGridItem(
-                            title: LocaleKeys.expert.tr,
-                            icon: AssetIcons.experts,
-                            context: context,
-                            onTap: () {
-                              Get.toNamed(AppRouter.routerExpertPage);
-                            }),
+                          title: LocaleKeys.expert.tr,
+                          icon: AssetIcons.experts,
+                          context: context,
+                          onTap: () {
+                            Get.toNamed(AppRouter.routerExpertPage);
+                          },
+                        ),
                         _buildGridItem(
-                            title: LocaleKeys.chatbot.tr,
-                            icon: AssetIcons.chatbot,
-                            context: context,
-                            onTap: controller.handleChatbot),
+                          title: LocaleKeys.chatbot.tr,
+                          icon: AssetIcons.chatbot,
+                          context: context,
+                          onTap: controller.moveTChatbotPage,
+                        ),
                       ],
                     ),
                     _image(),
@@ -210,4 +213,7 @@ class HomePage extends StatelessWidget with BaseMixin {
       ),
     );
   }
+
+  @override
+  HomeController? putController() => HomeController();
 }

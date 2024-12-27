@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mental_healing/app_router.dart';
 import 'package:mental_healing/base/base_mixin.dart';
+import 'package:mental_healing/base/loading_wrapper.dart';
 import 'package:mental_healing/base/locator.dart';
+import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/service/localization/localization_service.dart';
 
@@ -17,16 +20,70 @@ class MyApp extends StatelessWidget with BaseMixin {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
       enableLog: true,
+      translations: LocalizationService(),
+      locale: LocalizationService.locale,
+      fallbackLocale: LocalizationService.fallbackLocale,
+      color: color.whiteColor,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate
+      ],
+      navigatorObservers: [CustomRouteObserver()],
+      supportedLocales: LocalizationService.locales,
+      debugShowCheckedModeBanner: false,
+      title: 'VJ',
+      theme: Get.find<AppThemeBase>().themeData,
+      builder: (BuildContext context, Widget? child) {
+        return ScreenUtilInit(
+          designSize: const Size(430, 932),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          child: MediaQuery(
+            data: MediaQuery.of(context)
+                .copyWith(textScaler: const TextScaler.linear(1)),
+            child: LoadingWrapper(child: child),
+          ),
+        );
+      },
       initialRoute: AppRouter.routerSplash,
       getPages: AppRouter.getPages,
       defaultTransition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 280),
-      translations: LocalizationService(),
-      locale: LocalizationService.locale,
-      fallbackLocale: LocalizationService.fallbackLocale,
-      theme: Get.find<AppThemeBase>().themeData,
     );
+  }
+}
+
+class CustomRouteObserver extends NavigatorObserver {
+  final List<String> screenHistory = [];
+
+  @override
+  void didPush(Route route, Route? previousRoute) {
+    super.didPush(route, previousRoute);
+    if (route.settings.name != null) {
+      screenHistory.add(route.settings.name!);
+      print(screenHistory);
+    }
+  }
+
+  @override
+  void didPop(Route route, Route? previousRoute) {
+    super.didPop(route, previousRoute);
+    if (route.settings.name != null) {
+      screenHistory.remove(route.settings.name);
+    }
+  }
+
+  @override
+  void didReplace({Route? newRoute, Route? oldRoute}) {
+    super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
+    if (oldRoute?.settings.name != null) {
+      screenHistory.remove(oldRoute?.settings.name);
+    }
+    if (newRoute?.settings.name != null) {
+      screenHistory.add(newRoute!.settings.name!);
+    }
   }
 }

@@ -1,16 +1,14 @@
 import 'package:flutter/gestures.dart';
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/sign_in/sign_in_controller.dart';
 
-class SignInPage extends StatelessWidget with BaseMixin {
-  final SignInController controller = Get.put(SignInController());
+class SignInPage extends BaseScreen<SignInController> with BaseMixin {
   SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
@@ -69,7 +67,7 @@ class SignInPage extends StatelessWidget with BaseMixin {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Form(
-        key: controller.signInFormKey,
+        key: controller.formKey,
         autovalidateMode: controller.firstValidation.value
             ? AutovalidateMode.onUserInteraction
             : AutovalidateMode.disabled,
@@ -161,6 +159,9 @@ class SignInPage extends StatelessWidget with BaseMixin {
       ),
     );
   }
+
+  @override
+  SignInController? putController() => SignInController();
 }
 
 class GreenHeaderClipper extends CustomClipper<Path> {

@@ -1,18 +1,16 @@
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
-import 'package:mental_healing/page/excercise/exercise_page.dart';
+import 'package:mental_healing/page/exercise_start/exercise_start_page.dart';
 import 'package:mental_healing/page/home/home_page.dart';
 import 'package:mental_healing/page/message/message_page.dart';
-import 'package:mental_healing/page/mood/mood_page.dart';
+import 'package:mental_healing/page/mood_list/mood_list_page.dart';
 import 'package:mental_healing/page/setting/setting_page.dart';
 
-class DashboardPage extends StatelessWidget with BaseMixin {
-  final DashboardController controller = Get.put(DashboardController());
+class DashboardPage extends BaseScreen<DashboardController> with BaseMixin {
   DashboardPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -23,8 +21,8 @@ class DashboardPage extends StatelessWidget with BaseMixin {
                   index: controller.currentTabIndex.value,
                   children: [
                     HomePage(),
-                    MoodPage(),
-                    ExercisePage(),
+                    MoodListPage(),
+                    ExerciseStart(),
                     MessagePage(),
                     SettingPage(),
                   ],
@@ -102,4 +100,7 @@ class DashboardPage extends StatelessWidget with BaseMixin {
       label: '',
     );
   }
+
+  @override
+  DashboardController? putController() => DashboardController();
 }

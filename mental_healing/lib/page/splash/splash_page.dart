@@ -1,29 +1,39 @@
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
-import 'package:lottie/lottie.dart';
 import 'package:mental_healing/page/splash/splash_controller.dart';
 
-class SplashPage extends StatelessWidget with BaseMixin {
-  final SplashController controller = Get.put(SplashController());
-
+class SplashPage extends BaseScreen<SplashController> with BaseMixin {
   SplashPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: color.backgroundColor,
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          Image.asset(
-            AssetImages.splashLogo,
-            height: double.infinity,
-            width: double.infinity,
-            fit: BoxFit.cover,
+  Widget builder() {
+    return Stack(
+      children: [
+        Image.asset(AssetImages.imageSplash, fit: BoxFit.fill),
+        Positioned(
+          bottom: 50,
+          left: 0,
+          right: 0,
+          child: Column(
+            children: [
+              Text(
+                LocaleKeys.splashText.tr,
+                textAlign: TextAlign.center,
+                style: textStyle.extraBold(size: 24, color: color.whiteColor),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.r),
+                child: Text(
+                  LocaleKeys.splashAuthor.tr,
+                  style: textStyle.extraBold(size: 14, color: color.whiteColor),
+                ),
+              )
+            ],
           ),
-          Center(child: Lottie.asset(AssetLotties.splashLoading)),
-        ],
-      ),
+        )
+      ],
     );
   }
+
+  @override
+  SplashController? putController() => SplashController();
 }

@@ -186,4 +186,40 @@ class AppThemeBright extends AppTheme {
 
   @override
   Color get color64B5F6 => const Color(0xFF64B5F6);
+
+  @override
+  Color get redColor => const Color(0xFFDD0000);
+
+  @override
+  Color get greyColor => const Color(0xFFD9D9D9);
+
+  @override
+  Color get disableButtonColor => const Color(0xFFF1F1F1);
+
+  @override
+  Color get inputColor => const Color(0xFFFCFCFC);
+
+  @override
+  Color get color999999 => const Color(0xFF999999);
+
+  @override
+  Color get borderLightColor => const Color(0xFFD9D9D9);
+
+  @override
+  Color get inActiveIndicator => const Color(0xFF4EA9F6);
+
+  @override
+  Color get color7D944D => const Color(0xFF7D944D);
+
+  @override
+  Color get colorFFD2C2 => const Color(0xFFFFD2C2);
+
+  @override
+  Color get colorE0A500 => const Color(0xFFE0A500);
+
+  @override
+  Color get colorCBC2FF => const Color(0xFFCBC2FF);
+
+  @override
+  Color get color7152FF => const Color(0xFF7152FF);
 }

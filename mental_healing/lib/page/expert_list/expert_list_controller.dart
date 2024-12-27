@@ -1,84 +1,72 @@
-import 'package:mental_healing/app_router.dart';
-import 'package:mental_healing/base_widget/snack_bar_helper.dart';
+import 'package:mental_healing/api_manager/api_error.dart';
+import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
+import 'package:mental_healing/data/model/expert_info.dart';
+import 'package:mental_healing/data/model/expert_params.dart';
+import 'package:mental_healing/data/use_case/expert_use_case.dart';
+import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
-import 'package:mental_healing/model/expert_model.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:mental_healing/utils/cache_manager.dart';
-import 'package:mental_healing/utils/config.dart';
 
-class ExpertListController extends GetxController {
-  RxList<ExpertModel> expertList = <ExpertModel>[].obs;
+class ExpertListController extends BaseController
+    with SmartLoadListController<Widget> {
+  final ExpertUseCase _useCase = ExpertUseCase();
   late int specialization;
-  RxBool isLoading = false.obs;
-  RxInt currentPage = 1.obs;
-  RxBool hasMore = true.obs;
-  final int limit = 10;
+
+  late ExpertParams param;
+
+  RxList<ExpertInfo> listExpertsWidget = <ExpertInfo>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     specialization = Get.arguments;
-    getAllExperts();
+    param = ExpertParams(page: 1, limit: 20, specialization: specialization);
+    _initData();
   }
 
-  Future<void> getAllExperts({bool isLoadMore = false}) async {
-    final String? token = CacheManager.getStoredToken();
-    if (token == null || token.isEmpty) {
-      SnackBarHelper.showError(LocaleKeys.token_missing.tr);
-      return;
-    }
-
-    String url =
-        '${Config.apiUrl}/experts?specialization=$specialization&page=${currentPage.value}&limit=$limit';
-
-    try {
-      isLoading.value = true;
-      final response = await http.get(
-        Uri.parse(url),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $token',
-        },
-      );
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        final List<ExpertModel> fetchedExperts = (data['experts'] as List)
-            .map((item) => ExpertModel.fromJson(item))
-            .toList();
-
-        if (isLoadMore) {
-          expertList.addAll(fetchedExperts);
-        } else {
-          expertList.value = fetchedExperts;
-        }
-
-        hasMore.value = data['total_page'] > currentPage.value;
-        if (hasMore.value) {
-          currentPage.value += 1;
-        }
-      } else {
-        final errorResponse = jsonDecode(response.body);
-        SnackBarHelper.showError(errorResponse['message']);
-      }
-    } catch (e) {
-      SnackBarHelper.showError(e.toString());
-    } finally {
-      isLoading.value = false;
-    }
+  Future<void> _initData() async {
+    isLoadingPage.value = true;
+    await _getListExperts();
   }
 
-  void loadMore() {
-    if (hasMore.value && !isLoading.value) {
-      getAllExperts(isLoadMore: true);
-    }
+  Future<void> _getListExperts() async {
+    await _useCase
+        .getListExperts(
+          params: param,
+          onSuccess: (List<ExpertInfo> data) {
+            if (data.isNotEmpty) {
+              // Gán dữ liệu vào danh sách
+              listExpertsWidget.value = data;
+              error.value = null;
+            } else {
+              error.value = "No data available" as ApiError?;
+            }
+          },
+          onFailure: (err) {
+            error.value = err;
+          },
+        )
+        .whenComplete(() => isLoadingPage.value = false);
   }
 
   Future<void> moveToExpertDetail(int expertId) async {
     Get.toNamed(
-      AppRouter.routerExpertDetail,
+      AppRouter.routerExpertDetailPage,
       arguments: expertId,
     );
+  }
+
+  @override
+  void onLoadMore() {
+    // Nếu cần load thêm dữ liệu, hãy tăng page và gọi lại API
+    // param.page += 1;
+    _getListExperts();
+  }
+
+  @override
+  Future<void> onRefresh() async {
+    // Reset lại page về 1 và gọi lại API
+    // param.page = 1;
+    await _getListExperts();
+    refreshController.refreshCompleted();
   }
 }

@@ -1,17 +1,15 @@
-import 'package:mental_healing/app_router.dart';
+import 'package:mental_healing/controller/global_data_manager.dart';
+import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
-import 'package:mental_healing/utils/cache_manager.dart';
 
-class HomeController extends GetxController {
-  Future<void> handleCommunity() async {
-    Get.toNamed(AppRouter.routerForum);
-  }
+class HomeController extends BaseController {
+  final GlobalDataManager _globalDataManager = GlobalDataManager();
 
-  Future<void> handleChatbot() async {
-    if (CacheManager.isFirstChatbotVisit()) {
-      Get.toNamed(AppRouter.routerChatbotIntro);
-      CacheManager.markFirstChatbotVisitComplete();
+  Future<void> moveTChatbotPage() async {
+    if (_globalDataManager.passChatbot) {
+      Get.toNamed(AppRouter.routerIntroChatbot);
     } else {
+      savePassChatbot(true);
       Get.toNamed(AppRouter.routerChatbotPage);
     }
   }
