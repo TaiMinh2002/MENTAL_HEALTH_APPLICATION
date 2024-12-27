@@ -1,3 +1,4 @@
+import 'package:mental_healing/global/app_dimension.dart';
 import 'package:mental_healing/import.dart';
 
 mixin BaseMixin {
@@ -6,6 +7,8 @@ mixin BaseMixin {
   // bool get eb => LocalizationService.locale.languageCode == AppConst.langEN;
 
   AppTextStyle get textStyle => AppTextStyle.share;
+
+  AppSized get sized => AppSized.share;
 }
 
 mixin MixinWidget<T extends StatelessWidget> on BaseMixin {}

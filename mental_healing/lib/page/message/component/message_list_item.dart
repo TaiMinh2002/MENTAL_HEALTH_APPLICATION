@@ -1,16 +1,28 @@
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 
-class MessageListItem extends StatelessWidget with BaseMixin {
-  const MessageListItem({super.key});
+class MessageListItem extends BaseWidget with BaseMixin {
+  MessageListItem(
+      {super.key,
+      required this.name,
+      required this.avatar,
+      required this.latestMessage,
+      required this.onTap});
+
+  final String name;
+  final String avatar;
+  final String latestMessage;
+  final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 28.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [_avatarWidget(), _messageWidget(), _timeWidget()],
+  Widget builder() {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 28.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [_avatarWidget(), _messageWidget(), _timeWidget()],
+        ),
       ),
     );
   }
@@ -18,7 +30,7 @@ class MessageListItem extends StatelessWidget with BaseMixin {
   Widget _avatarWidget() {
     return CircleAvatar(
       backgroundColor: color.whiteColor,
-      backgroundImage: const AssetImage(AssetImages.noPerson),
+      backgroundImage: NetworkImage(avatar),
       radius: 30,
     );
   }
@@ -31,13 +43,13 @@ class MessageListItem extends StatelessWidget with BaseMixin {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Name',
+              name,
               style: textStyle.bold(size: 15, color: color.blackColor),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5.0),
               child: Text(
-                'Last Message jdbnfjebjlwbnrjklbdnfjklewbqtjklqrt;erwfjbdnskjbftno234[bdhsfjkbfne4jkwbfdkshjgtbvh]',
+                latestMessage,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: textStyle.regular(size: 15, color: color.blackColor),

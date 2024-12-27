@@ -1,8 +1,7 @@
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/import.dart';
 
-class CategoryItem extends StatelessWidget with BaseMixin {
-  const CategoryItem(
+class CategoryItem extends BaseWidget with BaseMixin {
+  CategoryItem(
       {super.key,
       required this.category,
       required this.categoryColor,
@@ -13,7 +12,7 @@ class CategoryItem extends StatelessWidget with BaseMixin {
   final String icon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return Column(
       children: [
         Stack(

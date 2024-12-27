@@ -1,14 +1,13 @@
-import 'package:mental_healing/app_router.dart';
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/app_bar_custom.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
+import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 
-class ChatbotIntro extends StatelessWidget with BaseMixin {
-  const ChatbotIntro({super.key});
+class ChatbotIntro extends BaseWidget with BaseMixin {
+  ChatbotIntro({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SafeArea(
       child: Scaffold(
         appBar: AppBarCustom(

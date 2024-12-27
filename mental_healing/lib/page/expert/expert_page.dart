@@ -1,13 +1,12 @@
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/back_button_widget.dart';
-import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/expert/component/body_item.dart';
 import 'package:mental_healing/page/expert/component/category_item.dart';
-import 'package:mental_healing/page/expert/component/expert_item.dart';
+import 'package:mental_healing/page/expert/expert_controller.dart';
+// import 'package:mental_healing/page/expert/component/expert_item.dart';
+// import 'package:mental_healing/page/expert/component/expert_list_screen.dart';
 
-class ExpertPage extends StatelessWidget with BaseMixin {
-  final TextEditingController searchController = TextEditingController();
+class ExpertPage extends BaseScreen<ExpertController> with BaseMixin {
   ExpertPage({super.key});
 
   final List<Map<String, dynamic>> categories = [
@@ -61,7 +60,7 @@ class ExpertPage extends StatelessWidget with BaseMixin {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
@@ -72,12 +71,12 @@ class ExpertPage extends StatelessWidget with BaseMixin {
                 clipBehavior: Clip.none,
                 children: [
                   _headerWidget(),
-                  Positioned(
-                    bottom: -28,
-                    left: 20,
-                    right: 20,
-                    child: _searchWidget(),
-                  )
+                  // Positioned(
+                  //   bottom: -28,
+                  //   left: 20,
+                  //   right: 20,
+                  //   child: _searchWidget(),
+                  // )
                 ],
               ),
               BodyItem(
@@ -88,33 +87,38 @@ class ExpertPage extends StatelessWidget with BaseMixin {
                     scrollDirection: Axis.horizontal,
                     itemCount: categories.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        margin:
-                            const EdgeInsets.only(left: 16, right: 16, top: 25),
-                        child: CategoryItem(
-                          category: categories[index]['category'],
-                          categoryColor: categories[index]['color'],
-                          icon: categories[index]['icon'],
+                      return GestureDetector(
+                        onTap: () {
+                          controller.moveToListExpert(index + 1);
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(
+                              left: 16, right: 16, top: 25),
+                          child: CategoryItem(
+                            category: categories[index]['category'],
+                            categoryColor: categories[index]['color'],
+                            icon: categories[index]['icon'],
+                          ),
                         ),
                       );
                     },
                   ),
                 ),
               ),
-              BodyItem(
-                  title: LocaleKeys.top_expert.tr,
-                  widget: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      int colorIndex = index % 3;
-                      return ExpertItem(
-                        backgroundColor: backgroundColors[colorIndex],
-                        textColor: textColors[colorIndex],
-                      );
-                    },
-                  ))
+              // BodyItem(
+              //     title: LocaleKeys.top_expert.tr,
+              //     widget: ListView.builder(
+              //       physics: const NeverScrollableScrollPhysics(),
+              //       shrinkWrap: true,
+              //       itemCount: 5,
+              //       itemBuilder: (context, index) {
+              //         int colorIndex = index % 3;
+              //         return ExpertItem(
+              //           backgroundColor: backgroundColors[colorIndex],
+              //           textColor: textColors[colorIndex],
+              //         );
+              //       },
+              //     ))
             ],
           ),
         ),
@@ -179,16 +183,19 @@ class ExpertPage extends StatelessWidget with BaseMixin {
     );
   }
 
-  Widget _searchWidget() {
-    return WidgetInputText(
-      hintText: 'Search......',
-      controller: searchController,
-      textCapitalization: TextCapitalization.none,
-      borderRadius: 20,
-      iconLeading: AssetIcons.search,
-      height: 50,
-    );
-  }
+  // Widget _searchWidget() {
+  //   return WidgetInputText(
+  //     hintText: 'Search......',
+  //     controller: searchController,
+  //     textCapitalization: TextCapitalization.none,
+  //     borderRadius: 20,
+  //     iconLeading: AssetIcons.search,
+  //     height: 50,
+  //   );
+  // }
+
+  @override
+  ExpertController? putController() => ExpertController();
 }
 
 class HeaderClipper extends CustomClipper<Path> {

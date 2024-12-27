@@ -15,3 +15,12 @@ enum Stress {
   veryStressed,
   extremelyStressed
 }
+
+enum CacheManagerKey {
+  token,
+  language,
+  userInfo,
+  passBoarding,
+  fcmToken,
+  passChatbot,
+}

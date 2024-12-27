@@ -3,12 +3,11 @@ import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
 import 'package:mental_healing/page/setting/setting_controller.dart';
 
-class SettingPage extends StatelessWidget {
-  final SettingController controller = Get.put(SettingController());
+class SettingPage extends BaseScreen<SettingController> {
   SettingPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SingleChildScrollView(
       child: Column(
         children: [_headerWidget(), _bodyWidget()],
@@ -71,7 +70,7 @@ class SettingPage extends StatelessWidget {
         _item(
             prefixIcon: AssetIcons.person,
             title: LocaleKeys.personal_information.tr,
-            onTap: controller.handlePersonInfo),
+            onTap: () {}),
         _item(
             prefixIcon: AssetIcons.emergency,
             title: LocaleKeys.emergency_contact.tr),
@@ -95,7 +94,7 @@ class SettingPage extends StatelessWidget {
         _item(
             prefixIcon: AssetIcons.help,
             title: LocaleKeys.help_center.tr,
-            onTap: controller.handleHelpCenter),
+            onTap: () {}),
       ],
     );
   }
@@ -116,9 +115,10 @@ class SettingPage extends StatelessWidget {
       children: [
         _title(LocaleKeys.logout.tr),
         _item(
-            prefixIcon: AssetIcons.signOut,
-            title: LocaleKeys.logout.tr,
-            onTap: controller.handleSignOut),
+          prefixIcon: AssetIcons.signOut,
+          title: LocaleKeys.logout.tr,
+          onTap: controller.handleSignOut,
+        ),
       ],
     );
   }
@@ -171,4 +171,7 @@ class SettingPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  SettingController? putController() => SettingController();
 }

@@ -1,12 +1,12 @@
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/app_bar_custom.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/chatbot/chatbot_controller.dart';
 
-class ChatbotPage extends StatelessWidget with BaseMixin {
-  const ChatbotPage({super.key});
+class ChatbotPage extends BaseScreen<ChatbotController> with BaseMixin {
+  ChatbotPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
@@ -15,37 +15,47 @@ class ChatbotPage extends StatelessWidget with BaseMixin {
           centerTitle: false,
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: ListView(
-                padding: EdgeInsets.all(16.0),
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      padding: EdgeInsets.all(12.0),
-                      margin: EdgeInsets.only(bottom: 10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Text("Hello! How can I help you?"),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      padding: EdgeInsets.all(12.0),
-                      margin: EdgeInsets.only(bottom: 10.0),
-                      decoration: BoxDecoration(
-                        color: color.colorA5D6A7,
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Text("I need some assistance."),
-                    ),
-                  ),
-                ],
-              ),
+              child: Obx(() {
+                final messages = controller.listConversions;
+                return ListView.builder(
+                  padding: EdgeInsets.all(16.r),
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    final message = messages[index];
+                    return Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            padding: EdgeInsets.all(12.r),
+                            margin: EdgeInsets.only(bottom: 10.r),
+                            decoration: BoxDecoration(
+                              color: color.colorA5D6A7,
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: Text(message.user_message ?? ''),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            padding: EdgeInsets.all(12.r),
+                            margin: EdgeInsets.only(bottom: 10.r),
+                            decoration: BoxDecoration(
+                              color: color.whiteColor,
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: Text(message.bot_reply ?? ''),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0, bottom: 8),
@@ -73,6 +83,7 @@ class ChatbotPage extends StatelessWidget with BaseMixin {
                           ),
                           Expanded(
                             child: TextField(
+                              controller: controller.messageController,
                               decoration: InputDecoration(
                                 hintText: LocaleKeys.type_to_chat.tr,
                                 border: InputBorder.none,
@@ -86,8 +97,19 @@ class ChatbotPage extends StatelessWidget with BaseMixin {
                   Padding(
                     padding: const EdgeInsets.only(left: 25.0),
                     child: CircleAvatar(
-                        backgroundColor: color.color9BB068,
-                        child: SvgPicture.asset(AssetIcons.sendMessage)),
+                      backgroundColor: color.color9BB068,
+                      child: GestureDetector(
+                        onTap: () async {
+                          final userMessage =
+                              controller.messageController.text.trim();
+                          if (userMessage.isNotEmpty) {
+                            await controller.sendMessage(userMessage);
+                            controller.messageController.clear();
+                          }
+                        },
+                        child: SvgPicture.asset(AssetIcons.sendMessage),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -97,4 +119,7 @@ class ChatbotPage extends StatelessWidget with BaseMixin {
       ),
     );
   }
+
+  @override
+  ChatbotController? putController() => ChatbotController();
 }

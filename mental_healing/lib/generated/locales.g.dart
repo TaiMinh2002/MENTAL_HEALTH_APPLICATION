@@ -190,6 +190,58 @@ class LocaleKeys {
   static const mental_health_admin = 'mental_health_admin';
   static const search = 'search';
   static const messages = 'messages';
+  static const expert_detail = 'expert_detail';
+  static const rating = 'rating';
+  static const video_call = 'video_call';
+  static const chat = 'chat';
+  static const chat_with_expert = 'chat_with_expert';
+  static const video_call_with_expert = 'video_call_with_expert';
+  static const get_appointment = 'get_appointment';
+  static const about_expert = 'about_expert';
+  static const error_loading_data = 'error_loading_data';
+  static const phone_number = 'phone_number';
+  static const contact_info = 'contact_info';
+  static const unexpectedError = 'unexpectedError';
+  static const cancel = 'cancel';
+  static const ok = 'ok';
+  static const noInternet = 'noInternet';
+  static const noInternetConnection = 'noInternetConnection';
+  static const noData = 'noData';
+  static const now = 'now';
+  static const ago = 'ago';
+  static const second = 'second';
+  static const minute = 'minute';
+  static const hour = 'hour';
+  static const day = 'day';
+  static const month = 'month';
+  static const year = 'year';
+  static const requestCamera = 'requestCamera';
+  static const requestGallery = 'requestGallery';
+  static const goToSetting = 'goToSetting';
+  static const requiredEmail = 'requiredEmail';
+  static const requiredPassword = 'requiredPassword';
+  static const emailWrongFormat = 'emailWrongFormat';
+  static const emailContain = 'emailContain';
+  static const emailLess255 = 'emailLess255';
+  static const phoneWrongFormat = 'phoneWrongFormat';
+  static const requiredPhone = 'requiredPhone';
+  static const passwordGreater = 'passwordGreater';
+  static const passwordLess = 'passwordLess';
+  static const passwordFormat = 'passwordFormat';
+  static const confirmPasswordNotMatch = 'confirmPasswordNotMatch';
+  static const requiredConfirmPassword = 'requiredConfirmPassword';
+  static const next = 'next';
+  static const splashText = 'splashText';
+  static const splashAuthor = 'splashAuthor';
+  static const requiredTitle = 'requiredTitle';
+  static const requiredDescription = 'requiredDescription';
+  static const selectPhotoMethod = 'selectPhotoMethod';
+  static const meditation_benefits = 'meditation_benefits';
+  static const breathe_deeply_benefits = 'breathe_deeply_benefits';
+  static const yoga_benefits = 'yoga_benefits';
+  static const choose_type = 'choose_type';
+  static const not_written_mood = 'not_written_mood';
+  static const writeYourMood = 'writeYourMood';
 }
 
 class Locales {
@@ -383,34 +435,88 @@ class Locales {
     'mental_health_admin': 'Mental Health\'s Admin',
     'search': 'Search',
     'messages': 'Messages',
+    'expert_detail': 'Expert Detail',
+    'rating': 'Rating',
+    'video_call': 'Video Call',
+    'chat': 'Chat',
+    'chat_with_expert': 'Chat with Expert',
+    'video_call_with_expert': 'Video Call with Expert',
+    'get_appointment': 'Get Appointment',
+    'about_expert': 'About Expert',
+    'error_loading_data': 'Error Loading Data',
+    'phone_number': 'Phone Number',
+    'contact_info': 'Contact Info',
+    'unexpectedError': 'An unexpected error has occurred',
+    'cancel': 'Cancel',
+    'ok': 'Ok',
+    'noInternet': 'No internet connection!',
+    'noInternetConnection':
+        'No internet connection\nPlease check your internet connection.',
+    'noData': 'No data!',
+    'now': 'now',
+    'ago': 'ago',
+    'second': 'second',
+    'minute': 'minute',
+    'hour': 'hour',
+    'day': 'day',
+    'month': 'month',
+    'year': 'year',
+    'requestCamera':
+        'To access the camera on Mental Health, please allow access to the camera.',
+    'requestGallery':
+        'To upload photos to Mental Health, please allow access to all photos.',
+    'goToSetting': 'Go to settings',
+    'requiredEmail': 'Email cannot be empty',
+    'requiredPassword': 'Password cannot be empty',
+    'emailWrongFormat': 'Incorrect email format',
+    'emailContain': 'Email cannot contain \'+\'',
+    'emailLess255': 'Email cannot exceed 255 characters',
+    'phoneWrongFormat': 'Invalid phone number format',
+    'requiredPhone': 'Phone number cannot be empty',
+    'passwordGreater': 'Password cannot be less than 8 characters',
+    'passwordLess': 'Password cannot exceed 40 characters',
+    'passwordFormat':
+        'The password must contain at least one letter, one number, and one special character',
+    'confirmPasswordNotMatch': 'Password confirmation does not match',
+    'requiredConfirmPassword': 'Password confirmation cannot be empty',
+    'next': 'Next',
+    'splashText':
+        'In the midst of winter, I found\n there was within me an\n invincible summer.',
+    'splashAuthor': '— Albert Camus',
+    'requiredTitle': 'Title cannot be empty',
+    'requiredDescription': 'Description cannot be empty',
+    'selectPhotoMethod': 'Choose method',
+    'meditation_benefits':
+        'Meditation reduces stress, improves focus, and brings balance to your life',
+    'breathe_deeply_benefits': 'Breathe deeply to find calm and balance',
+    'yoga_benefits':
+        'Yoga brings flexibility to your body and peace to your mind',
+    'choose_type': 'Choose type',
+    'not_written_mood': 'You haven\'t done it yet, start writing your mood',
+    'writeYourMood': 'Write your mood',
   };
   static const vi = {
-    'welcome_message': 'Chào mừng bạn đến với\nSức Khỏe Tâm Lý',
-    'companion_description':
-        'Người bạn đồng hành đáng tin cậy cho sức khỏe tâm lý của bạn, mọi lúc, mọi nơi 🍃',
+    'welcome_message': 'Chào mừng đến với Sức Khỏe Tâm Lý',
+    'companion_description': 'Người bạn sức khỏe tâm lý, mọi lúc, mọi nơi 🍃',
     'get_start': 'Bắt đầu',
     'step_1': 'Bước 1',
     'step_2': 'Bước 2',
     'step_3': 'Bước 3',
-    'personalize_journey': 'Cá nhân hóa Hành Trình Sức Khỏe Tâm Lý của Bạn',
-    'smart_tracking':
-        'Theo dõi Tâm Trạng Thông Minh & Thấu Hiểu Cảm Xúc Cá Nhân',
-    'mindful_resources': 'Tài Nguyên Tinh Thần Giúp Bạn Hạnh Phúc',
-    'sign_in_message': 'Đăng Nhập\nNgười Bạn Đồng Hành Sức Khỏe Tâm Lý của Bạn',
+    'personalize_journey': 'Cá nhân hóa hành trình của bạn',
+    'smart_tracking': 'Theo dõi tâm trạng thông minh',
+    'mindful_resources': 'Tài nguyên giúp bạn hạnh phúc',
+    'sign_in_message': 'Đăng Nhập Sức Khỏe Tâm Lý',
     'sign_in': 'Đăng Nhập',
-    'enter_email_or_phone_number':
-        'Vui lòng nhập địa chỉ email hoặc số điện thoại của bạn',
-    'enter_password': 'Vui lòng nhập mật khẩu của bạn',
-    'email_or_phone_number': 'Email hoặc số điện thoại...',
-    'password_placeholder': 'Nhập mật khẩu của bạn...',
-    'username_placeholder': 'Nhập tên đăng nhập của bạn...',
-    'enter_username': 'Vui lòng nhập tên người dùng của bạn',
-    'password_requirements': 'Mật khẩu phải có ít nhất 8 ký tự',
-    'password_complexity':
-        'Mật khẩu phải chứa ít nhất một chữ cái viết hoa, một chữ cái viết thường, một số, và một ký tự đặc biệt',
-    'please_enter_confirm_password':
-        'Vui lòng nhập mật khẩu xác nhận của bạn...',
-    'enter_confirm_password': 'Nhập mật khẩu xác nhận của bạn',
+    'enter_email_or_phone_number': 'Nhập email hoặc số điện thoại',
+    'enter_password': 'Nhập mật khẩu',
+    'email_or_phone_number': 'Email/SĐT...',
+    'password_placeholder': 'Mật khẩu...',
+    'username_placeholder': 'Tên đăng nhập...',
+    'enter_username': 'Nhập tên đăng nhập',
+    'password_requirements': 'Mật khẩu ít nhất 8 ký tự',
+    'password_complexity': 'Phải có chữ hoa, chữ thường, số, ký tự đặc biệt',
+    'please_enter_confirm_password': 'Nhập mật khẩu xác nhận...',
+    'enter_confirm_password': 'Xác nhận mật khẩu',
     'passwords_no_match': 'Mật khẩu không khớp',
     'signup_success': 'Đăng ký thành công',
     'email_exists': 'Email đã tồn tại',
@@ -421,49 +527,46 @@ class Locales {
     'already_have_account': 'Đã có tài khoản?',
     'assessment': 'Đánh giá',
     'btn_continue': 'Tiếp tục',
-    'i_am_male': 'Tôi là Nam',
-    'i_am_female': 'Tôi là Nữ',
-    'whats_your_age': 'Bạn bao nhiêu tuổi',
-    'describe_mood': 'Bạn sẽ mô tả tâm trạng của mình như thế nào?',
-    'rate_sleep_quality':
-        'Bạn sẽ đánh giá chất lượng giấc ngủ của mình như thế nào?',
-    'rate_stress_level':
-        'Bạn sẽ đánh giá mức độ căng thẳng của mình như thế nào?',
-    'sought_professional_help':
-        'Bạn đã từng tìm kiếm sự trợ giúp chuyên nghiệp trước đây chưa?',
+    'i_am_male': 'Nam',
+    'i_am_female': 'Nữ',
+    'whats_your_age': 'Bạn bao nhiêu tuổi?',
+    'describe_mood': 'Mô tả tâm trạng của bạn',
+    'rate_sleep_quality': 'Đánh giá giấc ngủ của bạn',
+    'rate_stress_level': 'Đánh giá mức căng thẳng',
+    'sought_professional_help': 'Bạn từng tìm sự trợ giúp chuyên nghiệp chưa?',
     'yes': 'Có',
     'no': 'Không',
-    'feel_great': 'Tôi Cảm Thấy Tuyệt Vời',
-    'feel_good': 'Tôi Cảm Thấy Tốt',
-    'feel_neutral': 'Tôi Cảm Thấy Bình Thường',
-    'feel_tired': 'Tôi Cảm Thấy Mệt Mỏi',
-    'feel_sad': 'Tôi Cảm Thấy Buồn',
+    'feel_great': 'Tuyệt vời',
+    'feel_good': 'Tốt',
+    'feel_neutral': 'Bình thường',
+    'feel_tired': 'Mệt mỏi',
+    'feel_sad': 'Buồn',
     'home': 'Trang Chủ',
     'mood': 'Tâm Trạng',
     'exercise': 'Bài Tập',
     'message': 'Tin Nhắn',
     'setting': 'Cài Đặt',
-    'account_settings': 'Cài Đặt Tài Khoản',
-    'general_settings': 'Cài Đặt Chung',
+    'account_settings': 'Tài Khoản',
+    'general_settings': 'Chung',
     'notification': 'Thông Báo',
     'personal_information': 'Thông Tin Cá Nhân',
     'emergency_contact': 'Liên Hệ Khẩn Cấp',
     'language': 'Ngôn Ngữ',
     'dark_mode': 'Chế Độ Tối',
     'invite_friend': 'Mời Bạn Bè',
-    'submit_feedback': 'Gửi Phản Hồi',
-    'security_privacy': 'Bảo Mật & Quyền Riêng Tư',
+    'submit_feedback': 'Phản Hồi',
+    'security_privacy': 'Bảo Mật & Riêng Tư',
     'security': 'Bảo Mật',
-    'help_center': 'Trung Tâm Trợ Giúp',
+    'help_center': 'Trợ Giúp',
     'danger_zone': 'Vùng Nguy Hiểm',
     'close_account': 'Đóng Tài Khoản',
     'logout': 'Đăng Xuất',
-    'incorrect_email_password': 'Email hoặc mật khẩu không chính xác',
+    'incorrect_email_password': 'Email/mật khẩu không đúng',
     'user_not_found': 'Không tìm thấy người dùng',
-    'failed_to_refresh_token': 'Làm mới token không thành công',
+    'failed_to_refresh_token': 'Làm mới thất bại',
     'communication_error': 'Lỗi kết nối',
-    'check_internet_connection': 'Vui lòng kiểm tra kết nối internet của bạn',
-    'official_gender': 'Giới tính chính thức của bạn là gì?',
+    'check_internet_connection': 'Kiểm tra kết nối internet',
+    'official_gender': 'Giới tính của bạn?',
     'excellent': 'Xuất sắc',
     'seven_nine_hours': '7-9 giờ',
     'good': 'Tốt',
@@ -474,40 +577,36 @@ class Locales {
     'three_four_hours': '3-4 giờ',
     'worst': 'Tệ nhất',
     'less_than_three_hours': '<3 giờ',
-    'feeling_calm':
-        'Bạn đang cảm thấy bình tĩnh và hoàn toàn không có căng thẳng',
-    'bit_stressed': 'Bạn hơi căng thẳng, nhưng không có gì quá nghiêm trọng',
-    'fair_amount_of_stress':
-        'Bạn đang trải qua một lượng căng thẳng nhất định, và nó bắt đầu ảnh hưởng đến bạn',
-    'quite_stressed':
-        'Bạn đang cảm thấy khá căng thẳng, và nó đang ảnh hưởng đến tâm trạng và sự tập trung của bạn',
-    'extremely_stressed':
-        'Bạn đang cực kỳ căng thẳng, và nó đang trở nên quá sức',
+    'feeling_calm': 'Bạn cảm thấy bình tĩnh',
+    'bit_stressed': 'Hơi căng thẳng',
+    'fair_amount_of_stress': 'Căng thẳng vừa phải',
+    'quite_stressed': 'Rất căng thẳng',
+    'extremely_stressed': 'Cực kỳ căng thẳng',
     'smart_watch': 'Đồng Hồ Thông Minh',
     'mini_ecg': 'ECG Mini',
-    'smart_patch': 'Miếng Dán Thông Minh',
+    'smart_patch': 'Miếng Dán',
     'bp_monitor': 'Máy Đo Huyết Áp',
-    'save_setting': 'Lưu Cài Đặt',
+    'save_setting': 'Lưu',
     'not_stressed_label': 'Không Căng Thẳng',
     'slightly_stressed_label': 'Hơi Căng Thẳng',
-    'moderately_stressed_label': 'Căng Thẳng Vừa Phải',
+    'moderately_stressed_label': 'Căng Thẳng Vừa',
     'very_stressed_label': 'Rất Căng Thẳng',
     'extremely_stressed_label': 'Cực Kỳ Căng Thẳng',
     'take_photo': 'Chụp Ảnh',
     'choose_from_gallery': 'Chọn từ Thư viện',
     'remove_avatar': 'Xóa Avatar',
-    'calm_mind_course': 'Khóa Học Tâm Trí Bình Tĩnh',
-    'journey_to_mindfulness': 'Hành trình đến sự tỉnh thức của bạn',
+    'calm_mind_course': 'Khóa Học Tâm Lý',
+    'journey_to_mindfulness': 'Hành trình tỉnh thức',
     'sleep': 'Giấc Ngủ',
     'music': 'Âm Nhạc',
     'expert': 'Chuyên Gia',
     'chatbot': 'Chatbot',
-    'forum': 'Diễn đàn',
+    'forum': 'Diễn Đàn',
     'member': 'thành viên',
     'post': 'bài viết',
     'join': 'Tham Gia',
-    'all_forum': 'Tất Cả Diễn đàn',
-    'your_forum': 'Diễn đàn Của Bạn',
+    'all_forum': 'Tất Cả',
+    'your_forum': 'Diễn Đàn Của Bạn',
     'logout_success': 'Đăng Xuất Thành Công',
     'invalid_token': 'Token Không Hợp Lệ',
     'logout_failed': 'Đăng Xuất Thất Bại',
@@ -515,70 +614,127 @@ class Locales {
     'enter_new_password': 'Nhập Mật Khẩu Mới',
     'token_is_missing': 'Thiếu token',
     'joined': 'Đã tham gia',
-    'only_images_allowed': 'Chỉ cho phép hình ảnh',
+    'only_images_allowed': 'Chỉ cho phép ảnh',
     'create_forum': 'Tạo diễn đàn',
-    'enter_your_title': 'Nhập tiêu đề của bạn...',
-    'enter_your_description': 'Nhập mô tả của bạn...',
-    'enter_forum_title': 'Vui lòng nhập tiêu đề diễn đàn của bạn',
-    'enter_forum_description': 'Vui lòng nhập mô tả diễn đàn của bạn',
+    'enter_your_title': 'Nhập tiêu đề...',
+    'enter_your_description': 'Nhập mô tả...',
+    'enter_forum_title': 'Nhập tiêu đề diễn đàn',
+    'enter_forum_description': 'Nhập mô tả diễn đàn',
     'welcome_forum_message':
-        'Chào mừng bạn đến với diễn đàn sức khỏe tâm lý này,\n được tạo ra bởi những người dùng như bạn\n để chia sẻ câu chuyện, hỗ trợ\n và giúp đỡ nhau vượt qua những thăng trầm của cuộc sống.\n\n Đây là nơi mà tiếng nói của mỗi người đều quan trọng,\n và bằng cách chia sẻ trải nghiệm của mình,\n bạn đóng góp vào một cộng đồng\n đầy sự quan tâm và thấu hiểu',
+        'Chào mừng đến với diễn đàn sức khỏe tâm lý. Chia sẻ câu chuyện, hỗ trợ, giúp nhau vượt qua khó khăn.',
     'add_cover_photo': 'Thêm ảnh bìa',
-    'add_intro_image':
-        'Thêm hình ảnh giới thiệu về nhóm của bạn để thu hút sự chú ý',
+    'add_intro_image': 'Thêm hình ảnh giới thiệu',
     'edit': 'Chỉnh sửa',
-    'describe_your_forum':
-        '※ Hãy mô tả diễn đàn của bạn để mọi người biết nhóm xoay quanh chủ đề gì',
-    'want_to_share_story': 'Bạn muốn chia sẻ câu chuyện của mình?',
-    'all_posts': 'Tất cả bài viết',
+    'describe_your_forum': 'Mô tả diễn đàn',
+    'want_to_share_story': 'Chia sẻ câu chuyện?',
+    'all_posts': 'Tất Cả Bài Viết',
     'favorite': 'Yêu Thích',
-    'commentUpperCase': 'Bình luận',
+    'commentUpperCase': 'Bình Luận',
     'commentLowerCase': 'bình luận',
-    'share': 'Chia sẻ',
-    'your_mood_is': 'Tâm trạng của bạn là',
+    'share': 'Chia Sẻ',
+    'your_mood_is': 'Tâm trạng của bạn',
     'great': 'Tuyệt vời',
     'neutral': 'Bình thường',
     'sad': 'Buồn',
     'happy': 'Vui',
     'tired': 'Mệt mỏi',
-    'how_feeling_today': 'Hôm nay bạn cảm thấy thế nào?',
-    'feeling_sad': 'Tôi cảm thấy buồn',
-    'feeling_neutral': 'Tôi cảm thấy bình thường',
-    'feeling_happy': 'Tôi cảm thấy vui',
-    'feeling_depressed': 'Tôi cảm thấy chán nản',
-    'feeling_overjoyed': 'Tôi cảm thấy hân hoan',
+    'how_feeling_today': 'Hôm nay bạn thế nào?',
+    'feeling_sad': 'Buồn',
+    'feeling_neutral': 'Bình thường',
+    'feeling_happy': 'Vui',
+    'feeling_depressed': 'Chán nản',
+    'feeling_overjoyed': 'Hân hoan',
     'set_mood': 'Đặt Tâm Trạng',
     'mood_statistics': 'Thống Kê Tâm Trạng',
-    'talk_to_doctor_ai': 'Nói chuyện với Bác Sĩ AI',
+    'talk_to_doctor_ai': 'Nói chuyện Bác Sĩ AI',
     'no_ai_conversations':
-        'Bạn chưa có cuộc trò chuyện AI nào. \nHãy bắt đầu cuộc trò chuyện mới để cải thiện sức khỏe tâm trí của bạn.',
+        'Chưa có trò chuyện AI nào. Bắt đầu ngay để cải thiện sức khỏe tâm trí.',
     'ai_chatbot': 'Chatbot AI',
     'doctor_ai': 'Bác Sĩ AI',
-    'type_to_chat': 'Nhập để bắt đầu trò chuyện...',
-    'start_talking': 'Bắt Đầu Nói Chuyện',
+    'type_to_chat': 'Nhập để trò chuyện...',
+    'start_talking': 'Bắt Đầu',
     'step_4': 'Bước 4',
     'step_5': 'Bước 5',
-    'personal_mental_journaling': 'Nhật Ký Tâm Lý Cá Nhân & Chatbot Trị Liệu',
-    'caring_supportive_community': 'Cộng Đồng Quan Tâm & Hỗ Trợ',
+    'personal_mental_journaling': 'Nhật Ký Tâm Lý & Chatbot',
+    'caring_supportive_community': 'Cộng Đồng Hỗ Trợ',
     'sign_up_for_free': 'Đăng Ký Miễn Phí',
     'find_expert': 'Tìm Chuyên Gia',
     'clinical_psychology': 'Tâm Lý Lâm Sàng',
-    'psychiatry': 'Tâm Thần Học',
+    'psychiatry': 'Tâm Thần',
     'counseling': 'Tư Vấn',
     'behavioral_therapy': 'Trị Liệu Hành Vi',
-    'family_marriage_therapy': 'Trị Liệu Gia Đình và Hôn Nhân',
-    'art_music_therapy': 'Trị Liệu Nghệ Thuật và Âm Nhạc',
-    'therapy_for_elderly': 'Trị Liệu Cho Người Cao Tuổi',
+    'family_marriage_therapy': 'Trị Liệu Gia Đình',
+    'art_music_therapy': 'Trị Liệu Nghệ Thuật',
+    'therapy_for_elderly': 'Trị Liệu Người Cao Tuổi',
     'categories': 'Danh Mục',
     'top_expert': 'Chuyên Gia Hàng Đầu',
-    'skip': 'Bỏ qua',
-    'forum_created_successfully': 'Tạo diễn đàn thành công',
-    'forum_updated_successfully': 'Cập nhật diễn đàn thành công',
+    'skip': 'Bỏ Qua',
+    'forum_created_successfully': 'Tạo thành công',
+    'forum_updated_successfully': 'Cập nhật thành công',
     'meditation': 'Thiền',
-    'breathe_deeply': 'Hít thở sâu',
+    'breathe_deeply': 'Hít Thở Sâu',
     'yoga': 'Yoga',
-    'mental_health_admin': 'Quản Trị Viên Sức Khỏe Tâm Lý',
+    'mental_health_admin': 'Quản Trị Viên',
     'search': 'Tìm Kiếm',
     'messages': 'Tin Nhắn',
+    'expert_detail': 'Chi Tiết',
+    'rating': 'Đánh Giá',
+    'video_call': 'Gọi Video',
+    'chat': 'Trò Chuyện',
+    'chat_with_expert': 'Nhắn tin chuyên gia',
+    'video_call_with_expert': 'Gọi video chuyên gia',
+    'get_appointment': 'Đặt Lịch',
+    'about_expert': 'Về Chuyên Gia',
+    'error_loading_data': 'Lỗi Tải Dữ Liệu',
+    'phone_number': 'Số Điện Thoại',
+    'contact_info': 'Thông Tin Liên Hệ',
+    'unexpectedError': 'Đã xảy ra lỗi không mong muốn',
+    'cancel': 'Huỷ',
+    'ok': 'Ok',
+    'noInternet': 'Không có kết nối internet!',
+    'noInternetConnection':
+        'Không có kết nối internet\nVui lòng kiểm tra kết nối internet của bạn.',
+    'noData': 'Không có dữ liệu!',
+    'now': 'bây giờ',
+    'ago': 'trước',
+    'second': 'giây',
+    'minute': 'phút',
+    'hour': 'giờ',
+    'day': 'ngày',
+    'month': 'tháng',
+    'year': 'năm',
+    'requestCamera':
+        'Để truy cập vào camera trên Mental Health, vui lòng cho phép truy cập vào camera.',
+    'requestGallery':
+        'Để tải ảnh lên Mental Health, vui lòng cho phép truy cập vào tất cả ảnh.',
+    'goToSetting': 'Đi tới cài đặt',
+    'requiredEmail': 'Email không được để trống',
+    'requiredPassword': 'Mật khẩu không được để trống',
+    'emailWrongFormat': 'Định dạng email không đúng',
+    'emailContain': 'Email không được chứa dấu \'+\'',
+    'emailLess255': 'Email không được quá 255 ký tự',
+    'phoneWrongFormat': 'Số điện thoại sai định dạng',
+    'requiredPhone': 'Số điện thoại không được để trống',
+    'passwordGreater': 'Mật khẩu không được nhỏ hơn 8 ký tự',
+    'passwordLess': 'Mật khẩu không được lớn hơn 40 ký tự',
+    'passwordFormat':
+        'Mật khẩu phải chứa ít nhất một chữ cái, một chữ số và một ký tự đặc biệt',
+    'confirmPasswordNotMatch': 'Xác nhận mật khẩu không khớp',
+    'requiredConfirmPassword': 'Xác nhận mật khẩu không được để trống',
+    'next': 'Tiếp theo',
+    'splashText':
+        'In the midst of winter, I found\n there was within me an\n invincible summer.',
+    'splashAuthor': '— Albert Camus',
+    'requiredTitle': 'Tiêu đề không được để trống',
+    'requiredDescription': 'Mô tả không được để trống',
+    'selectPhotoMethod': 'Chọn phương thức',
+    'meditation_benefits':
+        'Thiền định giúp giảm căng thẳng và cân bằng cuộc sống',
+    'breathe_deeply_benefits': 'Hít thở sâu để tìm sự bình yên và cân bằng',
+    'yoga_benefits': 'Yoga giúp cơ thể dẻo dai và tâm trí bình an',
+    'choose_type': 'Chọn loại',
+    'not_written_mood':
+        'Bạn chưa thực hiện, hãy bắt đầu viết lại tâm trạng của bạn',
+    'writeYourMood': 'Viết tâm trạng của bạn',
   };
 }

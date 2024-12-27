@@ -1,19 +1,14 @@
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/sign_up/sign_up_controller.dart';
 
-class SignUpPage extends StatelessWidget with BaseMixin {
-  final SignUpController controller = Get.put(SignUpController());
+class SignUpPage extends BaseScreen<SignUpController> with BaseMixin {
   SignUpPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
@@ -71,7 +66,7 @@ class SignUpPage extends StatelessWidget with BaseMixin {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Form(
-        key: controller.signUpFormKey,
+        key: controller.formKey,
         autovalidateMode: controller.firstValidation.value
             ? AutovalidateMode.onUserInteraction
             : AutovalidateMode.disabled,
@@ -129,7 +124,7 @@ class SignUpPage extends StatelessWidget with BaseMixin {
       hintText: LocaleKeys.enter_confirm_password.tr,
       controller: controller.confirmPasswordController,
       title: 'Confirm Password',
-      validator: controller.checkConFirmPasswordValidator,
+      validator: controller.checkConfirmPasswordValidator,
       textCapitalization: TextCapitalization.none,
       iconLeading: AssetIcons.iconPassword,
       obscureText: true,
@@ -177,6 +172,9 @@ class SignUpPage extends StatelessWidget with BaseMixin {
       ),
     );
   }
+
+  @override
+  SignUpController? putController() => SignUpController();
 }
 
 class GreenHeaderClipper extends CustomClipper<Path> {

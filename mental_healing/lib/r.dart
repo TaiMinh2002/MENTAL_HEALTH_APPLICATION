@@ -1,8 +1,14 @@
 class AssetImages {
+	static const String boarding1 = 'assets/images/boarding1.png';
+	static const String boarding2 = 'assets/images/boarding2.png';
+	static const String boarding3 = 'assets/images/boarding3.png';
+	static const String boarding4 = 'assets/images/boarding4.png';
+	static const String breatheDeeply = 'assets/images/breathe_deeply.png';
 	static const String chatbotIntro = 'assets/images/chatbot_intro.png';
 	static const String constCoverImage = 'assets/images/const_cover_image.png';
 	static const String contentImage = 'assets/images/content_image.png';
 	static const String doctor = 'assets/images/doctor.png';
+	static const String expert = 'assets/images/expert.png';
 	static const String favoriteImage = 'assets/images/favorite_image.png';
 	static const String forumCoverImage = 'assets/images/forum_cover_image.png';
 	static const String goodMood = 'assets/images/good_mood.png';
@@ -10,6 +16,7 @@ class AssetImages {
 	static const String iconEyeActive = 'assets/images/icon_eye_active.png';
 	static const String iconEyeInActive = 'assets/images/icon_eye_in_active.png';
 	static const String imagePost = 'assets/images/image_post.png';
+	static const String imageSplash = 'assets/images/image_splash.png';
 	static const String introForum = 'assets/images/intro_forum.png';
 	static const String introImage1 = 'assets/images/intro_image1.png';
 	static const String introImage2 = 'assets/images/intro_image2.png';
@@ -17,8 +24,10 @@ class AssetImages {
 	static const String introImage4 = 'assets/images/intro_image4.png';
 	static const String introImage5 = 'assets/images/intro_image5.png';
 	static const String man = 'assets/images/man.png';
+	static const String meditation = 'assets/images/meditation.png';
 	static const String mindfullness = 'assets/images/mindfullness.png';
 	static const String neutralMood = 'assets/images/neutral_mood.png';
+	static const String noImage = 'assets/images/no_image.png';
 	static const String noPerson = 'assets/images/no_person.png';
 	static const String sadMood = 'assets/images/sad_mood.png';
 	static const String splashLogo = 'assets/images/splash_logo.png';
@@ -27,6 +36,7 @@ class AssetImages {
 	static const String tiredMood = 'assets/images/tired_mood.png';
 	static const String waveHand = 'assets/images/wave_hand.png';
 	static const String woman = 'assets/images/woman.png';
+	static const String yoga = 'assets/images/yoga.png';
 }
 
 class AssetIcons {
@@ -50,6 +60,9 @@ class AssetIcons {
 	static const String dropdownIcon = 'assets/icons/dropdown_icon.svg';
 	static const String edit = 'assets/icons/edit.svg';
 	static const String emergency = 'assets/icons/emergency.svg';
+	static const String expertCall = 'assets/icons/expert_call.svg';
+	static const String expertChat = 'assets/icons/expert_chat.svg';
+	static const String expertReview = 'assets/icons/expert_review.svg';
 	static const String experts = 'assets/icons/experts.svg';
 	static const String favorite = 'assets/icons/favorite.svg';
 	static const String feedback = 'assets/icons/feedback.svg';
@@ -64,7 +77,13 @@ class AssetIcons {
 	static const String iconBack = 'assets/icons/icon_back.svg';
 	static const String iconCheck = 'assets/icons/icon_check.svg';
 	static const String iconEmail = 'assets/icons/icon_email.svg';
+	static const String iconErr = 'assets/icons/icon_err.gif';
+	static const String iconEyeActive = 'assets/icons/icon_eye_active.svg';
+	static const String iconEyeInactive = 'assets/icons/icon_eye_inactive.svg';
+	static const String iconNoData = 'assets/icons/icon_no_data.gif';
+	static const String iconNotConnect = 'assets/icons/icon_not_connect.gif';
 	static const String iconPassword = 'assets/icons/icon_password.svg';
+	static const String iconWelcome = 'assets/icons/icon_welcome.svg';
 	static const String inUpLogo = 'assets/icons/in_up_logo.svg';
 	static const String insertEmotion = 'assets/icons/insert_emotion.svg';
 	static const String language = 'assets/icons/language.svg';
