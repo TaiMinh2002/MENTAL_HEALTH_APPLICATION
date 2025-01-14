@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart' as g;
 import 'package:mental_healing/api_manager/api_error.dart';
 import 'package:mental_healing/base/cache_manager.dart';
-import 'package:mental_healing/data/model/sign_in_result.dart';
+import 'package:mental_healing/data/model/sign_in/sign_in_result.dart';
 import 'package:mental_healing/data/use_case/auth_use_case.dart';
 import 'package:mental_healing/global/app_log.dart';
 import 'package:mental_healing/global/app_router.dart';

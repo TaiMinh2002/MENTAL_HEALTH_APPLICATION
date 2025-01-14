@@ -1,20 +1,16 @@
-import 'package:mental_healing/api_manager/api_error.dart';
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
-import 'package:mental_healing/data/model/exercise_info.dart';
-import 'package:mental_healing/data/model/exercise_params.dart';
+import 'package:mental_healing/data/model/exercise/exercise_info.dart';
+import 'package:mental_healing/data/model/exercise/exercise_params.dart';
 import 'package:mental_healing/data/use_case/exercise_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 
 class ExerciseListController extends BaseController
-    with SmartLoadListController<Widget> {
+    with SmartLoadListController<ExerciseInfo> {
   final ExerciseUseCase _exerciseUseCase = ExerciseUseCase();
-
   late int type;
-
   late ExerciseParams param;
-
-  RxList<ExerciseInfo> listExercise = <ExerciseInfo>[].obs;
+  RxBool hasMorePage = false.obs;
 
   @override
   void onInit() {
@@ -29,23 +25,44 @@ class ExerciseListController extends BaseController
     await _getListExercise();
   }
 
+  // Future<void> _getListExercise() async {
+  //   await _exerciseUseCase
+  //       .getListExercises(
+  //         params: param,
+  //         onSuccess: (List<ExerciseInfo> data) {
+  //           if (data.isNotEmpty) {
+  //             listExercise.value = data;
+  //             error.value = null;
+  //           } else {
+  //             error.value = ApiError(message: "No data available");
+  //           }
+  //         },
+  //         onFailure: (err) {
+  //           error.value = err;
+  //         },
+  //       )
+  //       .whenComplete(() => isLoadingPage.value = false);
+  // }
+
   Future<void> _getListExercise() async {
     await _exerciseUseCase
         .getListExercises(
-          params: param,
-          onSuccess: (List<ExerciseInfo> data) {
-            if (data.isNotEmpty) {
-              listExercise.value = data;
-              error.value = null;
-            } else {
-              error.value = ApiError(message: "No data available");
-            }
-          },
-          onFailure: (err) {
-            error.value = err;
-          },
-        )
-        .whenComplete(() => isLoadingPage.value = false);
+            params: param,
+            onSuccess: (data) {
+              if (param.page == 1) {
+                error.value = null;
+                dataList.clear();
+              }
+              dataList.addAll(data.data ?? []);
+              hasMorePage.value = data.has_more_pages ?? false;
+              dataList.refresh();
+            },
+            onFailure: (err) {
+              error.value = err;
+            })
+        .whenComplete(() {
+      isLoadingPage.value = false;
+    });
   }
 
   Future<void> moveToDetail(int exerciseId) async {
@@ -57,13 +74,15 @@ class ExerciseListController extends BaseController
 
   @override
   void onLoadMore() {
-    // param.page += 1;
-    _getListExercise();
+    if (hasMorePage.value) {
+      param = param.copyWith(page: param.page + 1);
+      _getListExercise().whenComplete(refreshController.loadComplete);
+    }
   }
 
   @override
   Future<void> onRefresh() async {
-    // param.page = 1;
+    param = param.copyWith(page: 1);
     await _getListExercise();
     refreshController.refreshCompleted();
   }

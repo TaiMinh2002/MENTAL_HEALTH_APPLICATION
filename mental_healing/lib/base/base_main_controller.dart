@@ -1,4 +1,3 @@
-import 'package:mental_healing/base/import_base.dart';
 import 'package:mental_healing/import.dart';
 
 abstract class BaseMainController<T> extends BaseController {

@@ -1,11 +1,8 @@
-import 'package:dio/dio.dart';
-import 'package:mental_healing/data/model/expert_detail.dart';
-import 'package:mental_healing/data/model/expert_info.dart';
-import 'package:mental_healing/data/model/expert_params.dart';
+import 'package:mental_healing/data/model/exercise/expert_detail.dart';
+import 'package:mental_healing/data/model/expert/expert_params.dart';
+import 'package:mental_healing/data/model/expert/experts.dart';
 
 abstract class ExpertRepository {
-  Future<List<ExpertInfo>> getListExperts(
-      {required ExpertParams param, required CancelToken cancelToken});
-  Future<ExpertDetail> getExpertDetail(
-      {required int id, required CancelToken cancelToken});
+  Future<Experts> getListExperts({required ExpertParams param});
+  Future<ExpertDetail> getExpertDetail({required int id});
 }

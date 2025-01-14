@@ -1,11 +1,13 @@
 import 'package:mental_healing/base_widget/back_button_widget.dart';
 import 'package:mental_healing/controller/global_data_manager.dart';
-import 'package:mental_healing/data/model/post_info.dart';
+import 'package:mental_healing/data/model/post/post_info.dart';
 import 'package:mental_healing/global/app_router.dart';
-import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/forum_detail/forum_detail_controller.dart';
+import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_widget.dart';
+import 'package:mental_healing/import.dart';
 
-class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
+class ForumDetailPage extends BaseScreen<ForumDetailController>
+    with SmartLoadListWidget {
   ForumDetailPage({super.key});
 
   @override
@@ -13,16 +15,20 @@ class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _coverImage(),
-              _headerWidget(context),
-              _createPost(),
-              _text(),
-              _allPost(),
-            ],
+        body: buildSmartList(
+          controller,
+          enablePullUp: false,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _coverImage(),
+                _headerWidget(),
+                _createPost(),
+                _text(),
+                _allPost()
+              ],
+            ),
           ),
         ),
       ),
@@ -31,13 +37,13 @@ class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
 
   Widget _coverImage() {
     return Obx(() {
-      final coverImage = controller.forumDetail.value.cover_image;
+      final item = controller.dataList.first;
       return Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: coverImage != null
-                ? Image.network(coverImage)
+            child: item.cover_image != null
+                ? Image.network(item.cover_image!)
                 : Image.asset(AssetImages.constCoverImage),
           ),
           const Positioned(child: BackButtonWidget()),
@@ -72,40 +78,42 @@ class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
     });
   }
 
-  Widget _headerWidget(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(15),
-      width: double.infinity,
-      color: color.whiteColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                controller.forumDetail.value.title ?? '',
-                style: textStyle.extraBold(size: 20),
-              ),
-              Text(
-                  '${controller.forumDetail.value.member_count} ${LocaleKeys.member.tr}'),
-              Text(
-                controller.forumDetail.value.description ?? '',
-                style: textStyle.medium(size: 12),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
+  Widget _headerWidget() {
+    return Obx(() {
+      return Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.all(15),
+        width: double.infinity,
+        color: color.whiteColor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  controller.dataList.first.title ?? '',
+                  style: textStyle.extraBold(size: 20),
+                ),
+                Text(
+                    '${controller.dataList.first.member_count} ${LocaleKeys.member.tr}'),
+                Text(
+                  controller.dataList.first.description ?? '',
+                  style: textStyle.medium(size: 12),
+                )
+              ],
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   Widget _createPost() {
     return GestureDetector(
       onTap: () {
         Get.toNamed(AppRouter.routerCreatePost,
-            arguments: controller.forumDetail.value.id);
+            arguments: controller.dataList.first.id);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
@@ -113,7 +121,6 @@ class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
         width: double.infinity,
         color: color.whiteColor,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             GlobalDataManager().userInfo.value.avatar != null
                 ? CircleAvatar(
@@ -125,15 +132,13 @@ class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
                     backgroundImage: const AssetImage(AssetImages.noPerson),
                     backgroundColor: color.colorCCCCCC,
                   ),
-            Text(
-              LocaleKeys.want_to_share_story.tr,
-              style: textStyle.bold(size: 14, color: color.color3C3D37),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Text(
+                LocaleKeys.want_to_share_story.tr,
+                style: textStyle.bold(size: 14, color: color.color3C3D37),
+              ),
             ),
-            SvgPicture.asset(
-              AssetIcons.picture,
-              height: 25,
-              width: 25,
-            )
           ],
         ),
       ),
@@ -155,11 +160,10 @@ class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
 
   Widget _allPost() {
     return Obx(() {
-      final posts = controller.forumDetail.value.posts ?? [];
+      final posts = controller.dataList.first.posts ?? [];
 
-      // Hiển thị danh sách bài viết
       return ListView.builder(
-        shrinkWrap: true, // Cho phép cuộn trong SingleChildScrollView
+        shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: posts.length,
         itemBuilder: (context, index) {
@@ -200,7 +204,7 @@ class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
                             size: 14, color: color.blackColor),
                       ),
                       Text(
-                        post.created_at ?? '',
+                        post.formattedCreatedAt,
                         style: textStyle.medium(
                             size: 12, color: color.colorCCCCCC),
                       ),
@@ -220,107 +224,17 @@ class ForumDetailPage extends BaseScreen<ForumDetailController> with BaseMixin {
             post.title ?? 'No content',
             style: textStyle.bold(size: 16, color: color.blackColor),
           ),
-          Text(
-            post.content ?? 'No content',
-            style: textStyle.medium(size: 14, color: color.blackColor),
+          Padding(
+            padding: EdgeInsets.only(top: 5.r),
+            child: Text(
+              post.content ?? 'No content',
+              style: textStyle.medium(size: 14, color: color.blackColor),
+            ),
           ),
         ],
       ),
     );
   }
-
-  Widget _content() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0),
-          child: Text(
-            'Content',
-            style: textStyle.bold(size: 13),
-          ),
-        ),
-        // Padding(
-        //   padding: const EdgeInsets.only(bottom: 10.0),
-        //   child: _contentImages(),
-        // ),
-        // _count()
-      ],
-    );
-  }
-
-  // Widget _contentImages() {
-  //   return Image.asset(AssetImages.contentImage);
-  // }
-
-  // Widget _count() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //     children: [
-  //       Row(
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //         children: [
-  //           Image.asset(
-  //             AssetImages.favoriteImage,
-  //             height: 20,
-  //             width: 20,
-  //           ),
-  //           Text(
-  //             ' like_count',
-  //             style: textStyle.bold(size: 14),
-  //           )
-  //         ],
-  //       ),
-  //       Row(
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //         children: [
-  //           Text(
-  //             'comment_count ',
-  //             style: textStyle.bold(size: 14),
-  //           ),
-  //           Text(
-  //             LocaleKeys.commentLowerCase.tr,
-  //             style: textStyle.bold(size: 14),
-  //           )
-  //         ],
-  //       )
-  //     ],
-  //   );
-  // }
-
-  // Widget _action() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //     children: [
-  //       _actionItem(AssetIcons.unFavorite, LocaleKeys.favorite.tr),
-  //       _actionItem(AssetIcons.comment, LocaleKeys.commentUpperCase.tr),
-  //       _actionItem(AssetIcons.sharePost, LocaleKeys.share.tr),
-  //     ],
-  //   );
-  // }
-
-  // Widget _actionItem(String icon, String text) {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(top: 10.0),
-  //     child: Row(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: [
-  //         SvgPicture.asset(
-  //           icon,
-  //           height: 20,
-  //           width: 20,
-  //         ),
-  //         Padding(
-  //           padding: const EdgeInsets.only(left: 10.0),
-  //           child: Text(
-  //             text,
-  //             style: textStyle.extraBold(size: 14),
-  //           ),
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 
   @override
   ForumDetailController? putController() => ForumDetailController();

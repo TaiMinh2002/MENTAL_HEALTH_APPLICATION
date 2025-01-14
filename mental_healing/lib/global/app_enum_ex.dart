@@ -108,3 +108,22 @@ extension StressImpl on Stress {
     }
   }
 }
+
+extension DateFormatTypeExtension on DateFormatType {
+  String get formatString {
+    switch (this) {
+      case DateFormatType.yyyyMmDdHhMm:
+        return 'yyyy/MM/dd HH:mm';
+      case DateFormatType.yyyyMmDd:
+        return 'yyyy/MM/dd';
+      case DateFormatType.mmDd:
+        return 'MM/dd';
+      case DateFormatType.mmDdE:
+        return 'MM/dd/(E)';
+      case DateFormatType.mmDdHhMm:
+        return 'MM/dd HH:mm';
+      case DateFormatType.hhMM:
+        return 'HH:mm';
+    }
+  }
+}

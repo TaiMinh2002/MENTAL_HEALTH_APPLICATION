@@ -9,6 +9,7 @@ class AssetImages {
 	static const String contentImage = 'assets/images/content_image.png';
 	static const String doctor = 'assets/images/doctor.png';
 	static const String expert = 'assets/images/expert.png';
+	static const String expertDetailCover = 'assets/images/expert_detail_cover.png';
 	static const String favoriteImage = 'assets/images/favorite_image.png';
 	static const String forumCoverImage = 'assets/images/forum_cover_image.png';
 	static const String goodMood = 'assets/images/good_mood.png';

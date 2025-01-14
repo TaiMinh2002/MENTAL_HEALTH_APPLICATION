@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:get_storage/get_storage.dart';
 import 'package:mental_healing/controller/controller_manager.dart';
-import 'package:mental_healing/data/model/user_info.dart';
+import 'package:mental_healing/data/model/user/user_info.dart';
 import 'package:mental_healing/global/app_enum.dart';
 
 mixin CacheManager {

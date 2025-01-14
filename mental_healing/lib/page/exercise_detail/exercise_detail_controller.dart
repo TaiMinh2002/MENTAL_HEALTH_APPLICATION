@@ -1,5 +1,5 @@
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
-import 'package:mental_healing/data/model/exercise_info.dart';
+import 'package:mental_healing/data/model/exercise/exercise_info.dart';
 import 'package:mental_healing/data/use_case/exercise_use_case.dart';
 import 'package:mental_healing/import.dart';
 import 'package:video_player/video_player.dart';
@@ -7,8 +7,6 @@ import 'package:video_player/video_player.dart';
 class ExerciseDetailController extends BaseController
     with SmartLoadListController<ExerciseInfo> {
   final ExerciseUseCase _exerciseUseCase = ExerciseUseCase();
-
-  Rx<ExerciseInfo> exerciseDetail = ExerciseInfo().obs;
   late int id;
 
   Rxn<VideoPlayerController> videoPlayerController =
@@ -30,22 +28,20 @@ class ExerciseDetailController extends BaseController
   Future<void> _getDetailData() async {
     await _exerciseUseCase
         .getExerciseDetail(
-          id: id,
-          onSuccess: (data) {
-            error.value = null;
-            exerciseDetail.value = data;
-            dataList.value = [data];
-            dataList.refresh();
-          },
-          onFailure: (err) {
-            error.value = err;
-          },
-        )
+            id: id,
+            onSuccess: (data) {
+              error.value = null;
+              dataList.value = [data];
+              dataList.refresh();
+            },
+            onFailure: (err) {
+              error.value = err;
+            })
         .whenComplete(() => isLoadingPage.value = false);
   }
 
   void _initializeVideoPlayer() {
-    final url = exerciseDetail.value.media_url ?? '';
+    final url = dataList.first.media_url ?? '';
     if (url.isNotEmpty) {
       videoPlayerController.value = VideoPlayerController.network(url)
         ..initialize().then((_) {

@@ -1,18 +1,15 @@
-import 'package:mental_healing/api_manager/api_error.dart';
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
-import 'package:mental_healing/data/model/forum_info.dart';
-import 'package:mental_healing/data/model/forum_params.dart';
+import 'package:mental_healing/data/model/forums/forum_info.dart';
+import 'package:mental_healing/data/model/forums/forum_params.dart';
 import 'package:mental_healing/data/use_case/forum_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 
 class ForumListController extends BaseController
-    with SmartLoadListController<Widget> {
-  final ForumUseCase _useCase = ForumUseCase();
-
-  ForumParams param = ForumParams(page: 1, limit: 20);
-
-  RxList<ForumInfo> listForums = <ForumInfo>[].obs;
+    with SmartLoadListController<ForumInfo> {
+  final ForumUseCase _forumUseCase = ForumUseCase();
+  ForumParams _params = const ForumParams(limit: 20, page: 1);
+  RxBool hasMorePage = false.obs;
 
   @override
   void onInit() {
@@ -26,28 +23,30 @@ class ForumListController extends BaseController
   }
 
   Future<void> _getListForums() async {
-    await _useCase
-        .getListExperts(
-          params: param,
-          onSuccess: (data) {
-            if (data.isNotEmpty) {
-              listForums.value = data;
+    await _forumUseCase
+        .getListForum(
+            params: _params,
+            onSuccess: (data) {
               error.value = null;
-            } else {
-              error.value = "No data available" as ApiError?;
-            }
-          },
-          onFailure: (err) {
-            error.value = err;
-          },
-        )
+              if (_params.page == 1) {
+                dataList.clear();
+              }
+              if (isNotNullOrEmpty(data.data)) {
+                dataList.addAll(data.data ?? []);
+                hasMorePage.value = data.has_more_pages ?? false;
+              }
+              dataList.refresh();
+            },
+            onFailure: (err) {
+              error.value = err;
+            })
         .whenComplete(() => isLoadingPage.value = false);
   }
 
-  Future<void> moveToExpertDetail(int expertId) async {
+  Future<void> moveToDetail(int forumId) async {
     Get.toNamed(
       AppRouter.routerForumDetailPage,
-      arguments: expertId,
+      arguments: forumId,
     );
   }
 
@@ -57,16 +56,16 @@ class ForumListController extends BaseController
 
   @override
   void onLoadMore() {
-    // Nếu cần load thêm dữ liệu, hãy tăng page và gọi lại API
-    // param.page += 1;
-    _getListForums();
+    if (hasMorePage.value) {
+      _params = _params.copyWith(page: _params.page + 1);
+      _getListForums().whenComplete(refreshController.loadComplete);
+    }
   }
 
   @override
   Future<void> onRefresh() async {
-    // Reset lại page về 1 và gọi lại API
-    // param.page = 1;
-    await _initData();
+    _params = _params.copyWith(page: 1);
+    await _getListForums();
     refreshController.refreshCompleted();
   }
 }

@@ -1,6 +1,6 @@
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/common/widget_components/button/widget_button.dart';
-import 'package:mental_healing/data/model/forum_info.dart';
+import 'package:mental_healing/data/model/forums/forum_info.dart';
 import 'package:mental_healing/import.dart';
 
 class ForumItem extends BaseWidget with BaseMixin {
@@ -33,7 +33,7 @@ class ForumItem extends BaseWidget with BaseMixin {
         handleDetail(forum.id ?? 0);
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        padding: const EdgeInsets.only(bottom: 10, left: 15, right: 15),
         child: Row(
           children: [
             Expanded(
@@ -83,6 +83,7 @@ class ForumItem extends BaseWidget with BaseMixin {
     return Padding(
       padding: const EdgeInsets.only(left: 30.0),
       child: WidgetButton(
+        disable: join == 'Admin' || join == 'Joined',
         title: join,
         onClick: onJoin ?? () {},
         width: 100,

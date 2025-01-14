@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mental_healing/base/base_mixin.dart';
 import 'package:mental_healing/base/loading_wrapper.dart';
 import 'package:mental_healing/base/locator.dart';
 import 'package:mental_healing/global/app_router.dart';
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget with BaseMixin {
       navigatorObservers: [CustomRouteObserver()],
       supportedLocales: LocalizationService.locales,
       debugShowCheckedModeBanner: false,
-      title: 'VJ',
+      title: 'Mental',
       theme: Get.find<AppThemeBase>().themeData,
       builder: (BuildContext context, Widget? child) {
         return ScreenUtilInit(

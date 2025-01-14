@@ -1,5 +1,5 @@
 import 'package:mental_healing/common/helpers/snack_bar_helper.dart';
-import 'package:mental_healing/data/model/sign_up_params.dart';
+import 'package:mental_healing/data/model/sign_up/sign_up_params.dart';
 import 'package:mental_healing/data/use_case/auth_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';

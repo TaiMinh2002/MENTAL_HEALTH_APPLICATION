@@ -1,8 +1,8 @@
 import 'package:mental_healing/common/helpers/snack_bar_helper.dart';
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
-import 'package:mental_healing/data/model/expert_detail.dart';
-import 'package:mental_healing/data/model/room_create_params.dart';
-import 'package:mental_healing/data/model/room_create_result.dart';
+import 'package:mental_healing/data/model/exercise/expert_detail.dart';
+import 'package:mental_healing/data/model/chat_expert/room_create_params.dart';
+import 'package:mental_healing/data/model/chat_expert/room_create_result.dart';
 import 'package:mental_healing/data/use_case/expert_use_case.dart';
 import 'package:mental_healing/data/use_case/room_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
@@ -13,7 +13,6 @@ class ExpertDetailController extends BaseController
     with SmartLoadListController<ExpertDetail> {
   final _useCase = ExpertUseCase();
   final RoomUseCase _roomUseCase = RoomUseCase();
-  Rx<ExpertDetail> expertDetail = ExpertDetail().obs;
   RoomCreateParams _params = const RoomCreateParams();
   late int id;
 
@@ -32,23 +31,21 @@ class ExpertDetailController extends BaseController
   Future<void> _getDetailData() async {
     await _useCase
         .getExpertDetail(
-          id: id,
-          onSuccess: (data) {
-            error.value = null;
-            expertDetail.value = data;
-            dataList.value = [data];
-            dataList.refresh();
-          },
-          onFailure: (err) {
-            error.value = err;
-          },
-        )
+            id: id,
+            onSuccess: (data) {
+              error.value = null;
+              dataList.value = [data];
+              dataList.refresh();
+            },
+            onFailure: (err) {
+              error.value = err;
+            })
         .whenComplete(() => isLoadingPage.value = false);
   }
 
-  void handleCreateRoom() {
+  void handleCreateRoom(int expertId) {
     _params = _params.copyWith(
-      expert_id: expertDetail.value.id,
+      expert_id: expertId,
     );
     showLoading();
     _roomUseCase
