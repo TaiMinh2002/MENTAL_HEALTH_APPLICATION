@@ -1,22 +1,24 @@
 import 'package:mental_healing/api_manager/api_error.dart';
+import 'package:mental_healing/common/helpers/snack_bar_helper.dart';
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
 import 'package:mental_healing/controller/global_data_manager.dart';
-import 'package:mental_healing/data/model/chat_expert_info.dart';
-import 'package:mental_healing/data/model/send_message_expert_params.dart';
+import 'package:mental_healing/data/model/chat_expert/chat_expert_info.dart';
+import 'package:mental_healing/data/model/chat_expert/chat_message_param.dart';
+import 'package:mental_healing/data/model/chat_expert/send_message_expert_params.dart';
 import 'package:mental_healing/data/use_case/chat_expert_use_case.dart';
 import 'package:mental_healing/import.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ChatExpertController extends BaseController
-    with SmartLoadListController<Widget> {
+    with SmartLoadListController<ChatExpertInfo> {
   final TextEditingController messageController = TextEditingController();
   final ChatExpertUseCase _useCase = ChatExpertUseCase();
   late int chatId;
   late int expertId;
   late int userId;
   IO.Socket? socket;
-
-  RxList<ChatExpertInfo> listConversions = <ChatExpertInfo>[].obs;
+  RxBool hasMorePage = false.obs;
+  late ChatMessageParam param;
 
   @override
   void onInit() {
@@ -25,15 +27,14 @@ class ChatExpertController extends BaseController
     chatId = arguments['chatId'];
     expertId = arguments['expertId'];
     userId = arguments['userId'];
-
+    param = ChatMessageParam(page: 1, limit: 20, chatId: chatId);
     _initSocket();
     _initData();
   }
 
   void _initSocket() {
-    // Kết nối tới server Socket.IO
     socket = IO.io(
-      'http://192.168.0.102:3000', // Thay URL thành địa chỉ server của bạn
+      'http://172.20.10.7:6868',
       IO.OptionBuilder()
           .setTransports(['websocket'])
           .disableAutoConnect()
@@ -42,19 +43,16 @@ class ChatExpertController extends BaseController
 
     socket?.connect();
 
-    // Khi socket kết nối thành công
     socket?.onConnect((_) {
       print('Connected to socket server');
       socket?.emit('joinConversation', {'chatId': chatId});
     });
 
-    // Khi nhận tin nhắn mới từ server
     socket?.on('newMessage', (data) {
       final newMessage = ChatExpertInfo.fromJson(data);
-      listConversions.add(newMessage);
+      dataList.add(newMessage);
     });
 
-    // Khi socket ngắt kết nối
     socket?.onDisconnect((_) {
       print('Disconnected from socket server');
     });
@@ -66,27 +64,29 @@ class ChatExpertController extends BaseController
   }
 
   Future<void> _getListMessage() async {
-    try {
-      await _useCase.getListMessage(
-        chatId: chatId,
-        onSuccess: (data) {
-          listConversions.value = data;
-        },
-        onFailure: (err) {
-          print("Error fetching messages: ${err.message}");
-          listConversions.clear();
-        },
-      );
-    } catch (e) {
-      print("Unexpected error: $e");
-      listConversions.clear();
-    }
+    await _useCase
+        .getListMessage(
+            params: param,
+            onSuccess: (data) {
+              if (param.page == 1) {
+                error.value = null;
+                dataList.clear();
+              }
+              dataList.addAll(data.data ?? []);
+              hasMorePage.value = data.has_more_pages ?? false;
+              dataList.refresh();
+            },
+            onFailure: (err) {
+              error.value = err;
+            })
+        .whenComplete(() {
+      isLoadingPage.value = false;
+    });
   }
 
   Future<void> sendMessage(String userMessage) async {
     if (userMessage.isEmpty) return;
 
-    // Xóa nội dung của TextField ngay lập tức
     messageController.clear();
 
     final params = SendMessageExpertParams(
@@ -104,19 +104,17 @@ class ChatExpertController extends BaseController
 
     socket?.emit('sendMessage', socketMessage);
 
-    // Gửi tin nhắn qua API
     await _useCase.sendMessage(
       params: params,
       onSuccess: (data) {
-        print("Message saved to DB: ${data.message}");
         _getListMessage();
-        listConversions.add(data);
+        dataList.add(data);
       },
       onFailure: (err) {
         if (err is ApiError) {
-          print("Failed to save message to DB: ${err.message}");
+          SnackBarHelper.showError(err.message);
         } else {
-          print("Unexpected error: $err");
+          SnackBarHelper.showError(err);
         }
       },
     );

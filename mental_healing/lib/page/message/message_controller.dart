@@ -1,18 +1,15 @@
-import 'package:mental_healing/api_manager/api_error.dart';
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
-import 'package:mental_healing/data/model/forum_params.dart';
-import 'package:mental_healing/data/model/room_chat_result.dart';
+import 'package:mental_healing/data/model/forums/forum_params.dart';
+import 'package:mental_healing/data/model/chat_expert/room_chat_result.dart';
 import 'package:mental_healing/data/use_case/chat_expert_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 
 class MessageController extends BaseController
-    with SmartLoadListController<Widget> {
+    with SmartLoadListController<RoomChatResult> {
   final ChatExpertUseCase _useCase = ChatExpertUseCase();
-
-  ForumParams param = ForumParams(page: 1, limit: 20);
-
-  RxList<RoomChatResult> listChats = <RoomChatResult>[].obs;
+  ForumParams _params = const ForumParams(limit: 20, page: 1);
+  RxBool hasMorePage = false.obs;
 
   @override
   void onInit() {
@@ -28,20 +25,22 @@ class MessageController extends BaseController
   Future<void> _getListChats() async {
     await _useCase
         .getListChats(
-          params: param,
-          onSuccess: (data) {
-            if (data.isNotEmpty) {
-              listChats.value = data;
-              error.value = null;
-            } else {
-              error.value = "No data available" as ApiError?;
-            }
-          },
-          onFailure: (err) {
-            error.value = err;
-          },
-        )
-        .whenComplete(() => isLoadingPage.value = false);
+            params: _params,
+            onSuccess: (data) {
+              if (_params.page == 1) {
+                error.value = null;
+                dataList.clear();
+              }
+              dataList.addAll(data.data ?? []);
+              hasMorePage.value = data.has_more_pages ?? false;
+              dataList.refresh();
+            },
+            onFailure: (err) {
+              error.value = err;
+            })
+        .whenComplete(() {
+      isLoadingPage.value = false;
+    });
   }
 
   Future<void> moveToChat(RoomChatResult result) async {
@@ -57,16 +56,16 @@ class MessageController extends BaseController
 
   @override
   void onLoadMore() {
-    // Nếu cần load thêm dữ liệu, hãy tăng page và gọi lại API
-    // param.page += 1;
-    _initData();
+    if (hasMorePage.value) {
+      _params = _params.copyWith(page: _params.page + 1);
+      _getListChats().whenComplete(refreshController.loadComplete);
+    }
   }
 
   @override
   Future<void> onRefresh() async {
-    // Reset lại page về 1 và gọi lại API
-    // param.page = 1;
-    await _initData();
+    _params = _params.copyWith(page: 1);
+    await _getListChats();
     refreshController.refreshCompleted();
   }
 }

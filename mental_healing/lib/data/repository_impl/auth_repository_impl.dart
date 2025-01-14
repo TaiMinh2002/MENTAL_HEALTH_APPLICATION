@@ -1,9 +1,9 @@
 import 'package:mental_healing/api_manager/rest_client_base.dart';
-import 'package:mental_healing/data/model/user_update_params.dart';
-import 'package:mental_healing/data/model/sign_in_params.dart';
-import 'package:mental_healing/data/model/sign_in_result.dart';
-import 'package:mental_healing/data/model/sign_up_params.dart';
-import 'package:mental_healing/data/model/user_info.dart';
+import 'package:mental_healing/data/model/user/user_update_params.dart';
+import 'package:mental_healing/data/model/sign_in/sign_in_params.dart';
+import 'package:mental_healing/data/model/sign_in/sign_in_result.dart';
+import 'package:mental_healing/data/model/sign_up/sign_up_params.dart';
+import 'package:mental_healing/data/model/user/user_info.dart';
 import 'package:mental_healing/data/repository/auth_repository.dart';
 import 'package:mental_healing/global/app_url.dart';
 

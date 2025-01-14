@@ -1,5 +1,5 @@
 import 'package:mental_healing/base/cache_manager.dart';
-import 'package:mental_healing/data/model/user_info.dart';
+import 'package:mental_healing/data/model/user/user_info.dart';
 import 'package:mental_healing/data/use_case/auth_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';

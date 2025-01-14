@@ -1,6 +1,6 @@
 import 'package:mental_healing/common/helpers/snack_bar_helper.dart';
 import 'package:mental_healing/controller/global_data_manager.dart';
-import 'package:mental_healing/data/model/user_update_params.dart';
+import 'package:mental_healing/data/model/user/user_update_params.dart';
 import 'package:mental_healing/data/use_case/auth_use_case.dart';
 import 'package:mental_healing/global/app_enum.dart';
 import 'package:mental_healing/global/app_enum_ex.dart';

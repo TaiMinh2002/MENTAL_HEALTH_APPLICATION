@@ -1,5 +1,6 @@
 import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/base_widget/widget_input_text.dart';
+import 'package:mental_healing/common/app_bar_custom.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/create_post/create_post_controller.dart';
 
@@ -11,7 +12,13 @@ class CreatePostPage extends BaseScreen<CreatePostController> with BaseMixin {
     return SafeArea(
       child: Scaffold(
         backgroundColor: color.backgroundColor,
+        appBar: AppBarCustom(
+          titleAppBar: 'Create Post',
+          centerTitle: false,
+          backgroundColor: color.backgroundColor,
+        ),
         body: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 10.r),
           child: Column(
             children: [
               _headerWidget(),

@@ -1,6 +1,6 @@
 import 'package:mental_healing/api_manager/api_error.dart';
-import 'package:mental_healing/data/model/room_create_params.dart';
-import 'package:mental_healing/data/model/room_create_result.dart';
+import 'package:mental_healing/data/model/chat_expert/room_create_params.dart';
+import 'package:mental_healing/data/model/chat_expert/room_create_result.dart';
 import 'package:mental_healing/data/repository/room_repository.dart';
 import 'package:mental_healing/data/repository_impl/room_repository_impl.dart';
 

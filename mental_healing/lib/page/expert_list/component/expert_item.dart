@@ -1,4 +1,4 @@
-import 'package:mental_healing/data/model/expert_info.dart';
+import 'package:mental_healing/data/model/expert/expert_info.dart';
 import 'package:mental_healing/import.dart';
 
 class ExpertItem extends BaseWidget with BaseMixin {
@@ -23,7 +23,6 @@ class ExpertItem extends BaseWidget with BaseMixin {
       },
       child: Container(
         padding: const EdgeInsets.all(15),
-        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),

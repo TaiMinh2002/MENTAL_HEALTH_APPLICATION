@@ -1,6 +1,6 @@
 import 'package:mental_healing/api_manager/api_error.dart';
-import 'package:mental_healing/data/model/create_post_params.dart';
-import 'package:mental_healing/data/model/create_post_result.dart';
+import 'package:mental_healing/data/model/post/create_post_params.dart';
+import 'package:mental_healing/data/model/post/create_post_result.dart';
 
 import 'package:mental_healing/data/repository/post_repository.dart';
 import 'package:mental_healing/data/repository_impl/post_repository_impl.dart';

@@ -1,10 +1,12 @@
-import 'package:mental_healing/data/model/chat_expert_info.dart';
-import 'package:mental_healing/data/model/forum_params.dart';
-import 'package:mental_healing/data/model/room_chat_result.dart';
-import 'package:mental_healing/data/model/send_message_expert_params.dart';
+import 'package:mental_healing/data/model/chat_expert/chat_expert_info.dart';
+import 'package:mental_healing/data/model/chat_expert/get_list_messages.dart';
+import 'package:mental_healing/data/model/chat_expert/chat_experts.dart';
+import 'package:mental_healing/data/model/chat_expert/chat_message_param.dart';
+import 'package:mental_healing/data/model/forums/forum_params.dart';
+import 'package:mental_healing/data/model/chat_expert/send_message_expert_params.dart';
 
 abstract class ChatExpertRepository {
-  Future<List<ChatExpertInfo>> getListMessage({required int chatId});
+  Future<GetListMessages> getListMessage({required ChatMessageParam param});
   Future<ChatExpertInfo> sendMessage({required SendMessageExpertParams params});
-  Future<List<RoomChatResult>> getListChats({required ForumParams param});
+  Future<ChatExperts> getListChats({required ForumParams param});
 }

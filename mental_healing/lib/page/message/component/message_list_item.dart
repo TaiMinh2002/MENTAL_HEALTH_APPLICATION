@@ -6,12 +6,14 @@ class MessageListItem extends BaseWidget with BaseMixin {
       required this.name,
       required this.avatar,
       required this.latestMessage,
+      required this.time,
       required this.onTap});
 
   final String name;
   final String avatar;
   final String latestMessage;
   final VoidCallback onTap;
+  final String time;
 
   @override
   Widget builder() {
@@ -21,7 +23,7 @@ class MessageListItem extends BaseWidget with BaseMixin {
         padding: const EdgeInsets.only(bottom: 28.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [_avatarWidget(), _messageWidget(), _timeWidget()],
+          children: [_avatarWidget(), _messageWidget()],
         ),
       ),
     );
@@ -49,7 +51,7 @@ class MessageListItem extends BaseWidget with BaseMixin {
             Padding(
               padding: const EdgeInsets.only(top: 5.0),
               child: Text(
-                latestMessage,
+                '$latestMessage · $time',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: textStyle.regular(size: 15, color: color.blackColor),
@@ -58,13 +60,6 @@ class MessageListItem extends BaseWidget with BaseMixin {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _timeWidget() {
-    return Text(
-      'Time',
-      style: textStyle.regular(size: 10, color: color.color727272),
     );
   }
 }

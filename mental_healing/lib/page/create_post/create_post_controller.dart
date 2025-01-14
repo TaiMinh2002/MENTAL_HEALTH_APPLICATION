@@ -1,10 +1,11 @@
 import 'package:mental_healing/common/helpers/snack_bar_helper.dart';
-import 'package:mental_healing/data/model/create_post_params.dart';
-import 'package:mental_healing/data/model/create_post_result.dart';
+import 'package:mental_healing/data/model/post/create_post_params.dart';
+import 'package:mental_healing/data/model/post/create_post_result.dart';
 import 'package:mental_healing/data/use_case/post_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/forum_detail/forum_detail_controller.dart';
+import 'package:mental_healing/page/forum_list/forum_list_controller.dart';
 
 class CreatePostController extends BaseController {
   final formKey = GlobalKey<FormState>();
@@ -32,13 +33,8 @@ class CreatePostController extends BaseController {
       _useCase
           .createPost(
             params: _params,
-            onSuccess: (CreatePostResult result) {
-              // Get.offNamed(
-              //   AppRouter.routerVerifyEmail,
-              //   arguments: VerifyArgument(
-              //       type: VerifyType.verifyAccount, email: email),
-              // );
-              Get.find<ForumDetailController>().onRefresh();
+            onSuccess: (CreatePostResult result) async {
+              await Get.find<ForumDetailController>().onRefresh();
               Get.offNamed(AppRouter.routerForumDetailPage,
                   arguments: result.forum_id);
             },
@@ -74,5 +70,11 @@ class CreatePostController extends BaseController {
     }
 
     return null;
+  }
+
+  @override
+  void onClose() {
+    Get.find<ForumListController>().onRefresh();
+    super.onClose();
   }
 }

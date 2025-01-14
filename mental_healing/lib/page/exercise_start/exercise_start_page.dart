@@ -1,5 +1,6 @@
 import 'package:mental_healing/common/app_bar_custom.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
 import 'package:mental_healing/page/exercise_start/exercise_start_controller.dart';
 
 class ExerciseStart extends BaseScreen<ExerciseStartController> with BaseMixin {
@@ -14,6 +15,9 @@ class ExerciseStart extends BaseScreen<ExerciseStartController> with BaseMixin {
         titleAppBar: LocaleKeys.choose_type.tr,
         centerTitle: false,
         backgroundColor: color.backgroundColor,
+        leadingPressed: () {
+          Get.find<DashboardController>().changePageIndex(index: 0);
+        },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

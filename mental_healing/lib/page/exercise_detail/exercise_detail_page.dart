@@ -64,29 +64,24 @@ class ExerciseDetailPage extends BaseScreen<ExerciseDetailController>
     );
   }
 
-  /// Widget hiển thị thông tin chi tiết
   Widget _infoSection() {
-    return Obx(() {
-      final detail = controller.exerciseDetail.value;
-
-      return Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              detail.title ?? "No Title",
-              style: textStyle.bold(size: 22, color: color.blackColor),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              detail.description ?? "No Description",
-              style: textStyle.medium(size: 16, color: color.blackColor),
-            ),
-          ],
-        ),
-      );
-    });
+    return Obx(() => Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                controller.dataList.first.title ?? "No Title",
+                style: textStyle.bold(size: 22, color: color.blackColor),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                controller.dataList.first.description ?? "No Description",
+                style: textStyle.medium(size: 16, color: color.blackColor),
+              ),
+            ],
+          ),
+        ));
   }
 
   @override

@@ -1,15 +1,15 @@
-import 'package:mental_healing/api_manager/api_error.dart';
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
-import 'package:mental_healing/data/model/chatbot_info.dart';
+import 'package:mental_healing/data/model/chatbot/chatbot_info.dart';
+import 'package:mental_healing/data/model/forums/forum_params.dart';
 import 'package:mental_healing/data/use_case/chatbot_use_case.dart';
 import 'package:mental_healing/import.dart';
 
 class ChatbotController extends BaseController
-    with SmartLoadListController<Widget> {
+    with SmartLoadListController<ChatbotInfo> {
   final TextEditingController messageController = TextEditingController();
   final ChatbotUseCase _useCase = ChatbotUseCase();
-
-  RxList<ChatbotInfo> listConversions = <ChatbotInfo>[].obs;
+  ForumParams _params = const ForumParams();
+  RxBool hasMorePage = false.obs;
 
   @override
   void onInit() {
@@ -23,14 +23,24 @@ class ChatbotController extends BaseController
   }
 
   Future<void> _getListConversions() async {
-    await _useCase.getListConversions(
-      onSuccess: (data) {
-        listConversions.value = data;
-      },
-      onFailure: (err) {
-        error.value = err.message as ApiError?;
-      },
-    ).whenComplete(() => isLoadingPage.value = false);
+    await _useCase
+        .getListConversions(
+            params: _params,
+            onSuccess: (data) {
+              if (_params.page == 1) {
+                error.value = null;
+                dataList.clear();
+              }
+              dataList.addAll(data.data ?? []);
+              hasMorePage.value = data.has_more_pages ?? false;
+              dataList.refresh();
+            },
+            onFailure: (err) {
+              error.value = err;
+            })
+        .whenComplete(() {
+      isLoadingPage.value = false;
+    });
   }
 
   Future<void> sendMessage(String userMessage) async {
@@ -40,30 +50,30 @@ class ChatbotController extends BaseController
       user_message: userMessage,
       bot_reply: null,
     );
-    listConversions.add(userMessageInfo);
-    messageController.clear();
 
-    try {
-      await _useCase.sendMessage(
-        message: userMessage,
-        onSuccess: (data) {
-          listConversions.add(data);
-          onRefresh();
-        },
-        onFailure: (err) {
-          error.value = err.toString() as ApiError?;
-        },
-      );
-    } catch (err) {
-      error.value = err.toString() as ApiError?;
+    await _useCase.sendMessage(
+      message: userMessage,
+      onSuccess: (data) {
+        messageController.clear();
+        data = userMessageInfo;
+        dataList.add(data);
+        onRefresh();
+      },
+      onFailure: (err) {},
+    );
+  }
+
+  @override
+  void onLoadMore() {
+    if (hasMorePage.value) {
+      _params = _params.copyWith(page: _params.page + 1);
+      _getListConversions().whenComplete(refreshController.loadComplete);
     }
   }
 
   @override
-  void onLoadMore() {}
-
-  @override
   Future<void> onRefresh() async {
+    _params = _params.copyWith(page: 1);
     await _getListConversions();
     refreshController.refreshCompleted();
   }

@@ -7,10 +7,10 @@ class HomeController extends BaseController {
 
   Future<void> moveTChatbotPage() async {
     if (_globalDataManager.passChatbot) {
-      Get.toNamed(AppRouter.routerIntroChatbot);
+      Get.toNamed(AppRouter.routerChatbotPage);
     } else {
       savePassChatbot(true);
-      Get.toNamed(AppRouter.routerChatbotPage);
+      Get.toNamed(AppRouter.routerIntroChatbot);
     }
   }
 }

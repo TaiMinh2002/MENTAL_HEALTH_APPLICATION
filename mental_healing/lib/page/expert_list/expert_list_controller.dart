@@ -1,19 +1,16 @@
-import 'package:mental_healing/api_manager/api_error.dart';
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_controller.dart';
-import 'package:mental_healing/data/model/expert_info.dart';
-import 'package:mental_healing/data/model/expert_params.dart';
+import 'package:mental_healing/data/model/expert/expert_info.dart';
+import 'package:mental_healing/data/model/expert/expert_params.dart';
 import 'package:mental_healing/data/use_case/expert_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 
 class ExpertListController extends BaseController
-    with SmartLoadListController<Widget> {
+    with SmartLoadListController<ExpertInfo> {
   final ExpertUseCase _useCase = ExpertUseCase();
   late int specialization;
-
+  RxBool hasMorePage = false.obs;
   late ExpertParams param;
-
-  RxList<ExpertInfo> listExpertsWidget = <ExpertInfo>[].obs;
 
   @override
   void onInit() {
@@ -31,20 +28,21 @@ class ExpertListController extends BaseController
   Future<void> _getListExperts() async {
     await _useCase
         .getListExperts(
-          params: param,
-          onSuccess: (List<ExpertInfo> data) {
-            if (data.isNotEmpty) {
-              // Gán dữ liệu vào danh sách
-              listExpertsWidget.value = data;
+            params: param,
+            onSuccess: (data) {
               error.value = null;
-            } else {
-              error.value = "No data available" as ApiError?;
-            }
-          },
-          onFailure: (err) {
-            error.value = err;
-          },
-        )
+              if (param.page == 1) {
+                dataList.clear();
+              }
+              if (isNotNullOrEmpty(data.data)) {
+                dataList.addAll(data.data ?? []);
+                hasMorePage.value = data.has_more_pages ?? false;
+              }
+              dataList.refresh();
+            },
+            onFailure: (err) {
+              error.value = err;
+            })
         .whenComplete(() => isLoadingPage.value = false);
   }
 
@@ -57,15 +55,15 @@ class ExpertListController extends BaseController
 
   @override
   void onLoadMore() {
-    // Nếu cần load thêm dữ liệu, hãy tăng page và gọi lại API
-    // param.page += 1;
-    _getListExperts();
+    if (hasMorePage.value) {
+      param = param.copyWith(page: param.page + 1);
+      _getListExperts().whenComplete(refreshController.loadComplete);
+    }
   }
 
   @override
   Future<void> onRefresh() async {
-    // Reset lại page về 1 và gọi lại API
-    // param.page = 1;
+    param = param.copyWith(page: 1);
     await _getListExperts();
     refreshController.refreshCompleted();
   }
