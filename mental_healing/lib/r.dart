@@ -88,6 +88,7 @@ class AssetIcons {
 	static const String inUpLogo = 'assets/icons/in_up_logo.svg';
 	static const String insertEmotion = 'assets/icons/insert_emotion.svg';
 	static const String language = 'assets/icons/language.svg';
+	static const String loadingVideo = 'assets/icons/loading_video.gif';
 	static const String logo = 'assets/icons/logo.svg';
 	static const String male = 'assets/icons/male.svg';
 	static const String messageSearch = 'assets/icons/message_search.svg';

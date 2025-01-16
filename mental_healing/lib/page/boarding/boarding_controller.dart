@@ -1,9 +1,7 @@
-import 'package:mental_healing/controller/global_data_manager.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 
 class BoardingController extends BaseController {
-  final GlobalDataManager _globalDataManager = GlobalDataManager();
   PageController pageController = PageController();
   RxInt currentPage = 0.obs;
   RxString currentTitle = LocaleKeys.personalize_journey.obs;

@@ -7,7 +7,8 @@ class Formatter {
   String getDateString() {
     if (targetString == null || targetString!.isEmpty) return '';
     try {
-      final dateTime = DateTime.parse(targetString!);
+      final dateTime = DateTime.parse(targetString!).toLocal();
+
       final now = DateTime.now();
       final difference = now.difference(dateTime);
 

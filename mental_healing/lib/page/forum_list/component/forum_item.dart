@@ -1,4 +1,3 @@
-import 'package:mental_healing/base_widget/button_widget.dart';
 import 'package:mental_healing/common/widget_components/button/widget_button.dart';
 import 'package:mental_healing/data/model/forums/forum_info.dart';
 import 'package:mental_healing/import.dart';
@@ -12,7 +11,7 @@ class ForumItem extends BaseWidget with BaseMixin {
   final Function()? onJoin;
   final Function()? onLeave;
   final Function(int id) handleDetail;
-  final String join;
+  final int isYour;
 
   ForumItem(
       {super.key,
@@ -23,7 +22,7 @@ class ForumItem extends BaseWidget with BaseMixin {
       required this.postCount,
       required this.handleDetail,
       required this.forum,
-      required this.join,
+      required this.isYour,
       required this.title});
 
   @override
@@ -80,31 +79,18 @@ class ForumItem extends BaseWidget with BaseMixin {
   }
 
   Widget _joinButton() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30.0),
-      child: WidgetButton(
-        disable: join == 'Admin' || join == 'Joined',
-        title: join,
-        onClick: onJoin ?? () {},
-        width: 100,
-        height: 30,
-        borderRadius: 8,
-        backgroundColor:
-            join == LocaleKeys.join.tr ? color.mainColor : color.colorCCCCCC,
-      ),
-    );
-  }
-
-  Widget _outButton() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30.0),
-      child: ButtonWidget(
-        title: join,
-        onClick: onLeave ?? () {},
-        width: 100,
-        height: 50,
-        borderRadius: 8,
-      ),
-    );
+    return isYour == 0
+        ? Padding(
+            padding: const EdgeInsets.only(left: 30.0),
+            child: WidgetButton(
+              title: LocaleKeys.join.tr,
+              onClick: onJoin ?? () {},
+              width: 100,
+              height: 30,
+              borderRadius: 8,
+              backgroundColor: color.mainColor,
+            ),
+          )
+        : const SizedBox();
   }
 }

@@ -243,6 +243,8 @@ class LocaleKeys {
   static const not_written_mood = 'not_written_mood';
   static const writeYourMood = 'writeYourMood';
   static const specializations = 'specializations';
+  static const exerciseDetail = 'exerciseDetail';
+  static const recommend = 'recommend';
 }
 
 class Locales {
@@ -496,6 +498,8 @@ class Locales {
     'not_written_mood': 'You haven\'t done it yet, start writing your mood',
     'writeYourMood': 'Write your mood',
     'specializations': 'Specializations',
+    'exerciseDetail': 'Exercise Detail',
+    'recommend': 'Recommend',
   };
   static const vi = {
     'welcome_message': 'Chào mừng đến với Sức Khỏe Tâm Lý',
@@ -739,5 +743,7 @@ class Locales {
         'Bạn chưa thực hiện, hãy bắt đầu viết lại tâm trạng của bạn',
     'writeYourMood': 'Viết tâm trạng của bạn',
     'specializations': 'Chuyên ngành',
+    'exerciseDetail': 'Chi tiết bài tập',
+    'recommend': 'Gợi ý cho bạn',
   };
 }

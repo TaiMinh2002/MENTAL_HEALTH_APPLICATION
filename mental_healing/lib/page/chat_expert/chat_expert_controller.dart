@@ -7,6 +7,7 @@ import 'package:mental_healing/data/model/chat_expert/chat_message_param.dart';
 import 'package:mental_healing/data/model/chat_expert/send_message_expert_params.dart';
 import 'package:mental_healing/data/use_case/chat_expert_use_case.dart';
 import 'package:mental_healing/import.dart';
+import 'package:mental_healing/page/message/message_controller.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ChatExpertController extends BaseController
@@ -34,7 +35,7 @@ class ChatExpertController extends BaseController
 
   void _initSocket() {
     socket = IO.io(
-      'http://172.20.10.7:6868',
+      'http://192.168.1.91:6868',
       IO.OptionBuilder()
           .setTransports(['websocket'])
           .disableAutoConnect()
@@ -99,6 +100,7 @@ class ChatExpertController extends BaseController
     final socketMessage = {
       'chat_id': chatId,
       'receiver_id': params.receiverId,
+      'sender_id': GlobalDataManager().userInfo.value.id,
       'message': userMessage,
     };
 
@@ -109,6 +111,7 @@ class ChatExpertController extends BaseController
       onSuccess: (data) {
         _getListMessage();
         dataList.add(data);
+        Get.find<MessageController>().onRefresh();
       },
       onFailure: (err) {
         if (err is ApiError) {

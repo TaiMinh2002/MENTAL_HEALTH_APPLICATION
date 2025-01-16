@@ -26,8 +26,8 @@ class MessagePage extends BaseScreen<MessageController>
           titleAppBar: LocaleKeys.messages.tr,
           centerTitle: false,
           leadingPressed: () {
-          Get.find<DashboardController>().changePageIndex(index: 0);
-        },
+            Get.find<DashboardController>().changePageIndex(index: 0);
+          },
         ),
       );
 
@@ -56,7 +56,7 @@ class MessagePage extends BaseScreen<MessageController>
             onTap: () {
               controller.moveToChat(controller.dataList[index]);
             },
-            time: controller.dataList[index].createdAtFormatted ?? '',
+            time: controller.dataList[index].lastTimeFormatted ?? '',
           );
         },
       ),
