@@ -25,15 +25,25 @@ class ForumCreatePage extends BaseScreen<ForumCreateController> with BaseMixin {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
-              children: [
-                _coverImage(),
-                _titleInput(),
-                _descriptionInput(),
-                _createButton()
-              ],
+              children: [_coverImage(), _formInput(), _createButton()],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _formInput() {
+    return Form(
+      key: controller.formKey,
+      autovalidateMode: controller.firstValidation.value
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
+      child: Column(
+        children: [
+          _titleInput(),
+          _descriptionInput(),
+        ],
       ),
     );
   }

@@ -1,4 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages
+
 import 'dart:async';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
@@ -9,6 +10,7 @@ import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/forum_list/forum_list_controller.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:mime/mime.dart';
 
 class ForumCreateController extends BaseController
     with GetSingleTickerProviderStateMixin {
@@ -25,6 +27,7 @@ class ForumCreateController extends BaseController
   Rx<File?> coverImageFile = Rx<File?>(null);
   RxBool isDisableButton = true.obs;
   bool isChangeCoverImage = false;
+  RxBool firstValidation = false.obs;
 
   final ForumUseCase _forumUseCase = ForumUseCase();
 
@@ -98,44 +101,48 @@ class ForumCreateController extends BaseController
     if (formKey.currentState?.validate() == true) {
       formKey.currentState!.save();
     }
-    if (!firstValidate.value) {
-      firstValidate.value = true;
+    if (!firstValidation.value) {
+      firstValidation.value = true;
+    }
+    if (titleController.text.trim().isEmpty ||
+        descriptionController.text.trim().isEmpty) {
+      return false;
     }
     return formKey.currentState?.validate() ?? false;
   }
 
   Future<void> handleCreateForum() async {
-    showLoading();
+    if (validation()) {
+      dio.MultipartFile? coverImageMultipart;
+      if (coverImageFile.value != null) {
+        final mimeType = lookupMimeType(coverImageFile.value!.path);
+        final extension = mimeType?.split('/').last ?? 'jpg';
+        coverImageMultipart = await dio.MultipartFile.fromFile(
+          coverImageFile.value!.path,
+          filename: coverImageFile.value!.path.split('/').last,
+          contentType: dio.DioMediaType.parse('image/$extension'),
+        );
+      }
 
-    try {
-      // Chuyển đổi file ảnh sang dio.MultipartFile
-      dio.MultipartFile? coverImageMultipart = coverImageFile.value != null
-          ? await dio.MultipartFile.fromFile(
-              coverImageFile.value!.path,
-              filename: coverImageFile.value!.path.split('/').last,
-            )
-          : null;
-
-      // Tạo params
       final params = ForumCreateParams(
         title: titleController.text.trim(),
         description: descriptionController.text.trim(),
-        cover_image: coverImageMultipart, // Sử dụng dio.MultipartFile
+        cover_image: coverImageMultipart,
       );
+      showLoading();
 
-      // Gọi API
-      await _forumUseCase.createForum(
-        param: params,
-        onSuccess: (data) {
-          print('aaa');
-          Get.offNamed(AppRouter.routerForumDetailPage, arguments: data.id);
-        },
-        onFailure: (error) {
-          SnackBarHelper.showError(error.message);
-        },
-      );
-    } finally {
-      hideLoading();
+      await _forumUseCase
+          .createForum(
+            param: params,
+            onSuccess: (data) {
+              print('Forum created successfully');
+              Get.offNamed(AppRouter.routerForumDetailPage, arguments: data.id);
+            },
+            onFailure: (error) {
+              SnackBarHelper.showError(error.message);
+            },
+          )
+          .whenComplete(() => hideLoading());
     }
   }
 
@@ -143,7 +150,10 @@ class ForumCreateController extends BaseController
   void onClose() {
     _timer.cancel();
     animationController.dispose();
-    Get.find<ForumListController>().onRefresh();
+    if (Get.isRegistered<ForumListController>()) {
+      Get.find<ForumListController>().onRefresh();
+    }
+
     super.onClose();
   }
 }

@@ -10,6 +10,7 @@ mixin CacheManager {
   Future<bool> removeAllCache() async {
     Future.wait([
       removeToken(),
+      removeRefreshToken(),
       removeUserInfo(),
       removeFCMToken(),
     ]);
@@ -67,6 +68,19 @@ mixin CacheManager {
 
   Future<void> removeToken() async {
     await _box.remove(CacheManagerKey.token.toString());
+  }
+
+  // ============================= refreshToken ============================= //
+  void saveRefreshToken(String? refreshToken) {
+    _box.write(CacheManagerKey.refreshToken.toString(), refreshToken);
+  }
+
+  String? getRefreshToken() {
+    return _box.read(CacheManagerKey.refreshToken.toString());
+  }
+
+  Future<void> removeRefreshToken() async {
+    await _box.remove(CacheManagerKey.refreshToken.toString());
   }
 
   // ============================= LogInData ============================= //

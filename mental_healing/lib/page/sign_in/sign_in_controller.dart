@@ -46,6 +46,7 @@ class SignInController extends BaseController {
             params: _params,
             onSuccess: (SignInResult data) async {
               saveToken(data.token);
+              saveRefreshToken(data.refreshToken);
               if (data.userInfo != null) {
                 await saveUserInfo(data.userInfo!);
                 await GlobalDataManager().getNewUserInfo();
@@ -60,7 +61,7 @@ class SignInController extends BaseController {
                   Get.offNamed(AppRouter.routerAssessment);
                 }
               } else {
-                // Get.offAllNamed(AppRouter.routerDashboard);
+                Get.offAllNamed(AppRouter.routerDashboardExpert);
               }
             },
             onFailure: (err) {
