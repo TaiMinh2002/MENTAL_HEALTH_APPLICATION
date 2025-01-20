@@ -21,6 +21,7 @@ class RoomChatResult with _$RoomChatResult {
     int? user_id,
     int? expert_id,
     String? latest_message,
+    String? last_time,
     String? created_at,
   }) = _RoomChatResult;
 
@@ -30,5 +31,5 @@ class RoomChatResult with _$RoomChatResult {
       _$RoomChatResultFromJson(json);
 
   String? get createdAtFormatted => Formatter(created_at ?? "").getDateString();
+  String? get lastTimeFormatted => Formatter(last_time ?? "").getDateString();
 }
-

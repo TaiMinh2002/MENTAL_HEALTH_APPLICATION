@@ -26,6 +26,7 @@ enum CacheManagerKey {
   passBoarding,
   fcmToken,
   passChatbot,
+  refreshToken
 }
 
 enum DateFormatType {

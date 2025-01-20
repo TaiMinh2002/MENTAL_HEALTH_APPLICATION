@@ -153,35 +153,23 @@ class _WidgetInputTextState extends State<WidgetInputText> with BaseMixin {
           if (widget.title.isNotEmpty)
             Padding(
               padding: EdgeInsets.only(bottom: widget.paddingTitleBottom.r),
-              child: RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                    text: widget.title,
+              child: Row(
+                children: [
+                  Text(
+                    widget.title,
                     style: textStyle.regular(size: 16),
                   ),
-                  WidgetSpan(
-                      child: widget.showRequired
-                          ? Container(
-                              color: color.redColor,
-                              margin: const EdgeInsets.only(left: 5),
-                              padding: const EdgeInsets.only(
-                                  left: 7, right: 7, top: 4, bottom: 3),
-                              child: Text(
-                                'LocaleKeys.required.tr',
-                                style: textStyle.bold(
-                                    size: 10,
-                                    color: color.whiteColor,
-                                    height: 1),
-                              ),
-                            )
-                          : const SizedBox()),
-                  // WidgetSpan(
-                  //     child: widget.showOptional
-                  //         ? OptionalWidget(
-                  //             backgroundColor: color.whiteColor.withOpacity(0.4),
-                  //           )
-                  //         : const SizedBox()),
-                ]),
+                  widget.showRequired
+                      ? Padding(
+                          padding: EdgeInsets.only(left: 3.r),
+                          child: Text(
+                            '✹',
+                            style: textStyle.bold(
+                                size: 10, color: color.redColor, height: 1),
+                          ),
+                        )
+                      : const SizedBox(),
+                ],
               ),
             )
           else

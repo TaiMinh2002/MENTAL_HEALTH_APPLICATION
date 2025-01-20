@@ -1,6 +1,7 @@
 import 'package:mental_healing/base_widget/app_bar_custom.dart';
 import 'package:mental_healing/common/widget_components/animated_list/widget_animated_list.dart';
 import 'package:mental_healing/common/widget_components/smart_scroll/smart_scroll_widget.dart';
+import 'package:mental_healing/controller/global_data_manager.dart';
 import 'package:mental_healing/import.dart';
 import 'package:mental_healing/page/dashboard/dashboard_controller.dart';
 import 'package:mental_healing/page/message/component/message_list_item.dart';
@@ -26,8 +27,8 @@ class MessagePage extends BaseScreen<MessageController>
           titleAppBar: LocaleKeys.messages.tr,
           centerTitle: false,
           leadingPressed: () {
-          Get.find<DashboardController>().changePageIndex(index: 0);
-        },
+            Get.find<DashboardController>().changePageIndex(index: 0);
+          },
         ),
       );
 
@@ -50,13 +51,17 @@ class MessagePage extends BaseScreen<MessageController>
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (_, index) {
           return MessageListItem(
-            name: controller.dataList[index].expert_name ?? '',
-            avatar: controller.dataList[index].expert_avatar ?? '',
+            name: GlobalDataManager().userInfo.value.role == 2
+                ? controller.dataList[index].expert_name ?? ''
+                : controller.dataList[index].user_name ?? '',
+            avatar: GlobalDataManager().userInfo.value.role == 2
+                ? controller.dataList[index].expert_avatar
+                : controller.dataList[index].user_avatar,
             latestMessage: controller.dataList[index].latest_message ?? '',
             onTap: () {
               controller.moveToChat(controller.dataList[index]);
             },
-            time: controller.dataList[index].createdAtFormatted ?? '',
+            time: controller.dataList[index].lastTimeFormatted ?? '',
           );
         },
       ),

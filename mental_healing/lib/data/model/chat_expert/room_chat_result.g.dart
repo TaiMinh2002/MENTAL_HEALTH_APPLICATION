@@ -16,6 +16,7 @@ _$RoomChatResultImpl _$$RoomChatResultImplFromJson(Map<String, dynamic> json) =>
       user_id: (json['user_id'] as num?)?.toInt(),
       expert_id: (json['expert_id'] as num?)?.toInt(),
       latest_message: json['latest_message'] as String?,
+      last_time: json['last_time'] as String?,
       created_at: json['created_at'] as String?,
     );
 
@@ -30,5 +31,6 @@ Map<String, dynamic> _$$RoomChatResultImplToJson(
       'user_id': instance.user_id,
       'expert_id': instance.expert_id,
       'latest_message': instance.latest_message,
+      'last_time': instance.last_time,
       'created_at': instance.created_at,
     };

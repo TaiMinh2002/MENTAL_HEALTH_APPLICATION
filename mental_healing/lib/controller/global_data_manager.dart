@@ -1,6 +1,6 @@
 import 'package:mental_healing/base/cache_manager.dart';
 import 'package:mental_healing/data/model/user/user_info.dart';
-import 'package:mental_healing/data/use_case/auth_use_case.dart';
+// import 'package:mental_healing/data/use_case/auth_use_case.dart';
 import 'package:mental_healing/global/app_router.dart';
 import 'package:mental_healing/import.dart';
 
@@ -18,7 +18,7 @@ class GlobalDataManager with CacheManager {
   bool isOpenAppSetting = false;
   String versionApp = '';
   String versionOS = '';
-  final AuthUseCase _authUseCase = AuthUseCase();
+  // final AuthUseCase _authUseCase = AuthUseCase();
   Rx<UserInfo> userInfo = const UserInfo().obs;
 
   Future<void> _initGlobalData() async {

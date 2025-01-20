@@ -230,5 +230,7 @@
     "choose_type": "Choose type",
     "not_written_mood": "You haven't done it yet, start writing your mood",
     "writeYourMood": "Write your mood",
-    "specializations": "Specializations"
+    "specializations": "Specializations",
+    "exerciseDetail": "Exercise Detail",
+    "recommend": "Recommend"
 }

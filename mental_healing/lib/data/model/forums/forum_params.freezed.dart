@@ -22,6 +22,7 @@ ForumParams _$ForumParamsFromJson(Map<String, dynamic> json) {
 mixin _$ForumParams {
   int get page => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
+  bool? get is_joined => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $ForumParamsCopyWith<$Res> {
           ForumParams value, $Res Function(ForumParams) then) =
       _$ForumParamsCopyWithImpl<$Res, ForumParams>;
   @useResult
-  $Res call({int page, int limit});
+  $Res call({int page, int limit, bool? is_joined});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$ForumParamsCopyWithImpl<$Res, $Val extends ForumParams>
   $Res call({
     Object? page = null,
     Object? limit = null,
+    Object? is_joined = freezed,
   }) {
     return _then(_value.copyWith(
       page: null == page
@@ -63,6 +65,10 @@ class _$ForumParamsCopyWithImpl<$Res, $Val extends ForumParams>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
+      is_joined: freezed == is_joined
+          ? _value.is_joined
+          : is_joined // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$ForumParamsImplCopyWith<$Res>
       __$$ForumParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int page, int limit});
+  $Res call({int page, int limit, bool? is_joined});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$ForumParamsImplCopyWithImpl<$Res>
   $Res call({
     Object? page = null,
     Object? limit = null,
+    Object? is_joined = freezed,
   }) {
     return _then(_$ForumParamsImpl(
       page: null == page
@@ -101,6 +108,10 @@ class __$$ForumParamsImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
+      is_joined: freezed == is_joined
+          ? _value.is_joined
+          : is_joined // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -108,7 +119,7 @@ class __$$ForumParamsImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ForumParamsImpl implements _ForumParams {
-  const _$ForumParamsImpl({this.page = 1, this.limit = 10});
+  const _$ForumParamsImpl({this.page = 1, this.limit = 10, this.is_joined});
 
   factory _$ForumParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$ForumParamsImplFromJson(json);
@@ -119,10 +130,12 @@ class _$ForumParamsImpl implements _ForumParams {
   @override
   @JsonKey()
   final int limit;
+  @override
+  final bool? is_joined;
 
   @override
   String toString() {
-    return 'ForumParams(page: $page, limit: $limit)';
+    return 'ForumParams(page: $page, limit: $limit, is_joined: $is_joined)';
   }
 
   @override
@@ -131,12 +144,14 @@ class _$ForumParamsImpl implements _ForumParams {
         (other.runtimeType == runtimeType &&
             other is _$ForumParamsImpl &&
             (identical(other.page, page) || other.page == page) &&
-            (identical(other.limit, limit) || other.limit == limit));
+            (identical(other.limit, limit) || other.limit == limit) &&
+            (identical(other.is_joined, is_joined) ||
+                other.is_joined == is_joined));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, page, limit);
+  int get hashCode => Object.hash(runtimeType, page, limit, is_joined);
 
   @JsonKey(ignore: true)
   @override
@@ -153,8 +168,10 @@ class _$ForumParamsImpl implements _ForumParams {
 }
 
 abstract class _ForumParams implements ForumParams {
-  const factory _ForumParams({final int page, final int limit}) =
-      _$ForumParamsImpl;
+  const factory _ForumParams(
+      {final int page,
+      final int limit,
+      final bool? is_joined}) = _$ForumParamsImpl;
 
   factory _ForumParams.fromJson(Map<String, dynamic> json) =
       _$ForumParamsImpl.fromJson;
@@ -163,6 +180,8 @@ abstract class _ForumParams implements ForumParams {
   int get page;
   @override
   int get limit;
+  @override
+  bool? get is_joined;
   @override
   @JsonKey(ignore: true)
   _$$ForumParamsImplCopyWith<_$ForumParamsImpl> get copyWith =>

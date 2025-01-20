@@ -1,6 +1,6 @@
 import 'package:mental_healing/import.dart';
 
-class DashboardController extends GetxController {
+class DashboardController extends BaseController {
   RxInt currentTabIndex = 0.obs;
 
   @override

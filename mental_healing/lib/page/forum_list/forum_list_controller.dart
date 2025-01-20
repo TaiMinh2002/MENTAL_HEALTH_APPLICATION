@@ -8,8 +8,9 @@ import 'package:mental_healing/import.dart';
 class ForumListController extends BaseController
     with SmartLoadListController<ForumInfo> {
   final ForumUseCase _forumUseCase = ForumUseCase();
-  ForumParams _params = const ForumParams(limit: 20, page: 1);
+  ForumParams _params = const ForumParams(limit: 20, page: 1, is_joined: false);
   RxBool hasMorePage = false.obs;
+  RxBool isJoinedTab = true.obs;
 
   @override
   void onInit() {
@@ -41,6 +42,12 @@ class ForumListController extends BaseController
               error.value = err;
             })
         .whenComplete(() => isLoadingPage.value = false);
+  }
+
+  void switchTab(bool isJoined) {
+    isJoinedTab.value = isJoined;
+    _params = _params.copyWith(page: 1, is_joined: isJoined);
+    _getListForums();
   }
 
   Future<void> moveToDetail(int forumId) async {

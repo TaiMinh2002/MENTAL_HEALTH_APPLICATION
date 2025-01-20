@@ -1,4 +1,5 @@
 import 'package:mental_healing/api_manager/rest_client_base.dart';
+import 'package:mental_healing/controller/global_data_manager.dart';
 import 'package:mental_healing/data/model/user/user_update_params.dart';
 import 'package:mental_healing/data/model/sign_in/sign_in_params.dart';
 import 'package:mental_healing/data/model/sign_in/sign_in_result.dart';
@@ -31,7 +32,10 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<void> signOut() async {
-    await _client.post(AppUrl.apiLogout);
+    await _client.post(AppUrl.apiLogout, queryParameters: {
+      'refreshToken': GlobalDataManager().getRefreshToken(),
+      'token': GlobalDataManager().getToken()
+    });
   }
 
   @override

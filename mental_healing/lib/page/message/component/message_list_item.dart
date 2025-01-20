@@ -4,13 +4,13 @@ class MessageListItem extends BaseWidget with BaseMixin {
   MessageListItem(
       {super.key,
       required this.name,
-      required this.avatar,
+      this.avatar,
       required this.latestMessage,
       required this.time,
       required this.onTap});
 
   final String name;
-  final String avatar;
+  final String? avatar;
   final String latestMessage;
   final VoidCallback onTap;
   final String time;
@@ -32,7 +32,9 @@ class MessageListItem extends BaseWidget with BaseMixin {
   Widget _avatarWidget() {
     return CircleAvatar(
       backgroundColor: color.whiteColor,
-      backgroundImage: NetworkImage(avatar),
+      backgroundImage: avatar != null
+          ? NetworkImage(avatar!) as ImageProvider<Object>
+          : const AssetImage(AssetImages.noPerson) as ImageProvider<Object>,
       radius: 30,
     );
   }

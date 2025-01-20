@@ -21,7 +21,7 @@ class ExerciseListPage extends BaseScreen<ExerciseListController>
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBarCustom(
           elevation: 0,
-          titleAppBar: LocaleKeys.expert.tr,
+          titleAppBar: LocaleKeys.exercise.tr,
           centerTitle: false,
         ),
       );
@@ -31,7 +31,8 @@ class ExerciseListPage extends BaseScreen<ExerciseListController>
         enablePullDown: true,
         enablePullUp: controller.hasMorePage.value,
         child: Padding(
-          padding: EdgeInsets.only(left: 20.w, top: 30.h, bottom: 30.h),
+          padding:
+              EdgeInsets.only(bottom: 30.h, left: 10.r, right: 10.r, top: 10.h),
           child: _buildList(),
         ));
   }
@@ -105,7 +106,6 @@ class ExerciseListPage extends BaseScreen<ExerciseListController>
               ],
             ),
           ),
-          const Expanded(child: SizedBox()),
           SvgPicture.asset(AssetIcons.report,
               height: 25,
               width: 25,

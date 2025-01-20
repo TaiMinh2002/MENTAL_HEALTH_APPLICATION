@@ -6,6 +6,7 @@ import 'package:mental_healing/page/chatbot/chatbot_page.dart';
 import 'package:mental_healing/page/chatbot/component/chatbot_intro.dart';
 import 'package:mental_healing/page/create_post/create_post_page.dart';
 import 'package:mental_healing/page/dashboard/dashboard_page.dart';
+import 'package:mental_healing/page/dashboard_expert/dashboard_expert_page.dart';
 import 'package:mental_healing/page/exercise_detail/exercise_detail_page.dart';
 import 'package:mental_healing/page/exercise_list/exercise_list_page.dart';
 import 'package:mental_healing/page/expert/expert_page.dart';
@@ -45,6 +46,7 @@ class AppRouter {
   static const String routerChatExpert = '/chat_expert';
   static const String routerSetMoodPage = '/set_mood_page';
   static const String routerCreatePost = '/create_post';
+  static const String routerDashboardExpert = '/dashboard_expert';
 
   static const curve = Curves.fastOutSlowIn;
   static var transition =
@@ -204,6 +206,13 @@ class AppRouter {
     GetPage<CreatePostPage>(
       name: routerCreatePost,
       page: () => CreatePostPage(),
+      curve: curve,
+      transition: Transition.fadeIn,
+      transitionDuration: transitionDuration,
+    ),
+    GetPage<DashboardExpertPage>(
+      name: routerDashboardExpert,
+      page: () => DashboardExpertPage(),
       curve: curve,
       transition: Transition.fadeIn,
       transitionDuration: transitionDuration,

@@ -28,6 +28,7 @@ mixin _$RoomChatResult {
   int? get user_id => throw _privateConstructorUsedError;
   int? get expert_id => throw _privateConstructorUsedError;
   String? get latest_message => throw _privateConstructorUsedError;
+  String? get last_time => throw _privateConstructorUsedError;
   String? get created_at => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $RoomChatResultCopyWith<$Res> {
       int? user_id,
       int? expert_id,
       String? latest_message,
+      String? last_time,
       String? created_at});
 }
 
@@ -75,6 +77,7 @@ class _$RoomChatResultCopyWithImpl<$Res, $Val extends RoomChatResult>
     Object? user_id = freezed,
     Object? expert_id = freezed,
     Object? latest_message = freezed,
+    Object? last_time = freezed,
     Object? created_at = freezed,
   }) {
     return _then(_value.copyWith(
@@ -110,6 +113,10 @@ class _$RoomChatResultCopyWithImpl<$Res, $Val extends RoomChatResult>
           ? _value.latest_message
           : latest_message // ignore: cast_nullable_to_non_nullable
               as String?,
+      last_time: freezed == last_time
+          ? _value.last_time
+          : last_time // ignore: cast_nullable_to_non_nullable
+              as String?,
       created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -135,6 +142,7 @@ abstract class _$$RoomChatResultImplCopyWith<$Res>
       int? user_id,
       int? expert_id,
       String? latest_message,
+      String? last_time,
       String? created_at});
 }
 
@@ -157,6 +165,7 @@ class __$$RoomChatResultImplCopyWithImpl<$Res>
     Object? user_id = freezed,
     Object? expert_id = freezed,
     Object? latest_message = freezed,
+    Object? last_time = freezed,
     Object? created_at = freezed,
   }) {
     return _then(_$RoomChatResultImpl(
@@ -192,6 +201,10 @@ class __$$RoomChatResultImplCopyWithImpl<$Res>
           ? _value.latest_message
           : latest_message // ignore: cast_nullable_to_non_nullable
               as String?,
+      last_time: freezed == last_time
+          ? _value.last_time
+          : last_time // ignore: cast_nullable_to_non_nullable
+              as String?,
       created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -212,6 +225,7 @@ class _$RoomChatResultImpl extends _RoomChatResult {
       this.user_id,
       this.expert_id,
       this.latest_message,
+      this.last_time,
       this.created_at})
       : super._();
 
@@ -235,11 +249,13 @@ class _$RoomChatResultImpl extends _RoomChatResult {
   @override
   final String? latest_message;
   @override
+  final String? last_time;
+  @override
   final String? created_at;
 
   @override
   String toString() {
-    return 'RoomChatResult(chat_id: $chat_id, user_name: $user_name, expert_name: $expert_name, user_avatar: $user_avatar, expert_avatar: $expert_avatar, user_id: $user_id, expert_id: $expert_id, latest_message: $latest_message, created_at: $created_at)';
+    return 'RoomChatResult(chat_id: $chat_id, user_name: $user_name, expert_name: $expert_name, user_avatar: $user_avatar, expert_avatar: $expert_avatar, user_id: $user_id, expert_id: $expert_id, latest_message: $latest_message, last_time: $last_time, created_at: $created_at)';
   }
 
   @override
@@ -261,6 +277,8 @@ class _$RoomChatResultImpl extends _RoomChatResult {
                 other.expert_id == expert_id) &&
             (identical(other.latest_message, latest_message) ||
                 other.latest_message == latest_message) &&
+            (identical(other.last_time, last_time) ||
+                other.last_time == last_time) &&
             (identical(other.created_at, created_at) ||
                 other.created_at == created_at));
   }
@@ -277,6 +295,7 @@ class _$RoomChatResultImpl extends _RoomChatResult {
       user_id,
       expert_id,
       latest_message,
+      last_time,
       created_at);
 
   @JsonKey(ignore: true)
@@ -304,6 +323,7 @@ abstract class _RoomChatResult extends RoomChatResult {
       final int? user_id,
       final int? expert_id,
       final String? latest_message,
+      final String? last_time,
       final String? created_at}) = _$RoomChatResultImpl;
   const _RoomChatResult._() : super._();
 
@@ -326,6 +346,8 @@ abstract class _RoomChatResult extends RoomChatResult {
   int? get expert_id;
   @override
   String? get latest_message;
+  @override
+  String? get last_time;
   @override
   String? get created_at;
   @override
